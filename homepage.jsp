@@ -25,6 +25,15 @@
 	</style>
 </head>
 <body>
+	<h1>
+		Hi 
+		<% String user=((String)session.getAttribute("user"));
+			if(user!=null)
+			out.print(user);
+			else 
+			out.print("Guest!");
+		%> 
+	</h1>
 	<div class="grid">
 		<div class="grid-item0">
 			jhvhgv
