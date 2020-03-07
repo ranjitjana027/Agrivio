@@ -5,12 +5,45 @@
 		<title>Sign Up</title>
 	</head>
 	<body>
+			<%@ page import="java.sql.*" %>
+			<%! String errorMessage; %>
+			<%= session.getAttribute("userid")==null %>
+			<%= errorMessage %>
+			<% 
+
+				if(session.getAttribute("userid")==null){
+					errorMessage=null;
+			        if(!request.getMethod().equals("GET")){
+			            try { 
+			
+			                // Initialize the database 
+			                String dbURL =  "jdbc:oracle:thin:dummy/passsword@localhost:1521:XE"; 		
+			                Connection con = DriverManager.getConnection(dbURL );
+			
+			                Statement stmt = con.createStatement();
+			                String insert=("insert into farmers values( seq_person.nextval, '"+request.getParameter("firstname")+"', '"+request.getParameter("lastname")+"','"+request.getParameter("mobile")+"', '"+request.getParameter("email")+"', '" +request.getParameter("password")+ "', NULL)");
+			                //st.setString(1, request.getParameter("mobile")); 
+			                //st.setString(2, request.getParameter("password"));
+			                //ResultSet rs=st.executeQuery();
+			                stmt.executeUpdate(insert);
+			                
+			                stmt.close();
+			                con.close();
+			            } 
+			            catch (Exception e) { 
+			                e.printStackTrace(); 
+			            } 
+				    }
+			    }
+			    else
+			        errorMessage="You are already logged in.";
+				%>
 		<header>
 			<h1>Create an Account</h1>
 		</header>
 		
 		<div class=''>
-      		<form class="" action="" method="post" >
+      		<form class="" method="post" >
       		
 	      		<div><h1></h1></div>
 	        
@@ -84,11 +117,13 @@
 	          		<button type="submit" class="btn btn-primary"  >Sign Up</button>
 	        	</div>
 
-	        	<div class="errormessage"></div>
+	        	<div class="errormessage">
+					<%= (errorMessage!=null)?errorMessage:"" %>
+				</div>
 
 	        	<footer>
 	      			Already Registered? Log In 
-	      			<a href="{{ url_for('login') }}" >here.</a>
+	      			<a href="login.jsp" >here.</a>
 	      		</footer>
       		</form>
 

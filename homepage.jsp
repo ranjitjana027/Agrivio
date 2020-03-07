@@ -8,7 +8,7 @@
 		}
 		.grid{
 			display: grid;
-			grid-template-rows: 10% 50% auto;
+			grid-template-rows: 10% 35% auto;
 			grid-template-columns: 20% auto 20%;
 			width: 100vw;
   			height: 100vh;
@@ -20,37 +20,51 @@
 			
 			border: solid green;
 			
-			overflow-y: scroll;;
+			overflow-y: auto;
 		}
 	</style>
 </head>
 <body>
-	<h1>
-		Hi 
-		<% String user=((String)session.getAttribute("user"));
-			if(user!=null)
-			out.print(user);
-			else 
-			out.print("Guest!");
-		%> 
-	</h1>
+	<%
+	if(session.getAttribute("userid")==null)
+		response.sendRedirect("welcome.html");
+	%>
 	<div class="grid">
 		<div class="grid-item0">
-			jhvhgv
+			
 		</div>
 		<div class="grid-item0">
-			jhvhgv
+			<h3>
+				Hi 
+				<% String user=((String)session.getAttribute("user"));
+					if(user!=null)
+					out.print(user);
+					else 
+					out.print("Guest!");
+				%> 
+			</h3>
 		</div>
 		<div class="grid-item0">
-			jhvhgv
+			<a href="logout.jsp">Logout</a>
 		</div>
 		<div class="grid-item0">
-			jhvhgv
+			<jsp:include page="weather.html"/>
 		</div>
 		<div class="grid-item0">
 			<jsp:include page="addEvent.jsp" />
 		</div>
-		
+		<div class="grid-item0">
+			
+		</div>
+		<div class="grid-item0">
+			
+		</div>
+		<div class="grid-item0">
+			
+		</div>
+		<div class="grid-item0">
+			
+		</div>
 	</div>
 
 

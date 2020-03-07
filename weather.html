@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<head>
-		<title>Weather</title>
-	</head>
-	<body>
+
 		<script type="text/javascript">
 		
 
@@ -27,13 +21,26 @@
 					temp_min=Number(data["main"]["temp_min"]).toFixed(1);
 					temp_max = Number(data["main"]["temp_max"]).toFixed(1);
 					sunrise=new Date(Number(data["sys"]["sunrise"]) * 1000).toLocaleTimeString();
-					sunset= new Date(Number(data["sys"]["sunset"]) * 1000).toLocaleTimeString();;
-					document.writeln("City: "+city+"<br>Weather: "+desc+"<br>Temperature: "+temp+" &deg;c<br>Feels like: "+feels_like+" &deg;c<br>Humidity: "+humidity+"&#37;<br>Minimum Temperature: "
-					+ temp_min+" &deg;c<br>Maximum Temperatur: "+temp_max+" &deg;c<br>Sunrise: "+sunrise+"<br>Sunset: "+sunset);
+					sunset= new Date(Number(data["sys"]["sunset"]) * 1000).toLocaleTimeString();
+
+
+
+					document.querySelector('#weather-details').innerHTML="<li>City: "
+					+city+"</li><li>Weather: "
+					+desc +"</li><li>Temperature: "
+					+temp+" &deg;c</li><li>Feels like: "
+					+feels_like+" &deg;c</li><li>Humidity: "
+					+humidity+"&#37;</li><li>Minimum Temperature: "
+					+ temp_min+" &deg;c</li><li>Maximum Temperatur: "
+					+temp_max+" &deg;c</li><li>Sunrise: "
+					+sunrise+"</li><li>Sunset: "
+					+sunset+"</li>";
 
 				}
 				request.send();
 			}
 		</script>
-	</body>
-</html>
+		<ul id="weather-details">
+
+		</ul>
+	
