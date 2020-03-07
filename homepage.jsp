@@ -22,12 +22,18 @@
 			
 			overflow-y: auto;
 		}
+		.grid-item6{
+			
+			border: solid rgb(170, 13, 144);
+			
+			overflow: hidden;
+		}
 	</style>
 </head>
 <body>
 	<%
 	if(session.getAttribute("userid")==null)
-		response.sendRedirect("welcome.html");
+		response.sendRedirect("index.jsp");
 	%>
 	<div class="grid">
 		<div class="grid-item0">
@@ -53,13 +59,14 @@
 		<div class="grid-item0">
 			<jsp:include page="addEvent.jsp" />
 		</div>
-		<div class="grid-item0">
-			
+		<div class="grid-item6">
+			<jsp:include page="ad.jsp"/>
 		</div>
 		<div class="grid-item0">
 			
 		</div>
 		<div class="grid-item0">
+			<jsp:include page="article.jsp"/>
 			
 		</div>
 		<div class="grid-item0">
