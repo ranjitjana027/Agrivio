@@ -48,7 +48,7 @@
 			jhvhgv
 		</div>
 		<div class="grid-item0">
-			jhvhgv
+			<jsp:include page="addEvent.jsp" />
 		</div>
 		
 	</div>

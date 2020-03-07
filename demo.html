@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+        request=new XMLHttpRequest();
+        request.open("GET", document.location.protocol+"//"+document.location.host+"/farmer/fetchEvents.jsp");
+        request.onload = () => {
+            //console.log(request.responseText);
+                data = JSON.parse(request.responseText);
+                ul=document.createElement("ul");
+                for(k=0;k<data["events"].length;k++){
+                    var div=document.createElement("div");
+                    for (i in data["events"][k]) {
+                        var p = document.createElement("p");
+                        p.innerHTML = i + ": " + data["events"][k][i];
+                        
+                        div.append(p);
+                        
+                    }
+                    var li = document.createElement("li");
+                    li.append(div);
+                    ul.append(li);
+                }
+                
+                document.body.appendChild(ul);
+            }
+        request.send();
+    </script>
+</body>
+</html>
