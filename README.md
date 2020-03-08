@@ -1,3 +1,14 @@
+/*
+Git hub
+
+
+
+
+*/
+
+
+
+
 # Title: A Java-based Web Application for guiding farmers on each steps of cultivation
 # Features:
 ## • Detailed manual for cultivation of each crop.
