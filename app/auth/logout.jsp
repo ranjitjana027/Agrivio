@@ -1,4 +1,4 @@
 <%
 session.setAttribute("userid",null);
-response.sendRedirect("welcome.html");
+response.sendRedirect("../index.jsp");
 %>

@@ -19,7 +19,7 @@ create table farmers
     id number primary key, 
     firstname varchar2(128) not null, 
     lastname varchar2(128) not null, 
-    mobile varchar2(12) not null, 
+    mobile varchar2(12) unique, 
     email varchar2(128), 
     password varchar2(128), 
     avtar blob
@@ -37,8 +37,8 @@ create table events
     crop varchar2(128) not null,
     eventtype varchar2(128) not null,
     remark varchar2(200) ,
-    farmer number references farmers(id) on delete cascade
+    farmer number  references farmers(id) on delete cascade
 );
 
 insert into events
-values( seq_event.nextval, TO_DATE('2020-03-07', 'YYYY-MM-DD'), 'paddy','Seeding', NULL, 2);
+values( seq_event.nextval, TO_DATE('2020-03-07', 'YYYY-MM-DD'), 'paddy','Seeding', NULL, 12);

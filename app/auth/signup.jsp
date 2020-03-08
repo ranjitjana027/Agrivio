@@ -7,12 +7,12 @@
 	<body>
 			<%@ page import="java.sql.*" %>
 			<%! String errorMessage; %>
-			<%= session.getAttribute("userid")==null %>
-			<%= errorMessage %>
+			
 			<% 
 
 				if(session.getAttribute("userid")==null){
 					errorMessage=null;
+				
 			        if(!request.getMethod().equals("GET")){
 			            try { 
 			
@@ -35,8 +35,10 @@
 			            } 
 				    }
 			    }
-			    else
-			        errorMessage="You are already logged in.";
+			    else{
+					out.print("<script>alert(\"You're already logged in\"); location.href=\"../user/homepage.jsp \"</script>");
+			        //response.sendRedirect("../user/homepage.jsp");
+				}
 				%>
 		<header>
 			<h1>Create an Account</h1>

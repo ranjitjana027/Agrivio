@@ -6,9 +6,9 @@
 <body>
 <%
 	if((String)session.getAttribute("userid")!=null)
-		response.sendRedirect("homepage.jsp");
+		response.sendRedirect("user/homepage.jsp");
 %>
 Please do log in to proceed futher.<br>
-<button><a href="login.jsp">LogIn</a></button>
+<button><a href="auth/login.jsp">LogIn</a></button>
 </body>
 </html>

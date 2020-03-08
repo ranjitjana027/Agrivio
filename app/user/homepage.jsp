@@ -28,19 +28,48 @@
 			
 			overflow: hidden;
 		}
+		#menu{
+			color: blueviolet;
+			list-style: none;
+			padding: 10px;
+			margin: 0 10px 0 10px;
+			position: absolute;
+			background-color: aquamarine;
+			display: none;
+		}
+		#menu a{
+			text-decoration: none;
+		}
+		#menubar{
+			color: #c1c1c1;
+			margin: 10px 0 0 10px;
+			padding: 10px;
+			
+		}
+		#menubar:hover + #menu, #menu:hover{
+			display: block;
+		}
 	</style>
+	
 </head>
 <body>
 	<%
 	if(session.getAttribute("userid")==null)
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("../index.jsp");
 	%>
 	<div class="grid">
 		<div class="grid-item0">
-			
+			<button id="menubar">Menu</button>
+			<ul id="menu">
+				<li><a href="#">My Profile</a></li>
+				<li><a href="#">My Events</a></li>
+				<li><a href="#">Add Event</a></li>
+				<li><a href="../auth/logout.jsp">Logout</a></li>
+			</ul>
 		</div>
 		<div class="grid-item0">
-			<h3>
+			<input type="text"><button>Search</button>
+			<h3 style="display:inline-block;">
 				Hi 
 				<% String user=((String)session.getAttribute("user"));
 					if(user!=null)
@@ -51,25 +80,26 @@
 			</h3>
 		</div>
 		<div class="grid-item0">
-			<a href="logout.jsp">Logout</a>
+			<a href="../auth/logout.jsp">Logout</a>
 		</div>
 		<div class="grid-item0">
-			<jsp:include page="weather.html"/>
+			<jsp:include page="../weather/weather.html"/>
 		</div>
 		<div class="grid-item0">
-			<jsp:include page="addEvent.jsp" />
+			<jsp:include page="../event/addEvent.jsp" />
 		</div>
 		<div class="grid-item6">
-			<jsp:include page="ad.jsp"/>
+			<jsp:include page="../ad/ad.jsp"/>
 		</div>
 		<div class="grid-item0">
 			
 		</div>
 		<div class="grid-item0">
-			<jsp:include page="article.jsp"/>
+			<jsp:include page="../article/article.jsp"/>
 			
 		</div>
 		<div class="grid-item0">
+			<h3>Trending Topics</h3>
 			
 		</div>
 	</div>

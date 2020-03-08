@@ -10,8 +10,9 @@
 	<%@ page import="java.sql.*" %>  
 	<%! String errorMessage; %>
 	<% 
-	if(session.getAttribute("userid")!=null)
-		response.sendRedirect("homepage.jsp");
+	if(session.getAttribute("userid")!=null){
+		out.print("<script>alert(\"You're already logged in\"); location.href=\"../user/homepage.jsp \"</script>");
+	}
 	if(!request.getMethod().equals("GET")){
 		try { 
 
@@ -34,7 +35,7 @@
 				session.setAttribute("mobile",rs.getString("mobile"));
 			}
 			if((String)session.getAttribute("userid")!=null)
-				response.sendRedirect("homepage.jsp");
+				response.sendRedirect("../user/homepage.jsp");
 			else
 				errorMessage="Invalid Username/Password.";
 		} 
