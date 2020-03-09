@@ -29,9 +29,11 @@
 			                
 			                stmt.close();
 			                con.close();
+							response.sendRedirect("../index.jsp");
 			            } 
 			            catch (Exception e) { 
-			                e.printStackTrace(); 
+			                e.printStackTrace();
+							errorMessage="Error occured while signing up."; 
 			            } 
 				    }
 			    }

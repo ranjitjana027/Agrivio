@@ -40,7 +40,7 @@
             <option value="Vegetable4">Vegetable4</option>
         </select><br>
         <select name="eventtype">
-            <option value="seeding">Seeding</option>
+            <option value="sowing">Sowing</option>
             <option value="harvesting">Harvesting</option>
         </select>
         <input type="text" name="remark" placeholder="Remark"><br>

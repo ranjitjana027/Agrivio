@@ -18,13 +18,21 @@
 		}
 		.grid-item0{
 			
-			border: solid green;
+			border: solid #c1c1c1;
 			
 			overflow-y: auto;
 		}
-		.grid-item6{
+		.grid-item5{
 			
-			border: solid rgb(170, 13, 144);
+			border: solid #c1c1c1;
+			grid-row:2/4;
+			grid-column:2/3;
+			overflow-y: auto;
+		}
+		.grid-item6{
+			border:solid #c1c1c1;
+			grid-row:2/4;
+			grid-column:3/4;
 			
 			overflow: hidden;
 		}
@@ -66,7 +74,7 @@
 				<li><a href="#">Add Event</a></li>
 				<li><a href="../auth/logout.jsp">Logout</a></li>
 			</ul>
-		</div>
+					</div>
 		<div class="grid-item0">
 			<input type="text"><button>Search</button>
 			<h3 style="display:inline-block;">
@@ -81,27 +89,40 @@
 		</div>
 		<div class="grid-item0">
 			<a href="../auth/logout.jsp">Logout</a>
+			
 		</div>
 		<div class="grid-item0">
 			<jsp:include page="../weather/weather.html"/>
 		</div>
-		<div class="grid-item0">
-			<jsp:include page="../event/addEvent.jsp" />
+		<div class="grid-item5">
+			<jsp:include page="../price/mandiPrice.jsp" />
+			
 		</div>
 		<div class="grid-item6">
 			<jsp:include page="../ad/ad.jsp"/>
+			<h3>Trending Topics</h3>
 		</div>
 		<div class="grid-item0">
-			
+			<jsp:include page="../event/addEvent.jsp" />
+			<div id="google_translate_element" style="display:block; bottom:0; position:fixed;"><p>Translate this page:</p></div>
+
+			<script type="text/javascript">
+			function googleTranslateElementInit() {
+			new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+			}
+			</script>
+
+			<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 		</div>
-		<div class="grid-item0">
+		<!--div class="grid-item0">
 			<jsp:include page="../article/article.jsp"/>
 			
 		</div>
 		<div class="grid-item0">
 			<h3>Trending Topics</h3>
 			
-		</div>
+		</div-->
 	</div>
 
 
