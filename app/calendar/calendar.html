@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <style>
+        body {
+            font-family: Calibri, sans-serif;
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #333;
+        }
+        .calendar{
+            background-color: aquamarine;
+            height: 400px;
+            width: 500px;
+        }
+        .cal-head{
+            background-color: antiquewhite;
+            width: -webkit-fill-available;
+            height: 40px;
+            text-align: center;
+            padding-top: 10px;;
+        }
+        .cal-main{
+            background-color: violet;
+        }
+        table{
+            column-count: auto;
+            width: -webkit-fill-available;
+            height: -webkit-fill-available;
+        }
+        .cal-day, .cal-num{
+            text-align: center;
+        }
+        .prev-month, .next-month{
+            font-weight: lighter;
+            opacity: 0.8;
+        }
+        .curr-month{
+            font-weight: 600;
+        }
+        th{
+            background-color: aqua;
+            color: navy;
+        }
+        td, th{
+            padding: 10px;
+            
+        }
+        .today{
+                border-radius: 50%;
+                border: solid #333 2px;
+                color: aliceblue;
+                background-color: #333;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="calendar">
+        <div class="cal-head">
+            <div style="display: inline-block;">
+                <button id="btn-prev">Prev</button>
+                <span id="prev-month" hidden></span>
+                <span id="prev-year" hidden></span>
+            </div>
+            <div style="display: inline-block; width: 350px;">
+                <span id="cal-month"></span>, <span id="cal-year"></span>
+            </div>
+            <div style="display: inline-block;">
+                <button id="btn-next">Next</button>
+                <span id="next-month" hidden></span>
+                <span id="next-year" hidden></span>
+            </div>
+        </div>
+        <div class="cal-main">
+            <table>
+                <tr class="cal-day">
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+                <tr class="cal-num">
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                </tr>
+                <tr class="cal-num">
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                </tr>
+                <tr class="cal-num">
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                </tr>
+                <tr class="cal-num">
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                </tr>
+                <tr class="cal-num">
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                </tr>
+                <tr class="cal-num">
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></tr>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+    <script>
+        
+        fillCalendar(new Date().getFullYear(),new Date().getMonth());
+        document.getElementById('btn-prev').onclick=()=>{
+            fillCalendar(Number(document.getElementById('prev-year').innerText), Number(document.getElementById('prev-month').innerText));
+        };
+        document.getElementById('btn-next').onclick = () => {
+                fillCalendar(Number(document.getElementById('next-year').innerText), Number(document.getElementById('next-month').innerText));
+            };
+
+        function fillCalendar(year,month)
+        {
+            months = [['January', 31],
+                ['February', 28, 29],
+                ['March', 31],
+                ['April', 30],
+                ['May', 31],
+                ['June', 30],
+                ['July', 31],
+                ['August', 31],
+                ['September', 30],
+                ['October', 31],
+                ['November', 30],
+                ['December', 31]
+                ]
+            d = new Date(year, month);
+            month = d.getMonth();
+            year = d.getFullYear();
+            document.getElementById('cal-month').innerText = months[month][0];
+            document.getElementById('cal-year').innerText = year;
+            noOfDays = months[month][1];
+            if (month == 1 && ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0))
+                noOfDays = 29;
+
+
+            d = new Date(year, month, 1);
+            ad = d.getDay() - 1;
+            dates = document.querySelectorAll('.cal-num');
+            for (let i = 1; i <= noOfDays; i++) {
+                val = ad + i;
+                r = Math.floor(val / 7);
+                c = val % 7;
+                dates[r].children[c].innerText = i;
+                dates[r].children[c].className="curr-month";
+
+            }
+
+            //mark today
+
+            today = new Date();
+            if (today.getMonth() == month && today.getFullYear() == year) {
+                console.log("running")
+                date = today.getDate();
+                val = ad + date;
+                r = Math.floor(val / 7);
+                c = val % 7;
+
+                dates[r].children[c].classList.add("today");
+            }
+
+            // fill prev month
+
+            prevMonth = (month + 12 - 1) % 12;
+            prevYear = year;
+            if (prevMonth > month)
+                prevYear = year - 1;
+            noOfDaysPrevMonth = months[prevMonth][1];
+            if (prevMonth == 1 && ((prevYear % 4 == 0 && prevYear % 100 != 0) || prevYear % 400 == 0))
+                noOfDaysPrevMonth = 29;
+            pi = noOfDaysPrevMonth;
+            for (var i = ad; i >= 0; i--) {
+                dates[0].children[i].innerText = pi--;
+                dates[0].children[i].className="prev-month";
+            }
+            document.getElementById('prev-month').innerText = prevMonth;
+            document.getElementById('prev-year').innerText = prevYear;
+            // fill next month
+            ni = 1;
+            nval = noOfDays + ad + ni;
+            nr = Math.floor(nval / 7);
+            nc = nval % 7;
+            for (var c = nc; c < 7; c++) {
+                dates[nr].children[c].innerText = ni++;
+                dates[nr].children[c].className="next-month";
+            }
+            for (var r = nr + 1; r < 6; r++) {
+
+                for (var c = 0; c < 7; c++) {
+                    dates[r].children[c].innerText ="";// ni++;
+                    //dates[r].children[c].className="next-month";
+                }
+            }
+            nextMonth = (month + 12 + 1) % 12;
+            nextYear = year;
+            if (nextMonth < month)
+                nextYear = year + 1;
+            document.getElementById('next-month').innerText = nextMonth;
+            document.getElementById('next-year').innerText = nextYear;
+
+        }
+    </script>
+</body>
+</html>
