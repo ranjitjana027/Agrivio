@@ -18,9 +18,8 @@
         .cal-head{
             background-color: antiquewhite;
             width: -webkit-fill-available;
-            height: 40px;
             text-align: center;
-            padding-top: 10px;;
+            padding: 5px;;
         }
         .cal-main{
             background-color: violet;
@@ -62,15 +61,21 @@
     <div class="calendar">
         <div class="cal-head">
             <div style="display: inline-block;">
-                <button id="btn-prev">Prev</button>
+                <svg width="30" height="20" id="btn-prev">
+                    <path d="M30,0 L0, 10 L30, 20 z" fill="black" stroke="black" />
+                </svg>
                 <span id="prev-month" hidden></span>
                 <span id="prev-year" hidden></span>
             </div>
             <div style="display: inline-block; width: 350px;">
                 <span id="cal-month"></span>, <span id="cal-year"></span>
             </div>
-            <div style="display: inline-block;">
-                <button id="btn-next">Next</button>
+            <div style="display: inline;">
+            
+                <svg width="30" height="20" id="btn-next">
+                    <path d="M0,0 L30, 10 L0, 20 z" fill="black" stroke="black" />
+                </svg>
+            
                 <span id="next-month" hidden></span>
                 <span id="next-year" hidden></span>
             </div>
