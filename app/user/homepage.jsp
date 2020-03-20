@@ -8,33 +8,60 @@
 		}
 		.grid{
 			display: grid;
-			grid-template-rows: 10% 35% auto;
+			grid-template-rows: 70px 210px auto;
 			grid-template-columns: 20% auto 20%;
-			width: 100vw;
-  			height: 100vh;
-  			padding: 0;
+			background-color:#a8ebf1;
   			margin: 0;
 
 		}
 		.grid-item0{
 			
-			border: solid #c1c1c1;
-			
+			margin:5px;
+			background-color:#f1d0f3;
 			overflow-y: auto;
+			padding:10px;
+		}
+		.grid-item1
+		{
+			position:sticky;
+			top:0;
+			grid-column:1/2;
+		}
+		.grid-item2
+		{
+			
+			grid-column:2/3;
+			position:sticky;
+			top:0;
+		}
+		.grid-item3{
+			position:sticky;
+			top:0;
+			grid-column:3/4;
+			
+		}
+		.grid-item1, .grid-item2, .grid-item3, a{
+			background-color: #123456;
+			color:snow;
+			text-decoration:none;
+			margin-bottom:5px;
 		}
 		.grid-item5{
-			
-			border: solid #c1c1c1;
+			padding:5px;
+			margin:5px;
 			grid-row:2/4;
 			grid-column:2/3;
 			overflow-y: auto;
+			background-color:#f1d0f3;
 		}
 		.grid-item6{
-			border:solid #c1c1c1;
+			
+			padding:5px;
 			grid-row:2/4;
 			grid-column:3/4;
-			
+			margin:5px;
 			overflow: hidden;
+			background-color:#f1d0f3;
 		}
 		#menu{
 			color: blueviolet;
@@ -66,7 +93,7 @@
 		response.sendRedirect("../index.jsp");
 	%>
 	<div class="grid">
-		<div class="grid-item0">
+		<div class="grid-item1">
 			<button id="menubar">Menu</button>
 			<ul id="menu">
 				<li><a href="#">My Profile</a></li>
@@ -75,7 +102,7 @@
 				<li><a href="../auth/logout.jsp">Logout</a></li>
 			</ul>
 					</div>
-		<div class="grid-item0">
+		<div class="grid-item2">
 			<input type="text"><button>Search</button>
 			<h3 style="display:inline-block;">
 				Hi 
@@ -87,7 +114,7 @@
 				%> 
 			</h3>
 		</div>
-		<div class="grid-item0">
+		<div class="grid-item3">
 			<a href="../auth/logout.jsp">Logout</a>
 			
 		</div>
