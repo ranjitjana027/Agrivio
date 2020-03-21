@@ -11,26 +11,32 @@
             color: #333;
         }
         .calendar{
-            background-color: aquamarine;
-            height: 400px;
+            
+            
             width: 500px;
         }
         .cal-head{
             background-color: antiquewhite;
-            width: -webkit-fill-available;
+            
             text-align: center;
             padding: 5px;;
         }
         .cal-main{
-            background-color: violet;
+            background-color: rgb(130, 238, 229);
+            width: inherit;
+            height: 400px;
         }
         table{
             column-count: auto;
-            width: -webkit-fill-available;
-            height: -webkit-fill-available;
+            width: inherit;
+            height: inherit;
+            
         }
         .cal-day, .cal-num{
             text-align: center;
+        }
+        .cal-num{
+            cursor: pointer;
         }
         .prev-month, .next-month{
             font-weight: lighter;
@@ -40,7 +46,7 @@
             font-weight: 600;
         }
         th{
-            background-color: aqua;
+            
             color: navy;
         }
         td, th{
@@ -53,24 +59,47 @@
                 color: aliceblue;
                 background-color: #333;
         }
+        .modal{
+            display: none;
+            position: fixed;
+            z-index: 1;
+            width: 100%;
+            height:100%;
+            top:0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content{
+            display: block;
+            background-color: aliceblue;
+            width: 400px;
+            margin: 15% auto;
+            padding: 10px;
+        }
+        .close{
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
         
     </style>
 </head>
 <body>
     
-    <div class="calendar">
+    <div class="calendar" >
         <div class="cal-head">
-            <div style="display: inline-block;">
+            <div style="display: inline; user-select:none; -webkit-user-select:none; -moz-user-select:none;">
                 <svg width="30" height="20" id="btn-prev">
                     <path d="M30,0 L0, 10 L30, 20 z" fill="black" stroke="black" />
                 </svg>
                 <span id="prev-month" hidden></span>
                 <span id="prev-year" hidden></span>
             </div>
-            <div style="display: inline-block; width: 350px;">
-                <span id="cal-month"></span>, <span id="cal-year"></span>
+            <div style="display: inline-block; width: 400px;">
+                <h3><span id="cal-month"></span>, <span id="cal-year"></span></h3>
             </div>
-            <div style="display: inline;">
+            <div style="display: inline; user-select:none; -webkit-user-select:none; -moz-user-select:none;">
             
                 <svg width="30" height="20" id="btn-next">
                     <path d="M0,0 L30, 10 L0, 20 z" fill="black" stroke="black" />
@@ -80,7 +109,7 @@
                 <span id="next-year" hidden></span>
             </div>
         </div>
-        <div class="cal-main">
+        <div class="cal-main" >
             <table>
                 <tr class="cal-day">
                     <th>Sun</th>
@@ -149,7 +178,29 @@
             </table>
 
         </div>
+        
     </div>
+    <div class="modal" id="add-event-modal">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close">&times;</span>
+            <form style="margin-bottom: 30px;">
+                
+                <h2 >Add Event</h2>
+                <div >
+                    <input type="number" name="inp-date" id="inp-date" hidden>
+                    <input type="number" name="inp-month" id="inp-month" hidden>
+                    <input type="number" name="inp-year" id="inp-year" hidden>
+                </div>
+                <div style="display: inline-block;">
+                    <input type="text" name="event-name" id="event-name" placeholder="Event Name">
+                </div>
+                
+                <div style="display: inline-block;">
+                    <input type="submit" value="Add Event">
+                </div>
+            </form>
+        </div>
+</div>
     <script>
         
         fillCalendar(new Date().getFullYear(),new Date().getMonth());
@@ -159,6 +210,10 @@
         document.getElementById('btn-next').onclick = () => {
                 fillCalendar(Number(document.getElementById('next-year').innerText), Number(document.getElementById('next-month').innerText));
             };
+
+        activateModal();
+
+
 
         function fillCalendar(year,month)
         {
@@ -192,8 +247,11 @@
                 val = ad + i;
                 r = Math.floor(val / 7);
                 c = val % 7;
-                dates[r].children[c].innerText = i;
+                dates[r].children[c].innerHTML =  "<span class='date-day'>"+ i +"</span>" +
+                                                    "<span class='date-month' hidden>"+ month +"</span>" +
+                                                    "<span class='date-year' hidden>"+ year +"</span>";
                 dates[r].children[c].className="curr-month";
+                dates[r].children[c].onclick=addEvent;
 
             }
 
@@ -221,19 +279,29 @@
                 noOfDaysPrevMonth = 29;
             pi = noOfDaysPrevMonth;
             for (var i = ad; i >= 0; i--) {
-                dates[0].children[i].innerText = pi--;
+                dates[0].children[i].innerHTML = "<span class='date-day'>" + pi-- + "</span>" +
+                    "<span class='date-month' hidden>" + prevMonth + "</span>" +
+                    "<span class='date-year' hidden>" + prevYear + "</span>";
                 dates[0].children[i].className="prev-month";
+                dates[0].children[i].onclick = addEvent;
             }
             document.getElementById('prev-month').innerText = prevMonth;
             document.getElementById('prev-year').innerText = prevYear;
             // fill next month
+            nextMonth = (month + 12 + 1) % 12;
+            nextYear = year;
+            if (nextMonth < month)
+                nextYear = year + 1;
             ni = 1;
             nval = noOfDays + ad + ni;
             nr = Math.floor(nval / 7);
             nc = nval % 7;
             for (var c = nc; c < 7; c++) {
-                dates[nr].children[c].innerText = ni++;
+                dates[nr].children[c].innerHTML =  "<span class='date-day'>" + ni++  +"</span>" +
+                "<span class='date-month' hidden>" + nextMonth + "</span>" +
+                    "<span class='date-year' hidden>" + nextYear + "</span>";
                 dates[nr].children[c].className="next-month";
+                dates[nr].children[c].onclick = addEvent;
             }
             for (var r = nr + 1; r < 6; r++) {
 
@@ -242,13 +310,41 @@
                     //dates[r].children[c].className="next-month";
                 }
             }
-            nextMonth = (month + 12 + 1) % 12;
-            nextYear = year;
-            if (nextMonth < month)
-                nextYear = year + 1;
+            
             document.getElementById('next-month').innerText = nextMonth;
             document.getElementById('next-year').innerText = nextYear;
 
+        }
+
+        function activateModal(){
+            document.querySelectorAll('.close').forEach(function (item) {
+                item.onclick = (event) => {
+                    console.log(event.target);
+                    event.target.offsetParent.style.display="none";
+                };
+            });
+            window.onclick=evt=>{
+                document.querySelectorAll('.modal').forEach(function (item) {
+                    if(evt.target==item)
+                        item.style.display = "none";
+            });
+            }
+            
+        }
+        function addEvent(evt){
+            document.querySelector('#add-event-modal').style.display="block";
+            console.log(evt.target.offsetParent)
+            if(evt.target.className!='date-day'){
+                document.querySelector('#inp-date').value = evt.target.querySelector('.date-day').innerText;
+                document.querySelector('#inp-month').value = evt.target.querySelector('.date-month').innerText;
+                document.querySelector('#inp-year').value = evt.target.querySelector('.date-year').innerText;
+            }
+            else
+            {
+                document.querySelector('#inp-date').value=evt.target.innerText;
+                document.querySelector('#inp-month').value = evt.target.offsetParent.children[1].innerText;
+                document.querySelector('#inp-year').value = evt.target.offsetParent.children[2].innerText;
+            }
         }
     </script>
 </body>
