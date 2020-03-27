@@ -16,8 +16,8 @@
 
 
 
-### Title: A Java-based Web Application for guiding farmers on each steps of cultivation
-- #### Features:
+## Title: A Java-based Web Application for guiding farmers on each steps of cultivation
+- ### Features:
   - Detailed manual for cultivation of each crop.
   - Consult with an agricultural expert about crop diseases and treatments.
   - Real-time notification for fertilizing, harvesting, etc.
