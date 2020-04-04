@@ -82,7 +82,9 @@
             font-weight: bold;
             cursor: pointer;
         }
-        
+        .event-display{
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -194,13 +196,36 @@
                 <div style="display: inline-block;">
                     <input type="text" name="event-name" id="event-name" placeholder="Event Name">
                 </div>
+                <div>
+                    <input type="text" name="crop" placeholder="Crop">
+                </div>
                 
                 <div style="display: inline-block;">
                     <input type="submit" value="Add Event">
                 </div>
             </form>
         </div>
-</div>
+    </div>
+    <div class="modal" id="show-event-modal">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close">&times;</span>
+            <table>
+                <h2>Event Details</h2>
+                <tr>
+                    <th>Date</th><td id="show-date"></td>
+                </tr>
+                <tr>
+                    <th>Crop</th><td id="show-crop"></td>
+                </tr>
+                <tr>
+                    <th>Event Type</th><td id="show-eventtype"></td>
+                </tr>
+                <tr>
+                    <th>Remark</th><td id="show-remark"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
     <script>
         
         fillCalendar(new Date().getFullYear(),new Date().getMonth());
@@ -209,12 +234,10 @@
         };
         document.getElementById('btn-next').onclick = () => {
                 fillCalendar(Number(document.getElementById('next-year').innerText), Number(document.getElementById('next-month').innerText));
-            };
-
-        activateModal();
-
-
-
+        };
+        
+        
+     
         function fillCalendar(year,month)
         {
             months = [['January', 31],
@@ -314,7 +337,52 @@
             document.getElementById('next-month').innerText = nextMonth;
             document.getElementById('next-year').innerText = nextYear;
 
+
+            // testing phase
+            fetchEvent();
+            activateModal();
         }
+
+           function fetchEvent() {
+                request = new XMLHttpRequest();
+                request.open("GET", location.protocol + "//" + location.host + "/farmer/app/event/fetchEvents.jsp");
+                request.onload = () => {
+                    data = JSON.parse(request.responseText)['events']
+                    console.log(data);
+                    monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+                        'August', 'September', 'October', 'November', 'December']
+                    var currmonth = monthList.indexOf(document.getElementById('cal-month').innerText);
+                    console.log(currmonth)
+                    var curryear = document.getElementById('cal-year').innerText;
+                    console.log(curryear);
+
+                    ///
+                    currmonth=(currmonth+1)
+                    var d = new Date(curryear, currmonth-1, 1);
+                    var ad = d.getDay() - 1;
+                    var dates = document.querySelectorAll('.cal-num');
+                    mdata=(data.filter(e => e.date.match(new RegExp(curryear+'-0*'+currmonth+'-.*'))))
+                    
+                    for(let i=0;i<mdata.length;i++)
+                    {
+                        var ed = new Date(mdata[i].date);
+                        console.log(ed.getDate())
+                        var val = ad + ed.getDate();
+                        var r = Math.floor(val / 7);
+                        var c = val % 7;
+                        dates[r].children[c].innerHTML += "<span class='event-id' hidden>" + mdata[i].id + "</span>" +
+                            "<span class='crop' hidden >" + mdata[i].crop + "</span>" +
+                            "<span class='event-type' hidden >" + mdata[i].eventtype + "</span>" +
+                            "<span class='remark' hidden>" + mdata[i].remark + "</span>";
+                        //dates[r].children[c].style.textDecoration = "underline";
+                        dates[r].children[c].onclick=showEvent;
+                        dates[r].children[c].classList.add('event-display')
+                    }
+                }
+                request.send();
+
+            }
+
 
         function activateModal(){
             document.querySelectorAll('.close').forEach(function (item) {
@@ -346,6 +414,37 @@
                 document.querySelector('#inp-year').value = evt.target.offsetParent.children[2].innerText;
             }
         }
+        function showEvent(evt) {
+                document.querySelector('#show-event-modal').style.display = "block";
+                console.log(evt.target.offsetParent)
+                if (evt.target.className != 'date-day') {
+                    document.querySelector('#inp-date').value = evt.target.querySelector('.date-day').innerText;
+                    document.querySelector('#inp-month').value = evt.target.querySelector('.date-month').innerText;
+                    document.querySelector('#inp-year').value = evt.target.querySelector('.date-year').innerText;
+
+                    // show
+                    document.querySelector('#show-crop').innerText=evt.target.querySelector('.crop').innerText;
+                    document.querySelector('#show-eventtype').innerText = evt.target.querySelector('.event-type').innerText;
+                    document.querySelector('#show-remark').innerText = evt.target.querySelector('.remark').innerText;
+                    document.querySelector('#show-date').innerText = evt.target.querySelector('.date-day').innerText+'/'
+                        + (Number(evt.target.querySelector('.date-month').innerText)+1)+'/'
+                        + evt.target.querySelector('.date-year').innerText;
+                }
+                else {
+                    document.querySelector('#inp-date').value = evt.target.innerText;
+                    document.querySelector('#inp-month').value = evt.target.offsetParent.children[1].innerText;
+                    document.querySelector('#inp-year').value = evt.target.offsetParent.children[2].innerText;
+
+                    // show
+                    document.querySelector('#show-crop').innerText= evt.target.offsetParent.children[5].innerText
+                    document.querySelector('#show-remark').innerText= evt.target.offsetParent.children[4].innerText
+                    document.querySelector('#show-eventtype').innerText= evt.target.offsetParent.children[4].innerText
+
+                    document.querySelector('#show-date').innerText = evt.target.innerText + '/'
+                        + (Number(evt.target.offsetParent.children[1].innerText) + 1) + '/'
+                        + evt.target.offsetParent.children[2].innerText;
+                }
+            }
     </script>
 </body>
 </html>

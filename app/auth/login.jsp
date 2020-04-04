@@ -15,7 +15,7 @@
 	}
 	if(!request.getMethod().equals("GET")){
 		try { 
-
+			
 			// Initialize the database 
 			String dbURL =  "jdbc:oracle:thin:dummy/passsword@localhost:1521:XE"; 		
 			Connection con = DriverManager.getConnection(dbURL );

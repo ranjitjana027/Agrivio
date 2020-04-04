@@ -1,0 +1,41 @@
+form {
+    text-align: left;
+    background-color: rgb(255, 255, 255 , 0.3);
+    height: 90px;
+    width: 350px;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 235px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+body {
+    
+    background-image: url("../../img/auth/log.jpg");
+    background-size: 1600px 800px;
+    background-repeat: no-repeat;
+}
+
+#fi1, #fi2 {
+    padding-left: 6px;
+    block-size: 24px;
+    width: 330px;
+}
+
+#fi3 {
+    text-align: center;
+    background-color: rgb(252, 196, 15);
+    width: 340px;
+    block-size: 32px;
+    border-style: none;
+}
+
+#div1 {
+    text-align: center;
+    color: darkorange;
+}
+
+#div2 {
+    padding-left: 579px;
+}

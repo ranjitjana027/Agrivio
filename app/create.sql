@@ -14,6 +14,12 @@ INCREMENT BY 1
 CACHE 10;
 
 
+CREATE SEQUENCE seq_chat 
+MINVALUE 1
+START WITH 1 
+INCREMENT BY 1 
+CACHE 10;
+
 create table farmers 
 (
     id number primary key, 
@@ -21,7 +27,7 @@ create table farmers
     lastname varchar2(128) not null, 
     mobile varchar2(12) unique, 
     email varchar2(128), 
-    password varchar2(128), 
+    password varchar2(128) not null, 
     avtar blob
 );
 
@@ -42,3 +48,10 @@ create table events
 
 insert into events
 values( seq_event.nextval, TO_DATE('2020-03-07', 'YYYY-MM-DD'), 'paddy','Seeding', NULL, 12);
+
+create table chats(
+    id number primary key,
+    c_time TIMESTAMP WITH TIME ZONE,
+    content VARCHAR2(512) not null,
+    sender number REFERENCES farmers(id) on delete cascade
+);

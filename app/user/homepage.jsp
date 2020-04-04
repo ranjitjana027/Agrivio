@@ -97,7 +97,7 @@
 			<button id="menubar">Menu</button>
 			<ul id="menu">
 				<li><a href="#">My Profile</a></li>
-				<li><a href="#">My Events</a></li>
+				<li><a href="../calendar/calendar.html">My Events</a></li>
 				<li><a href="#">Add Event</a></li>
 				<li><a href="../auth/logout.jsp">Logout</a></li>
 			</ul>
@@ -131,7 +131,7 @@
 		</div>
 		<div class="grid-item0">
 			<jsp:include page="../event/addEvent.jsp" />
-			<div id="google_translate_element" style="display:block; bottom:0; position:fixed;"><p>Translate this page:</p></div>
+			<div id="google_translate_element" style="display:block; bottom:0; position:fixed;"></div>
 
 			<script type="text/javascript">
 			function googleTranslateElementInit() {
