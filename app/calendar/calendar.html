@@ -209,21 +209,21 @@
     <div class="modal" id="show-event-modal">
         <div class="modal-content" style="text-align: center;">
             <span class="close">&times;</span>
-            <table>
-                <h2>Event Details</h2>
-                <tr>
-                    <th>Date</th><td id="show-date"></td>
-                </tr>
-                <tr>
-                    <th>Crop</th><td id="show-crop"></td>
-                </tr>
-                <tr>
-                    <th>Event Type</th><td id="show-eventtype"></td>
-                </tr>
-                <tr>
-                    <th>Remark</th><td id="show-remark"></td>
-                </tr>
-            </table>
+            <h2 style="display: inline;">Event Details</h2>
+            <h4><b>Date :</b> <span class="event-date"></span> </h4>
+            <ul class="event-list"></ul>
+            <div style="display: inline-block; user-select:none; -webkit-user-select:none; -moz-user-select:none; text-align: right; width: 100%;">
+            
+                <svg height="60" width="60" onclick="document.querySelector('#show-event-modal').style.display='none'; document.querySelector('#add-event-modal').style.display='block';" style="cursor: pointer;">
+                    <path d="M10,30 L30,30 " stroke="blue" stroke-width="5" />
+                    <path d="M30,30 L50,30" stroke="#ffc107" stroke-width="5" />
+                    <path d="M30,30 L30,50" stroke="red" stroke-width="5" />
+                    <path d="M30,30 L30,10" stroke="green" stroke-width="5" />
+                    <circle cx="30" cy="30" r="30" fill="gray" opacity="0.1" />
+                </svg>
+            
+            </div>
+            
         </div>
     </div>
     <script>
@@ -237,7 +237,7 @@
         };
         
         
-     
+
         function fillCalendar(year,month)
         {
             months = [['January', 31],
@@ -272,7 +272,8 @@
                 c = val % 7;
                 dates[r].children[c].innerHTML =  "<span class='date-day'>"+ i +"</span>" +
                                                     "<span class='date-month' hidden>"+ month +"</span>" +
-                                                    "<span class='date-year' hidden>"+ year +"</span>";
+                                                    "<span class='date-year' hidden>"+ year +"</span>" +
+                                                    "<span class='event-count' hidden >0</span>";
                 dates[r].children[c].className="curr-month";
                 dates[r].children[c].onclick=addEvent;
 
@@ -343,7 +344,7 @@
             activateModal();
         }
 
-           function fetchEvent() {
+        function fetchEvent() {
                 request = new XMLHttpRequest();
                 request.open("GET", location.protocol + "//" + location.host + "/farmer/app/event/fetchEvents.jsp");
                 request.onload = () => {
@@ -377,6 +378,7 @@
                         //dates[r].children[c].style.textDecoration = "underline";
                         dates[r].children[c].onclick=showEvent;
                         dates[r].children[c].classList.add('event-display')
+                        dates[r].children[c].querySelector('.event-count').innerText=Number(dates[r].children[c].querySelector('.event-count').innerText)+1
                     }
                 }
                 request.send();
@@ -415,36 +417,124 @@
             }
         }
         function showEvent(evt) {
-                document.querySelector('#show-event-modal').style.display = "block";
-                console.log(evt.target.offsetParent)
-                if (evt.target.className != 'date-day') {
-                    document.querySelector('#inp-date').value = evt.target.querySelector('.date-day').innerText;
-                    document.querySelector('#inp-month').value = evt.target.querySelector('.date-month').innerText;
-                    document.querySelector('#inp-year').value = evt.target.querySelector('.date-year').innerText;
+            document.querySelector('#show-event-modal').style.display = "block";
+            
+            console.log(evt.target.offsetParent)
+            if (evt.target.className != 'date-day') {
+                document.querySelector('#inp-date').value = evt.target.querySelector('.date-day').innerText;
+                document.querySelector('#inp-month').value = evt.target.querySelector('.date-month').innerText;
+                document.querySelector('#inp-year').value = evt.target.querySelector('.date-year').innerText;
 
-                    // show
-                    document.querySelector('#show-crop').innerText=evt.target.querySelector('.crop').innerText;
-                    document.querySelector('#show-eventtype').innerText = evt.target.querySelector('.event-type').innerText;
-                    document.querySelector('#show-remark').innerText = evt.target.querySelector('.remark').innerText;
-                    document.querySelector('#show-date').innerText = evt.target.querySelector('.date-day').innerText+'/'
-                        + (Number(evt.target.querySelector('.date-month').innerText)+1)+'/'
-                        + evt.target.querySelector('.date-year').innerText;
+                // show
+                var count=Number(evt.target.querySelector('.event-count').innerText);
+                console.log('count: '+count)
+                table=[]
+                for(i=0;i<count;i++)
+                {
+                    table.push(document.createElement('table'));
                 }
-                else {
-                    document.querySelector('#inp-date').value = evt.target.innerText;
-                    document.querySelector('#inp-month').value = evt.target.offsetParent.children[1].innerText;
-                    document.querySelector('#inp-year').value = evt.target.offsetParent.children[2].innerText;
+                console.log(table)
+                tr = []
+                for (i = 0; i < 3*count; i++)
+                    tr.push(document.createElement('tr'))
 
-                    // show
-                    document.querySelector('#show-crop').innerText= evt.target.offsetParent.children[5].innerText
-                    document.querySelector('#show-remark').innerText= evt.target.offsetParent.children[4].innerText
-                    document.querySelector('#show-eventtype').innerText= evt.target.offsetParent.children[4].innerText
-
-                    document.querySelector('#show-date').innerText = evt.target.innerText + '/'
-                        + (Number(evt.target.offsetParent.children[1].innerText) + 1) + '/'
-                        + evt.target.offsetParent.children[2].innerText;
+                th = []
+                for (i = 0; i < 3*count; i++)
+                    th.push(document.createElement('th'));
+                for(i=0;i<count;i++){
+                    th[0 + i * 3].innerText = 'Crop';
+                    th[1 + i * 3].innerText = 'Event Type';
+                    th[2 + i * 3].innerText = 'Remark';
                 }
+                
+
+                td = []
+                for (i = 0; i < 3 * count; i++)
+                    td.push(document.createElement('td'));
+
+                
+                for(i=0;i<count;i++)
+                {
+                    
+                    td[i*3].innerText = evt.target.querySelectorAll('.crop')[i].innerText;
+                    td[1+i*3].innerText = evt.target.querySelectorAll('.event-type')[i].innerText;
+                    td[2+i*3].innerText = evt.target.querySelectorAll('.remark')[i].innerText;
+                }
+                for(k=0;k<count;k++){
+                    for (i = 0; i < 3; i++) {
+                        tr[i + k * 3].append(th[i + k * 3]);
+                        tr[i + k * 3].append(td[i + k * 3]);
+                        table[k].append(tr[i + k * 3])
+                    }
+                }
+                document.querySelector('#show-event-modal').querySelector('.event-list').innerHTML=""
+                for(k=0;k<count;k++){
+                    var li=document.createElement('li');
+                    li.append(table[k]);
+                    document.querySelector('#show-event-modal').querySelector('.event-list').append(li);
+                }
+                document.querySelector('#show-event-modal').querySelector('.event-date').innerText = evt.target.querySelector('.date-day').innerText + '/'
+                    + (Number(evt.target.querySelector('.date-month').innerText) + 1) + '/'
+                    + evt.target.querySelector('.date-year').innerText;
+                
+
             }
+            else { 
+                document.querySelector('#inp-date').value = evt.target.innerText;
+                document.querySelector('#inp-month').value = evt.target.offsetParent.children[1].innerText;
+                document.querySelector('#inp-year').value = evt.target.offsetParent.children[2].innerText;
+
+                // show
+                var count = Number(evt.target.parentNode.children[3].innerText);
+                console.log('count: ' + count)
+                table = []
+                for (i = 0; i < count; i++) {
+                    table.push(document.createElement('table'));
+                }
+                console.log(table)
+                tr = []
+                for (i = 0; i < 3 * count; i++)
+                    tr.push(document.createElement('tr'))
+
+                th = []
+                for (i = 0; i < 3 * count; i++)
+                    th.push(document.createElement('th'));
+                for (i = 0; i < count; i++) {
+                    th[0 + i * 3].innerText = 'Crop';
+                    th[1 + i * 3].innerText = 'Event Type';
+                    th[2 + i * 3].innerText = 'Remark';
+                }
+
+
+                td = []
+                for (i = 0; i < 3 * count; i++)
+                    td.push(document.createElement('td'));
+
+
+                for (i = 0; i < count; i++) {
+                    
+                    td[0 + i * 3].innerText = evt.target.parentNode.children[5+i*4].innerText;
+                    td[1 + i * 3].innerText = evt.target.parentNode.children[6+i*4].innerText;
+                    td[2 + i * 3].innerText = evt.target.parentNode.children[7+i*4].innerText;
+                }
+                for (k = 0; k < count; k++) {
+                    for (i = 0; i < 3; i++) {
+                        tr[i + k * 3].append(th[i + k * 3]);
+                        tr[i + k * 3].append(td[i + k * 3]);
+                        table[k].append(tr[i + k * 3])
+                    }
+                }
+                document.querySelector('#show-event-modal').querySelector('.event-list').innerHTML = ""
+                for (k = 0; k < count; k++) {
+                    var li = document.createElement('li');
+                    li.append(table[k]);
+                    document.querySelector('#show-event-modal').querySelector('.event-list').append(li);
+                }
+                document.querySelector('#show-event-modal').querySelector('.event-date').innerText= evt.target.innerText + '/'
+                    + (Number(evt.target.offsetParent.children[1].innerText) + 1) + '/'
+                    + evt.target.offsetParent.children[2].innerText;
+            }
+        }
     </script>
 </body>
 </html>

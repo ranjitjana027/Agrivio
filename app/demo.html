@@ -6,30 +6,13 @@
     <title></title>
 </head>
 <body>
-    <script>
-        request=new XMLHttpRequest();
-        request.open("GET", document.location.protocol+"//"+document.location.host+"/farmer/fetchEvents.jsp");
-        request.onload = () => {
-            //console.log(request.responseText);
-                data = JSON.parse(request.responseText);
-                ul=document.createElement("ul");
-                for(k=0;k<data["events"].length;k++){
-                    var div=document.createElement("div");
-                    for (i in data["events"][k]) {
-                        var p = document.createElement("p");
-                        p.innerHTML = i + ": " + data["events"][k][i];
-                        
-                        div.append(p);
-                        
-                    }
-                    var li = document.createElement("li");
-                    li.append(div);
-                    ul.append(li);
-                }
-                
-                document.body.appendChild(ul);
-            }
-        request.send();
-    </script>
+    <svg height="200" width="200">
+        <path d="M5,25 L25, 25 " stroke="blue" stroke-width="5" />
+        <path d="M25,25 L45,25" stroke="#ffc107" stroke-width="5" />
+        <path d="M25,25 L25,45" stroke="red" stroke-width="5" />
+        <path d="M25,25 L25,5" stroke="green" stroke-width="5" />
+        
+    </svg>
 </body>
+</html>
 </html>

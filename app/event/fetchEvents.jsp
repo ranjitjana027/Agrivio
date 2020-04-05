@@ -25,7 +25,7 @@ try {
         "date":"<%= (rs.getString("day").substring(0,10)) %>",
         "crop":"<%= rs.getString("crop") %>",
         "eventtype":"<%= rs.getString("eventtype") %>",
-        "remark":"<%= rs.getString("remark") %>"
+        "remark":"<%= rs.getString("remark")==null?"":rs.getString("remark") %>"
         }
 <%
 				
@@ -40,7 +40,7 @@ try {
         "date":"<%= (rs.getString("day").substring(0,10)) %>",
         "crop":"<%= rs.getString("crop") %>",
         "eventtype":"<%= rs.getString("eventtype") %>",
-        "remark":"<%= rs.getString("remark") %>"
+        "remark":"<%= rs.getString("remark")==null?"":rs.getString("remark") %>"
         }
 <%
 				
