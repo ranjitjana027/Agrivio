@@ -1,7 +1,7 @@
 form {
     text-align: left;
     background-color: rgb(255, 255, 255 , 0.3);
-    height: 90px;
+    height: 150px;
     width: 350px;
     margin: auto;
     padding-top: 10px;
@@ -29,13 +29,19 @@ body {
     width: 340px;
     block-size: 32px;
     border-style: none;
+    cursor: pointer;
 }
 
 #div1 {
     text-align: center;
     color: darkorange;
+    padding-top: 2%;
 }
 
 #div2 {
-    padding-left: 579px;
+    text-align: center;
+}
+
+.form-input{
+    margin: 20px 0;
 }
