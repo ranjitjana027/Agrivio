@@ -97,7 +97,7 @@
 			<button id="menubar">Menu</button>
 			<ul id="menu">
 				<li><a href="#">My Profile</a></li>
-				<li><a href="../calendar/calendar.html">My Events</a></li>
+				<li><a href="../calendar/calendar.jsp">My Events</a></li>
 				<li><a href="#">Add Event</a></li>
 				<li><a href="../auth/logout.jsp">Logout</a></li>
 			</ul>
@@ -122,16 +122,16 @@
 			<jsp:include page="../weather/weather.html"/>
 		</div>
 		<div class="grid-item5">
-			<jsp:include page="../price/mandiPrice.jsp" />
+			<jsp:include page="../calendar/calendar.jsp" />
 			
 		</div>
 		<div class="grid-item6">
-			<jsp:include page="../ad/ad.jsp"/>
+			
 			<h3>Trending Topics</h3>
 		</div>
 		<div class="grid-item0">
-			<jsp:include page="../event/addEvent.jsp" />
-			<div id="google_translate_element" style="display:block; bottom:0; position:fixed;"></div>
+			<jsp:include page="../ad/ad.jsp"/>
+			<!--div id="google_translate_element" style="display:block; bottom:0; position:fixed;"></div>
 
 			<script type="text/javascript">
 			function googleTranslateElementInit() {
@@ -140,7 +140,7 @@
 			</script>
 
 			<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+			-->
 		</div>
 		<!--div class="grid-item0">
 			<jsp:include page="../article/article.jsp"/>

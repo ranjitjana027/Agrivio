@@ -9,10 +9,11 @@
             font-family: Calibri, sans-serif;
             font-family: 'Roboto Condensed', sans-serif;
             color: #333;
+            background-image: linear-gradient(to right, #4CAF50  0%, #009688 100%);
         }
         .calendar{
             
-            
+            margin:4% 15%;
             width: 500px;
         }
         .cal-head{
@@ -73,7 +74,7 @@
             display: block;
             background-color: aliceblue;
             width: 400px;
-            margin: 15% auto;
+            margin: 5% auto;
             padding: 10px;
         }
         .close{
@@ -83,12 +84,46 @@
             cursor: pointer;
         }
         .event-display{
-            text-decoration: underline;
+            text-decoration: rgb(230, 5, 136) underline;
         }
     </style>
 </head>
 <body>
-    
+    <%@ page import="java.sql.*" %>  
+	<%! String errorMessage; %>
+	<% 
+	if(session.getAttribute("userid")!=null){
+        errorMessage=null;
+        if(!request.getMethod().equals("GET")){
+            try { 
+
+                // Initialize the database 
+                String dbURL =  "jdbc:oracle:thin:dummy/passsword@localhost:1521:XE"; 		
+                Connection con = DriverManager.getConnection(dbURL );
+
+                Statement stmt = con.createStatement();
+                int d=Integer.parseInt(request.getParameter("inp-date"));
+                int m=Integer.parseInt(request.getParameter("inp-month"));
+                int y=Integer.parseInt(request.getParameter("inp-year"));
+                String date=String.format("%4d-%02d-%02d",y,m+1,d);
+                String insert=("insert into events values( seq_event.nextval, TO_DATE('"+
+                            date+"', 'YYYY-MM-DD'), '"+request.getParameter("crop")+
+                            "','"+request.getParameter("eventtype")+"', '"+request.getParameter("remark")+"', "+
+                            (String)session.getAttribute("userid") +")");
+
+                stmt.executeUpdate(insert);
+                
+                stmt.close();
+                con.close();
+            } 
+            catch (Exception e) { 
+                e.printStackTrace(); 
+            } 
+        }
+    }
+    else
+        errorMessage="You are not logged in.";
+	%>
     <div class="calendar" >
         <div class="cal-head">
             <div style="display: inline; user-select:none; -webkit-user-select:none; -moz-user-select:none;">
@@ -185,7 +220,7 @@
     <div class="modal" id="add-event-modal">
         <div class="modal-content" style="text-align: center;">
             <span class="close">&times;</span>
-            <form style="margin-bottom: 30px;">
+            <form method="POST" style="margin-bottom: 30px;">
                 
                 <h2 >Add Event</h2>
                 <div >
@@ -193,11 +228,30 @@
                     <input type="number" name="inp-month" id="inp-month" hidden>
                     <input type="number" name="inp-year" id="inp-year" hidden>
                 </div>
+                
                 <div style="display: inline-block;">
-                    <input type="text" name="event-name" id="event-name" placeholder="Event Name">
+                    <label for="">Crop: </label>
+                    <select name="crop">
+                        <option value="Paddy">Paddy</option>
+                        <option value="Wheat">Wheat</option>
+                        <option value="Dal">Dal</option>
+                        <option value="Vegetable1">Vegetable1</option>
+                        <option value="Vegetable2">Vegetable2</option>
+                        <option value="Vegetable3">Vegetable3</option>
+                        <option value="Vegetable4">Vegetable4</option>
+                    </select>
+                </div>
+                <div style="display: inline-block;">
+                    <label for="">Event: </label>
+                    <select name="eventtype">
+                        <option value="Sowing">Sowing</option>
+                        <option value="Harvesting">Harvesting</option>
+                        <option value="Fertilizing">Fertilizing</option>
+                    </select>
                 </div>
                 <div>
-                    <input type="text" name="crop" placeholder="Crop">
+                    <label for="">Remark: </label>
+                    <input type="text" name="remark" placeholder="Remark">
                 </div>
                 
                 <div style="display: inline-block;">
