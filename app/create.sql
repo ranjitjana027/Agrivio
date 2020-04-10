@@ -20,7 +20,7 @@ START WITH 1
 INCREMENT BY 1 
 CACHE 10;
 
-create table farmers 
+create table users 
 (
     id number primary key, 
     firstname varchar2(128) not null, 
@@ -28,11 +28,13 @@ create table farmers
     mobile varchar2(12) unique, 
     email varchar2(128), 
     password varchar2(128) not null, 
-    avtar blob
+    avtar blob,
+    premium number default 0,
+    role varchar2(32) default 'FARMER'
 );
 
 
-insert into farmers
+insert into users
 values ( seq_person.nextval, 'User', 'Name', '9800000000', NULL, 'password', NULL);
 
 
@@ -43,7 +45,7 @@ create table events
     crop varchar2(128) not null,
     eventtype varchar2(128) not null,
     remark varchar2(200) ,
-    farmer number  references farmers(id) on delete cascade
+    user number  references users(id) on delete cascade
 );
 
 insert into events
@@ -53,5 +55,8 @@ create table chats(
     id number primary key,
     c_time TIMESTAMP WITH TIME ZONE,
     content VARCHAR2(512) not null,
-    sender number REFERENCES farmers(id) on delete cascade
+    sender number REFERENCES users(id) on delete cascade
 );
+
+
+
