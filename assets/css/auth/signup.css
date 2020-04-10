@@ -1,0 +1,82 @@
+body{
+    background-color:#0a655c;
+}
+.wrap{
+    position: absolute;
+    top: 5vh;
+    left: 8vw;
+    bottom: 6vh;
+    height: 580px;
+    width: 400px;
+    min-height: 500px;
+    background-color: #041917;
+    opacity: 0.9;
+    color: #0cf9c2;
+    padding: 10px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wrap-header{
+    text-align: center;
+}
+
+
+
+
+
+.wrap-footer{
+        margin: 0 20px;
+    height: 40px;
+    background-color: #999999;
+
+    color: #00544c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap; 
+}
+
+.text-muted{
+    display: none;
+} 
+
+.button-submit{
+    background-color: #0a655c;
+    color: snow;
+    padding: 5px 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-left: 8px;
+    border: #009688;
+    outline: none;
+    cursor: pointer;
+}
+.button-submit:hover, .button-submit:active{
+    background-color: #07443e;
+}
+
+body{
+
+    background-image: url('../../img/auth/body_background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    /*height: 80vh;
+    margin: 10vh 10vw;
+    box-shadow: 2px 1px 5px 5px #009688;
+
+    /*box-shadow: 2vw 2vh 2vw 2vh #555555,
+                2vw -2vh 2vw 2vh #555555,
+                -2vw 2vh 2vw 2vh #555555,
+                -2vw -2vh 2vw 2vh #555555; */
+} 
+
+a{
+    text-decoration: none;
+    color: #1698ad;
+}
