@@ -16,8 +16,18 @@
     try { 
 			
 			// Initialize the database 
-			String dbURL =  "jdbc:oracle:thin:dummy/passsword@localhost:1521:XE"; 		
-			Connection con = DriverManager.getConnection(dbURL );
+			//String dbURL =  "jdbc:oracle:thin:dummy/passsword@localhost:1521:XE"; 		
+			//Connection con = DriverManager.getConnection(dbURL );
+			java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
+
+                String username = dbUri.getUserInfo().split(":")[0];
+                String password = dbUri.getUserInfo().split(":")[1];
+                String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+
+                Connection con=DriverManager.getConnection(dbUrl, username, password);
+                
+
+
 
 			//Statement stmt = con.createStatement();
 			PreparedStatement st = con.prepareStatement("SELECT * FROM chats where sender="+session.getAttribute("userid"));

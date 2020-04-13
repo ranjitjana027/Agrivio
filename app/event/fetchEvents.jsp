@@ -6,11 +6,17 @@
 try { 
 
 			// Initialize the database 
-			String dbURL =  "jdbc:oracle:thin:dummy/passsword@localhost:1521:XE"; 		
-			Connection con = DriverManager.getConnection(dbURL );
+			new org.postgresql.Driver();
+			java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
+
+			String username = dbUri.getUserInfo().split(":")[0];
+			String password = dbUri.getUserInfo().split(":")[1];
+			String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+
+			Connection con=DriverManager.getConnection(dbUrl, username, password);
 
 			//Statement stmt = con.createStatement();
-			PreparedStatement st = con.prepareStatement("SELECT * FROM events where farmer="+(String)session.getAttribute("userid"));
+			PreparedStatement st = con.prepareStatement("SELECT * FROM events where user_id="+(String)session.getAttribute("userid"));
 			//st.setString(1, request.getParameter("mobile")); 
 			//st.setString(2, request.getParameter("password"));
 			ResultSet rs=st.executeQuery();
