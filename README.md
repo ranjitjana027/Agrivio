@@ -1,20 +1,3 @@
-> #### ... use this repo
->
-> `git clone https://github.com/ranjitjana027/webProject.git`
->
-> #### ... Push to this repo
->
-> `git add . `
->
-> `git commit -m "comment"`
->
-> `git push -u origin master`
-
-
-
-
-
-
 
 ## Title: _A Java-based Web Application for guiding farmers on each steps of cultivation_
 - ### Features:

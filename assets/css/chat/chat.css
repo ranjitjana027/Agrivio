@@ -1,0 +1,70 @@
+.container{
+    background-color: #8bf1cb2e;
+}
+
+.chat-room{
+    border: 2px #1f6dbb solid;
+    width: 500px;
+    height: auto;
+    padding: 20px;;
+}
+.chat-message{
+    text-align: justify;
+    padding: 10px;
+    margin: 5px;
+    display: block;
+    border-radius: 5px;
+}
+.you{
+    width: 80%;
+    margin-left: 15%;
+    background-color: #009688;
+    color: aliceblue;
+}
+.they{
+    width: 80%;
+    background-color: teal;
+    color: aliceblue;
+
+}
+
+.you  .sender{
+    float: right;
+}
+.they .time{
+    float: right;
+}
+
+.status{
+    text-align: center;
+    border-radius: 10px;
+    background-color: honeydew;
+    margin: 0 100px;
+}
+.input-message{
+    display: block;
+    text-align: right;
+    width: 500px;
+    padding: 20px;
+}
+
+.submit{
+    background-color: #3f51b5;
+    border: none;
+    /* width: 100px; */
+    padding: 7px 30px;
+    color: azure;
+    border-radius: 8px;
+    outline: none;
+}
+.submit:hover{
+    background-color: #152894;
+}
+.chat-input{
+    padding: 5px;
+    width: 60%;
+    outline: none;
+    border-radius: 7px;
+    /* border: inset; */
+    border-color: chartreuse;
+}
