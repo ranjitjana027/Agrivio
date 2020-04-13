@@ -1,4 +1,6 @@
-
+> Create a environment variable DATABASE_URL 
+> and set the value to ***REMOVED***
+> databse credentials are not parmanent.
 ## Title: _A Java-based Web Application for guiding farmers on each steps of cultivation_
 - ### Features:
   - Detailed manual for cultivation of each crop.
