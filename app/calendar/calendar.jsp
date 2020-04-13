@@ -98,15 +98,20 @@
             try { 
 
                 // Initialize the database 
-                String dbURL =  "jdbc:oracle:thin:dummy/passsword@localhost:1521:XE"; 		
-                Connection con = DriverManager.getConnection(dbURL );
+                new org.postgresql.Driver();
+                java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
 
+                String username = dbUri.getUserInfo().split(":")[0];
+                String password = dbUri.getUserInfo().split(":")[1];
+                String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+
+                Connection con=DriverManager.getConnection(dbUrl, username, password);
                 Statement stmt = con.createStatement();
                 int d=Integer.parseInt(request.getParameter("inp-date"));
                 int m=Integer.parseInt(request.getParameter("inp-month"));
                 int y=Integer.parseInt(request.getParameter("inp-year"));
                 String date=String.format("%4d-%02d-%02d",y,m+1,d);
-                String insert=("insert into events values( seq_event.nextval, TO_DATE('"+
+                String insert=("insert into events(day,crop,eventtype,remark,user_id) values( TO_DATE('"+
                             date+"', 'YYYY-MM-DD'), '"+request.getParameter("crop")+
                             "','"+request.getParameter("eventtype")+"', '"+request.getParameter("remark")+"', "+
                             (String)session.getAttribute("userid") +")");
