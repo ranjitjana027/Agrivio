@@ -10,9 +10,6 @@
 				width: 350px;
 				margin: 15px;
 			}
-			.form{
-				height: 600px;
-			}
 			.form-row-item{
 				display: inline-block;
 				width: 170px;
@@ -27,13 +24,15 @@
 			}
 			input{
 				border-radius: 5px;
-				padding: 9px 5px;
+				padding: 7px 5px;
 				width: 100%;
 				
 			}
-			input:focus{
-				outline: none;
+			.errormessage{
+				color:red;
+				padding-left:20px;
 			}
+			
 		</style>
 	</head>
 	<body>
@@ -100,7 +99,7 @@
 					<div class="form-row-item">
 						<label class="form-input-label"  for="">Last Name</label>
 						<div class="form-input-item" >
-							<input type="text" id="firstname" name="lastname" placeholder="Last Name" required style="width: 170px;">
+							<input type="text" id="lastname" name="lastname" placeholder="Last Name" required style="width: 170px;">
 						</div>
 					</div>
 				</div>
@@ -111,7 +110,7 @@
 					</div>
 				</div>
 				<div class="form-item">
-					<label class="form-input-label"  for="">Email</label>
+					<label class="form-input-label"  for="">Email (Optional)</label>
 					<div class="form-input-item">
 						<input type="email" id="email" name="email" placeholder="Email" optional>
 					</div>
@@ -131,14 +130,13 @@
 					<div class="form-input-item">
 						<input type="password" id='re_password' name="re_password" placeholder="Confirm Password"
 							minlength="8" pattern=^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$ required>
-					</div>
-				</div>
-				<div class="form-item">
-					<small id="password_message" class="errormessage"></small>
+					
+					<small id="password_message" ></small>
 					<small class="text-muted">
-						Your password must be 8-20 characters long, contain letters, numbers and special characters, and must not contain
+						Password must be 8-20 characters long, contain letters, numbers and special characters, and must not contain
 						spaces or emoji.
 					</small>
+					</div>
 				</div>
 
 				<div class="form-item">
@@ -151,12 +149,12 @@
 
 				<div class="errormessage form-item">
 				<%= (errorMessage!=null)?errorMessage:"" %>
+				
 				</div>
 			</form>
 
 			<footer class="wrap-footer">
-				Already Registered?
-				<a href="login.jsp" > Log In </a>
+				<span>Already Registered? <a href="login.jsp" >Login Now! </a></span>
 			</footer>
 		</div>
 		
