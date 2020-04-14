@@ -6,32 +6,7 @@
 		<title>Sign Up</title>
 		<link rel="stylesheet" type="text/css" href="../../assets/css/auth/signup.css">
 		<style>
-			.form-item{
-				width: 350px;
-				margin: 15px;
-			}
-			.form-row-item{
-				display: inline-block;
-				width: 170px;
-			}
-			.form-input-item{
-				width: 100%;
-				margin: auto;
-			}
-			.form-input-label{
-				display: block;
-				padding: 3px;
-			}
-			input{
-				border-radius: 5px;
-				padding: 7px 5px;
-				width: 100%;
-				
-			}
-			.errormessage{
-				color:red;
-				padding-left:20px;
-			}
+			
 			
 		</style>
 	</head>
