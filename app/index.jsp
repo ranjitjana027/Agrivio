@@ -6,7 +6,7 @@
 <body>
 <%
 	if((String)session.getAttribute("userid")!=null)
-		response.sendRedirect("user/homepage.jsp");
+		response.sendRedirect("user/dashboard.jsp");
 %>
 <h1>Welcome</h1>
 Please do log in to proceed futher.<br>

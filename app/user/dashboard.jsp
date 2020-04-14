@@ -5,13 +5,15 @@
 	<style type="text/css">
 		body{
 			margin: 0;
+			
 		}
 		.grid{
 			display: grid;
-			grid-template-rows: 70px 210px auto;
-			grid-template-columns: 20% auto 20%;
-			background-color:#a8ebf1;
-  			margin: 0;
+			grid-template-rows: 70px 210px auto 100px;
+			grid-template-columns: 20% auto 20% ;
+			background-color:#009688;;
+			margin: 0;
+			min-height: 100vh;
 
 		}
 		.grid-item0{
@@ -63,6 +65,13 @@
 			overflow: hidden;
 			background-color:#f1d0f3;
 		}
+		.grid-item8{
+			grid-column: 1/4;
+			margin: 5px;
+			padding: 5px;
+			background-color: #f1d0f3;
+			text-align: center;
+		}
 		#menu{
 			color: blueviolet;
 			list-style: none;
@@ -84,6 +93,22 @@
 		#menubar:hover + #menu, #menu:hover{
 			display: block;
 		}
+		::-webkit-scrollbar{
+			width: 25px;
+		}
+		::-webkit-scrollbar-track {
+			background:#000102;
+			border-radius: 20px;
+			box-shadow: inset 0px 0px 5px #124112;
+		}
+		::-webkit-scrollbar-thumb {
+			background: #f43685;
+			border-radius: 20px;
+			
+		}
+		::-webkit-scrollbar-thumb:hover{
+			background: #f01d75;
+		}
 	</style>
 	
 </head>
@@ -101,7 +126,7 @@
 				<li><a href="#">Add Event</a></li>
 				<li><a href="../auth/logout.jsp">Logout</a></li>
 			</ul>
-					</div>
+		</div>
 		<div class="grid-item2">
 			<input type="text"><button>Search</button>
 			<h3 style="display:inline-block;">
@@ -113,6 +138,8 @@
 					out.print("Guest!");
 				%> 
 			</h3>
+			<!--script async src="https://cse.google.com/cse.js?cx=013700959376197218555:dczhvimwrno"></script>
+			<div class="gcse-search"></div-->
 		</div>
 		<div class="grid-item3">
 			<a href="../auth/logout.jsp">Logout</a>
@@ -122,12 +149,40 @@
 			<jsp:include page="../weather/weather.html"/>
 		</div>
 		<div class="grid-item5">
-			<jsp:include page="../calendar/calendar.jsp" />
-			
+			<div>
+				Welcome to our site!
+				<jsp:include page="../article/article.html" />
+			</div>
 		</div>
 		<div class="grid-item6">
 			
 			<h3>Trending Topics</h3>
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="275" height="94"
+				viewBox="0 0 275 94">
+				<defs>
+					<style>
+						.a {
+							fill: #008e71;
+							font-size: 40px;
+							font-family: OldEnglishTextMT, Old English Text MT;
+						}
+			
+						.b {
+							filter: url(#a);
+						}
+					</style>
+					<filter id="a" x="0" y="0" width="275" height="94" filterUnits="userSpaceOnUse">
+						<feOffset dx="5" dy="5" input="SourceAlpha" />
+						<feGaussianBlur stdDeviation="7.5" result="b" />
+						<feFlood flood-color="#f80d0d" flood-opacity="0.161" />
+						<feComposite operator="in" in2="b" />
+						<feComposite in="SourceGraphic" />
+					</filter>
+				</defs>
+				<g class="b" transform="matrix(1, 0, 0, 1, 0, 0)"><text class="a" transform="translate(132.5 57.5)">
+						<tspan x="-114.248" y="0">Coming Soon</tspan>
+					</text></g>
+			</svg>
 		</div>
 		<div class="grid-item0">
 			<jsp:include page="../ad/ad.jsp"/>
@@ -150,6 +205,9 @@
 			<h3>Trending Topics</h3>
 			
 		</div-->
+		<div class="grid-item8">
+			jhvjhbk
+		</div>
 	</div>
 
 

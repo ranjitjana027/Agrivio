@@ -38,8 +38,8 @@
 				    }
 			    }
 			    else{
-					out.print("<script>alert(\"You're already logged in\"); location.href=\"../user/homepage.jsp \"</script>");
-			        //response.sendRedirect("../user/homepage.jsp");
+					out.print("<script>alert(\"You're already logged in\"); location.href=\"../user/dashboard.jsp \"</script>");
+			        //response.sendRedirect("../user/dashboard.jsp");
 				}
 				%>
 		<header>

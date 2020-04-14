@@ -14,7 +14,7 @@
     <%! String errorMessage; %>
     <% 
         if(session.getAttribute("userid")!=null){
-            out.print("<script>alert(\"You're already logged in\"); location.href=\"../user/homepage.jsp \"</script>");
+            out.print("<script>alert(\"You're already logged in\"); location.href=\"../user/dashboard.jsp \"</script>");
         }
         if(!request.getMethod().equals("GET")){
             try { 
@@ -44,7 +44,7 @@
                     session.setAttribute("mobile",rs.getString("mobile"));
                 }
                 if((String)session.getAttribute("userid")!=null)
-                    response.sendRedirect("../user/homepage.jsp");
+                    response.sendRedirect("../user/dashboard.jsp");
                 else
                     errorMessage="Invalid Username/Password.";
             } 
