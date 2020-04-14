@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Homepage</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<style type="text/css">
 		body{
 			margin: 0;
@@ -27,22 +28,11 @@
 		{
 			position:sticky;
 			top:0;
-			grid-column:1/2;
+			grid-column:1/4;
 		}
-		.grid-item2
-		{
-			
-			grid-column:2/3;
-			position:sticky;
-			top:0;
-		}
-		.grid-item3{
-			position:sticky;
-			top:0;
-			grid-column:3/4;
-			
-		}
-		.grid-item1, .grid-item2, .grid-item3, a{
+		
+		
+		.grid-item1{
 			background-color: #123456;
 			color:snow;
 			text-decoration:none;
@@ -72,7 +62,7 @@
 			background-color: #f1d0f3;
 			text-align: center;
 		}
-		#menu{
+		.menu{
 			color: blueviolet;
 			list-style: none;
 			padding: 10px;
@@ -81,20 +71,20 @@
 			background-color: aquamarine;
 			display: none;
 		}
-		#menu a{
+		.menu a{
 			text-decoration: none;
 		}
-		#menubar{
-			color: #c1c1c1;
+		.menubar{
+			color: #009688;
 			margin: 10px 0 0 10px;
 			padding: 10px;
-			
+			cursor: pointer;
 		}
-		#menubar:hover + #menu, #menu:hover{
+		.menubar:hover + .menu, .menu:hover{
 			display: block;
 		}
 		::-webkit-scrollbar{
-			width: 25px;
+			width: 15px;
 		}
 		::-webkit-scrollbar-track {
 			background:#000102;
@@ -109,6 +99,25 @@
 		::-webkit-scrollbar-thumb:hover{
 			background: #f01d75;
 		}
+		.menu-item{
+			text-decoration:none;
+			margin-bottom:5px;
+		}
+
+		.bottom-nav .nav-item a{
+			color: #008e71;
+			text-decoration: none;
+		}
+		.bottom-nav .nav-item a:hover{
+			color: #0a554d;
+		}
+		.header-item{
+			display: inline-block;
+		}
+		.header{
+			text-align-last: justify;
+		}
+		
 	</style>
 	
 </head>
@@ -118,44 +127,46 @@
 		response.sendRedirect("../index.jsp");
 	%>
 	<div class="grid">
-		<div class="grid-item1">
-			<button id="menubar">Menu</button>
-			<ul id="menu">
-				<li><a href="#">My Profile</a></li>
-				<li><a href="../calendar/calendar.jsp">My Events</a></li>
-				<li><a href="#">Add Event</a></li>
-				<li><a href="../auth/logout.jsp">Logout</a></li>
-			</ul>
-		</div>
-		<div class="grid-item2">
-			<input type="text"><button>Search</button>
-			<h3 style="display:inline-block;">
-				Hi 
-				<% String user=((String)session.getAttribute("user"));
-					if(user!=null)
-					out.print(user);
-					else 
-					out.print("Guest!");
-				%> 
-			</h3>
-			<!--script async src="https://cse.google.com/cse.js?cx=013700959376197218555:dczhvimwrno"></script>
-			<div class="gcse-search"></div-->
-		</div>
-		<div class="grid-item3">
-			<a href="../auth/logout.jsp">Logout</a>
-			
+		<div class="grid-item1 header">
+			<div class="header-item" >
+				<button class="menubar">Menu</button>
+				<ul class="menu">
+					<li class="menu-item"><a href="#">My Profile</a></li>
+					<li class="menu-item"><a href="../calendar/calendar.jsp">My Events</a></li>
+					<li class="menu-item"><a href="#">Add Event</a></li>
+					<li class="menu-item"><a href="../auth/logout.jsp">Logout</a></li>
+				</ul>
+			</div>
+		
+			<div class="header-item">
+				<input type="text"><button>Search</button>
+				<h3 style="display:inline-block;">
+					Hi 
+					<% String user=((String)session.getAttribute("user"));
+						if(user!=null)
+						out.print(user);
+						else 
+						out.print("Guest!");
+					%> 
+				</h3>
+				<!--script async src="https://cse.google.com/cse.js?cx=013700959376197218555:dczhvimwrno"></script>
+				<div class="gcse-search"></div-->
+			</div>
+			<div class="header-item">
+				
+			</div>
 		</div>
 		<div class="grid-item0">
 			<jsp:include page="../weather/weather.html"/>
 		</div>
 		<div class="grid-item5">
 			<div>
-				Welcome to our site!
+				Welcome to our site!<br>
+				<h2>Stay Home, Be Safe.</h2>
 				<jsp:include page="../article/article.html" />
 			</div>
 		</div>
 		<div class="grid-item6">
-			
 			<h3>Trending Topics</h3>
 			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="275" height="94"
 				viewBox="0 0 275 94">
@@ -206,7 +217,20 @@
 			
 		</div-->
 		<div class="grid-item8">
-			jhvjhbk
+			<div class="logo-small">
+
+			</div>
+			<div>
+				<ul style="display:block;" class="bottom-nav">
+					<li style="display:inline; font-size: 20px; padding:5px 25px;" class="nav-item"> <a href="#">About Us</a> </li>
+					<li style="display:inline; font-size: 20px; padding:5px 25px;" class="nav-item"><a href="#">Terms of Use</a></li>
+					<li style="display:inline; font-size: 20px; padding:5px 25px;" class="nav-item"><a href="#">Privacy Policy</a></li>
+					<li style="display:inline; font-size: 20px; padding:5px 25px;" class="nav-item"><a href="#">Contact</a></li>
+				</ul>
+			</div>
+			<div>
+				&copy; copyright 2020. All right reserved.
+			</div>
 		</div>
 	</div>
 
