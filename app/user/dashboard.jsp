@@ -163,6 +163,7 @@
 			<div>
 				Welcome to our site!<br>
 				<h2>Stay Home, Be Safe.</h2>
+
 				<jsp:include page="../article/article.html" />
 			</div>
 		</div>
@@ -208,14 +209,7 @@
 			<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 			-->
 		</div>
-		<!--div class="grid-item0">
-			<jsp:include page="../article/article.jsp"/>
-			
-		</div>
-		<div class="grid-item0">
-			<h3>Trending Topics</h3>
-			
-		</div-->
+		
 		<div class="grid-item8">
 			<div class="logo-small">
 
