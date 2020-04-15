@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 
 @ServerEndpoint(value = "/chat/{name}")
 public class ChatServer {
-    static final List<ChatServer> handlers = new ArrayList<>();
+    static final List<ChatServer> handlers = new ArrayList<ChatServer>();
     private String name;
     private String user;
     private Session session;
@@ -18,12 +18,12 @@ public class ChatServer {
     void fun(String msg)
     {
         try{
-            String dbURL =  "jdbc:oracle:thin:dummy/passsword@localhost:1521:XE"; 		
+            String dbURL =  "jdbc:oracle:thin:dummy/passsword@localhost:1521:XE";
             Connection con = DriverManager.getConnection(dbURL );
             Statement stmt = con.createStatement();
             String insert=("insert into chats(id,content,sender) values( seq_chat.nextval, '"+msg+"', "+Integer.parseInt(name)+ ")");
             stmt.executeUpdate(insert);
-            
+
             stmt.close();
             con.close();
         }
@@ -43,7 +43,7 @@ public class ChatServer {
 
             if (rs.next()) {
                 this.user= rs.getString("firstname") + " " + rs.getString("lastname");
-                
+
             }
         } catch (Exception e) {
             e.printStackTrace();
