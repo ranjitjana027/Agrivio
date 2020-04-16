@@ -1,20 +1,22 @@
 <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Sign Up</title>
-		<link rel="stylesheet" type="text/css" href="../../assets/css/auth/signup.css">
-		<style>
-			
-			
-		</style>
-	</head>
-	<body>
-		<!-- jsp code start -->
-		<%! String errorMessage; %>
-		
-		<% 
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sign Up</title>
+	<link rel="stylesheet" type="text/css" href="../../assets/css/auth/signup.css">
+	<style>
+
+
+	</style>
+</head>
+
+<body>
+	<!-- jsp code start -->
+	<%! String errorMessage; %>
+
+	<% 
 		
 		if(session.getAttribute("userid")==null){
 			errorMessage=null;
@@ -53,85 +55,72 @@
 			out.print("<script>alert(\"You're already logged in\"); location.href=\"../user/dashboard.jsp \"</script>");
 			//response.sendRedirect("../user/dashboard.jsp");
 		}
-		%>
+	%>
 
 
-		<!-- jsp code end -->
-		<header></header>
-		
+	<!-- jsp code end -->
+	<header>
+		<div class="nav">
+			<h1 class="wesite-name">Kishan Bandhu</h1>
+		</div>
+	</header>
+
+	<div class="container">
+		<div class="image">
+			<img class="farmer" src="../../assets/img/auth/farmer.png" alt="farmer">
+		</div>
 		<div class="wrap">
 			<h1 class="wrap-header">Create an Account</h1>
-			
-			<form class="form" action="" method="post" >
-				<div class="form-item">
-					<div class="form-row-item">
-						<label class="form-input-label" for="">First Name</label>
-						<div class="form-input-item">
-							<input  type="text" id="firstname" name="firstname" placeholder="First Name" required style="width: 158px;">
-						</div>
-						
-					</div>
-					<div class="form-row-item">
-						<label class="form-input-label"  for="">Last Name</label>
-						<div class="form-input-item" >
-							<input type="text" id="lastname" name="lastname" placeholder="Last Name" required style="width: 170px;">
-						</div>
-					</div>
-				</div>
-				<div class="form-item">
-					<label class="form-input-label"  for="">Mobile</label>
-					<div class="form-input-item">
-						<input type="number" name="mobile" id="mobile" placeholder="Contact Number">
-					</div>
-				</div>
-				<div class="form-item">
-					<label class="form-input-label"  for="">Email (Optional)</label>
-					<div class="form-input-item">
-						<input type="email" id="email" name="email" placeholder="Email" optional>
-					</div>
-				</div>
 
+			<form class="form" action="" method="post">
 
 				<div class="form-item">
-					<label class="form-input-label"  for="">Password</label>
-					<div class="form-input-item">
-						<input type="password" id="password" name="password" placeholder="Password" minlength="8"
+					<input class="input-field" type="text" id="firstname" name="firstname" placeholder="First Name"
+						required>
+					<input class="input-field" type="text" id="lastname" name="lastname" placeholder="Last Name"
+						required>
+				</div>
+				<div class="form-item">
+					<input class="input-field " type="number" name="mobile" id="mobile" placeholder="Contact Number">
+					<input class="input-field " type="email" id="email" name="email" placeholder="Email" optional>
+				</div>
+				<div>
+					<div class="form-item">
+						<input class="input-field" type="password" id="password" name="password" placeholder="Password"
+							minlength="8" pattern=^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$
+							required>
+
+
+						<input class="input-field" type="password" id='re_password' name="re_password"
+							placeholder="Confirm Password" minlength="8"
 							pattern=^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$ required>
 					</div>
-					
-				</div>
-				<div class="form-item">
-					<label class="form-input-label"  for="">Confirm Password</label>
-					<div class="form-input-item">
-						<input type="password" id='re_password' name="re_password" placeholder="Confirm Password"
-							minlength="8" pattern=^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$ required>
-					
-					<small id="password_message" ></small>
-					<small class="text-muted">
-						Password must be 8-20 characters long, contain letters, numbers and special characters, and must not contain
-						spaces or emoji.
-					</small>
+					<small id="password_message"></small>
+					<div class="password-rule">
+						<small>
+							Password must be 8-20 characters long, contain letters, numbers and special characters, and
+							must not contain spaces or emoji.
+						</small>
 					</div>
 				</div>
 
-				<div class="form-item">
-					<input type="checkbox"  required style="width:auto;">I accept the terms & conditions.
+				<div>
+					<h4><input type="checkbox" required style="width:auto;">I accept the terms & conditions.</h4>
 				</div>
-				
-				<div class="form-item">
-					<button type="submit" class="button-submit" style="width: 100%;" >Sign Up</button>
-				</div>
+				<button type="submit" class="signup" style="width: 100%;">Sign Up</button>
 
-				<div class="errormessage form-item">
-				<%= (errorMessage!=null)?errorMessage:"" %>
-				
+				<div class="form-item error-box">
+					<p><span>!</span>
+						<%= (errorMessage!=null)?errorMessage:"" %>
+					</p>
 				</div>
 			</form>
 
 			<footer class="wrap-footer">
-				<span>Already Registered? <a href="login.jsp" >Login Now! </a></span>
+				<span>Already Registered? <a href="login.jsp">Login Now! </a></span>
 			</footer>
 		</div>
-		
-	</body>
+	</div>
+</body>
+
 </html>

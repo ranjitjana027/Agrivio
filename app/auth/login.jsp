@@ -1,14 +1,16 @@
 <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Page</title>
 
-    <link rel="stylesheet" href="../../assets/css/auth/login.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/auth/login.css">
 </head>
+
 <body>
 
     <%! String errorMessage; %>
@@ -56,41 +58,50 @@
             }
         }
         %>
-    <div id="div1">
-        <h1>KisanBandhu.in</h4>
+
+    <div class="nav">
+        <h1 class="wesite-name">Kishan Bandhu</h1>
     </div>
-    <form method="POST">
-        <h2>Login</h2>
-        <span></span>
-        <div class="form-input">
-            <b>Mobile:</b>
-            <br>
-            <input type="text" name="mobile" placeholder="Mobile" id="fi1" required>
-
+    <div class="container">
+        <div class="image">
+            <img class="farmer" src="../../assets/img/auth/farmer.png" alt="farmer">
         </div>
 
-        <div class="form-input">
-            <b>Password:</b>
-            <br>
-            <input type="password" name="password" placeholder="Password" id="fi2" required>
-        </div>
+        <div class="wrap">
+            <div class="form-item">
+                <b>Mobile:</b>
+                <br>
+                <input class="input-field" type="text" name="mobile" placeholder="Mobile" id="fi1" required>
 
-        <div class="form-input">
-            <input type="submit" value="Continue" id="fi3">
-        </div>
+            </div>
 
-        <div style=" font-size:15px; color:red;" >
-            <%= (errorMessage!=null)?errorMessage:"" %>
-            <% errorMessage=null; %>
+            <div class="form-item">
+                <b>Password:</b>
+                <br>
+                <input class="input-field" type="password" name="password" placeholder="Password" id="fi2" required>
+            </div>
+
+            <div>
+                <input class="login" type="submit" value="Login" id="fi3">
+            </div>
+
+            <div class="form-item error-box">
+                <p>
+                    <span>!</span>
+                    <%= (errorMessage!=null)?errorMessage:"" %>
+                    <% errorMessage=null; %>
+                </p>
+            </div>
+
+            <div>
+                <p>By continuing, you agree to ShopOnline's
+                    <a href="terms&condition.html">Conditions of Use</a>
+                    and <a href="terms&condition.html">Privacy Notice</a>.</p>
+                <p>Need help?</p>
+            </div>
+            </form>
         </div>
-        <p>By continuing, you agree to ShopOnline's
-            <a href="terms&condition.html">Conditions of Use</a>
-            and <a href="terms&condition.html">Privacy Notice</a>.</p>
-        <p>Need help?</p>
-    </form>
-    <hr>
-    <div id="div2">
-        <p>© 2020-onwards, ShopOnline.com, Inc. or its affiliates</p>
     </div>
 </body>
+
 </html>
