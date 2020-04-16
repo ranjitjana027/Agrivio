@@ -1,4 +1,12 @@
-
+<%
+if(session.getAttribute("userid")==null )
+	response.sendRedirect("../index.jsp");
+%>
+<%
+if(!session.getAttribute("role").equals("ADMIN"))
+  response.sendRedirect("../index.jsp");
+else {
+%>
 <%@ page import="java.sql.*" %>
 <%
 String error_message="";
@@ -68,3 +76,4 @@ if(request.getMethod().equals("POST"))
   <jsp:param name="errormessage" value="<%= error_message %>" />
   <jsp:param name="message" value="<%= message %>" />
 </jsp:forward>
+<% } %>

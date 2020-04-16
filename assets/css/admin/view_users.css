@@ -23,6 +23,9 @@
 }
 .table-header{
   margin: 20px auto auto 20px;
+  padding: 10px;
+  font-size: 21px;
+  font-family: Arial, sans-serif;
 }
 th, td{
   height: 50px;
@@ -30,6 +33,7 @@ th, td{
   word-wrap: break-word;
   padding:0 5px;
   max-width: 150px;
+  min-width: 100px;
 }
 th{
   text-align: center;
