@@ -1,0 +1,56 @@
+.page-header{
+  font-size: 20pt;
+  font-weight: bold;
+
+  padding: 30px  20px;
+  font-family: Verdana, Lucida Console, Courier, monospace;
+}
+.row{
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+.column{
+  display: inline-block;
+  text-align: justify;
+}
+
+.table{
+  width: 470px;
+  border-collapse: collapse;
+  padding: 10px 30px;
+
+}
+.table-header{
+  margin: 20px auto auto 20px;
+  padding: 10px;
+  font-size: 21px;
+  font-family: Arial, sans-serif;
+}
+th, td{
+  height: 50px;
+
+  word-wrap: break-word;
+  padding:0 5px;
+  max-width: 150px;
+  min-width: 100px;
+}
+th{
+  text-align: center;
+  background-color: #93e4c1;
+  color: #0b5a53;
+  font-size: 20px;
+  font-family: Lucidatypewriter, monospace;
+}
+tr{
+  background-color: #22756d;
+}
+tr:nth-child(even){
+  background-color: #048a6b;
+}
+
+
+#farmers td:nth-child(4){
+  text-align: center;
+  width: 100px;
+}

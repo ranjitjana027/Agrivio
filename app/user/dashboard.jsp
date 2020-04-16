@@ -125,10 +125,9 @@ if(session.getAttribute("userid")==null )
 		</div>
 	<% }else if(session.getAttribute("role").equals("ADMIN")){
 	%>
-		<div class="">
-			<h2>Admin Panel</h2>
-		</div>
+
 	<%
+	response.sendRedirect("../admin/dashboard.jsp");
 	}
 	%>
 

@@ -1,0 +1,59 @@
+
+      .form-select{
+        display: none;
+
+      }
+      .custom-select{
+        font-family: cursive;
+      }
+      .option{
+        height: 25px;
+        border-bottom: solid 1px;
+        border-collapse: collapse;
+        width: 280px;
+        padding: 5px 15px;
+        background-color: yellow;
+        color: red;
+        cursor: default;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .option:hover{
+        background-color: #e8de55;
+      }
+
+      .select{
+        background: white;
+        color: #009688;
+        padding: 5px 15px;
+        width: 280px;
+        cursor: default;
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .select-options{
+        display: none;
+        position: absolute;
+        z-index: 1;
+        user-select: none;
+      }
+
+
+
+      .selected-option::after{
+        position: absolute;
+        content:"";
+        top:15px;
+        right: 10px;
+        border: solid 6px transparent;
+        border-color: #009688 transparent transparent transparent;
+      }
+      .selected-option.option-expanded::after{
+        top:8px;
+        border-color: transparent transparent #009688 transparent;
+      }
+      .show{
+        display: block;
+      }
