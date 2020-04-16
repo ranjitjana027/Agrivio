@@ -50,7 +50,6 @@ if(request.getMethod().equals("POST"))
 
 }
 %>
-<jsp:forward page="layout.jsp">
-  <jsp:param name="filename" value="add_article" />
-  <jsp:param name="errormessage" value="<%= error_message %>" />
+<jsp:forward page="dashboard.html">
+  <jsp:param name="filename" value="view_users" />
 </jsp:forward>

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <script src="../../assets/js/lib/custom-select.js" charset="utf-8"></script>
     <style media="screen">
       body{
         margin: 0;
@@ -99,8 +100,8 @@
       .nav-header{
         padding:0 15px 15px 15px;
         text-align: center;
-        font-size: 23px ;
-        font-family: cursive;
+        font-size: 20px ;
+
       }
       .form-header{
         padding: 15px;
@@ -170,109 +171,46 @@
         color: #009688;
         background: #d5e7e8;;
       }
+      .errormessage{
+        color: red;
+        text-align: center;
+        font-family: system-ui;
+        font-size: 14px;
+        padding: 15px;
+      }
+
 
     </style>
+    <link rel="stylesheet" href="../../assets/css/lib/custom-select.css">
     <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded",()=>{
+      document.addEventListener("DOMContentLoaded",()=>{
+        window.scrollTo(1500,1500);
 
-      function validate(inps) {
-        for(let i of inps){
-          if(i.value=="")
-          {
-
-            alert(i.labels[0].innerText+' can not be blank.');
-            return false;
+        /*document.querySelector('select').onclick=()=>{
+          if(document.querySelector('.option').style.display=="block"){
+            document.querySelector('.option').style.display="none";
           }
-        }
-        return true;
-      }
-
-
-      document.querySelector('#btn-fwd-1').onclick=()=>{
-
-        inps=[document.querySelector('input[name="name"]'),
-        document.querySelector('input[name="cpa"]'),
-        document.querySelector('input[name="min_prod_time"]'),
-        document.querySelector('input[name="profit"]')
-      ]
-        if(validate(inps))
-        {
-          document.querySelector('.overview').style.display="none";
-          document.querySelector('.requirements').style.display="block";
-        }
-
-      }
-
-
-      document.querySelector('#btn-prev-2').onclick=()=>{
-        document.querySelector('.overview').style.display="block";
-        document.querySelector('.requirements').style.display="none";
-      }
-
-
-      document.querySelector('#btn-fwd-2').onclick=()=>{
-        inps=[document.querySelector('input[name="name"]'),
-          document.querySelector('input[name="min_temp"]'),
-          document.querySelector('input[name="max_temp"]'),
-          document.querySelector('input[name="humidity"]'),
-          document.querySelector('input[name="rainfall"]'),
-          document.querySelector('input[name="soil"]'),
-          document.querySelector('input[name="land"]'),
-          document.querySelector('input[name="season"]'),
-        ]
-        if(validate(inps))
-        {
-          document.querySelector('.requirements').style.display="none";
-          document.querySelector('.content').style.display="block";
-        }
-
-      }
-
-      document.querySelector('#btn-prev-3').onclick=()=>{
-        document.querySelector('.requirements').style.display="block";
-        document.querySelector('.content').style.display="none";
-      }
-
-
-      document.querySelector('#btn-fwd-3').onclick=()=>{
-        inps=[
-          document.querySelector('textarea[name="soil_prep"]'),
-          document.querySelector('textarea[name="sowing"]'),
-          document.querySelector('textarea[name="nurturing"]'),
-          document.querySelector('textarea[name="production"]'),
-          document.querySelector('textarea[name="coolingoff"]'),
-        ]
-
-        if(validate(inps))
-        {
-          document.querySelector('.content').style.display="none";
-          document.querySelector('.conclusion').style.display="block";
-        }
-      }
-
-      document.querySelector('#btn-prev-4').onclick=()=>{
-        document.querySelector('.conclusion').style.display="none";
-        document.querySelector('.content').style.display="block";
-      }
-    });
-
+          else{
+            document.querySelector('.option').style.display="block";
+          }
+        }*/
+      });
     </script>
   </head>
   <body>
     <div class="grid">
       <div class="">
         <svg>
-
+          <circle cx="100" cy="35" r="30" fill="green" />
         </svg>
       </div>
       <div class="grid-header">
-
       </div>
       <div class="grid-sidebar">
         <!--header class="page-header">Admin Panel</header-->
         <ul class="sticky">
           <header class="nav-header">
-             Admin Panel
+             ADMIN
           </header>
           <li>
             <a href="#"><i>&#xf039;</i> Add an Article</a>
@@ -286,112 +224,81 @@
         </ul>
       </div>
       <div class="grid-item">
-        <form action="add_article.jsp" method="post">
-          <div class="page-header">Add an Article </div>
-            <div class="name">
-                <div class="form-input">
-                    <label for="name">Name of Crop</label>
-                    <input type="text" placeholder="Crop" name="name" id="name" required>
-                </div>
-            </div>
-            <!-- step1 -->
-            <div class="overview">
-                <header class="form-header">Overview</header>
-                <div class="form-input">
-                    <label for="cpa">Avg. Cost Per Acre ( Rs )</label>
-                    <input type="number" placeholder="Avg. Cost" name="cpa" id="cpa" required>
-                </div>
-                <div class="form-input">
-                    <label for="min_prod_time">Minimum Time for production ( weeks )</label>
-                    <input type="number" name="min_prod_time" id="min_prod_time" placeholder="Minimum Time for Production" required>
-                </div>
-                <div class="form-input">
-                    <label for="profit">How much Profitable</label>
-                    <input type="text" name="profit" id="profit" placeholder="Profitability" required>
-                </div>
-                <!--div class="form-button">
-                    <button type="button" id="btn-fwd-1">Next</button>
-                </div-->
-            </div>
-            <!-- step2 -->
-            <div class="requirements">
-                <header class="form-header">Requirements</header>
-                <div class="weather">
+        <form action="add_user.jsp" method="post">
+          <div class="errormessage">
+            <span style="background-color: white; box-shadow: 2px 2px 10px 2px #000000; padding:5px 15px; "> Some Error Occured while adding new article.
+            <span style="background-color: white; cursor:pointer;" onclick="this.parentNode.hidden=true;"> &#10007; </span></span>
+          </div>
+          <div class="page-header">Add a user </div>
 
-                    <div class="form-input">
-                        <label for="min_temp">Minimum Temparature ( &deg;c )</label>
-                        <input type="number" step="0.1" placeholder="Minimum Temparature" name="min_temp" id="min_temp" required>
-                    </div>
-                    <div class="form-input">
-                        <label for="max_temp">Maximum Temparature ( &deg;c )</label>
-                        <input type="number" step="0.1" name="max_temp" id="max_temp" placeholder="Maximum Temparature" required>
-                    </div>
-                    <div class="form-input">
-                        <label for="humidity">Humidity ( &#37; )</label>
-                        <input type="number"  step="0.1" name="humidity" id="humidity" placeholder="Humidity" required>
-                    </div>
-                    <div class="form-input">
-                        <label for="rainfall">Rain Fall ( cms )</label>
-                        <input type="number" step="0.1" name="rainfall" id="rainfall" placeholder="Rainfall" required>
-                    </div>
-                </div>
-                <div class="form-input" >
-                    <label for="soil">Soil</label>
-                    <input type="text" name="soil" id="soil" placeholder="Type of Soil" required>
-                </div>
-                <div class="form-input">
-                    <label for="land">Type of Land</label>
-                    <input type="text" name="land" id="land" placeholder="Type of Land" required>
-                </div>
-                <div class="form-input">
-                    <label for="season">Season</label>
-                    <input type="text" name="season" id="season" placeholder="Season" required>
-                </div>
-                <!--div class="form-input">
-                    <button type="button" id="btn-prev-2">Back</button>
-                    <button type="button" id="btn-fwd-2">Next</button>
-                </div-->
+          <div class="">
+            <div class="form-input">
+              <label for="firstname">First Name</label>
+              <input type="text" name="firstname" value="" required placeholder="First Name" id="firstname">
             </div>
-            <!-- step3 -->
-            <div class="content">
-                <header class="form-header">Content</header>
-                <div class="form-input">
-                    <label for="soil_prep">Soil Preparation</label><br>
-                    <textarea name="soil_prep" id="soil_prep" placeholder="How to prepare soil for cultivation"  rows="2" required></textarea>
-                </div>
-                <div class="form-input">
-                    <label for="sowing">Sowing</label><br>
-                    <textarea name="sowing" id="sowing" placeholder="How to sow seeds" rows="2" required></textarea>
-                </div>
-                <div class="form-input">
-                    <label for="nurturing">Nurturing</label><br>
-                    <textarea name="nurturing" id="nurturing" placeholder="How to nurture"  rows="2" required></textarea>
-                </div>
-                <div class="form-input">
-                    <label for="production">Production/Harvesting</label><br>
-                    <textarea name="production" id="production" placeholder="How to harvest"  rows="2" required></textarea>
-                </div>
-                <div class="form-input">
-                    <label for="coolingoff">Cooling off</label><br>
-                    <textarea name="coolingoff" id="coolingoff" placeholder="How to procees residuals"  rows="2" required></textarea>
-                </div>
-                <div class="form-input">
-                    <label for="extra">Extra</label><br>
-                    <textarea name="extra" id="extra" placeholder="Anything extra..." rows="2" ></textarea>
-                </div>
-                <!--div class="form-input">
-                    <button type="button" id="btn-prev-3">Back</button>
-                    <button type="button" id="btn-fwd-3">Next</button>
-                </div-->
+            <div class="form-input">
+              <label for="">Last Name</label>
+              <input type="text" name="lastname" required placeholder="Last Name" value="">
             </div>
-            <!-- step4 -->
-            <div class="conclusion">
-                <label for="conclusion" class="form-header">Conclusion</label>
-                <div class="form-input">
-                    <input type="text" name="conclusion" placeholder="Conclusion" id="conclusion">
-                </div>
+          </div>
+          <div class="">
+            <div class="form-input">
+              <label for="">Mobile No</label>
+              <input type="number" name="mobile"  placeholder="Mobile No" required value="">
+            </div>
+            <div class="form-input">
+              <label for="">Email (Optional)</label>
+              <input type="email" name="email" value="" placeholder="abc@example.com">
             </div>
 
+          </div>
+          <div class="">
+            <div class="form-input">
+              <label for="">Password</label>
+              <input type="password" name="password1"  required minlength="8" placeholder="Password" value="">
+            </div>
+            <div class="form-input">
+              <label for="">Confirm Password</label>
+              <input type="password" name="password2" required minlength="8" placeholder="Confirm Password" value="">
+            </div>
+          </div>
+          <div class="">
+            <div class="form-input">
+              <label for="">Role</label>
+              <select class="form-select" name="role"  required>
+
+                <option value="ADMIN">Adminewfbjhfbjhfrefjkebjhbjfbjbdjbbjfbbfbjf</option>
+                <option value="EXPERT">Expert</option>
+                <option value="FARMER">Farmer</option>
+              </select>
+
+              <!--div class="custom-select">
+                <div class="select">
+                  <span class="selected-option">Choose ... </span>
+                </div>
+                <div class="select-options">
+                  <div class="option">
+                    Admin
+                  </div>
+                  <div class="option">
+                    Expert
+                  </div>
+                  <div class="option">
+                    Farmer
+                  </div>
+                </div>
+              </div-->
+
+            </div>
+            <div class="form-input">
+              <label for="">Premium User</label>
+              <select class="form-select" name="premium" required>
+                <option value="true">Yes</option>
+                <option value="No">No</option>
+              </select>
+
+            </div>
+          </div>
             <div class="form-button">
               <div class="btn-left">
                 <button type="reset" >Reset</button>
@@ -401,6 +308,7 @@
                   <button type="submit">Save</button>
                 </div>
             </div>
+
 
         </form>
 
