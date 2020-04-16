@@ -2,8 +2,14 @@
 <%@ page import="java.sql.*" %>
 <%
 String error_message="";
+String message="";
 if(request.getMethod().equals("POST"))
 {
+
+  if(!request.getParameter("password1").equals(request.getParameter("password2"))){
+    error_message="Passwords did not match";
+  }
+  else{
     try{
         // Initialize the database
         new org.postgresql.Driver();
@@ -14,43 +20,51 @@ if(request.getMethod().equals("POST"))
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 
         Connection con=DriverManager.getConnection(dbUrl, username, password);
+        Statement stmt = con.createStatement();
+        String insert;
 
-        // prepared statement
-        //PreparedStatement ps=con.prepareStatement("insert into weather_details(min_temp,max_temp,humidity,rainfall) values (?,?,?,?)");
-        PreparedStatement ps=con.prepareStatement("insert into articles( name , cpa , min_prod_time , profit ,"+
-                                                " min_temp , max_temp , humidity , rainfall , soil , land , season ,"+
-                                                " soil_prep , sowing , nurturing , production , coolingoff ,extra , conclusion) "+
-                                                "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        ps.setString(1,request.getParameter("name"));
-        ps.setDouble(2,Double.valueOf(request.getParameter("cpa")));
-        ps.setDouble(3,Double.valueOf(request.getParameter("min_prod_time")));
-        ps.setString(4,request.getParameter("profit"));
-        ps.setDouble(5,Double.valueOf(request.getParameter("min_temp")));
-        ps.setDouble(6,Double.valueOf(request.getParameter("max_temp")));
-        ps.setDouble(7,Double.valueOf(request.getParameter("humidity")));
-        ps.setDouble(8,Double.valueOf(request.getParameter("rainfall")));
-        ps.setString(9,request.getParameter("soil"));
-        ps.setString(10,request.getParameter("land"));
-        ps.setString(11,request.getParameter("season"));
-        ps.setString(12,request.getParameter("soil_prep"));
-        ps.setString(13,request.getParameter("sowing"));
-        ps.setString(14,request.getParameter("nurturing"));
-        ps.setString(15,request.getParameter("production"));
-        ps.setString(16,request.getParameter("coolingoff"));
-        ps.setString(17,request.getParameter("extra"));
-        ps.setString(18,request.getParameter("conclusion"));
+        if(request.getParameter("role").equals("FARMER"))
+        {
+            PreparedStatement ps=con.prepareStatement("insert into users(firstname, lastname, mobile, email, password, premium)"+
+            "values( ?,?,?,?,?,?)");
+            ps.setString(1,request.getParameter("firstname"));
+            ps.setString(2,request.getParameter("lastname"));
+            ps.setString(3,request.getParameter("mobile"));
+            ps.setString(4,request.getParameter("email"));
+            ps.setString(5,request.getParameter("password2"));
+            ps.setBoolean(6,Boolean.valueOf(request.getParameter("premium")));
+            ps.executeUpdate();
+            ps.close();
+        }
+        else{
+          PreparedStatement ps=con.prepareStatement("insert into users(firstname, lastname, mobile, email, password, role)"+
+          "values( ?,?,?,?,?,?)");
+          ps.setString(1,request.getParameter("firstname"));
+          ps.setString(2,request.getParameter("lastname"));
+          ps.setString(3,request.getParameter("mobile"));
+          ps.setString(4,request.getParameter("email"));
+          ps.setString(5,request.getParameter("password2"));
+          ps.setString(6,request.getParameter("role"));
+          ps.executeUpdate();
+          ps.close();
+        }
 
-        ps.executeUpdate();
+
+
+        con.close();
+        message="Successfully added a user";
+
     }
     catch(Exception e){
         e.printStackTrace();
-        error_message="Error occured while adding the article.";
+        error_message="Error occured while adding the article";
     }
-
+  }
 
 }
 %>
 <jsp:forward page="layout.jsp">
   <jsp:param name="filename" value="add_user" />
   <jsp:param name="errormessage" value="<%= error_message %>" />
+  <jsp:param name="message" value="<%= message %>" />
 </jsp:forward>

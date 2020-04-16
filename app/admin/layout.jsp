@@ -27,7 +27,7 @@
             <a href="add_article.jsp"><i>&#xf039;</i> Add an Article</a>
           </li>
           <li class="nav-item">
-            <a href="#"><i>&#xf039;</i> View all Users</a>
+            <a href="view_users.jsp"><i>&#xf039;</i> View all Users</a>
           </li>
           <li class="nav-item">
             <a href="add_user.jsp"><i>&#xf039;</i> Add an User</a>
@@ -37,6 +37,7 @@
       <div class="grid-item">
         <jsp:include page="<%= request.getParameter(\"filename\")+\"_view.jsp\"%>" >
         <jsp:param name="errormessage" value="<%= request.getParameter(\"errormessage\") %>" />
+        <jsp:param name="message" value="<%= request.getParameter(\"message\") %>" />
         </jsp:include>
       </div>
 
