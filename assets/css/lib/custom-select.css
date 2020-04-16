@@ -1,12 +1,16 @@
 
       .form-select{
         display: none;
+
+      }
+      .custom-select{
+        font-family: cursive;
       }
       .option{
         height: 25px;
         border-bottom: solid 1px;
         border-collapse: collapse;
-        width: 200px;
+        width: 280px;
         padding: 5px 15px;
         background-color: yellow;
         color: red;
@@ -23,7 +27,7 @@
         background: white;
         color: #009688;
         padding: 5px 15px;
-        width: 200px;
+        width: 280px;
         cursor: default;
         position: relative;
         overflow: hidden;
