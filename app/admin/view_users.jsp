@@ -50,6 +50,6 @@ if(request.getMethod().equals("POST"))
 
 }
 %>
-<jsp:forward page="dashboard.html">
+<jsp:forward page="layout.jsp">
   <jsp:param name="filename" value="view_users" />
 </jsp:forward>

@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     optionsDiv.classList.add('select-options');
     var selectSpan=document.createElement('span');
     selectSpan.classList.add('selected-option');
-    selectSpan.innerText="Choose ...";
+
     for(let j=0;j<item.options.length;j++)
     {
       var optionDiv=document.createElement('div');
@@ -59,7 +59,8 @@ document.addEventListener("DOMContentLoaded",()=>{
       optionDiv.innerText= item.options[j].text;
       optionsDiv.append(optionDiv);
     }
-
+    selectSpan.innerText=optionsDiv.children[0].innerText;
+    item.selectedIndex=0;
 
 
 
@@ -75,11 +76,12 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 document.querySelectorAll('.custom-select').forEach((item, i) => {
-
   item.querySelectorAll('.option').forEach((itm,index) => {
     itm.onclick=(evt)=>{
       document.querySelectorAll('select')[i].selectedIndex=index;
       item.querySelector('.selected-option').innerText=evt.target.innerText;
+
+      item.previousSibling.dispatchEvent(new CustomEvent('custom-select-event'));
       };
   });
   /*item.querySelector('.select').onclick=()=>{

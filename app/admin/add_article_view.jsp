@@ -1,5 +1,6 @@
 
     <!--link rel="stylesheet" href="../../assets/css/admin/add_user.css"-->
+      <div class="page-header">Add an Article </div>
         <form action="add_article.jsp" method="post">
           <% if(!request.getParameter("errormessage").equals("")){ %>
           <div class="errormessage">
@@ -7,7 +8,7 @@
             <span style="background-color: white; cursor:pointer;" onclick="this.parentNode.hidden=true;"> &#10007; </span></span>
           </div>
           <% } %>
-          <div class="page-header">Add an Article </div>
+
 
             <div class="name">
                 <div class="form-input">

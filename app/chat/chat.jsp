@@ -13,11 +13,12 @@
 %>
 <%@ page import="java.sql.*" %>
 <%
-    try { 
-			
-			// Initialize the database 
-			//String dbURL =  "jdbc:oracle:thin:dummy/passsword@localhost:1521:XE"; 		
+    try {
+
+			// Initialize the database
+			//String dbURL =  "jdbc:oracle:thin:dummy/passsword@localhost:1521:XE";
 			//Connection con = DriverManager.getConnection(dbURL );
+      new org.postgresql.Driver();
 			java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
 
                 String username = dbUri.getUserInfo().split(":")[0];
@@ -25,16 +26,16 @@
                 String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 
                 Connection con=DriverManager.getConnection(dbUrl, username, password);
-                
+
 
 
 
 			//Statement stmt = con.createStatement();
 			PreparedStatement st = con.prepareStatement("SELECT * FROM chats where sender="+session.getAttribute("userid"));
-			//st.setString(1, session.getAttribute("userid")); 
+			//st.setString(1, session.getAttribute("userid"));
 			ResultSet rs=st.executeQuery();
-			
-			
+
+
 
 %>
     <div class="container">
@@ -50,13 +51,13 @@
                 You joined.
             </div>
             <div class="chat-message <%= ((String)session.getAttribute("userid")).equals("you")?"you":"they" %>">
-        
+
                 <p class="content">This is a message content</p>
                 <small>
                     <span class="time">7:06pm</span>
                     <span class="sender">Expert</span>
                 </small>
-        
+
             </div>
             <%
                     while(rs.next())
@@ -64,27 +65,27 @@
                 %>
             <div
                 class="chat-message <%= ((String)session.getAttribute("userid")).equals(rs.getString("sender"))?"you":"they" %>">
-        
+
                 <p class="content"><%= rs.getString("content") %></p>
                 <small>
                     <span class="time"><%= rs.getString("c_time") %></span>
                     <span class="sender"><%= rs.getString("sender") %></span>
                 </small>
-        
+
             </div>
             <%
                     }
-                } 
-        		catch (Exception e) { 
-        			e.printStackTrace(); 
-        		} 
-        
+                }
+        		catch (Exception e) {
+        			e.printStackTrace();
+        		}
+
                 %>
-        
-        
-        
-        
-        
+
+
+
+
+
         </div>
         <div class="input-message">
             <input type="number" id="userid" value="<%= ((String)session.getAttribute("userid")) %>" readonly hidden />
@@ -92,7 +93,7 @@
             <input type="submit" value="Send" class="submit" />
         </div>
     </div>
-    
+
     <script>
 
     chat();
@@ -157,7 +158,7 @@
                 else{
                     d.classList.add('they');
                 }
-                    
+
                 p.innerText=data.content;
                 s.append(s1);
                 s.append(s2);

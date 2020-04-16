@@ -4,198 +4,62 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <script src="../../assets/js/lib/custom-select.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../../assets/css/admin/layout.css">
     <style media="screen">
-      body{
-        margin: 0;
-        width: inherit;
-        font-family: system-ui;
+    .page-header{
+      font-size: 20pt;
+      font-weight: bold;
 
-      }
-      .grid{
-        display: grid;
-        grid-template-columns: 250px  auto;
-        grid-template-rows: 80px auto 80px;
-        width: inherit;
-        min-height: 100vh;
+      padding: 30px  20px;
+      font-family: Verdana, Lucida Console, Courier, monospace;
+    }
+    .row{
+      display: block;
+      text-align: center;
+      width: 100%;
+    }
+    .column{
+      display: inline-block;
+      text-align: justify;
+    }
 
-        background-color: #3baea0;
-        color: snow;
-      }
-      .grid-header{
-        grid-row: 1/2;
-        grid-column: 2/3;
-        background-color: #118a7e;
-      }
-      .grid-footer{
-        grid-row: 3/4;
-        grid-column: 2/3;
-        background-color: #1f6f78;
-      }
-      .grid-item{
-        grid-column: 2/3;
-        grid-row: 2/3;
-        background-color: #04674e;
-        display: block;
-        width: 100%;
-      }
-      .grid-sidebar{
-        grid-row:2/4;
-        grid-column: 1/2;
-        background-color: white;
-        color: black;
-        display: block;
-        width: 100%;
-      }
-      .sticky{
-        position: sticky;
-        top: 0;
-      }
-      ul{
-        padding:0 15px;
-      }
-      li{
-        display: block;
-        list-style: none;
-        margin: 20px 0;
-        height: 30px;
+    .table{
+      width: 470px;
+      border-collapse: collapse;
+      padding: 10px 30px;
 
-      }
-      li a{
-        color: inherit;
-        text-decoration: none;
-        font-family: Roboto;
-        font-size: 19px;
+    }
+    .table-header{
+      margin: 20px auto auto 20px;
+    }
+    th, td{
+      height: 50px;
 
-      }
-      a:hover
-      {
-        color: lightpink;
-      }
-      .overview, .requirements, .content, .conclusion{
-        display: block;
-      }
-      /*.requirements{
-        display: none;
-      }
-      .content{
-        display: none;
-      }
-      .conclusion{
-        display: none;
-      }*/
-
-      label{
-        width: auto;
-        display: block;
-
-      }
-      .page-header{
-        font-size: 20pt;
-        font-weight: bold;
-
-        padding: 30px  20px;
-        font-family: Verdana, Lucida Console, Courier, monospace;
-      }
-      .nav-header{
-        padding:0 15px 15px 15px;
-        text-align: center;
-        font-size: 20px ;
-
-      }
-      .form-header{
-        padding: 15px;
-        font-size: 20px;
-        font-weight: bold;
-      }
-      .form-input{
-        padding:5px 15px;
-        line-height: 25px;
-        display: inline-block;
-      }
-      .form-input  input{
-        border-radius: 3px;
-        outline: none;
-        line-height: 20px;
-        border: none;
-        padding: 4px;
-        width: 300px;
-        border: solid 1px rgba(0,0,0,0.5);
-        font-family: cursive;
-      }
-      .form-input input:focus, .form-input textarea:hover{
-        border: solid 1px #93e4c1;
-      }
-      .form-input input[type=text]{
-        width: 450px;
-      }
-      .form-input input[type=number]{
-        width: 225px;
-      }
-      .form-input textarea{
-        font-family: cursive;
-        width: 450px;
-        padding: 4px;
-        height: 70px;
-        border: solid 1px;
-        outline: none;
-      }
-      form{
-        /*background-color: #118a7e;*/
-        margin: auto;
-        padding: 10px;
-      }
-      .form-button{
-        display: block;
-
-      }
-      .btn-left,.btn-right{
-        display: inline-block;
-        padding: 20px;
-      }
-      .btn-right{
-        float:  right;
-      }
-      .btn-right button, .btn-left button{
-        padding: 8px 45px;
-        font-size: medium;
-        border: none;
-        border-radius: 3px;
-        color: #009688;
-        background: aliceblue;
-        outline: none;
-        border: solid 1px green;
-        cursor: pointer
-      }
-      .btn-right button:hover, .btn-left button:hover{
-        color: #009688;
-        background: #d5e7e8;;
-      }
-      .errormessage{
-        color: red;
-        text-align: center;
-        font-family: system-ui;
-        font-size: 14px;
-        padding: 15px;
-      }
+      word-wrap: break-word;
+      padding:0 5px;
+      max-width: 150px;
+    }
+    th{
+      text-align: center;
+      background-color: #93e4c1;
+      color: #0b5a53;
+      font-size: 20px;
+      font-family: Lucidatypewriter, monospace;
+    }
+    tr{
+      background-color: #22756d;
+    }
+    tr:nth-child(even){
+      background-color: #048a6b;
+    }
 
 
+    #farmers td:nth-child(4){
+      text-align: center;
+      width: 100px;
+    }
     </style>
-    <link rel="stylesheet" href="../../assets/css/lib/custom-select.css">
-    <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded",()=>{
-        window.scrollTo(1500,1500);
 
-        /*document.querySelector('select').onclick=()=>{
-          if(document.querySelector('.option').style.display=="block"){
-            document.querySelector('.option').style.display="none";
-          }
-          else{
-            document.querySelector('.option').style.display="block";
-          }
-        }*/
-      });
-    </script>
   </head>
   <body>
     <div class="grid">
@@ -208,110 +72,98 @@
       </div>
       <div class="grid-sidebar">
         <!--header class="page-header">Admin Panel</header-->
-        <ul class="sticky">
+        <ul class="nav-tab sticky">
           <header class="nav-header">
              ADMIN
           </header>
-          <li>
-            <a href="#"><i>&#xf039;</i> Add an Article</a>
+          <li class="nav-item">
+            <a href="add_article.jsp"><i>&#xf039;</i> Add an Article</a>
           </li>
-          <li>
-            <a href="#"><i>&#xf039;</i> View all Users</a>
+          <li class="nav-item">
+            <a href="view_users.jsp"><i>&#xf039;</i> View all Users</a>
           </li>
-          <li>
-            <a href="#"><i>&#xf039;</i> Add an User</a>
-          </li>
+          <li class="nav-item">
+            <a href="add_user.jsp"><i>&#xf039;</i> Add an User</a>
+          </li >
         </ul>
       </div>
       <div class="grid-item">
-        <form action="add_user.jsp" method="post">
-          <div class="errormessage">
-            <span style="background-color: white; box-shadow: 2px 2px 10px 2px #000000; padding:5px 15px; "> Some Error Occured while adding new article.
-            <span style="background-color: white; cursor:pointer;" onclick="this.parentNode.hidden=true;"> &#10007; </span></span>
+        <div class="page-header">
+          View All Users
+        </div>
+        <div class="row">
+          <div class="column">
+            <div class="table-header">
+              Farmers
+            </div>
+            <div class="table">
+              <table id="farmers">
+                <thead>
+                  <th>Name</th>
+                  <th>Mobile</th>
+                  <th>Email</th>
+                  <th>Premium</th>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Userrerererrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrere Name</td>
+                  <td>9800000000</td>
+                  <td>eeeeeeeeeerge</td>
+                  <td>&#10060;</td>
+                </tr>
+                <tr>
+                  <td>User Name</td>
+                  <td>9800000000</td>
+                  <td>fkjghjkhfg</td>
+                  <td>&#9989;</td>
+                </tr>
+                <tr>
+                  <td>Userrkfgvh Name</td>
+                  <td>9800535400000</td>
+                  <td>reeeeeeeeeeeee</td>
+                  <td>&#9989;</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
           </div>
-          <div class="page-header">Add a user </div>
+          <div class="column">
+            <div class="table-header">
+              Experts
+            </div>
+            <div class="table">
+              <table>
+                <thead>
+                  <th>Name</th>
+                  <th>Mobile</th>
+                  <th>Email</th>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>User Name</td>
+                  <td>9800000000</td>
+                  <td>eeeeeeeeeerge</td>
 
-          <div class="">
-            <div class="form-input">
-              <label for="firstname">First Name</label>
-              <input type="text" name="firstname" value="" required placeholder="First Name" id="firstname">
-            </div>
-            <div class="form-input">
-              <label for="">Last Name</label>
-              <input type="text" name="lastname" required placeholder="Last Name" value="">
-            </div>
-          </div>
-          <div class="">
-            <div class="form-input">
-              <label for="">Mobile No</label>
-              <input type="number" name="mobile"  placeholder="Mobile No" required value="">
-            </div>
-            <div class="form-input">
-              <label for="">Email (Optional)</label>
-              <input type="email" name="email" value="" placeholder="abc@example.com">
-            </div>
+                </tr>
+                <tr>
+                  <td>User Name</td>
+                  <td>9800000000</td>
+                  <td>fkjghjkhfg</td>
 
-          </div>
-          <div class="">
-            <div class="form-input">
-              <label for="">Password</label>
-              <input type="password" name="password1"  required minlength="8" placeholder="Password" value="">
-            </div>
-            <div class="form-input">
-              <label for="">Confirm Password</label>
-              <input type="password" name="password2" required minlength="8" placeholder="Confirm Password" value="">
-            </div>
-          </div>
-          <div class="">
-            <div class="form-input">
-              <label for="">Role</label>
-              <select class="form-select" name="role"  required>
+                </tr>
+                <tr>
+                  <td>Userrkfgvh Name</td>
+                  <td>9800535400000</td>
+                  <td>reeeeeeeeeeeeeee</td>
 
-                <option value="ADMIN">Adminewfbjhfbjhfrefjkebjhbjfbjbdjbbjfbbfbjf</option>
-                <option value="EXPERT">Expert</option>
-                <option value="FARMER">Farmer</option>
-              </select>
-
-              <!--div class="custom-select">
-                <div class="select">
-                  <span class="selected-option">Choose ... </span>
-                </div>
-                <div class="select-options">
-                  <div class="option">
-                    Admin
-                  </div>
-                  <div class="option">
-                    Expert
-                  </div>
-                  <div class="option">
-                    Farmer
-                  </div>
-                </div>
-              </div-->
-
-            </div>
-            <div class="form-input">
-              <label for="">Premium User</label>
-              <select class="form-select" name="premium" required>
-                <option value="true">Yes</option>
-                <option value="No">No</option>
-              </select>
-
+                </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-            <div class="form-button">
-              <div class="btn-left">
-                <button type="reset" >Reset</button>
-              </div>
 
-                <div class="btn-right">
-                  <button type="submit">Save</button>
-                </div>
-            </div>
-
-
-        </form>
-
+        </div>
       </div>
       <div class="grid-footer">
 
