@@ -1,8 +1,12 @@
+<script src="../../assets/js/lib/custom-select.js" charset="utf-8"></script>
+<link rel="stylesheet" href="../../assets/css/lib/custom-select.css">
 <form action="add_user.jsp" method="post">
+  <% if(!request.getParameter("errormessage").equals("")){ %>
   <div class="errormessage">
-    <span style="background-color: white; box-shadow: 2px 2px 10px 2px #000000; padding:5px 15px; "> Some Error Occured while adding new article.
+    <span style="background-color: white; box-shadow: 2px 2px 10px 2px #000000; padding: 5px 15px; "> <%= request.getParameter("errormessage") %>.
     <span style="background-color: white; cursor:pointer;" onclick="this.parentNode.hidden=true;"> &#10007; </span></span>
   </div>
+  <% } %>
   <div class="page-header">Add a user </div>
 
   <div class="">
@@ -39,11 +43,19 @@
   <div class="">
     <div class="form-input">
       <label for="">Role</label>
-      <select class="" name="role">
+      <select class="form-select" name="role">
         <option value="ADMIN">Admin</option>
         <option value="EXPERT">Expert</option>
         <option value="FARMER">Farmer</option>
       </select>
+    </div>
+    <div class="form-input">
+      <label for="">Premium User</label>
+      <select class="form-select" name="premium" required>
+        <option value="true">Yes</option>
+        <option value="No">No</option>
+      </select>
+
     </div>
   </div>
     <div class="form-button">
