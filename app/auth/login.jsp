@@ -66,8 +66,9 @@
         <div class="image">
             <img class="farmer" src="../../assets/img/auth/farmer.png" alt="farmer">
         </div>
-
+		
         <div class="wrap">
+		<form method="post">
             <div class="form-item">
                 <b>Mobile:</b>
                 <br>
