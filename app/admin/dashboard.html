@@ -4,265 +4,171 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../../assets/css/admin/layout.css">
     <style media="screen">
-      body{
-        margin: 0;
-        width: inherit;
+    .page-header{
+      font-size: 20pt;
+      font-weight: bold;
 
-      }
-      .grid{
-        display: grid;
-        grid-template-columns: 20% auto auto;
-        width: inherit;
-        min-height: 100vh;
-        background-color: lightpink;
-        color: snow;
-      }
-      .grid-item{
-        background-color: #010098;
-      }
-      li{
-        display: block;
-        list-style: none;
-      }
-      a{
-        color: inherit;
-        text-decoration: none;
-      }
-      a:hover
-      {
-        color: lightpink;
-      }
-      .overview{
-        display: block;
-      }
-      .requirements{
-        display: none;
-      }
-      .content{
-        display: none;
-      }
-      .conclusion{
-        display: none;
-      }
+      padding: 30px  20px;
+      font-family: Verdana, Lucida Console, Courier, monospace;
+    }
+    .row{
+      display: block;
+      text-align: center;
+      width: 100%;
+    }
+    .column{
+      display: inline-block;
+      text-align: justify;
+    }
+
+    .table{
+      width: 470px;
+      border-collapse: collapse;
+      padding: 10px 30px;
+
+    }
+    .table-header{
+      margin: 20px auto auto 20px;
+      padding: 10px;
+      font-size: 21px;
+      font-family: Arial, sans-serif;
+    }
+    th, td{
+      height: 50px;
+
+      word-wrap: break-word;
+      padding:0 5px;
+      max-width: 150px;
+    }
+    th{
+      text-align: center;
+      background-color: #93e4c1;
+      color: #0b5a53;
+      font-size: 20px;
+      font-family: Lucidatypewriter, monospace;
+    }
+    tr{
+      background-color: #22756d;
+    }
+    tr:nth-child(even){
+      background-color: #048a6b;
+    }
+
+
+    #farmers td:nth-child(4){
+      text-align: center;
+      width: 100px;
+    }
     </style>
-    <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded",()=>{
 
-      function validate(inps) {
-        for(let i of inps){
-          if(i.value=="")
-          {
-
-            alert(i.labels[0].innerText+' can not be blank.');
-            return false;
-          }
-        }
-        return true;
-      }
-
-
-      document.querySelector('#btn-fwd-1').onclick=()=>{
-
-        inps=[document.querySelector('input[name="name"]'),
-        document.querySelector('input[name="cpa"]'),
-        document.querySelector('input[name="min_prod_time"]'),
-        document.querySelector('input[name="profit"]')
-      ]
-        if(validate(inps))
-        {
-          document.querySelector('.overview').style.display="none";
-          document.querySelector('.requirements').style.display="block";
-        }
-
-      }
-
-
-      document.querySelector('#btn-prev-2').onclick=()=>{
-        document.querySelector('.overview').style.display="block";
-        document.querySelector('.requirements').style.display="none";
-      }
-
-
-      document.querySelector('#btn-fwd-2').onclick=()=>{
-        inps=[document.querySelector('input[name="name"]'),
-          document.querySelector('input[name="min_temp"]'),
-          document.querySelector('input[name="max_temp"]'),
-          document.querySelector('input[name="humidity"]'),
-          document.querySelector('input[name="rainfall"]'),
-          document.querySelector('input[name="soil"]'),
-          document.querySelector('input[name="land"]'),
-          document.querySelector('input[name="season"]'),
-        ]
-        if(validate(inps))
-        {
-          document.querySelector('.requirements').style.display="none";
-          document.querySelector('.content').style.display="block";
-        }
-
-      }
-
-      document.querySelector('#btn-prev-3').onclick=()=>{
-        document.querySelector('.requirements').style.display="block";
-        document.querySelector('.content').style.display="none";
-      }
-
-
-      document.querySelector('#btn-fwd-3').onclick=()=>{
-        inps=[
-          document.querySelector('textarea[name="soil_prep"]'),
-          document.querySelector('textarea[name="sowing"]'),
-          document.querySelector('textarea[name="nurturing"]'),
-          document.querySelector('textarea[name="production"]'),
-          document.querySelector('textarea[name="coolingoff"]'),
-        ]
-
-        if(validate(inps))
-        {
-          document.querySelector('.content').style.display="none";
-          document.querySelector('.conclusion').style.display="block";
-        }
-      }
-
-      document.querySelector('#btn-prev-4').onclick=()=>{
-        document.querySelector('.conclusion').style.display="none";
-        document.querySelector('.content').style.display="block";
-      }
-    });
-
-    </script>
   </head>
   <body>
     <div class="grid">
-
-      <div class="grid-item">
-        <h2>Admin Panel</h2>
-        <ul>
-          <li>
-            <a href="#">Add an Article</a>
+      <div class="">
+        <svg>
+          <circle cx="100" cy="35" r="30" fill="green" />
+        </svg>
+      </div>
+      <div class="grid-header">
+      </div>
+      <div class="grid-sidebar">
+        <!--header class="page-header">Admin Panel</header-->
+        <ul class="nav-tab sticky">
+          <header class="nav-header">
+             ADMIN
+          </header>
+          <li class="nav-item">
+            <a href="add_article.jsp"><i>&#xf039;</i> Add an Article</a>
           </li>
-          <li>
-            <a href="#">View Users</a>
+          <li class="nav-item">
+            <a href="view_users.jsp"><i>&#xf039;</i> View all Users</a>
           </li>
-          <li>
-            <a href="#">Add User</a>
-          </li>
+          <li class="nav-item">
+            <a href="add_user.jsp"><i>&#xf039;</i> Add an User</a>
+          </li >
         </ul>
       </div>
       <div class="grid-item">
-        <form action="add_article.jsp" method="post">
-            <div class="name">
-                <div>
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" required>
-                </div>
+        <div class="page-header">
+          View All Users
+        </div>
+        <div class="row">
+          <div class="column">
+            <div class="table-header">
+              Farmers
             </div>
-            <!-- step1 -->
-            <div class="overview">
-                <h4>Overview</h4>
-                <div>
-                    <label for="cpa">Cost Per Acre</label>
-                    <input type="number" name="cpa" id="cpa" required>
-                </div>
-                <div>
-                    <label for="min_prod_time">Minimum time for production</label>
-                    <input type="number" name="min_prod_time" id="min_prod_time" required>
-                </div>
-                <div>
-                    <label for="profit">How much Profitable</label>
-                    <input type="number" name="profit" id="profit" required>
-                </div>
-                <div>
-                    <button type="button" id="btn-fwd-1">Next</button>
-                </div>
-            </div>
-            <!-- step2 -->
-            <div class="requirements">
-                <h4>Requirements</h4>
-                <div class="weather">
-
-                    <div>
-                        <label for="min_temp">Minimum Temparature</label>
-                        <input type="number" name="min_temp" id="min_temp" required>
-                    </div>
-                    <div>
-                        <label for="max_temp">Maximum Temparature</label>
-                        <input type="number" name="max_temp" id="max_temp" required>
-                    </div>
-                    <div>
-                        <label for="humidity">Humidity</label>
-                        <input type="number" name="humidity" id="humidity" required>
-                    </div>
-                    <div>
-                        <label for="rainfall">Rain Fall</label>
-                        <input type="number" name="rainfall" id="rainfall" required>
-                    </div>
-                </div>
-                <div>
-                    <label for="soil">Soil</label>
-                    <input type="text" name="soil" id="soil" required>
-                </div>
-                <div>
-                    <label for="land">Type of Land</label>
-                    <input type="text" name="land" id="land" required>
-                </div>
-                <div>
-                    <label for="season">Season</label>
-                    <input type="text" name="season" id="season" required>
-                </div>
-                <div>
-                    <button type="button" id="btn-prev-2">Back</button>
-                    <button type="button" id="btn-fwd-2">Next</button>
-                </div>
-            </div>
-            <!-- step3 -->
-            <div class="content">
-                <h4>Content</h4>
-                <div>
-                    <label for="soil_prep">Soil Preparation</label><br>
-                    <textarea name="soil_prep" id="soil_prep" cols="30" rows="2" required></textarea>
-                </div>
-                <div>
-                    <label for="sowing">Sowing</label><br>
-                    <textarea name="sowing" id="sowing" cols="30" rows="2" required></textarea>
-                </div>
-                <div>
-                    <label for="nurturing">Nurturing</label><br>
-                    <textarea name="nurturing" id="nurturing" cols="30" rows="2" required></textarea>
-                </div>
-                <div>
-                    <label for="production">Production/Harvesting</label><br>
-                    <textarea name="production" id="production" cols="30" rows="2" required></textarea>
-                </div>
-                <div>
-                    <label for="coolingoff">Cooling off</label><br>
-                    <textarea name="coolingoff" id="coolingoff" cols="30" rows="2" required></textarea>
-                </div>
-                <div>
-                    <label for="extra">Extra</label><br>
-                    <textarea name="extra" id="extra" cols="30" rows="2" ></textarea>
-                </div>
-                <div>
-                    <button type="button" id="btn-prev-3">Back</button>
-                    <button type="button" id="btn-fwd-3">Next</button>
-                </div>
-            </div>
-            <!-- step4 -->
-            <div class="conclusion">
-                <label for="conclusion"><h4>Conclusion</h4></label>
-                <div>
-                    <input type="text" name="conclusion" id="conclusion">
-                </div>
-                <div>
-                    <button type="button" id="btn-prev-4">Back</button>
-                    <input type="submit" value="Save">
-                </div>
+            <div class="table">
+              <table id="farmers">
+                <thead>
+                  <th>Name</th>
+                  <th>Mobile</th>
+                  <th>Email</th>
+                  <th>Premium</th>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Userrerererrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrere Name</td>
+                  <td>9800000000</td>
+                  <td>eeeeeeeeeerge</td>
+                  <td>&#10060;</td>
+                </tr>
+                <tr>
+                  <td>User Name</td>
+                  <td>9800000000</td>
+                  <td>fkjghjkhfg</td>
+                  <td>&#9989;</td>
+                </tr>
+                <tr>
+                  <td>Userrkfgvh Name</td>
+                  <td>9800535400000</td>
+                  <td>reeeeeeeeeeeee</td>
+                  <td>&#9989;</td>
+                </tr>
+                </tbody>
+              </table>
             </div>
 
-        </form>
+          </div>
+          <div class="column">
+            <div class="table-header">
+              Experts
+            </div>
+            <div class="table">
+              <table>
+                <thead>
+                  <th>Name</th>
+                  <th>Mobile</th>
+                  <th>Email</th>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>User Name</td>
+                  <td>9800000000</td>
+                  <td>eeeeeeeeeerge</td>
 
+                </tr>
+                <tr>
+                  <td>User Name</td>
+                  <td>9800000000</td>
+                  <td>fkjghjkhfg</td>
+
+                </tr>
+                <tr>
+                  <td>Userrkfgvh Name</td>
+                  <td>9800535400000</td>
+                  <td>reeeeeeeeeeeeeee</td>
+
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
       </div>
-      <div class="grid-item">
+      <div class="grid-footer">
 
       </div>
     </div>
