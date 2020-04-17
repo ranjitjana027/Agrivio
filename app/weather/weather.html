@@ -10,7 +10,7 @@
 			navigator.geolocation.getCurrentPosition(showPosition);
 			function weatherUpdate(lat,lon){
 				var request=new XMLHttpRequest();
-				request.open("GET", location.protocol+"//"+location.host+"/farmer/app/weather/weatherJSON.jsp?lat="+lat+"&lon="+lon+"&appid=bbd7cea7000ec20b5d560c73b59adcc4&units=metric");
+				request.open("GET", "weatherJSON.jsp?lat="+lat+"&lon="+lon+"&appid=bbd7cea7000ec20b5d560c73b59adcc4&units=metric");
 				request.onload=()=>{
 					data=JSON.parse(request.responseText);
 					city=data["name"];

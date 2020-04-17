@@ -135,7 +135,7 @@ body {
   .error-box{
     color:red;
     background-color: #ff001167;
-    display: none;
+    display: inline;
     /* 
       change display to "inline" 
       else it will inherit flex property and text align will not work
