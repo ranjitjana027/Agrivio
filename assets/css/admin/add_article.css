@@ -17,7 +17,7 @@ label{
 
 }
 .page-header{
-  font-size: 20pt;
+  font-size: 20px;
   font-weight: bold;
 
   padding: 30px  20px;
@@ -26,7 +26,7 @@ label{
 
 .form-header{
   padding: 15px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 }
 .form-input{

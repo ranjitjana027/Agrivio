@@ -6,78 +6,131 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../../assets/css/admin/layout.css">
     <style media="screen">
-    .page-header{
-      font-size: 20pt;
-      font-weight: bold;
 
-      padding: 30px  20px;
-      font-family: Verdana, Lucida Console, Courier, monospace;
-    }
-    .row{
-      display: block;
-      text-align: center;
-      width: 100%;
-    }
-    .column{
-      display: inline-block;
-      text-align: justify;
-    }
+      .nav-bar-icon{
+        font-size: 25px;
+        margin: auto;
+        margin-left: 15px;
+        cursor: pointer;
+        display: inline-block;
 
-    .table{
-      width: 470px;
-      border-collapse: collapse;
-      padding: 10px 30px;
+      }
+      .user-icon{
+        display: inline-block;
 
-    }
-    .table-header{
-      margin: 20px auto auto 20px;
-      padding: 10px;
-      font-size: 21px;
-      font-family: Arial, sans-serif;
-    }
-    th, td{
-      height: 50px;
+      }
+      svg{
+        max-width: 100%;
+        max-height: 100%;
+      }
+      .grid-header{
 
-      word-wrap: break-word;
-      padding:0 5px;
-      max-width: 150px;
-    }
-    th{
-      text-align: center;
-      background-color: #93e4c1;
-      color: #0b5a53;
-      font-size: 20px;
-      font-family: Lucidatypewriter, monospace;
-    }
-    tr{
-      background-color: #22756d;
-    }
-    tr:nth-child(even){
-      background-color: #048a6b;
-    }
-
-
-    #farmers td:nth-child(4){
-      text-align: center;
-      width: 100px;
-    }
+        display: grid;
+        grid-template-columns: 60px auto 150px;
+        grid-gap: 5px;
+      }
+      .user-icon{
+        cursor: pointer;
+        background-color: black;
+      }
+      .user-menu ul{
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        min-width: 130px;
+        padding: 5px;
+        text-align: center;
+        display: none;
+      }
+      .user-menu li{
+        min-height: 35px;
+        padding-top: 10px;
+        border-bottom: solid 2px;
+        background-color: #1d9863;
+        cursor: pointer;
+        border-bottom-style: outset;
+      }
+      .user-menu a{
+        text-decoration: none;
+        color: snow;
+      }
+      .user-menu li:hover{
+        background-color: #1b7d53;
+      }
+      .show{
+        display: block !important;
+      }
     </style>
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded",()=>{
+      window.onclick=(evt)=>{
+        console.log(evt.target.classList)
+        item=document.querySelector('.user-menu').querySelector('ul');
+        if(item.classList.contains("show"))
+        {
+          item.classList.remove('show');
+          console.log('show removed')
+        }
+        else if(evt.target.classList.contains("user-icon")){
+          console.log('show added')
+          item.classList.add('show');
+        }
+      }
+      /*document.querySelector('.user-icon').onclick=()=>{
+        console.log('hgv')
+        item=document.querySelector('.user-menu').querySelector('ul');
+        if(item.classList.contains("show"))
+        item.classList.remove('show');
+        else
+        item.classList.add('show');
+      }*/
+    });
+
+    </script>
+
 
   </head>
   <body>
     <div class="grid">
       <div class="">
-        <svg>
-          <circle cx="100" cy="35" r="30" fill="green" />
-        </svg>
+
       </div>
+
+      <!--  header -->
       <div class="grid-header">
+        <div class="nav-bar-icon">
+          &#9776;
+        </div>
+        <div class="">
+
+        </div>
+        <div class="" >
+          <svg style="display:block;">
+            <defs>
+              <pattern id="user-icon-pattern" x="0" y="0" height="200" width="200" patternUnits="userSpaceOnUse" >
+                <image x="39" y="15" xlink:href="../../assets/img/user.png" height="40" width="70" ></image>
+              </pattern>
+            </defs>
+            <circle cx="75" cy="35" r="20" stroke="black"  fill="url(#user-icon-pattern)" class="user-icon" />
+          </svg>
+          <div class="user-menu">
+            <ul>
+              <li><a href="#">Your Profile</a> </li>
+              <li><a href="google.com">Link2</a> </li>
+              <li><a href="#">Logout</a> </li>
+            </ul>
+          </div>
+        </div>
       </div>
+
+
+      <!-- side nav -->
       <div class="grid-sidebar">
         <!--header class="page-header">Admin Panel</header-->
         <ul class="nav-tab sticky">
           <header class="nav-header">
-             ADMIN
+             Role
           </header>
           <li class="nav-item">
             <a href="add_article.jsp"><i>&#xf039;</i> Add an Article</a>
@@ -90,84 +143,13 @@
           </li >
         </ul>
       </div>
+
+      <!-- main content -->
       <div class="grid-item">
-        <div class="page-header">
-          View All Users
-        </div>
-        <div class="row">
-          <div class="column">
-            <div class="table-header">
-              Farmers
-            </div>
-            <div class="table">
-              <table id="farmers">
-                <thead>
-                  <th>Name</th>
-                  <th>Mobile</th>
-                  <th>Email</th>
-                  <th>Premium</th>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Userrerererrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrere Name</td>
-                  <td>9800000000</td>
-                  <td>eeeeeeeeeerge</td>
-                  <td>&#10060;</td>
-                </tr>
-                <tr>
-                  <td>User Name</td>
-                  <td>9800000000</td>
-                  <td>fkjghjkhfg</td>
-                  <td>&#9989;</td>
-                </tr>
-                <tr>
-                  <td>Userrkfgvh Name</td>
-                  <td>9800535400000</td>
-                  <td>reeeeeeeeeeeee</td>
-                  <td>&#9989;</td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
 
-          </div>
-          <div class="column">
-            <div class="table-header">
-              Experts
-            </div>
-            <div class="table">
-              <table>
-                <thead>
-                  <th>Name</th>
-                  <th>Mobile</th>
-                  <th>Email</th>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>User Name</td>
-                  <td>9800000000</td>
-                  <td>eeeeeeeeeerge</td>
-
-                </tr>
-                <tr>
-                  <td>User Name</td>
-                  <td>9800000000</td>
-                  <td>fkjghjkhfg</td>
-
-                </tr>
-                <tr>
-                  <td>Userrkfgvh Name</td>
-                  <td>9800535400000</td>
-                  <td>reeeeeeeeeeeeeee</td>
-
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-        </div>
       </div>
+
+      <!-- footer -->
       <div class="grid-footer">
 
       </div>
