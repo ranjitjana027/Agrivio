@@ -1,3 +1,5 @@
+> In weather.html line no 13   =>  "/farmer/app/weather/.."   , in place of 'farmer' write your webapps folder name
+
 >  Create a environment variable `DATABASE_URL` 
 >  and set the value to `***REMOVED***`
 > 
