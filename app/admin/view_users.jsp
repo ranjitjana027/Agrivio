@@ -1,9 +1,6 @@
+
 <%
-if(session.getAttribute("userid")==null )
-	response.sendRedirect("../index.jsp");
-%>
-<%
-if(!session.getAttribute("role").equals("ADMIN"))
+if(session.getAttribute("userid")==null || !session.getAttribute("role").equals("ADMIN"))
   response.sendRedirect("../index.jsp");
 else {
 %>

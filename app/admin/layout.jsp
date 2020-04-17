@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../../assets/css/admin/layout.css">
+      <script src="../../assets/js/admin/layout.js" charset="utf-8"></script>
     <link rel="stylesheet" href='../../assets/css/admin/<%= request.getParameter("filename")+".css"%>' >
   </head>
   <body>
@@ -14,9 +15,34 @@
           <circle cx="100" cy="35" r="30" fill="green" />
         </svg>
       </div>
-      <div class="grid-header">
 
+      <!--  header -->
+      <div class="grid-header">
+        <div class="nav-bar-icon">
+          &#9776;
+        </div>
+        <div class="">
+
+        </div>
+        <div class="" >
+          <svg style="display:block;">
+            <defs>
+              <pattern id="user-icon-pattern" x="0" y="0" height="200" width="200" patternUnits="userSpaceOnUse" >
+                <image x="39" y="15" xlink:href="../../assets/img/user.png" height="40" width="70" ></image>
+              </pattern>
+            </defs>
+            <circle cx="75" cy="35" r="20" stroke="black"  fill="url(#user-icon-pattern)" class="user-icon" />
+          </svg>
+          <div class="user-menu">
+            <ul>
+              <li><a href="#">Your Profile</a> </li>
+              <li><a href="https://www.google.com">Link2</a> </li>
+              <li><a href="../auth/logout.jsp">Logout</a> </li>
+            </ul>
+          </div>
+        </div>
       </div>
+
       <div class="grid-sidebar">
         <!--header class="page-header">Admin Panel</header-->
         <ul class="nav-tab sticky">
