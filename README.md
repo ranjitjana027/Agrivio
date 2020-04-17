@@ -1,3 +1,5 @@
+> In weather.html line no 13   =>  "/farmer/app/weather/.."   , in place of 'farmer' write your webapps folder name
+
 >  Create a environment variable `DATABASE_URL` 
 >  and set the value to `postgres://cpojyaebexyyvj:05585d56e361e2dcf16012f677142c4d503d00efe298cc12220b6c3f3a5dd1ed@ec2-52-201-55-4.compute-1.amazonaws.com:5432/d5oisp2sbvb81v`
 > 
