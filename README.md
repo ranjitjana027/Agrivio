@@ -1,8 +1,15 @@
 >  Create a environment variable `DATABASE_URL` 
 >  and set the value to `***REMOVED***`
 > 
->  Database credentials are not parmanent.
- 
+>  Database credentials are not permanent.
+
+### Few of available login Credentials
+>  Mobile | Password | Role
+> --------|----------|---------
+> ***REMOVED***
+> ***REMOVED***
+> ***REMOVED***
+
  
 ## Title: _A Java-based Web Application for guiding farmers on each steps of cultivation_
 - ### Features:
