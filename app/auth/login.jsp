@@ -54,6 +54,7 @@
                     errorMessage="Invalid Username/Password.";
             }
             catch (Exception e) {
+				errorMessage="sckjhjkh";
                 e.printStackTrace();
             }
         }
@@ -67,8 +68,8 @@
             <img class="farmer" src="../../assets/img/auth/farmer.png" alt="farmer">
         </div>
 		
-        <div class="wrap">
-		<form method="post">
+       
+		<form method="post"  class="wrap">
             <div class="form-item">
                 <b>Mobile:</b>
                 <br>
@@ -85,14 +86,15 @@
             <div>
                 <input class="login" type="submit" value="Login" id="fi3">
             </div>
-
+			<% if(errorMessage!=null) { %>
             <div class="form-item error-box">
                 <p>
                     <span>!</span>
-                    <%= (errorMessage!=null)?errorMessage:"" %>
+                    <%= errorMessage %>
                     <% errorMessage=null; %>
                 </p>
             </div>
+			<% } %>
 
             <div>
                 <p>By continuing, you agree to ShopOnline's
@@ -101,7 +103,7 @@
                 <p>Need help?</p>
             </div>
             </form>
-        </div>
+        
     </div>
 </body>
 

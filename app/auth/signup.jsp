@@ -109,11 +109,15 @@
 				</div>
 				<button type="submit" class="signup" style="width: 100%;">Sign Up</button>
 
+				<% if(errorMessage!=null) { %>
 				<div class="form-item error-box">
-					<p><span>!</span>
-						<%= (errorMessage!=null)?errorMessage:"" %>
+					<p>
+						<span>!</span>
+						<%= errorMessage %>
+						<% errorMessage=null; %>
 					</p>
 				</div>
+				<% } %>
 			</form>
 
 			<footer class="wrap-footer">
