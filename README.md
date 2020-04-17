@@ -1,8 +1,15 @@
 >  Create a environment variable `DATABASE_URL` 
 >  and set the value to `postgres://cpojyaebexyyvj:05585d56e361e2dcf16012f677142c4d503d00efe298cc12220b6c3f3a5dd1ed@ec2-52-201-55-4.compute-1.amazonaws.com:5432/d5oisp2sbvb81v`
 > 
->  Database credentials are not parmanent.
- 
+>  Database credentials are not permanent.
+
+### Few of available login Credentials
+>  Mobile | Password | Role
+> --------|----------|---------
+> 9800000000 | password | FARMER
+> 9600000000 | password | EXPERT
+> 1234567890 | Pass@word1 | ADMIN
+
  
 ## Title: _A Java-based Web Application for guiding farmers on each steps of cultivation_
 - ### Features:
