@@ -1,0 +1,25 @@
+
+.grid-content{
+  margin: 0 auto;
+  display: block;
+  padding: 16px 14px;
+
+  background-color: #04674e;
+}
+.grid-content table{
+    border-collapse: collapse;
+    background-color: rgb(0, 53, 40);
+    width: 100%;
+    margin: auto;
+}
+.grid-content td{
+    border: solid #d0bc8b;
+    color: aliceblue;
+    text-align: center;
+
+}
+.grid-content th{
+    border: solid  #e2dfcb;
+    color:#90ed14;
+
+}
