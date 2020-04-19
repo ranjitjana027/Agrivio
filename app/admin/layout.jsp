@@ -45,12 +45,21 @@
       </div>
       <!-- side bar -->
       <div class="grid-sidebar">
+<<<<<<< HEAD
         <div class="logo sticky">
             logo
         </div>
         <div class="sticky">
           <!--header class="page-header">Admin Panel</header-->
           <ul class="nav-tab">
+=======
+        <div class="logo">
+
+        </div>
+        <div class="">
+          <!--header class="page-header">Admin Panel</header-->
+          <ul class="nav-tab sticky">
+>>>>>>> 928d8f3063a58bba87afba3f86587dc700ab8f1e
             <header class="nav-header">
                ADMIN
             </header>
