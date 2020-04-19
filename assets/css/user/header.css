@@ -1,0 +1,152 @@
+.grid-header
+{
+  position:sticky;
+  top:0;
+  grid-column:1/2;
+  display: grid;
+  grid-template-columns: 20% 60px auto 250px 150px;
+  grid-gap: 5px;
+  background-color:  #118a7e;
+  color:snow;
+  text-decoration:none;
+}
+
+.menu{
+  color: blueviolet;
+  list-style: none;
+  padding: 10px;
+  margin: 0 10px 0 10px;
+  position: absolute;
+  background-color: aquamarine;
+  display: none;
+}
+.menu a{
+  text-decoration: none;
+}
+.menubar{
+  color: #009688;
+  margin: 10px 0 0 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+.menubar:hover + .menu, .menu:hover{
+  display: block;
+}
+
+
+.menu-item{
+  text-decoration:none;
+  margin-bottom:5px;
+}
+
+
+.header-item{
+  display: inline-block;
+}
+
+
+.nav-bar-icon{
+  font-size: 25px;
+  margin: auto;
+  margin-left: 15px;
+  cursor: pointer;
+  display: inline-block;
+
+}
+.user-icon{
+  display: inline-block;
+
+}
+svg{
+  max-width: 100%;
+  max-height: 100%;
+}
+.user-icon{
+  cursor: pointer;
+  background-color: black;
+}
+.user-menu ul{
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  min-width: 130px;
+  padding: 5px;
+  text-align: center;
+  display: none;
+}
+.user-menu li{
+  min-height: 35px;
+  padding-top: 10px;
+  border-bottom: solid 2px;
+  background-color: #1d9863;
+  cursor: pointer;
+  border-bottom-style: outset;
+}
+.user-menu a{
+  text-decoration: none;
+  color: snow;
+}
+.user-menu li:hover{
+  background-color: #1b7d53;
+}
+.show{
+  display: block !important;
+}
+.logo{
+  background-color: white;
+}
+
+
+.user-nav ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: block;
+  overflow: hidden;
+  height: 100%;
+  position: absolute;
+}
+.user-nav li{
+  display: inline-block;
+  /*width: 100px;
+  height: 100%;
+  text-align: justify;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: auto;*/
+}
+.user-nav a{
+  display: inline-block;
+  text-align: center;
+  padding: 23px;
+  text-decoration: none;
+  color: snow;
+  font-family: sans-serif;
+}
+
+
+.search-box form{
+  margin: 17px 0;
+  width:245px;
+  border: solid 2px;
+  border-radius: 15px;
+
+}
+.search-box input{
+  padding: 4px 0 4px 10px;
+  font-size: 16px;
+  border-radius: 14px 0 0 14px;
+  outline: none;
+  border:none;
+}
+.search-box input:focus{
+  background-color: aliceblue;
+}
+  .search-box button{
+    background-color:transparent;
+    border:none;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+  }

@@ -6,7 +6,7 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-	<title><%= ((String)session.getAttribute("role")).substring(0,1).toUpperCase()+((String)session.getAttribute("role")).substring(1).toLowerCase() %> | Dashboard</title>
+	<title><%= request.getParameter("title") %> | Dashboard</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<%
 	if(session.getAttribute("role").equals("FARMER")){
@@ -37,20 +37,8 @@ else{
 					<jsp:include page="../ad/ad.jsp" />
 					</div>
 				</div>
-				<div class="grid-content">
-					<div class="grid-item5">
-						<div>
-							Welcome to our site!<br>
-							<h2>Stay Home, Be Safe.</h2>
-
-							<jsp:include page="../article/article.html" />
-						</div>
-					</div>
-					<div class="grid-item6">
-						<h3>Trending Topics</h3>
-
-					</div>
-				</div>
+				<!-- include grid content here -->
+				<jsp:include page="<%= request.getParameter(\"filename\")%>" />
 
 
 			</div>
