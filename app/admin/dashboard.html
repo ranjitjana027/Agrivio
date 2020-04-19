@@ -5,97 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../../assets/css/admin/layout.css">
-    <style media="screen">
-
-      .nav-bar-icon{
-        font-size: 25px;
-        margin: auto;
-        margin-left: 15px;
-        cursor: pointer;
-        display: inline-block;
-
-      }
-      .user-icon{
-        display: inline-block;
-
-      }
-      svg{
-        max-width: 100%;
-        max-height: 100%;
-      }
-      .grid-header{
-
-        display: grid;
-        grid-template-columns: 60px auto 150px;
-        grid-gap: 5px;
-      }
-      .user-icon{
-        cursor: pointer;
-        background-color: black;
-      }
-      .user-menu ul{
-        position: absolute;
-        padding: 0;
-        margin: 0;
-        list-style-type: none;
-        min-width: 130px;
-        padding: 5px;
-        text-align: center;
-        display: none;
-      }
-      .user-menu li{
-        min-height: 35px;
-        padding-top: 10px;
-        border-bottom: solid 2px;
-        background-color: #1d9863;
-        cursor: pointer;
-        border-bottom-style: outset;
-      }
-      .user-menu a{
-        text-decoration: none;
-        color: snow;
-      }
-      .user-menu li:hover{
-        background-color: #1b7d53;
-      }
-      .show{
-        display: block !important;
-      }
-    </style>
-    <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded",()=>{
-      window.onclick=(evt)=>{
-        console.log(evt.target.classList)
-        item=document.querySelector('.user-menu').querySelector('ul');
-        if(item.classList.contains("show"))
-        {
-          item.classList.remove('show');
-          console.log('show removed')
-        }
-        else if(evt.target.classList.contains("user-icon")){
-          console.log('show added')
-          item.classList.add('show');
-        }
-      }
-      /*document.querySelector('.user-icon').onclick=()=>{
-        console.log('hgv')
-        item=document.querySelector('.user-menu').querySelector('ul');
-        if(item.classList.contains("show"))
-        item.classList.remove('show');
-        else
-        item.classList.add('show');
-      }*/
-    });
-
-    </script>
-
+    <script src="../../assets/js/admin/layout.js" charset="utf-8"></script>
 
   </head>
   <body>
     <div class="grid">
-      <div class="">
-
-      </div>
 
       <!--  header -->
       <div class="grid-header">
@@ -127,21 +41,27 @@
 
       <!-- side nav -->
       <div class="grid-sidebar">
-        <!--header class="page-header">Admin Panel</header-->
-        <ul class="nav-tab sticky">
-          <header class="nav-header">
-             Role
-          </header>
-          <li class="nav-item">
-            <a href="add_article.jsp"><i>&#xf039;</i> Add an Article</a>
-          </li>
-          <li class="nav-item">
-            <a href="view_users.jsp"><i>&#xf039;</i> View all Users</a>
-          </li>
-          <li class="nav-item">
-            <a href="add_user.jsp"><i>&#xf039;</i> Add an User</a>
-          </li >
-        </ul>
+        <div class="logo">
+          Website
+        </div>
+        <div class="">
+          <!--header class="page-header">Admin Panel</header-->
+          <ul class="nav-tab sticky">
+            <header class="nav-header">
+               Role
+            </header>
+            <li class="nav-item">
+              <a href="add_article.jsp"><i>&#xf039;</i> Add an Article</a>
+            </li>
+            <li class="nav-item">
+              <a href="view_users.jsp"><i>&#xf039;</i> View all Users</a>
+            </li>
+            <li class="nav-item">
+              <a href="add_user.jsp"><i>&#xf039;</i> Add an User</a>
+            </li >
+          </ul>
+        </div>
+
       </div>
 
       <!-- main content -->
