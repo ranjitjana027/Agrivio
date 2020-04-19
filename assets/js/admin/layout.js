@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded",()=>{
-  document.onclick=(evt)=>{
+  document.addEventListener('click',(evt)=>{
     console.log(evt.target.classList)
     item=document.querySelector('.user-menu').querySelector('ul');
     if(item.classList.contains("show"))
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       console.log('show added')
       item.classList.add('show');
     }
-  }
+  });
   /*document.querySelector('.user-icon').onclick=()=>{
     console.log('hgv')
     item=document.querySelector('.user-menu').querySelector('ul');
