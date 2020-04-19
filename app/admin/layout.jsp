@@ -18,7 +18,7 @@
 
 
       <!--  header -->
-      <div class="grid-header">
+      <div class="grid-header sticky">
         <div class="nav-bar-icon">
           &#9776;
         </div>
@@ -45,10 +45,10 @@
       </div>
       <!-- side bar -->
       <div class="grid-sidebar">
-        <div class="logo">
+        <div class="logo sticky">
             logo
         </div>
-        <div class="">
+        <div class="sticky">
           <!--header class="page-header">Admin Panel</header-->
           <ul class="nav-tab">
             <header class="nav-header">
@@ -69,16 +69,16 @@
 
       <!-- main content -->
       <div class="grid-item">
-        <div class="grid-content">
+
           <jsp:include page="<%= request.getParameter(\"filename\")+\"_view.jsp\"%>" >
           <jsp:param name="errormessage" value="<%= request.getParameter(\"errormessage\") %>" />
           <jsp:param name="message" value="<%= request.getParameter(\"message\") %>" />
           </jsp:include>
-        </div>
-        <div class="grid-footer">
-
-        </div>
       </div>
+      <div class="grid-footer">
+
+      </div>
+
 
 
     </div>
