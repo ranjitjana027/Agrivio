@@ -6,7 +6,7 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Homepage</title>
+	<title><%= ((String)session.getAttribute("role")).substring(0,1).toUpperCase()+((String)session.getAttribute("role")).substring(1).toLowerCase() %> | Dashboard</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<%
 	if(session.getAttribute("role").equals("FARMER")){
@@ -18,6 +18,7 @@ else{
 	<%
 	}
 	%>
+	<script src="../../assets/js/admin/layout.js" charset="utf-8"></script>
 </head>
 <body>
 	<%
@@ -25,7 +26,51 @@ else{
 	%>
 		<div class="grid">
 			<div class="grid-item1 header">
-				<div class="header-item" >
+				<div class="logo">
+
+				</div>
+				<div class="nav-bar-icon">
+          &#9776;
+        </div>
+				<!-- useful nav link -->
+        <div class="user-nav">
+					<ul>
+						<li>
+							<a href="#">Home</a>
+						</li>
+						<li>
+							<a href="#">Calendar</a>
+						</li>
+						<li>
+							<a href="#">Crop Price</a>
+						</li>
+						<li>
+							<a href="#">Weather</a>
+						</li>
+						<li>
+							<a href="#">Ask Experts</a>
+						</li>
+					</ul>
+        </div>
+				<!--user icon with few nav link -->
+        <div class="" >
+          <svg style="display:block;">
+            <defs>
+              <pattern id="user-icon-pattern" x="0" y="0" height="200" width="200" patternUnits="userSpaceOnUse" >
+                <image x="39" y="15" xlink:href="../../assets/img/user.png" height="40" width="70" ></image>
+              </pattern>
+            </defs>
+            <circle cx="75" cy="35" r="20" stroke="black"  fill="url(#user-icon-pattern)" class="user-icon" />
+          </svg>
+          <div class="user-menu">
+            <ul>
+              <li><a href="#">Your Profile</a> </li>
+              <li><a href="google.com">Link2</a> </li>
+              <li><a href="#">Logout</a> </li>
+            </ul>
+          </div>
+        </div>
+				<!--div class="header-item" >
 					<button class="menubar">Menu</button>
 					<ul class="menu">
 						<li class="menu-item"><a href="#">My Profile</a></li>
@@ -46,12 +91,11 @@ else{
 							out.print("Guest!");
 						%>
 					</h3>
-					<!--script async src="https://cse.google.com/cse.js?cx=013700959376197218555:dczhvimwrno"></script>
-					<div class="gcse-search"></div-->
+
 				</div>
 				<div class="header-item">
 
-				</div>
+				</div>-->
 			</div>
 			<div class="grid-item0">
 				<jsp:include page="../weather/weather.html"/>

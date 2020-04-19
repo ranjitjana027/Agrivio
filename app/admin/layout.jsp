@@ -7,11 +7,7 @@
     <link rel="stylesheet" href="../../assets/css/admin/layout.css">
       <script src="../../assets/js/admin/layout.js" charset="utf-8"></script>
     <link rel="stylesheet" href='../../assets/css/admin/<%= request.getParameter("filename")+".css"%>' >
-    <style media="screen">
-      title{
-        text-transform: uppercase;
-      }
-    </style>
+
   </head>
   <body>
     <div class="grid">
@@ -45,23 +41,14 @@
       </div>
       <!-- side bar -->
       <div class="grid-sidebar">
-<<<<<<< HEAD
         <div class="logo sticky">
             logo
         </div>
-        <div class="sticky">
-          <!--header class="page-header">Admin Panel</header-->
-          <ul class="nav-tab">
-=======
-        <div class="logo">
-
-        </div>
         <div class="">
           <!--header class="page-header">Admin Panel</header-->
-          <ul class="nav-tab sticky">
->>>>>>> 928d8f3063a58bba87afba3f86587dc700ab8f1e
+          <ul class="nav-tab">
             <header class="nav-header">
-               ADMIN
+               <%= session.getAttribute("role") %>
             </header>
             <li class="nav-item">
               <a href="add_article.jsp"><i>&#xf039;</i> Add an Article</a>

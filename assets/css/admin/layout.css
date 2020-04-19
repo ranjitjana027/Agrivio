@@ -47,6 +47,8 @@ body{
 ul.nav-tab{
   padding:0 15px;
   margin: 0;
+  position: sticky;
+    top: 70px;
 }
 li.nav-item{
   display: block;
