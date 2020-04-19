@@ -1,3 +1,8 @@
+<%
+if( session.getAttribute("userid")==null || !session.getAttribute("role").equals("ADMIN"))
+  response.sendRedirect("../index.jsp");
+
+%>
 <div class="">
   <h2>Admin Panel</h2>
   <ul>

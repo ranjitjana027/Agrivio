@@ -1,6 +1,7 @@
 <%
 if(session.getAttribute("userid")==null )
 	response.sendRedirect("../index.jsp");
+else{
 %>
 <!DOCTYPE html>
 <html>
@@ -133,3 +134,6 @@ if(session.getAttribute("userid")==null )
 
 	</body>
 </html>
+<%
+}
+%>

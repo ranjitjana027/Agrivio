@@ -72,5 +72,6 @@ if(request.getMethod().equals("POST"))
   <jsp:param name="filename" value="add_user" />
   <jsp:param name="errormessage" value="<%= error_message %>" />
   <jsp:param name="message" value="<%= message %>" />
+  <jsp:param name="title" value="Add a User" />
 </jsp:forward>
 <% } %>
