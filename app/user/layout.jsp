@@ -33,8 +33,8 @@ else{
 					<div class="weather-window">
 					<jsp:include page="../weather/weather.html"/>
 					</div>
-					<div class="ad-window">
-					<jsp:include page="../ad/ad.jsp" />
+					<div>
+					Trending Now
 					</div>
 				</div>
 				<!-- include grid content here -->

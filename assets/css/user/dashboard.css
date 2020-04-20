@@ -1,13 +1,14 @@
 body{
   margin: 0;
  background-color: white;
+ font-family: sans-serif;
 }
 *{
   box-sizing: border-box;
 }
 .grid{
   display: grid;
-  grid-template-rows: 70px auto 100px;
+  grid-template-rows: 60px auto 60px;
 
 
   margin: 0;
@@ -21,6 +22,7 @@ body{
 .grid-content{
   display: grid;
   grid-template-columns: auto 25%;
+  grid-column-gap: 5px ;
 }
 .grid-left{
   border-top: solid 2px   #04674e;

@@ -4,47 +4,13 @@
   top:0;
   grid-column:1/2;
   display: grid;
-  grid-template-columns: 20% 60px auto 250px 150px;
+  grid-template-columns: 20% auto 250px 150px;
   grid-gap: 5px;
   background-color:  #118a7e;
   color:snow;
   text-decoration:none;
+  box-shadow: 1px 1px 2px 1px black;
 }
-
-.menu{
-  color: blueviolet;
-  list-style: none;
-  padding: 10px;
-  margin: 0 10px 0 10px;
-  position: absolute;
-  background-color: aquamarine;
-  display: none;
-}
-.menu a{
-  text-decoration: none;
-}
-.menubar{
-  color: #009688;
-  margin: 10px 0 0 10px;
-  padding: 10px;
-  cursor: pointer;
-}
-.menubar:hover + .menu, .menu:hover{
-  display: block;
-}
-
-
-.menu-item{
-  text-decoration:none;
-  margin-bottom:5px;
-}
-
-
-.header-item{
-  display: inline-block;
-}
-
-
 .nav-bar-icon{
   font-size: 25px;
   margin: auto;
@@ -94,7 +60,10 @@ svg{
   display: block !important;
 }
 .logo{
-  background-color: white;
+  /*background-color: white;*/
+  text-align: center;
+  padding: 15px;
+  font-size: 25px;
 }
 
 
@@ -119,24 +88,30 @@ svg{
 .user-nav a{
   display: inline-block;
   text-align: center;
-  padding: 23px;
+  padding: 19px;
   text-decoration: none;
   color: snow;
-  font-family: sans-serif;
+  font-size: 20px;
+  transition: color 0.5s, background-color 0.5s, transform 0.5s;
+}
+.user-nav a:hover, .user-nav a:active{
+  background-color: snow;
+  color: #0d6d63;
+  transform: scale3d(1.05,1.05,1.05);
 }
 
 
 .search-box form{
-  margin: 17px 0;
+  margin-top:20px;
   width:245px;
-  border: solid 2px;
-  border-radius: 15px;
+  border: solid 1px;
+  /*border-radius: 5px;*/
 
 }
 .search-box input{
   padding: 4px 0 4px 10px;
   font-size: 16px;
-  border-radius: 14px 0 0 14px;
+  /*border-radius: 14px 0 0 14px;*/
   outline: none;
   border:none;
 }
