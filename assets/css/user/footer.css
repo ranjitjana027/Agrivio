@@ -1,12 +1,17 @@
 .grid-footer{
   grid-column: 1/2;
   padding: 5px;
-  background-color:#1f6f78;
+  background-color:#1f784f;
   text-align: center;
 }
+.grid-footer ul{
+  margin: 0;
+  padding:5px;;
+}
 .bottom-nav .nav-item{
+
   display:inline;
-  font-size: 20px;
+  font-size: 19px;
   padding:5px 25px;
 }
 .bottom-nav .nav-item a{

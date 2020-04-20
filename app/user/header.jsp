@@ -1,9 +1,10 @@
 <div class="grid-header">
   <div class="logo">
+    WebsiteName
   </div>
-  <div class="nav-bar-icon">
+  <!--div class="nav-bar-icon">
     &#9776;
-  </div>
+  </div-->
   <!-- useful nav link -->
   <div class="user-nav">
     <ul>
@@ -27,11 +28,11 @@
   <!--search box -->
   <div class="search-box">
     <form >
-      <input type="search" name="q" value="" >
+      <input type="search" name="q" value="" placeholder="Search..">
       <button type="submit" >
         <svg height="30" width="35">
           <circle cx="8" cy="10" r="7" fill="none" stroke="snow" stroke-width="2px" />
-          <path d="M13,13 L20,20" stroke="snow" stroke-width="4px" />
+          <path d="M13,13 L20,19" stroke="snow" stroke-width="3px" />
         </svg>
       </button>
     </form>
