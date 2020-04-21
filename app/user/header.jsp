@@ -9,19 +9,19 @@
   <div class="user-nav">
     <ul>
       <li>
-        <a href="../user/dashboard.jsp">Home</a>
+        <a href="${pageContext.request.contextPath}/dashboard">Home</a>
       </li>
       <li>
-        <a href="../calendar/calendar.jsp">Calendar</a>
+        <a href="${pageContext.request.contextPath}/calendar">Calendar</a>
       </li>
       <li>
-        <a href="../price/crop_price.jsp">Crop Price</a>
+        <a href="${pageContext.request.contextPath}/crop-price">Crop Price</a>
       </li>
       <li>
-        <a href="../weather/weather.html">Weather</a>
+        <a href="${pageContext.request.contextPath}/weather">Weather</a>
       </li>
       <li>
-        <a href="../chat/chat.jsp?room=<%= request.getParameter("userid") %>">Ask Experts</a>
+        <a href="${pageContext.request.contextPath}/ask-expert?room=<%= request.getParameter("userid") %>">Ask Experts</a>
       </li>
     </ul>
   </div>
@@ -42,7 +42,7 @@
     <svg style="display:block;">
       <defs>
         <pattern id="user-icon-pattern" x="0" y="0" height="200" width="200" patternUnits="userSpaceOnUse" >
-          <image x="39" y="15" xlink:href="../../assets/img/user.png" height="40" width="70" ></image>
+          <image x="39" y="15" xlink:href="${pageContext.request.contextPath}/assets/img/user.png" height="40" width="70" ></image>
         </pattern>
       </defs>
       <circle cx="75" cy="35" r="20" stroke="black"  fill="url(#user-icon-pattern)" class="user-icon" />

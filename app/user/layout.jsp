@@ -11,10 +11,10 @@ else{
 	<%
 	if(session.getAttribute("role").equals("FARMER")){
 	%>
-		<link rel="stylesheet" href="../../assets/css/user/dashboard.css">
-		<link rel="stylesheet" href="../../assets/css/user/header.css">
-		<link rel="stylesheet" href="../../assets/css/user/footer.css">
-		<script src="../../assets/js/admin/layout.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/dashboard.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/header.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/footer.css">
+		<script src="${pageContext.request.contextPath}/assets/js/admin/layout.js" charset="utf-8"></script>
 	<% }
 	%>
 
@@ -31,7 +31,7 @@ else{
 			<div class="grid-section">
 				<div class="grid-left">
 					<div class="weather-window">
-					<jsp:include page="../weather/weather.html"/>
+					<jsp:include page="../weather/weather.jsp"/>
 					</div>
 					<div>
 					Trending Now

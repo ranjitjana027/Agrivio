@@ -1,13 +1,14 @@
-<link rel="stylesheet" href="../../assets/css/chat/chat.css">
-<script src="../../assets/js/chat/chat.js" charset="utf-8"></script>
+
 <%
 System.out.println(request.getParameter("room")==null);
 	if(session.getAttribute("userid")==null)
-		response.sendRedirect("../auth/login.jsp");
+		response.sendRedirect("${pageContext.request.contextPath}/login");
   else if(request.getParameter("room")==null || ( session.getAttribute("role").equals("FARMER") && !request.getParameter("room").equals(session.getAttribute("userid"))) )
-    response.sendRedirect("../user/dashboard.jsp");
+    response.sendRedirect("${pageContext.request.contextPath}/dashboard");
   else {
 %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/chat/chat.css">
+<script src="${pageContext.request.contextPath}/assets/js/chat/chat.js" charset="utf-8"></script>
 <%@ page import="java.sql.*" %>
 <%
     try {

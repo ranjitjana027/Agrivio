@@ -5,7 +5,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Sign Up</title>
-	<link rel="stylesheet" type="text/css" href="../../assets/css/auth/signup.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/auth/signup.css">
 	<style>
 
 
@@ -16,15 +16,15 @@
 	<!-- jsp code start -->
 	<%! String errorMessage; %>
 
-	<% 
-		
+	<%
+
 		if(session.getAttribute("userid")==null){
 			errorMessage=null;
-		
+
 			if(!request.getMethod().equals("GET")){
-				try { 
-	
-					// Initialize the database 
+				try {
+
+					// Initialize the database
 					new org.postgresql.Driver();
 					java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
 
@@ -33,22 +33,22 @@
 					String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 
 					Connection con=DriverManager.getConnection(dbUrl, username, password);
-	
+
 					Statement stmt = con.createStatement();
 					String insert=("insert into users(firstname, lastname, mobile, email, password) values(  '"
 					+ request.getParameter("firstname")+"', '"+request.getParameter("lastname")+"','"+request.getParameter("mobile")
 					+"', '"+request.getParameter("email")+"', '" +request.getParameter("password")+ "')");
-					
+
 					stmt.executeUpdate(insert);
-					
+
 					stmt.close();
 					con.close();
 					response.sendRedirect("../index.jsp");
-				} 
-				catch (Exception e) { 
+				}
+				catch (Exception e) {
 					e.printStackTrace();
-					errorMessage="Error occured while signing up."; 
-				} 
+					errorMessage="Error occured while signing up.";
+				}
 			}
 		}
 		else{
@@ -67,7 +67,7 @@
 
 	<div class="container">
 		<div class="image">
-			<img class="farmer" src="../../assets/img/auth/farmer.png" alt="farmer">
+			<img class="farmer" src="${pageContext.request.contextPath}/assets/img/auth/farmer.png" alt="farmer">
 		</div>
 		<div class="wrap">
 			<h1 class="wrap-header">Create an Account</h1>
@@ -121,7 +121,7 @@
 			</form>
 
 			<footer class="wrap-footer">
-				<span>Already Registered? <a href="login.jsp">Login Now! </a></span>
+				<span>Already Registered? <a href="${pageContext.request.contextPath}/login">Login Now! </a></span>
 			</footer>
 		</div>
 	</div>

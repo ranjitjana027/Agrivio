@@ -11,10 +11,10 @@ else{
 	<%
 	if(session.getAttribute("role").equals("FARMER")){
 	%>
-		<link rel="stylesheet" href="../../assets/css/user/dashboard.css">
-		<link rel="stylesheet" href="../../assets/css/user/header.css">
-		<link rel="stylesheet" href="../../assets/css/user/footer.css">
-		<script src="../../assets/js/admin/layout.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/dashboard.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/header.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/footer.css">
+		<script src="${pageContext.request.contextPath}/assets/js/admin/layout.js" charset="utf-8"></script>
 	<% }
 	%>
 
@@ -24,17 +24,17 @@ else{
 	if(session.getAttribute("role").equals("FARMER")){
 	%>
 		<div class="grid">
-			<jsp:include page="header.jsp" >
+			<jsp:include page="/app/user/header.jsp" >
 				<jsp:param name="userid" value="<%= session.getAttribute(\"userid\") %>" />
 			</jsp:include >
 			<!-- page content -->
 			<div class="grid-section">
 				<div class="grid-left">
 					<div class="weather-window">
-					<jsp:include page="../weather/weather.html"/>
+					<jsp:include page="/app/weather/weather.jsp"/>
 					</div>
 					<div class="ad-window">
-					<jsp:include page="../ad/ad.jsp" />
+					<jsp:include page="/app/ad/ad.jsp" />
 					</div>
 				</div>
 				<div class="grid-content">
@@ -43,7 +43,7 @@ else{
 							Welcome to our site!<br>
 							<h2>Stay Home, Be Safe.</h2>
 
-							<jsp:include page="../article/article.html" />
+							<jsp:include page="/app/article/article.html" />
 						</div>
 					</div>
 					<div class="grid-item6">
@@ -55,13 +55,13 @@ else{
 
 			</div>
 
-			<jsp:include page="footer.html" />
+			<jsp:include page="/app/user/footer.html" />
 		</div>
 	<% }else if(session.getAttribute("role").equals("ADMIN")){
 	%>
 
 	<%
-	response.sendRedirect("../admin/dashboard.jsp");
+	response.sendRedirect("/app/admin/dashboard.jsp");
 	}
 	%>
 
