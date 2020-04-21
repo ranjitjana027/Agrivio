@@ -61,7 +61,7 @@ else{
 	%>
 
 	<%
-	response.sendRedirect("/app/admin/dashboard.jsp");
+	response.sendRedirect(request.getContextPath()+"/admin/dashboard");
 	}
 	%>
 
