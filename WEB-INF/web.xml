@@ -63,6 +63,15 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>Logout</servlet-name>
+    <jsp-file>/app/auth/logout.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>Calendar</servlet-name>
     <jsp-file>/app/calendar/calendar.jsp</jsp-file>
   </servlet>

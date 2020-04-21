@@ -43,7 +43,7 @@
 
 					stmt.close();
 					con.close();
-					response.sendRedirect("../index.jsp");
+					response.sendRedirect(request.getContextPath()+"/index");
 				}
 				catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +52,7 @@
 			}
 		}
 		else{
-			out.print("<script>alert(\"You're already logged in\"); location.href=\"../user/dashboard.jsp \"</script>");
+			out.print("<script>alert(\"You're already logged in\"); location.href=\""+ request.getContextPath()+"/app/user/dashboard.jsp \"</script>");
 			//response.sendRedirect("../user/dashboard.jsp");
 		}
 	%>

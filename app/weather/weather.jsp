@@ -1,47 +1,65 @@
 
 		<script type="text/javascript">
+				function showPosition(position) {
+		        lat= position.coords.latitude ;
+		        lon= position.coords.longitude;
+		        weatherUpdate(lat,lon);
+		      }
+		    navigator.geolocation.getCurrentPosition(showPosition);
+
+		    function weatherUpdate(lat,lon){
+		      var request=new XMLHttpRequest();
+		      request.open("GET","http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW&q="+lat+"%2C"+lon);
+		      request.onload=()=>{
+		        var data=JSON.parse(request.responseText);
+		        currentWeather(data["Key"])
+		      }
+		      request.send();
+		    }
+
+		    function currentWeather(key){
+		      var request=new XMLHttpRequest();
+		      request.open("GET","http://dataservice.accuweather.com/currentconditions/v1/"+key+"?details=true&apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW");
+		      request.onload=()=>{
+		        var data=JSON.parse(request.responseText);
+		        console.log(data);
+		        console.log(data[0].Temperature.Metric.Value);
+		        document.querySelector('#currTemp').innerHTML=Math.round(data[0].Temperature.Metric.Value);
+		        document.querySelector('#feelTemp').innerHTML=Math.round(data[0].RealFeelTemperature.Metric.Value);
+		        document.querySelector('#desc').innerHTML=data[0].WeatherText;
 
 
-			function showPosition(position) {
-					lat= position.coords.latitude ;
-					lon= position.coords.longitude;
-					weatherUpdate(lat,lon);
-				}
-			navigator.geolocation.getCurrentPosition(showPosition);
-			function weatherUpdate(lat,lon){
-				var request=new XMLHttpRequest();
-				request.open("GET", location.protocol+"//"+location.host+"/farmer/app/weather/weatherJSON.jsp?lat="+lat+"&lon="+lon+"&appid=bbd7cea7000ec20b5d560c73b59adcc4&units=metric");
-				request.onload=()=>{
-					data=JSON.parse(request.responseText);
-					city=data["name"];
-					desc=data["weather"][0]["description"];
-					temp=Number(data["main"]["temp"]).toFixed(1);
-					feels_like=Number(data["main"]["feels_like"]).toFixed(1);
-					humidity=(data["main"]["humidity"]);
-					temp_min=Number(data["main"]["temp_min"]).toFixed(1);
-					temp_max = Number(data["main"]["temp_max"]).toFixed(1);
-					sunrise=new Date(Number(data["sys"]["sunrise"]) * 1000).toLocaleTimeString();
-					sunset= new Date(Number(data["sys"]["sunset"]) * 1000).toLocaleTimeString();
+		      }
+		      request.send();
+		    }
 
-
-
-					document.querySelector('#weather-details').innerHTML="<li>City: "
-					+city+"</li><li>Weather: "
-					+desc +"</li><li>Temperature: "
-					+temp+" &deg;c</li><li>Feels like: "
-					+feels_like+" &deg;c</li><li>Humidity: "
-					+humidity+"&#37;</li>"/*"<li>Minimum Temperature: "
-					+ temp_min+" &deg;c</li><li>Maximum Temperatur: "
-					+temp_max+" &deg;c</li>*/+ "<li>Sunrise: "
-					+sunrise+"</li><li>Sunset: "
-					+sunset+"</li>";
-
-				}
-				request.send();
-			}
 		</script>
-		<div style="height: 100%; background-image: url('/farmer/assets/img/images.png'); background-size: contain; background-size: cover;">
-			<ul id="weather-details" style="padding: 10px; margin: 0; color: navy ; ">
 
-			</ul>
-		</div>
+
+    <div class="target" style="height:100px;
+															display: grid;
+															grid-template-columns: 90px 120px auto;
+															background-color:lightgreen;
+															width:100%;
+															font-family: sans-serif;">
+      <div class="" style="background-color:snow;">
+        <svg>
+          <text x="0" y="50" style="font-size:50px;">
+            <tspan x="0" id="currTemp"></tspan>
+            <tspan x="60" style="baseline-shift:super; font-size:30px;">&deg;</tspan>
+            <tspan x="60" style="font-size:30px;">c</tspan>
+            <tspan></tspan>
+          </text>
+        </svg>
+      </div>
+      <div class="" style="background-color:aliceblue;">
+        <svg>
+          <text>
+            <tspan x="0" y="25" id="desc"></tspan>
+            <tspan x="0" y="50" >Feels Like</tspan>
+            <tspan id="feelTemp"> </tspan><tspan>&deg;</tspan>
+          </text>
+        </svg>
+      </div>
+
+    </div>
