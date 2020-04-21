@@ -45,6 +45,39 @@
     <url-pattern>/dashboard</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>AdminDashboard</servlet-name>
+    <jsp-file>/app/admin/dashboard.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDashboard</servlet-name>
+    <url-pattern>/admin/dashboard</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddArticle</servlet-name>
+    <jsp-file>/app/admin/add_article.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddArticle</servlet-name>
+    <url-pattern>/admin/add-article</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddUser</servlet-name>
+    <jsp-file>/app/admin/add_user.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddUser</servlet-name>
+    <url-pattern>/admin/add-user</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ViewUsers</servlet-name>
+    <jsp-file>/app/admin/view_users.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewUsers</servlet-name>
+    <url-pattern>/admin/view-users</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>SignUp</servlet-name>
     <jsp-file>/app/auth/signup.jsp</jsp-file>
   </servlet>

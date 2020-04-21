@@ -1,7 +1,7 @@
 
 <%
 if( session.getAttribute("userid")==null || !session.getAttribute("role").equals("ADMIN"))
-  response.sendRedirect("../index.jsp");
+  response.sendRedirect(request.getContextPath()+"/index");
 else {
 %>
 <%@ page import="java.sql.*" %>
@@ -57,11 +57,11 @@ if(request.getMethod().equals("POST"))
 
 }
 %>
-<jsp:forward page="layout.jsp">
+<jsp:forward page="/app/admin/layout.jsp">
   <jsp:param name="filename" value="add_article" />
   <jsp:param name="title" value="Add an Article" />
   <jsp:param name="errormessage" value="<%= error_message %>" />
-  <jsp:param name="message" value="<%= message %>" />  
+  <jsp:param name="message" value="<%= message %>" />
 </jsp:forward>
 <%
 }
