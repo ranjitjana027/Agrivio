@@ -91,7 +91,7 @@ svg{
   padding: 19px;
   text-decoration: none;
   color: snow;
-  font-size: 20px;
+  font-size: 18px;
   transition: color 0.5s, background-color 0.5s, transform 0.5s;
 }
 .user-nav a:hover, .user-nav a:active{
