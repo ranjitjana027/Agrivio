@@ -1,13 +1,13 @@
 body{
   margin: 0;
   width: inherit;
-  font-family: system-ui;
+  font-family:"Roboto", sans-serif;
 
 }
 .grid{
   display: grid;
-  grid-template-columns: 250px  auto;
-  grid-template-rows: 80px auto 80px;
+  grid-template-columns: 240px  auto;
+  grid-template-rows: 70px auto 60px;
   width: inherit;
   min-height: 100vh;
 
@@ -32,11 +32,12 @@ body{
   width: 100%;
 }
 .grid-sidebar{
-  grid-row:2/4;
+  grid-row:1/4;
   grid-column: 1/2;
   background-color: white;
   color: black;
-  display: block;
+  display: grid;
+  grid-template-rows: 70px auto;
   width: 100%;
 }
 .sticky{
@@ -45,18 +46,22 @@ body{
 }
 ul.nav-tab{
   padding:0 15px;
+  margin: 0;
+  position: sticky;
+    top: 70px;
 }
 li.nav-item{
   display: block;
   list-style: none;
   margin: 20px 0;
   height: 30px;
+  padding-left: 5px;
 
 }
 li.nav-item a{
   color: inherit;
   text-decoration: none;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 19px;
 
 }
@@ -66,7 +71,72 @@ li.nav-item a:hover
 }
 
 .nav-header{
-  padding:0 15px 15px 15px;
+  padding:0px 15px 15px 15px;
   text-align: center;
-  font-size: 20px ;
+  font-size: 18px ;
+  text-transform: uppercase;
+
+}
+
+/* added new */
+
+.nav-bar-icon{
+  font-size: 25px;
+  margin: auto;
+  margin-left: 15px;
+  cursor: pointer;
+  display: inline-block;
+
+}
+.user-icon{
+  display: inline-block;
+
+}
+svg{
+  max-width: 100%;
+  max-height: 100%;
+}
+.grid-header{
+
+  display: grid;
+  grid-template-columns: 60px auto 150px;
+  grid-gap: 5px;
+}
+.user-icon{
+  cursor: pointer;
+  background-color: black;
+}
+.user-menu ul{
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  min-width: 130px;
+  padding: 5px;
+  text-align: center;
+  display: none;
+}
+.user-menu li{
+  min-height: 35px;
+  padding-top: 10px;
+  border-bottom: solid 2px;
+  background-color: #1d9863;
+  cursor: pointer;
+  border-bottom-style: outset;
+}
+.user-menu a{
+  text-decoration: none;
+  color: snow;
+}
+.user-menu li:hover{
+  background-color: #1b7d53;
+}
+.show{
+  display: block !important;
+}
+
+
+.logo{
+  text-align: center;
+  padding: 15px;
 }

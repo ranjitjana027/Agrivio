@@ -1,5 +1,5 @@
 .page-header{
-  font-size: 20pt;
+  font-size: 20px;
   font-weight: bold;
 
   padding: 30px  20px;
@@ -24,7 +24,7 @@
 .table-header{
   margin: 20px auto auto 20px;
   padding: 10px;
-  font-size: 21px;
+  font-size: 18px;
   font-family: Arial, sans-serif;
 }
 th, td{
@@ -39,7 +39,7 @@ th{
   text-align: center;
   background-color: #93e4c1;
   color: #0b5a53;
-  font-size: 20px;
+  font-size: 19px;
   font-family: Lucidatypewriter, monospace;
 }
 tr{

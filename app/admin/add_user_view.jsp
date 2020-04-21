@@ -1,5 +1,5 @@
-<script src="../../assets/js/lib/custom-select.js" charset="utf-8"></script>
-<link rel="stylesheet" href="../../assets/css/lib/custom-select.css">
+<script src="${pageContext.request.contextPath}/assets/js/lib/custom-select.js" charset="utf-8"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/custom-select.css">
 <div class="page-header">Add a user </div>
 <form action="add_user.jsp" method="post">
   <% if(!request.getParameter("errormessage").equals("")){ %>
@@ -79,4 +79,4 @@
 
 
 </form>
-<script src="../../assets/js/admin/add_user.js" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/assets/js/admin/add_user.js" charset="utf-8"></script>
