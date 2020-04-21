@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Page</title>
 
-    <link rel="stylesheet" type="text/css" href="../../assets/css/auth/login.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/auth/login.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
     <%! String errorMessage; %>
     <%
         if(session.getAttribute("userid")!=null){
-            out.print("<script>alert(\"You're already logged in\"); location.href=\"../user/dashboard.jsp \"</script>");
+            out.print("<script>alert(\"You're already logged in\"); location.href=\""+request.getContextPath()+"/dashboard \"</script>");
         }
         if(!request.getMethod().equals("GET")){
             try {
@@ -36,7 +36,7 @@
                 st.setString(1, request.getParameter("mobile"));
                 st.setString(2, request.getParameter("password"));
                 ResultSet rs=st.executeQuery();
-
+                con.close();
 
                 if(rs.next())
                 {
@@ -48,7 +48,7 @@
                 }
                 if((String)session.getAttribute("userid")!=null)
                     {
-                      response.sendRedirect("../user/dashboard.jsp");
+                      response.sendRedirect(request.getContextPath()+"/dashboard");
                     }
                 else
                     errorMessage="Invalid Username/Password.";
@@ -65,10 +65,10 @@
     </div>
     <div class="container">
         <div class="image">
-            <img class="farmer" src="../../assets/img/auth/farmer.png" alt="farmer">
+            <img class="farmer" src="${pageContext.request.contextPath}/assets/img/auth/farmer.png" alt="farmer">
         </div>
-		
-       
+
+
 		<form method="post"  class="wrap">
             <div class="form-item">
                 <b>Mobile:</b>
@@ -103,7 +103,7 @@
                 <p>Need help?</p>
             </div>
             </form>
-        
+
     </div>
 </body>
 

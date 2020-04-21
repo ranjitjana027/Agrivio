@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="../../assets/css/price/mandiPrice.css">
-  <script src="../../assets/js/price/mandiPrice.js" charset="utf-8"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/price/mandiPrice.css">
+  <script src="${pageContext.request.contextPath}/assets/js/price/mandiPrice.js" charset="utf-8"></script>
       <div class="grid-content">
         <div style="display:inline-block; width: 250px;color:#93e4c1;">
             <label for="state">State: </label>

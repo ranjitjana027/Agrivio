@@ -1,6 +1,6 @@
 
 		<script type="text/javascript">
-		
+
 
 			function showPosition(position) {
 					lat= position.coords.latitude ;
@@ -40,10 +40,8 @@
 				request.send();
 			}
 		</script>
-		<div style="height: 100%; background-image: url('../../assets/img/images.png'); background-size: contain; background-size: cover;">
+		<div style="height: 100%; background-image: url('/farmer/assets/img/images.png'); background-size: contain; background-size: cover;">
 			<ul id="weather-details" style="padding: 10px; margin: 0; color: navy ; ">
-			
+
 			</ul>
 		</div>
-		
-	

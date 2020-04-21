@@ -1,6 +1,6 @@
 
-  <link rel="stylesheet" href="../../assets/css/calendar/calendar.css">
-<script src="../../assets/js/calendar/calendar.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/calendar/calendar.css">
+<script src="${pageContext.request.contextPath}/assets/js/calendar/calendar.js" charset="utf-8"></script>
   <%@ page import="java.sql.*" %>
 	<%! String errorMessage; %>
 	<%

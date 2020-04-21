@@ -24,7 +24,79 @@
 
   <display-name>Agricultural Project</display-name>
   <description>
-     Welcome to Tomcat
+     Welcome
   </description>
+
+  <servlet>
+    <servlet-name>Index</servlet-name>
+    <jsp-file>/app/index.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Index</servlet-name>
+    <url-pattern>/index</url-pattern>
+  </servlet-mapping>
+  <!-- Index -->
+  <servlet>
+    <servlet-name>UserDashboard</servlet-name>
+    <jsp-file>/app/user/dashboard.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserDashboard</servlet-name>
+    <url-pattern>/dashboard</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SignUp</servlet-name>
+    <jsp-file>/app/auth/signup.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignUp</servlet-name>
+    <url-pattern>/signup</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Login</servlet-name>
+    <jsp-file>/app/auth/login.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Calendar</servlet-name>
+    <jsp-file>/app/calendar/calendar.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Calendar</servlet-name>
+    <url-pattern>/calendar</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Price</servlet-name>
+    <jsp-file>/app/price/crop_price.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Price</servlet-name>
+    <url-pattern>/crop-price</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Chat</servlet-name>
+    <jsp-file>/app/chat/chat.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Chat</servlet-name>
+    <url-pattern>/ask-expert</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Weather</servlet-name>
+    <jsp-file>/app/weather/weather.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Weather</servlet-name>
+    <url-pattern>/weather</url-pattern>
+  </servlet-mapping>
+
+
 
 </web-app>
