@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded",()=>{
 
-  window.onclick=(event)=>{
+  document.addEventListener('click',(event)=>{
 
     //console.log(event.target)
     if(event.target.classList.contains('select')){
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         item.querySelector('.selected-option').classList.remove('option-expanded');
       });
     }
-  }
+  });
 
   document.querySelectorAll('.form-select').forEach((item, i) => {
     var outerDiv=document.createElement('div');

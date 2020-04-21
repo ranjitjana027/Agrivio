@@ -1,0 +1,79 @@
+
+.calendar{
+    padding: 20px;
+    width: 700px;
+}
+.cal-box{
+  box-shadow: 5px 5px 10px 1px;
+}
+.cal-head{
+    background-color: antiquewhite;
+    display: grid;
+    grid-template-columns: auto 80% auto;
+    text-align: center;
+
+}
+.cal-main{
+    background-color: rgb(130, 238, 229);
+    width: 100%;
+    height: 400px;
+}
+table{
+    column-count: auto;
+    width: inherit;
+    height: inherit;
+
+}
+.cal-day, .cal-num{
+    text-align: center;
+}
+.cal-num{
+    cursor: pointer;
+}
+.prev-month, .next-month{
+    font-weight: lighter;
+    opacity: 0.8;
+}
+.curr-month{
+    font-weight: 600;
+}
+th{
+
+    color: navy;
+}
+td, th{
+    padding: 10px;
+
+}
+.today{
+        border-radius: 50%;
+        border: solid #333 2px;
+        color: aliceblue;
+        background-color: #333;
+}
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height:100%;
+    top:0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content{
+    display: block;
+    background-color: aliceblue;
+    width: 400px;
+    margin: 5% auto;
+    padding: 10px;
+}
+.close{
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.event-display{
+    text-decoration: rgb(230, 5, 136) underline;
+}

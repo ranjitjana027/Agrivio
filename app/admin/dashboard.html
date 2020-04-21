@@ -5,169 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../../assets/css/admin/layout.css">
+    <script src="../../assets/js/admin/layout.js" charset="utf-8"></script>
     <style media="screen">
-    .page-header{
-      font-size: 20pt;
-      font-weight: bold;
-
-      padding: 30px  20px;
-      font-family: Verdana, Lucida Console, Courier, monospace;
-    }
-    .row{
-      display: block;
-      text-align: center;
-      width: 100%;
-    }
-    .column{
-      display: inline-block;
-      text-align: justify;
-    }
-
-    .table{
-      width: 470px;
-      border-collapse: collapse;
-      padding: 10px 30px;
+    .search-box form{
+      margin: 17px 0;
+      width:245px;
+      border: solid 2px;
+      border-radius: 15px;
 
     }
-    .table-header{
-      margin: 20px auto auto 20px;
-      padding: 10px;
-      font-size: 21px;
-      font-family: Arial, sans-serif;
+    .search-box input{
+      padding: 5px 0 5px 10px;
+      font-size: 16px;
+      border-radius: 14px 0 0 14px;
+      outline: none;
+      border:none;
     }
-    th, td{
-      height: 50px;
+    .search-box input:focus{
+      background-color: aliceblue;
+    }
+      .search-box button{
+        background-color:transparent;
+        border:none;
+        outline: none;
+        cursor: pointer;
+        position: absolute;
+      }
 
-      word-wrap: break-word;
-      padding:0 5px;
-      max-width: 150px;
-    }
-    th{
-      text-align: center;
-      background-color: #93e4c1;
-      color: #0b5a53;
-      font-size: 20px;
-      font-family: Lucidatypewriter, monospace;
-    }
-    tr{
-      background-color: #22756d;
-    }
-    tr:nth-child(even){
-      background-color: #048a6b;
-    }
-
-
-    #farmers td:nth-child(4){
-      text-align: center;
-      width: 100px;
-    }
     </style>
-
   </head>
   <body>
     <div class="grid">
-      <div class="">
-        <svg>
-          <circle cx="100" cy="35" r="30" fill="green" />
-        </svg>
-      </div>
+
+      <!--  header -->
       <div class="grid-header">
+        <div class="nav-bar-icon">
+          &#9776;
+        </div>
+        <div class="search-box" >
+          <form  method="post">
+            <input type="search" name="q" value="" >
+            <button type="submit" >
+              <svg height="30" width="35">
+                <circle cx="8" cy="12" r="7" fill="none" stroke="snow" stroke-width="3px" />
+                <path d="M13,15 L22,22" stroke="snow" stroke-width="4px" />
+              </svg>
+            </button>
+          </form>
+        </div>
+        <div class="" >
+          <svg style="display:block;">
+            <defs>
+              <pattern id="user-icon-pattern" x="0" y="0" height="200" width="200" patternUnits="userSpaceOnUse" >
+                <image x="39" y="15" xlink:href="../../assets/img/user.png" height="40" width="70" ></image>
+              </pattern>
+            </defs>
+            <circle cx="75" cy="35" r="20" stroke="black"  fill="url(#user-icon-pattern)" class="user-icon" />
+          </svg>
+          <div class="user-menu">
+            <ul>
+              <li><a href="#">Your Profile</a> </li>
+              <li><a href="google.com">Link2</a> </li>
+              <li><a href="#">Logout</a> </li>
+            </ul>
+          </div>
+        </div>
       </div>
+
+
+      <!-- side nav -->
       <div class="grid-sidebar">
-        <!--header class="page-header">Admin Panel</header-->
-        <ul class="nav-tab sticky">
-          <header class="nav-header">
-             ADMIN
-          </header>
-          <li class="nav-item">
-            <a href="add_article.jsp"><i>&#xf039;</i> Add an Article</a>
-          </li>
-          <li class="nav-item">
-            <a href="view_users.jsp"><i>&#xf039;</i> View all Users</a>
-          </li>
-          <li class="nav-item">
-            <a href="add_user.jsp"><i>&#xf039;</i> Add an User</a>
-          </li >
-        </ul>
+        <div class="logo">
+          Website
+        </div>
+        <div class="">
+          <!--header class="page-header">Admin Panel</header-->
+          <ul class="nav-tab sticky">
+            <header class="nav-header">
+               Role
+            </header>
+            <li class="nav-item">
+              <a href="add_article.jsp"><i>&#xf039;</i> Add an Article</a>
+            </li>
+            <li class="nav-item">
+              <a href="view_users.jsp"><i>&#xf039;</i> View all Users</a>
+            </li>
+            <li class="nav-item">
+              <a href="add_user.jsp"><i>&#xf039;</i> Add an User</a>
+            </li >
+          </ul>
+        </div>
+
       </div>
+
+      <!-- main content -->
       <div class="grid-item">
-        <div class="page-header">
-          View All Users
-        </div>
-        <div class="row">
-          <div class="column">
-            <div class="table-header">
-              Farmers
-            </div>
-            <div class="table">
-              <table id="farmers">
-                <thead>
-                  <th>Name</th>
-                  <th>Mobile</th>
-                  <th>Email</th>
-                  <th>Premium</th>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Userrerererrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrere Name</td>
-                  <td>9800000000</td>
-                  <td>eeeeeeeeeerge</td>
-                  <td>&#10060;</td>
-                </tr>
-                <tr>
-                  <td>User Name</td>
-                  <td>9800000000</td>
-                  <td>fkjghjkhfg</td>
-                  <td>&#9989;</td>
-                </tr>
-                <tr>
-                  <td>Userrkfgvh Name</td>
-                  <td>9800535400000</td>
-                  <td>reeeeeeeeeeeee</td>
-                  <td>&#9989;</td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
 
-          </div>
-          <div class="column">
-            <div class="table-header">
-              Experts
-            </div>
-            <div class="table">
-              <table>
-                <thead>
-                  <th>Name</th>
-                  <th>Mobile</th>
-                  <th>Email</th>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>User Name</td>
-                  <td>9800000000</td>
-                  <td>eeeeeeeeeerge</td>
-
-                </tr>
-                <tr>
-                  <td>User Name</td>
-                  <td>9800000000</td>
-                  <td>fkjghjkhfg</td>
-
-                </tr>
-                <tr>
-                  <td>Userrkfgvh Name</td>
-                  <td>9800535400000</td>
-                  <td>reeeeeeeeeeeeeee</td>
-
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-        </div>
       </div>
+
+      <!-- footer -->
       <div class="grid-footer">
 
       </div>
