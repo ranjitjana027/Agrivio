@@ -9,11 +9,8 @@ body{
 .grid{
   display: grid;
   grid-template-rows: 60px auto 60px;
-
-
   margin: 0;
   min-height: 100vh;
-
 }
 .grid-section{
   display: grid;
