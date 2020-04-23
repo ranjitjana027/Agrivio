@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded",()=>{
+  eventdata=null;
   fillCalendar(new Date().getFullYear(),new Date().getMonth());
   document.getElementById('btn-prev').onclick=()=>{
       fillCalendar(Number(document.getElementById('prev-year').innerText), Number(document.getElementById('prev-month').innerText));
@@ -116,45 +117,112 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
 
   function fetchEvent() {
-          request = new XMLHttpRequest();
-          request.open("GET", location.protocol + "//" + location.host + "/farmer/app/event/fetchEvents.jsp");
-          request.onload = () => {
-              data = JSON.parse(request.responseText)['events']
-              console.log(data);
-              monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
-                  'August', 'September', 'October', 'November', 'December']
-              var currmonth = monthList.indexOf(document.getElementById('cal-month').innerText);
-              console.log(currmonth)
-              var curryear = document.getElementById('cal-year').innerText;
-              console.log(curryear);
 
-              ///
-              currmonth=(currmonth+1)
-              var d = new Date(curryear, currmonth-1, 1);
-              var ad = d.getDay() - 1;
-              var dates = document.querySelectorAll('.cal-num');
-              mdata=(data.filter(e => e.date.match(new RegExp(curryear+'-0*'+currmonth+'-.*'))))
+          document.querySelector('.crop-stats').classList.remove('show');
+          document.querySelector('.event-type-stats').classList.remove('show');
+          if(eventdata==null)
+          {
+            request = new XMLHttpRequest();
+            request.open("GET", location.protocol + "//" + location.host + "/farmer/app/event/fetchEvents.jsp");
+            request.onload = () => {
+                eventdata = JSON.parse(request.responseText)['events']
+                console.log(eventdata);
+                fetchEventUtil(eventdata);
+            }
+            request.send();
 
-              for(let i=0;i<mdata.length;i++)
-              {
-                  var ed = new Date(mdata[i].date);
-                  console.log(ed.getDate())
-                  var val = ad + ed.getDate();
-                  var r = Math.floor(val / 7);
-                  var c = val % 7;
-                  dates[r].children[c].innerHTML += "<span class='event-id' hidden>" + mdata[i].id + "</span>" +
-                      "<span class='crop' hidden >" + mdata[i].crop + "</span>" +
-                      "<span class='event-type' hidden >" + mdata[i].eventtype + "</span>" +
-                      "<span class='remark' hidden>" + mdata[i].remark + "</span>";
-                  //dates[r].children[c].style.textDecoration = "underline";
-                  dates[r].children[c].onclick=showEvent;
-                  dates[r].children[c].classList.add('event-display')
-                  dates[r].children[c].querySelector('.event-count').innerText=Number(dates[r].children[c].querySelector('.event-count').innerText)+1
-              }
           }
-          request.send();
-
+          else {
+            fetchEventUtil(eventdata);
+          }
       }
+
+function fetchEventUtil(data)
+{
+    monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+        'August', 'September', 'October', 'November', 'December']
+    var currmonth = monthList.indexOf(document.getElementById('cal-month').innerText);
+    console.log(currmonth)
+    var curryear = document.getElementById('cal-year').innerText;
+    console.log(curryear);
+
+    ///
+    currmonth=(currmonth+1)
+    var d = new Date(curryear, currmonth-1, 1);
+    var ad = d.getDay() - 1;
+    var dates = document.querySelectorAll('.cal-num');
+    mdata=(data.filter(e => e.date.match(new RegExp(curryear+'-0*'+currmonth+'-.*'))))
+    var eventstats={};
+    eventstats.noofevents=mdata.length;
+    eventstats.eventdays=new Set();
+    eventstats.events={}
+    eventstats.events.crop=new Object();
+    eventstats.events.eventtype={};
+    for(let i=0;i<mdata.length;i++)
+    {
+        var ed = new Date(mdata[i].date);
+        console.log(ed.getDate())
+        eventstats.eventdays.add(ed.getDate());
+        if(eventstats.events.crop.hasOwnProperty(mdata[i].crop))
+        {
+          eventstats.events.crop[mdata[i].crop]+=1;
+        }
+        else{
+          eventstats.events.crop[mdata[i].crop]=1;
+        }
+
+        if(eventstats.events.eventtype.hasOwnProperty(mdata[i].eventtype))
+        {
+          eventstats.events.eventtype[mdata[i].eventtype]+=1;
+        }
+        else{
+          eventstats.events.eventtype[mdata[i].eventtype]=1;
+        }
+        var val = ad + ed.getDate();
+        var r = Math.floor(val / 7);
+        var c = val % 7;
+        dates[r].children[c].innerHTML += "<span class='event-id' hidden>" + mdata[i].id + "</span>" +
+            "<span class='crop' hidden >" + mdata[i].crop + "</span>" +
+            "<span class='event-type' hidden >" + mdata[i].eventtype + "</span>" +
+            "<span class='remark' hidden>" + mdata[i].remark + "</span>";
+        //dates[r].children[c].style.textDecoration = "underline";
+        dates[r].children[c].onclick=showEvent;
+        dates[r].children[c].classList.add('event-display')
+        dates[r].children[c].querySelector('.event-count').innerText=Number(dates[r].children[c].querySelector('.event-count').innerText)+1
+    }
+    console.log(eventstats)
+    document.querySelector('#table1').innerHTML="<tr><th>No of Events</th><td>"+eventstats.noofevents+"</td></tr>"
+                              +"<tr><th>No of days of Event</th><td>"+eventstats.eventdays.size+"</td></tr>"
+                              +"<tr><th>No of Crops Mentioned</th><td>"+Object.keys(eventstats.events.crop).length+"</td></tr>";
+    document.querySelector('.stats-overview').classList.add('show');
+    document.querySelector('#table2-body').innerHTML=""
+    for(let c in eventstats.events.crop){
+      var tr=document.createElement('tr');
+      var td1=document.createElement('td');
+      var td2=document.createElement('td');
+      td1.innerHTML=c;
+      td2.innerHTML=eventstats.events.crop[c];
+      tr.append(td1);
+      tr.append(td2);
+      document.querySelector('#table2-body').append(tr);
+    }
+    document.querySelector('#table3-body').innerHTML=""
+    for(let c in eventstats.events.eventtype){
+      var tr=document.createElement('tr');
+      var td1=document.createElement('td');
+      var td2=document.createElement('td');
+      td1.innerHTML=c;
+      td2.innerHTML=eventstats.events.eventtype[c];
+      tr.append(td1);
+      tr.append(td2);
+      document.querySelector('#table3-body').append(tr);
+    }
+
+    if(eventstats.noofevents>0){
+      document.querySelector('.crop-stats').classList.add('show');
+      document.querySelector('.event-type-stats').classList.add('show');
+    }
+}
 
 
   function activateModal(){
@@ -244,7 +312,8 @@ document.addEventListener("DOMContentLoaded",()=>{
               li.append(table[k]);
               document.querySelector('#show-event-modal').querySelector('.event-list').append(li);
           }
-          document.querySelector('#show-event-modal').querySelector('.event-date').innerText = evt.target.querySelector('.date-day').innerText + '/'
+          document.querySelector('#show-event-modal').querySelector('.event-date').innerText =
+                evt.target.querySelector('.date-day').innerText + '/'
               + (Number(evt.target.querySelector('.date-month').innerText) + 1) + '/'
               + evt.target.querySelector('.date-year').innerText;
 

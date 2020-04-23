@@ -9,7 +9,7 @@
 
 		    function weatherUpdate(lat,lon){
 		      var request=new XMLHttpRequest();
-		      request.open("GET","http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW&q="+lat+"%2C"+lon);
+		      request.open("GET","https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW&q="+lat+"%2C"+lon);
 		      request.onload=()=>{
 		        var data=JSON.parse(request.responseText);
 		        currentWeather(data["Key"])
@@ -19,7 +19,7 @@
 
 		    function currentWeather(key){
 		      var request=new XMLHttpRequest();
-		      request.open("GET","http://dataservice.accuweather.com/currentconditions/v1/"+key+"?details=true&apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW");
+		      request.open("GET","https://dataservice.accuweather.com/currentconditions/v1/"+key+"?details=true&apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW");
 		      request.onload=()=>{
 		        var data=JSON.parse(request.responseText);
 		        console.log(data);
@@ -31,6 +31,8 @@
 
 						document.querySelector('#weather-icon').href.baseVal="${pageContext.request.contextPath}/assets/img/weather/"+wi+"-s.png";
 						document.querySelector('#clouds').innerHTML=data[0].CloudCover;
+						document.querySelector('#wind-speed').innerHTML=data[0].Wind.Speed.Metric.Value;
+						document.querySelector('#wind-direction').innerHTML=data[0].Wind.Direction.English;
 		      }
 		      request.send();
 		    }
@@ -42,16 +44,17 @@
 															display: grid;
 															grid-template-columns: 100px auto;
 															grid-template-rows: auto auto;
-															background-color:snow;
+															background-color:#fbfffa;
+															color: #009635;
 															width:268px;
 															font-family: sans-serif;
 															padding:5px 10px;">
       <div class="" style="height:60px;">
 				<span style="font-size:12px;">Currently</span>
-        <svg style="height:70px; width:100%;">
+        <svg style="height:70px; width:100%; fill:#03c16f;">
           <text x="0" y="40" style="font-size:50px;">
 
-            <tspan x="0" id="currTemp">35</tspan>
+            <tspan x="0" id="currTemp"></tspan>
             <tspan x="60" style="baseline-shift:super; font-size:30px;">&deg;</tspan>
             <tspan x="60" style="font-size:30px;">c</tspan>
             <tspan></tspan>
@@ -59,11 +62,11 @@
         </svg>
       </div>
       <div class="" style="height:60px;">
-        <svg style="height:70px; width:100%;">
+        <svg style="height:70px; width:100%; fill:#018383;">
           <text>
-            <tspan x="0" y="30" id="desc">As good as any</tspan>
+            <tspan x="0" y="30" id="desc"></tspan>
             <tspan x="0" y="55" >Feels Like</tspan>
-            <tspan id="feelTemp">45 </tspan><tspan>&deg;</tspan>
+            <tspan id="feelTemp"> </tspan><tspan>&deg;</tspan>
           </text>
         </svg>
       </div>
@@ -73,11 +76,11 @@
 				</svg>
 			</div>
 			<div>
-				<svg style="height:70px; width:100%;">
+				<svg style="height:70px; width:100%; fill:#018383;">
           <text>
             <tspan x="0" y="30" >Wind </tspan>
-						<tspan id="wind-speed">85 </tspan><tspan>km/h</tspan>
-						<tspan>NE</tsapn>
+						<tspan id="wind-speed"> </tspan><tspan> km/h </tspan>
+						<tspan id="wind-direction"></tspan>
             <tspan x="0" y="55" >CloudCover</tspan>
             <tspan id="clouds">45 </tspan><tspan>&#37;</tspan>
           </text>

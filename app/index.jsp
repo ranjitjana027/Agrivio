@@ -5,9 +5,22 @@
 	<title>Landing Page </title>
 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/spinner.css">
+	<script src="${pageContext.request.contextPath}/assets/js/lib/spinner.js" ></script>
 </head>
 
 <body>
+	<div class="spinner"  style="">
+    <div class="spinner-container" style="">
+      <svg height="300" >
+        <ellipse id="circle1" cx="150" cy="150" r="0" stroke="snow" fill="none" />
+        <ellipse id="circle2" cx="150" cy="150" r="0" stroke="snow" fill="none" />
+        <ellipse id="circle3" cx="150" cy="150" r="0" stroke="snow" fill="none" />
+        <ellipse id="circle4" cx="150" cy="150" r="0" stroke="snow" fill="none" />
+      </svg>
+    </div>
+
+  </div>
 	<%
 	if((String)session.getAttribute("userid")!=null)
 		response.sendRedirect(request.getContextPath()+"/dashboard");
