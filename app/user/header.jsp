@@ -51,7 +51,7 @@
       <ul>
         <li><a href="#">Your Profile</a> </li>
         <li><a href="google.com">Link2</a> </li>
-        <li><a href="#">Logout</a> </li>
+        <li><a href="${pageContext.request.contextPath}/logout">Logout</a> </li>
       </ul>
     </div>
   </div>

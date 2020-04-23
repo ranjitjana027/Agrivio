@@ -1,7 +1,17 @@
-
 .calendar{
-    padding: 20px;
-    width: 700px;
+  display: grid;
+  grid-template-columns: 740px auto;
+  grid-column-gap:2px;
+  background-color: aliceblue;
+}
+.calendar-content{
+    padding:40px;
+    font-family: verdana, serif;
+}
+.calendar-stats{
+    padding:20px 40px;
+    font-family: verdana, serif;
+    /*border-left: solid 2px green;*/
 }
 .cal-box{
   box-shadow: 5px 5px 10px 1px;
@@ -18,7 +28,7 @@
     width: 100%;
     height: 400px;
 }
-table{
+.calendar-content table{
     column-count: auto;
     width: inherit;
     height: inherit;
@@ -37,13 +47,44 @@ table{
 .curr-month{
     font-weight: 600;
 }
-th{
+.calendar-content th, .modal th{
 
     color: navy;
 }
-td, th{
+.calendar-content td,.calendar-content th, .modal th, .modal td{
     padding: 10px;
 
+}
+.stats-overview, .crop-stats, .event-type-stats{
+  display: none;
+}
+.show{
+  display: block !important;
+}
+.calendar-stats label{
+  padding: 5px;
+/* margin: 5px; */
+line-height: 40px;
+font-size: larger;
+color: #12ceb4;
+text-transform: capitalize;
+font-variant: all-petite-caps;
+}
+.calendar-stats table{
+  border-collapse: collapse;
+  min-width: 250px;
+}
+.calendar-stats td,.calendar-stats th{
+    padding:5px 10px;
+    text-align: center;
+    border: solid #5ace6d;
+}
+.calendar-stats th{
+  color: darkcyan;
+  background-color: #97f7b02e;
+}
+.calendar-stats td{
+  color: #096945;
 }
 .today{
         border-radius: 50%;
@@ -75,5 +116,5 @@ td, th{
     cursor: pointer;
 }
 .event-display{
-    text-decoration: rgb(230, 5, 136) underline;
+    text-decoration: cornsilk underline;
 }

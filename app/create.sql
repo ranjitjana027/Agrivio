@@ -64,6 +64,7 @@ create table chats(
     role varchar(10) default 'FARMER'
 );
 
+alter table users add column joined_on TIMESTAMPTZ default (now() at time zone 'utc');
 create or replace view farmers AS
 select id, firstname||' '||lastname as fullname, mobile, email, premium
 from users

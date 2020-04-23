@@ -1,0 +1,51 @@
+@keyframes spinner{
+  from {
+    rx:0;
+    ry:0;
+    /*stroke-width:2px;*/
+    opacity:1;
+  }
+  to {
+    rx:150;
+    ry:150;
+    /*stroke-width:5px;*/
+    opacity:0;
+  }
+}
+.spinner{
+   height:100vh ;
+   width: 100vw;
+   position:fixed;
+   z-index:99;
+   background-color:black;
+   display: block;
+}
+.spinner-container{
+   margin:auto;
+   position:absolute;
+   top:0;
+   bottom:0;
+   height:300px;
+   width:300px;
+   right:0;
+   left:0;
+}
+.spinner #circle1, .spinner #circle2,.spinner #circle3, .spinner #circle4{
+
+  animation-name: spinner;
+  animation-duration: 2.25s;
+  animation-iteration-count: infinite;
+  fill:#1f6f78;
+}
+.spinner #circle2{
+  animation-delay: 0.5s;
+  fill:#93e4c1;
+}
+.spinner #circle3{
+  animation-delay: 01s;
+  fill:#3baea0;
+}
+.spinner #circle4{
+  animation-delay: 1.5s;
+  fill:#118a7e;
+}
