@@ -10,6 +10,7 @@
   color:snow;
   text-decoration:none;
   box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+  z-index: 1;
 }
 
 .logo{
@@ -117,8 +118,8 @@ svg{
     text-align: center;
     display: none;
   }
-  
-  
+
+
   .user-nav li{
     min-height: 35px;
     padding-top: 10px;
@@ -127,12 +128,12 @@ svg{
     cursor: pointer;
     border-bottom-style: outset;
   }
-  
+
   .user-nav a{
     text-decoration: none;
     color: snow;
   }
-  
+
   .user-nav a:hover, .user-nav a:active{
     background-color: #1b7d53;
     transform: scale3d(1.05,1.05,1.05);
@@ -153,11 +154,11 @@ svg{
     height: 100%;
     position: absolute;
   }
-  
+
   .user-nav li{
     display: inline-block;
   }
-  
+
   .user-nav a{
     display: inline-block;
     text-align: center;
@@ -167,7 +168,7 @@ svg{
     font-size: 18px;
     transition: color 0.5s, background-color 0.5s, transform 0.5s;
   }
-  
+
   .user-nav a:hover, .user-nav a:active{
     background-color: #fbfffa;
     color: #0d6d63;
