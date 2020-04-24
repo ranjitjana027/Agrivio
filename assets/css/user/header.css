@@ -9,14 +9,14 @@
   background-color:  #0e5c54;
   color:snow;
   text-decoration:none;
-  /* box-shadow: 1px 1px 2px 1px black; */
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
 }
 
 .logo{
-  /*background-color: white;*/
   text-align: center;
   padding: 15px;
   font-size: 25px;
+  cursor: default;
 }
 
 .nav-bar-icon{
@@ -32,8 +32,7 @@
   margin-top:20px;
   width:245px;
   border: solid 1px;
-  /*border-radius: 5px;*/
-
+  border-radius: 2px 8px 8px 2px;
 }
 .search-box input{
   padding: 4px 0 4px 10px;
@@ -170,7 +169,7 @@ svg{
   }
   
   .user-nav a:hover, .user-nav a:active{
-    background-color: snow;
+    background-color: #fbfffa;
     color: #0d6d63;
     transform: scale3d(1.05,1.05,1.05);
   }
