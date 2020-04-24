@@ -2,9 +2,10 @@
   <div class="logo">
     WebsiteName
   </div>
-  <!--div class="nav-bar-icon">
+  <div class="nav-bar-icon">
     &#9776;
-  </div-->
+  </div>
+  
   <!-- useful nav link -->
   <div class="user-nav">
     <ul>
