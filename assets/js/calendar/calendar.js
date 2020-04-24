@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded",()=>{
           if(eventdata==null)
           {
             request = new XMLHttpRequest();
-            request.open("GET", location.protocol + "//" + location.host + "/farmer/app/event/fetchEvents.jsp");
+            request.open("GET", location.protocol + "//" + location.host + "/webProject/app/event/fetchEvents.jsp");
             request.onload = () => {
                 eventdata = JSON.parse(request.responseText)['events']
                 console.log(eventdata);

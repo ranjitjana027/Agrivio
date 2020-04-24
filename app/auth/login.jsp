@@ -102,7 +102,7 @@
 			<% } %>
 
             <div>
-                <p>By continuing, you agree to ShopOnline's
+                <p>By continuing, you are agree to our
                     <a href="${pageContext.request.contextPath}/app/auth/terms&condition.html">Conditions of Use</a>
                     and <a href="${pageContext.request.contextPath}/app/auth/terms&condition.html">Privacy Notice</a>.</p>
                 <p>Need help?</p>
