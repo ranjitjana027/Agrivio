@@ -7,7 +7,7 @@ else if( session.getAttribute("role").equals("FARMER")){
 
 
 <jsp:include page="/app/user/layout.jsp">
-  <jsp:param name="filename" value="../user/welcome.jsp" />
+  <jsp:param name="filename" value="../user/dashboard_view.jsp" />
   <jsp:param name="title" value="Welcome" />
 </jsp:include>
 
