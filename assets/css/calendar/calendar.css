@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 740px auto;
   grid-column-gap:2px;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
 }
 .calendar-content{
     padding:40px;
