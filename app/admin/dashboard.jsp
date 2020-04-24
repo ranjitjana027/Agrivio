@@ -1,6 +1,6 @@
 <%
 if( session.getAttribute("userid")==null || !session.getAttribute("role").equals("ADMIN"))
-  response.sendRedirect("../index.jsp");
+  response.sendRedirect(request.getContextPath()+"/index");
 else {
 %>
 <div class="">
