@@ -1,6 +1,6 @@
 <%
 if(session.getAttribute("userid")==null )
-	response.sendRedirect("../index.jsp");
+	response.sendRedirect(request.getContextPath()+"/index");
 else{
 %>
 <!DOCTYPE html>

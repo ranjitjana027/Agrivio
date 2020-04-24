@@ -1,42 +1,44 @@
 
 		<script type="text/javascript">
-				function showPosition(position) {
-		        lat= position.coords.latitude ;
-		        lon= position.coords.longitude;
-		        weatherUpdate(lat,lon);
-		      }
-		    navigator.geolocation.getCurrentPosition(showPosition);
+				document.addEventListener("DOMContentLoaded",()=>{
+					function showPosition(position) {
+			        lat= position.coords.latitude ;
+			        lon= position.coords.longitude;
+			        weatherUpdate(lat,lon);
+			      }
+			    navigator.geolocation.getCurrentPosition(showPosition);
 
-		    function weatherUpdate(lat,lon){
-		      var request=new XMLHttpRequest();
-		      request.open("GET","https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW&q="+lat+"%2C"+lon);
-		      request.onload=()=>{
-		        var data=JSON.parse(request.responseText);
-		        currentWeather(data["Key"])
-		      }
-		      request.send();
-		    }
+			    function weatherUpdate(lat,lon){
+			      var request=new XMLHttpRequest();
+			      request.open("GET","https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW&q="+lat+"%2C"+lon);
+			      request.onload=()=>{
+			        var data=JSON.parse(request.responseText);
+			        currentWeather(data["Key"])
+			      }
+			      request.send();
+			    }
 
-		    function currentWeather(key){
-		      var request=new XMLHttpRequest();
-		      request.open("GET","https://dataservice.accuweather.com/currentconditions/v1/"+key+"?details=true&apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW");
-		      request.onload=()=>{
-		        var data=JSON.parse(request.responseText);
-		        console.log(data);
-		        console.log(data[0].Temperature.Metric.Value);
-		        document.querySelector('#currTemp').innerHTML=Math.round(data[0].Temperature.Metric.Value);
-		        document.querySelector('#feelTemp').innerHTML=Math.round(data[0].RealFeelTemperature.Metric.Value);
-		        document.querySelector('#desc').innerHTML=data[0].WeatherText;
-						var wi=(Number(data[0].WeatherIcon) >9 )? data[0].WeatherIcon:'0'+data[0].WeatherIcon;
+			    function currentWeather(key){
+			      var request=new XMLHttpRequest();
+			      request.open("GET","https://dataservice.accuweather.com/currentconditions/v1/"+key+"?details=true&apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW");
+			      request.onload=()=>{
+			        var data=JSON.parse(request.responseText);
+			        console.log(data);
+			        console.log(data[0].Temperature.Metric.Value);
+			        document.querySelector('#currTemp').innerHTML=Math.round(data[0].Temperature.Metric.Value);
+			        document.querySelector('#feelTemp').innerHTML=Math.round(data[0].RealFeelTemperature.Metric.Value);
+			        document.querySelector('#desc').innerHTML=data[0].WeatherText;
+							var wi=(Number(data[0].WeatherIcon) >9 )? data[0].WeatherIcon:'0'+data[0].WeatherIcon;
 
-						document.querySelector('#weather-icon').href.baseVal="${pageContext.request.contextPath}/assets/img/weather/"+wi+"-s.png";
-						document.querySelector('#clouds').innerHTML=data[0].CloudCover;
-						document.querySelector('#wind-speed').innerHTML=data[0].Wind.Speed.Metric.Value;
-						document.querySelector('#wind-direction').innerHTML=data[0].Wind.Direction.English;
-		      }
-		      request.send();
-		    }
+							document.querySelector('#weather-icon').href.baseVal="${pageContext.request.contextPath}/assets/img/weather/"+wi+"-s.png";
+							document.querySelector('#clouds').innerHTML=data[0].CloudCover;
+							document.querySelector('#wind-speed').innerHTML=data[0].Wind.Speed.Metric.Value;
+							document.querySelector('#wind-direction').innerHTML=data[0].Wind.Direction.English;
+			      }
+			      request.send();
+			    }
 
+				});
 		</script>
 
 
