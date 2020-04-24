@@ -1,43 +1,7 @@
-<script type="text/javascript">
-	function showPosition(position) {
-		lat = position.coords.latitude;
-		lon = position.coords.longitude;
-		weatherUpdate(lat, lon);
-	}
-	navigator.geolocation.getCurrentPosition(showPosition);
-
-	function weatherUpdate(lat, lon) {
-		var request = new XMLHttpRequest();
-		request.open("GET", "https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW&q=" + lat + "%2C" + lon);
-		request.onload = () => {
-			var data = JSON.parse(request.responseText);
-			currentWeather(data["Key"])
-		}
-		request.send();
-	}
-
-	function currentWeather(key) {
-		var request = new XMLHttpRequest();
-		request.open("GET", "https://dataservice.accuweather.com/currentconditions/v1/" + key + "?details=true&apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW");
-		request.onload = () => {
-			var data = JSON.parse(request.responseText);
-			console.log(data);
-			console.log(data[0].Temperature.Metric.Value);
-			document.querySelector('#currTemp').innerHTML = Math.round(data[0].Temperature.Metric.Value);
-			document.querySelector('#feelTemp').innerHTML = Math.round(data[0].RealFeelTemperature.Metric.Value);
-			document.querySelector('#desc').innerHTML = data[0].WeatherText;
-			var wi = (Number(data[0].WeatherIcon) > 9) ? data[0].WeatherIcon : '0' + data[0].WeatherIcon;
-
-			document.querySelector('#weather-icon').href.baseVal = "${pageContext.request.contextPath}/assets/img/weather/" + wi + "-s.png";
-			document.querySelector('#clouds').innerHTML = data[0].CloudCover;
-			document.querySelector('#wind-speed').innerHTML = data[0].Wind.Speed.Metric.Value;
-			document.querySelector('#wind-direction').innerHTML = data[0].Wind.Direction.English;
-		}
-		request.send();
-	}
-
-</script>
-
+<script src="/webProject/assets/js/weather/weather.js" charset="utf-8"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/weather/weather.css">
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
 
 <div class="target" style="height:170px;
 							display: grid;
@@ -93,3 +57,42 @@
 	</div>
 
 </div>
+<div class="location-info">
+	Your current location:
+	<svg viewBox="0 0 70 90" height="20px" id="location-icon">
+		<path d="M35,85 L15,55 C-35,-15 105,-15 55,55 z " stroke="#08796f" fill="none" stroke-width="4px" />
+		<circle cx="35" cy="30" r="17" stroke="#08796f"  fill="none" stroke-width="4px"/>
+	</svg>
+	<span id="current-location"> Kolkata</span>
+	<span id="current-longitude" hidden></span>
+	<span id="current-latitude" hidden></span>
+</div>
+	<div class="set-location">
+
+		<div class="set-location-content" style="width:60%;">
+			<div>
+				Drag the marker to your location.
+			</div>
+			<div class="" style="width:100%;">
+				<div class="target" style="height:500px; width:100%;" >
+					<div id='map' ></div>
+					<pre id="coordinates" class="coordinates">cfedf</pre>
+				</div>
+				<div class="">
+					<button type="button"
+						class="btn-ok"
+						onclick="document.querySelector('.set-location').style.display='none'">
+						Save
+					</button>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+	<link
+		rel="stylesheet"
+		href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+		type="text/css"
+	/>
