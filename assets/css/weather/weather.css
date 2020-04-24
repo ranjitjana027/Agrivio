@@ -1,0 +1,70 @@
+#map{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.coordinates {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  padding: 5px 10px;
+  margin: 0;
+  font-size: 11px;
+  line-height: 18px;
+  border-radius: 3px;
+  display: none;
+  }
+  .target{
+    position: relative;
+  }
+  div.set-location{
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    overflow: auto;
+    display: none;
+    z-index: 1;
+    width: 100vw;
+    height:100vh;
+    top:0;
+    left: 0;
+  }
+  div.set-location-content{
+    margin: auto;
+    width: fit-content;
+    background-color: white;
+    top:0;
+    bottom: 0;
+    right:0;
+    left:0;
+    position: absolute;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .btn-ok{
+    float:right;
+    padding: 3px 15px;
+    min-width: 100px;
+    border:none;
+    outline: none;
+    margin:5px 5px 0 5px;
+    border: #08796f;
+    background-color: #009688;
+    color: snow;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 16px;
+  }
+  .btn-ok:hover{
+    background-color: #08796f;
+  }
+  #location-icon{
+    cursor: pointer;
+  }
+  .location-info{
+    padding: 5px 10px;
+  }
