@@ -20,4 +20,17 @@ document.addEventListener("DOMContentLoaded",()=>{
     else
     item.classList.add('show');
   }*/
+
+  document.addEventListener("click",(evt)=>{
+    item=document.querySelector(".user-nav").querySelector("ul");
+    if(item.classList.contains("show-nav")){
+      item.classList.remove("show-nav");
+      document.querySelector(".nav-bar-icon").innerHTML = "&#9776";
+    }
+    else if(evt.target.classList.contains("nav-bar-icon")){
+      item.classList.add("show-nav");
+      document.querySelector(".nav-bar-icon").innerHTML = "&#65088;";
+    }
+  });
+
 });
