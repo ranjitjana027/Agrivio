@@ -12,12 +12,12 @@ else{
 	<%
 	if(session.getAttribute("role").equals("FARMER")){
 	%>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/spinner.css">
+	<script src="${pageContext.request.contextPath}/assets/js/lib/spinner.js"></script>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/dashboard.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/header.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/footer.css">
 	<script src="${pageContext.request.contextPath}/assets/js/admin/layout.js" charset="utf-8"></script>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/spinner.css">
-	<script src="${pageContext.request.contextPath}/assets/js/lib/spinner.js"></script>
 	<% }
 	%>
 
@@ -51,12 +51,7 @@ else{
 
 				<!--change to other contents like statistics -->
 
-				<div class="weather-window">
-					<jsp:include page="../weather/weather.jsp" />
-				</div>
-				<div class="weather-window">
-					<jsp:include page="../weather/weather.jsp" />
-				</div>
+
 			</div>
 
 			<!-- include grid content here -->
