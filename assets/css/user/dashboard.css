@@ -30,7 +30,7 @@ body {
 }
 
 .grid-content div p{
-  max-width: 600px;
+  max-width: 700px;
   background-color: #fbfffa;
   color: #009635;
   border-radius: 6px;
@@ -67,9 +67,9 @@ body {
 }
 
 @media (min-width: 1100px){
-  .grid-section{
-    
-    padding-left: 3vw;
+  .grid-left{
+
+    padding-left: 1vw;
   }
 }
 

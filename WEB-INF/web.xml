@@ -139,6 +139,24 @@
     <url-pattern>/weather</url-pattern>
   </servlet-mapping>
 
+  <!-- APIs -->
+  <servlet>
+    <servlet-name>GeoLcation</servlet-name>
+    <jsp-file>/app/API/weather/geolocation.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GeoLcation</servlet-name>
+    <url-pattern>/api/weather/location</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CurrentWeather</servlet-name>
+    <jsp-file>/app/API/weather/current_weather.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CurrentWeather</servlet-name>
+    <url-pattern>/api/weather/current-weather</url-pattern>
+  </servlet-mapping>
+
 
 
 </web-app>

@@ -1,3 +1,24 @@
+<%@ page import="java.sql.*" %>
+<%
+	try{
+		new org.postgresql.Driver();
+		java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
+
+		String username = dbUri.getUserInfo().split(":")[0];
+		String password = dbUri.getUserInfo().split(":")[1];
+		String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+
+		Connection con=DriverManager.getConnection(dbUrl, username, password);
+
+		Statement stmt =con.createStatement();
+		String qstring="SELECT DISTINCT on (user_id) * from  location_info where user_id="
+																					+session.getAttribute("userid")+" order by user_id, loc_time desc";
+		ResultSet rs=stmt.executeQuery(qstring);
+
+
+%>
+
+
 <script src="/webProject/assets/js/weather/weather.js" charset="utf-8"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/weather/weather.css">
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
@@ -64,8 +85,13 @@
 		<circle cx="35" cy="30" r="17" stroke="#08796f"  fill="none" stroke-width="4px"/>
 	</svg>
 	<span id="current-location"> Kolkata</span>
-	<span id="current-longitude" hidden></span>
-	<span id="current-latitude" hidden></span>
+<% if(rs.next()){ %>
+	<span id="current-longitude" hidden><%= (rs.getArray("last_location")!=null)? ((Float[])(rs.getArray("last_location")).getArray())[1]:"" %></span>
+	<span id="current-latitude" hidden><%= (rs.getArray("last_location")!=null)?  ((Float[])(rs.getArray("last_location")).getArray())[0]:"" %></span>
+<% } else { %>
+<span id="current-longitude" hidden></span>
+<span id="current-latitude" hidden></span>
+<% } %>
 </div>
 	<div class="set-location">
 
@@ -96,3 +122,14 @@
 		href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
 		type="text/css"
 	/>
+	<%
+
+
+			rs.close();
+			con.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	%>
