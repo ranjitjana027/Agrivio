@@ -1,24 +1,53 @@
 document.addEventListener("DOMContentLoaded",()=>{
+
+  if(document.querySelector('#current-longitude').innerHTML!='' && document.querySelector('#current-latitude').innerHTML!='')
+  weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
+                Number(document.querySelector('#current-longitude').innerHTML));
+  else {
+    navigator.geolocation.getCurrentPosition(showPosition,locationAccessBlocked);
+  }
+
   function showPosition(position) {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
+    var request=new XMLHttpRequest();
+    request.open("GET",location.protocol+"//"+location.host+"/webProject/app/API/user/set_location.jsp?lat="+lat+"&lon="+lon);
+    request.onload=()=>{
+      if(request.status==200)
+      {
+        console.log("location updated");
+      }
+    }
+    request.send();
+    document.querySelector('#current-latitude').innerHTML=lat;
+    document.querySelector('#current-longitude').innerHTML=lon;
     weatherUpdate(lat, lon);
   }
-  navigator.geolocation.getCurrentPosition(showPosition,locationAccessBlocked);
+
 
   function weatherUpdate(lat, lon) {
     var request = new XMLHttpRequest();
-    request.open("GET", "https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW&q=" + lat + "%2C" + lon);
+    request.open("GET", location.protocol+"//"+location.host+"/webProject/app/weather/weatherJSON.jsp?lat="+lat+"&lon="+lon);
     request.onload = () => {
-      var data = JSON.parse(request.responseText);
-      currentWeather(data["Key"])
+      if(request.status==200){
+        var data = JSON.parse(request.responseText);
+        document.querySelector("#current-location").innerHTML=data.name;
+        document.querySelector('#currTemp').innerHTML = Math.round(data.main.temp);
+        document.querySelector('#feelTemp').innerHTML = Math.round(data.main.feels_like);
+        document.querySelector('#desc').innerHTML = data.weather[0].description;
+
+        document.querySelector('#clouds').innerHTML = data.clouds.all;
+        document.querySelector('#wind-speed').innerHTML = data.wind.speed;
+        /*document.querySelector('#wind-direction').innerHTML = data.wind.deg;*/
+      }
+
     }
     request.send();
   }
-
+/*
   function currentWeather(key) {
     var request = new XMLHttpRequest();
-    request.open("GET", "https://dataservice.accuweather.com/currentconditions/v1/" + key + "?details=true&apikey=nXZ08gIFP1fjewMnLL7A8x5lCmchkeaW");
+    request.open("GET", location.protocol+"//"+location.host+"/webProject/api/weather/current-weather?key="+key);
     request.onload = () => {
       var data = JSON.parse(request.responseText);
       console.log(data);
@@ -28,24 +57,36 @@ document.addEventListener("DOMContentLoaded",()=>{
       document.querySelector('#desc').innerHTML = data[0].WeatherText;
       var wi = (Number(data[0].WeatherIcon) > 9) ? data[0].WeatherIcon : '0' + data[0].WeatherIcon;
 
-      document.querySelector('#weather-icon').href.baseVal = "${pageContext.request.contextPath}/assets/img/weather/" + wi + "-s.png";
+      document.querySelector('#weather-icon').href.baseVal = "/webProject/assets/img/weather/" + wi + "-s.png";
       document.querySelector('#clouds').innerHTML = data[0].CloudCover;
       document.querySelector('#wind-speed').innerHTML = data[0].Wind.Speed.Metric.Value;
       document.querySelector('#wind-direction').innerHTML = data[0].Wind.Direction.English;
     }
     request.send();
   }
-
+*/
   document.querySelector('.btn-ok').addEventListener("click",()=>{
     document.querySelector('.set-location').style.display='none';
     if(document.querySelector('#current-longitude').innerHTML!='' && document.querySelector('#current-latitude').innerHTML!='')
-    weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
-                  Number(document.querySelector('#current-longitude').innerHTML))
+    {
+      var request=new XMLHttpRequest();
+      request.open("GET",location.protocol+"//"+location.host+"/webProject/app/API/user/set_location.jsp?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="
+                          +document.querySelector('#current-longitude').innerHTML);
+      request.onload=()=>{
+        if(request.status==200)
+        {
+          console.log("location updated");
+        }
+      }
+      request.send();
+      weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),Number(document.querySelector('#current-longitude').innerHTML));
+    }
   })
   function locationAccessBlocked(){
     alert("Location access blocked. Set Location manually.");
     document.querySelector('.set-location').style.display='block';
-    setLocation(87,23);
+    /* location from internet address */
+    setLocation(88.36,22.57);
 
   }
 
@@ -59,7 +100,9 @@ document.addEventListener("DOMContentLoaded",()=>{
   });
   document.querySelector('#location-icon').onclick=()=>{
     document.querySelector('.set-location').style.display='block';
-    setLocation(87,23);
+    if(document.querySelector('#current-longitude').innerHTML!='' && document.querySelector('#current-latitude').innerHTML!='')
+      setLocation(Number(document.querySelector('#current-longitude').innerHTML),
+                  Number(document.querySelector('#current-latitude').innerHTML));
   }
 
   function setLocation(lon,lat){
