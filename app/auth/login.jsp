@@ -50,6 +50,7 @@
                     rs.updateRow();
                 }
                 rs.close();
+                
                 con.close();
                 if((String)session.getAttribute("userid")!=null)
                     {

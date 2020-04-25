@@ -30,7 +30,9 @@ body {
   justify-items: center;
 }
 
+
 .article{
+
   background-color: #fbfffa;
   border-radius: 6px;
   padding: 20px;
@@ -81,6 +83,7 @@ body {
   }
   .grid-right{
     display: none;
+
   }
 }
 

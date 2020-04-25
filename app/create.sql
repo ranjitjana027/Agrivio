@@ -102,6 +102,15 @@ values ( 'Test',
         'password'
 );
 
+create table location_info (
+  id serial primary key,
+  loc_time TIMESTAMPTZ default (now() at time zone 'utc'),
+  user_id integer references users(id) on delete cascade,
+  last_location real ARRAY[2],
+  last_ip inet
+);
+
+SELECT DISTINCT on (user_id) * from  location_info where user_id=1 order by user_id, loc_time desc;
 
 create table events (
     id serial primary key,
