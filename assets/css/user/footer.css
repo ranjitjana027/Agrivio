@@ -1,15 +1,13 @@
 hr{
-  margin: 0;
-  color: #04674e2a;
-  /* width: 80%; */
+  margin: 10px 0;
   border: none;
-  border-bottom: 1px solid ;
+  border-bottom: 2px solid #04674e2a;
 }
 
 .grid-footer{
   grid-column: 1/2;
   padding: 5px 10vw;
-  background-color: #ecf1f0;
+  /* background-color: rgb(250, 255, 250); */
   text-align: center;
 }
 
@@ -30,5 +28,5 @@ hr{
 }
 
 .bottom-nav .nav-item a:hover{
-  color: #26eac2;
+  color:  #29b3a5;
 }

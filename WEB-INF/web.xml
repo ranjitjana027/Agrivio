@@ -132,7 +132,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>Weather</servlet-name>
-    <jsp-file>/app/weather/weather.jsp</jsp-file>
+    <jsp-file>/app/weather/weather_forecast.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Weather</servlet-name>
