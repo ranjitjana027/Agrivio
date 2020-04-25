@@ -71,17 +71,9 @@
 	</div>
 
 	<div class="grid-right">
-		<div class="weather-window">
-			<jsp:include page="../weather/weather.jsp" />
-		</div>
 
 		<!--change to other contents like statistics -->
 
-		<div class="weather-window">
-			<jsp:include page="../weather/weather.jsp" />
-		</div>
-		<div class="weather-window">
-			<jsp:include page="../weather/weather.jsp" />
-		</div>
+		
 	</div>
 </div>
