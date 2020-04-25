@@ -1,120 +1,164 @@
-.calendar{
+.calendar {
   display: grid;
   grid-template-columns: 740px auto;
-  grid-column-gap:2px;
-  /* background-color: aliceblue; */
+  grid-column-gap: 2px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 }
-.calendar-content{
-    padding:40px;
-    font-family: verdana, serif;
+.calendar-content {
+  padding: 40px;
+  font-family: verdana, serif;
+  background-color: snow;
 }
-.calendar-stats{
-    padding:20px 40px;
-    font-family: verdana, serif;
-    /*border-left: solid 2px green;*/
-}
-.cal-box{
+
+.cal-box {
   box-shadow: 5px 5px 10px 1px;
 }
-.cal-head{
-    background-color: antiquewhite;
-    display: grid;
-    grid-template-columns: auto 80% auto;
-    text-align: center;
+.cal-head {
+  background-color: #04674e8c;
+  display: grid;
+  grid-template-columns: auto 80% auto;
+  text-align: center;
+}
+.cal-main {
+  background-color: #096945;
+  width: 100%;
+  height: 400px;
+}
+.calendar-content table {
+  column-count: auto;
+  width: inherit;
+  height: inherit;
+}
 
+.cal-day,
+.cal-num {
+  text-align: center;
+  color: snow;
 }
-.cal-main{
-    background-color: rgb(130, 238, 229);
-    width: 100%;
-    height: 400px;
-}
-.calendar-content table{
-    column-count: auto;
-    width: inherit;
-    height: inherit;
 
+.curr-month:first-child {
+  color: rgb(230, 180, 180);
 }
-.cal-day, .cal-num{
-    text-align: center;
-}
-.cal-num{
-    cursor: pointer;
-}
-.prev-month, .next-month{
-    font-weight: lighter;
-    opacity: 0.8;
-}
-.curr-month{
-    font-weight: 600;
-}
-.calendar-content th, .modal th{
 
-    color: navy;
+.date-day {
+  cursor: pointer;
 }
-.calendar-content td,.calendar-content th, .modal th, .modal td{
-    padding: 10px;
 
+.change-month-arrow {
+  display: inline;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  padding: 35px 0 0 15px;
+  transform: scale(1.1);
 }
-.stats-overview, .crop-stats, .event-type-stats{
+
+.change-month-arrow:active{
+  transform: scale(0.7);
+}
+
+.prev-month,
+.next-month {
+  font-weight: lighter;
+  opacity: 0.8;
+}
+
+.curr-month {
+  font-weight: 600;
+}
+
+.calendar-content th,
+.modal th {
+  color: rgb(217, 255, 0);
+  font-size: large;
+}
+
+.calendar-content th:first-child {
+  color: rgb(255, 166, 0);
+}
+
+
+.calendar-content td,
+.calendar-content th,
+.modal th,
+.modal td {
+  padding: 10px;
+}
+
+
+
+.calendar-stats {
+  padding: 20px 50px;
+  font-family: verdana, serif;
+  background-color: snow;
+  border-left: 5px solid #096945;
+}
+
+.stats-overview,
+.crop-stats,
+.event-type-stats {
   display: none;
 }
-.show{
+.show {
   display: block !important;
+  max-width: 200px;
 }
-.calendar-stats label{
+.calendar-stats label {
   padding: 5px;
-/* margin: 5px; */
-line-height: 40px;
-font-size: larger;
-color: #12ceb4;
-text-transform: capitalize;
-font-variant: all-petite-caps;
+  line-height: 40px;
+  font-size: x-large;
+  color: #096945;
+  text-transform: capitalize;
+  font-variant: all-petite-caps;
 }
-.calendar-stats table{
+.calendar-stats table {
   border-collapse: collapse;
   min-width: 250px;
 }
-.calendar-stats td,.calendar-stats th{
-    padding:5px 10px;
-    text-align: center;
-    border: solid #5ace6d;
+.calendar-stats td,
+.calendar-stats th {
+  padding: 5px 10px;
+  text-align: center;
+  border: solid #096945;
 }
-.calendar-stats th{
-  color: darkcyan;
-  background-color: #97f7b02e;
+.calendar-stats th {
+  color: snow;
+  background-color: #0e5c25;
 }
-.calendar-stats td{
+.calendar-stats td {
   color: #096945;
 }
-.today{
-        border-radius: 50%;
-        border: solid #333 2px;
-        color: aliceblue;
-        background-color: #333;
+
+.today {
+  border-radius: 50%;
+  border: solid #333 2px;
+  color: aliceblue;
+  background-color: #333;
 }
-.modal{
-    display: none;
-    position: fixed;
-    z-index: 1;
-    width: 100%;
-    height:100%;
-    top:0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.4);
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
 }
-.modal-content{
-    display: block;
-    background-color: aliceblue;
-    width: 400px;
-    margin: 5% auto;
-    padding: 10px;
+.modal-content {
+  display: block;
+  background-color: aliceblue;
+  width: 400px;
+  margin: 5% auto;
+  padding: 10px;
 }
-.close{
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
 }
-.event-display{
-    text-decoration: cornsilk underline;
+.event-display {
+  text-decoration: cornsilk underline;
 }
