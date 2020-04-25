@@ -1,13 +1,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/price/mandiPrice.css">
   <script src="${pageContext.request.contextPath}/assets/js/price/mandiPrice.js" charset="utf-8"></script>
       <div class="grid-content">
-        <div style="display:inline-block; width: 250px;color:#93e4c1;">
+        <div class="select-location">
             <label for="state">State: </label>
             <select id="state">
                 <option value="">Select State</option>
             </select>
         </div>
-        <div id="choose-district" hidden style="display:inline-block; color:#93e4c1;">
+        <div class="select-location" id="choose-district" hidden>
             <label for="district">District:</label>
             <select name="district" id="district">
                 <option value="">Select District</option>
