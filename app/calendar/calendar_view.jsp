@@ -137,7 +137,7 @@
         </div>
         <div class="cal-box">
           <div class="cal-head">
-              <div style="display: inline; height: 70px; user-select:none; -webkit-user-select:none; -moz-user-select:none; padding:35px 0 0 15px;">
+              <div class = "change-month-arrow" >
                   <svg width="30" height="20" id="btn-prev">
                       <path d="M30,0 L0, 10 L30, 20 z" fill="black" stroke="black" />
                   </svg>
@@ -147,7 +147,7 @@
               <div style="display: inline-block; padding-top:20px;">
                   <h3><span id="cal-month"></span>, <span id="cal-year"></span></h3>
               </div>
-              <div style="display: inline; user-select:none; -webkit-user-select:none; -moz-user-select:none; padding:35px 0 0 15px;">
+              <div class = "change-month-arrow">
 
                   <svg width="30" height="20" id="btn-next">
                       <path d="M0,0 L30, 10 L0, 20 z" fill="black" stroke="black" />
