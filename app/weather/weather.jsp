@@ -71,7 +71,7 @@
 				<tspan> km/h </tspan>
 				<tspan id="wind-direction"></tspan>
 				<tspan x="0" y="55">CloudCover</tspan>
-				<tspan id="clouds">45 </tspan>
+				<tspan id="clouds"> </tspan>
 				<tspan>&#37;</tspan>
 			</text>
 		</svg>
@@ -84,7 +84,7 @@
 		<path d="M35,85 L15,55 C-35,-15 105,-15 55,55 z " stroke="#08796f" fill="none" stroke-width="4px" />
 		<circle cx="35" cy="30" r="17" stroke="#08796f"  fill="none" stroke-width="4px"/>
 	</svg>
-	<span id="current-location"> Kolkata</span>
+	<span id="current-location"> </span>
 <% if(rs.next()){ %>
 	<span id="current-longitude" hidden><%= (rs.getArray("last_location")!=null)? ((Float[])(rs.getArray("last_location")).getArray())[1]:"" %></span>
 	<span id="current-latitude" hidden><%= (rs.getArray("last_location")!=null)?  ((Float[])(rs.getArray("last_location")).getArray())[0]:"" %></span>
