@@ -27,18 +27,24 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   function weatherUpdate(lat, lon) {
     var request = new XMLHttpRequest();
-    request.open("GET", location.protocol+"//"+location.host+"/webProject/api/weather/location?lat="+lat+"&lon="+lon);
+    request.open("GET", location.protocol+"//"+location.host+"/webProject/app/weather/weatherJSON.jsp?lat="+lat+"&lon="+lon);
     request.onload = () => {
       if(request.status==200){
         var data = JSON.parse(request.responseText);
-        document.querySelector("#current-location").innerHTML=data["EnglishName"]
-        currentWeather(data["Key"]);
+        document.querySelector("#current-location").innerHTML=data.name;
+        document.querySelector('#currTemp').innerHTML = Math.round(data.main.temp);
+        document.querySelector('#feelTemp').innerHTML = Math.round(data.main.feels_like);
+        document.querySelector('#desc').innerHTML = data.weather[0].description;
+
+        document.querySelector('#clouds').innerHTML = data.clouds.all;
+        document.querySelector('#wind-speed').innerHTML = data.wind.speed;
+        /*document.querySelector('#wind-direction').innerHTML = data.wind.deg;*/
       }
 
     }
     request.send();
   }
-
+/*
   function currentWeather(key) {
     var request = new XMLHttpRequest();
     request.open("GET", location.protocol+"//"+location.host+"/webProject/api/weather/current-weather?key="+key);
@@ -58,7 +64,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
     request.send();
   }
-
+*/
   document.querySelector('.btn-ok').addEventListener("click",()=>{
     document.querySelector('.set-location').style.display='none';
     if(document.querySelector('#current-longitude').innerHTML!='' && document.querySelector('#current-latitude').innerHTML!='')
