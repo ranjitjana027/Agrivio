@@ -34,3 +34,19 @@ document.addEventListener("DOMContentLoaded",()=>{
   });
 
 });
+
+function getPage(path){
+  var request =new XMLHttpRequest();
+  request.open("GET",location.protocol+"//"+location.host+"/webProject/app"+path);
+  request.onload=()=>{
+    responseHTML=request.responseText;
+    document.querySelector("#main-content").innerHTML=responseHTML;
+    var scripts=document.querySelector("#main-content").getElementsByTagName("script");
+    for(script of scripts){
+      var newScript=document.createElement("script");
+      newScript.src=script.src;
+      document.head.appendChild(newScript);
+    }
+  }
+  request.send();
+}

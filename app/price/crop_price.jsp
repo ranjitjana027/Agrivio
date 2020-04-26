@@ -1,6 +1,6 @@
 <%
 if(session.getAttribute("userid")==null){
-  response.sendRedirect(request.getContextPath()+"/index");
+  response.sendRedirect(request.getContextPath()+"/login?redirect=/crop-price");
 }
 else if( session.getAttribute("role").equals("FARMER")){
 %>

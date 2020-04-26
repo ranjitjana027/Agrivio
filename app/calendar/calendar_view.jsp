@@ -38,8 +38,10 @@
     else
         errorMessage="You are not logged in.";
 	%>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/calendar/calendar.css">
-<script src="${pageContext.request.contextPath}/assets/js/calendar/calendar.js" charset="utf-8"></script>
+
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/calendar/calendar.css">
+
+
 
 <div class="calendar">
     <div class="calendar-content">
@@ -313,4 +315,8 @@
         </div>
 
     </div>
+
 </div>
+
+<script src="${pageContext.request.contextPath}/assets/js/calendar/calendar.js" charset="utf-8"></script>
+
