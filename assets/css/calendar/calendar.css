@@ -103,6 +103,7 @@
 .show {
   display: block !important;
   max-width: 200px;
+  text-align: center;
 }
 .calendar-stats label {
   padding: 5px;
