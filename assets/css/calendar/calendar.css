@@ -103,6 +103,7 @@
 .show {
   display: block !important;
   max-width: 200px;
+  text-align: center;
 }
 .calendar-stats label {
   padding: 5px;
@@ -136,6 +137,12 @@
   color: aliceblue;
   background-color: #333;
 }
+
+
+
+
+
+
 .modal {
   display: none;
   position: fixed;
@@ -146,19 +153,95 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
+.event-title{
+  color: #096945;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #096945;
+  font-size: xx-large;
+}
+
 .modal-content {
   display: block;
   background-color: aliceblue;
   width: 400px;
   margin: 5% auto;
   padding: 10px;
+  border-radius: 6px;
+
 }
+
+.event-list{
+  list-style-type: none;
+}
+
+.event-list li:nth-child(odd) table{
+  background-color: snow;
+  align-self: center;
+}
+
+.event-list table{
+  border: 1.5px solid #0e5c25;
+  border-radius: 2px;
+  width: 300px;
+  margin-bottom: 2px;
+}
+
+.event-list th{
+  color: #0e5c25;
+  padding: 5px;
+  border-right: 1.5px solid #0e5c25;
+  border-bottom: 1px solid #0e5c25;
+}
+
+.event-list td{
+  padding: 5px;
+  border-bottom: 1px solid #0e5c25;
+}
+
+.event-list tr:last-child td,
+.event-list tr:last-child th{
+  border-bottom: none;
+}
+
+.event-selection{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
+  margin-bottom: 20px;
+  color: #096945;
+}
+
+.event-selection div:last-child{
+  grid-column: 1/3;
+}
+
+.add-submit input{
+  background-color: #0e5c25;
+  padding: 8px 20px;
+  color: snow;
+  font-size: large;
+  border-radius: 6px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.8);
+  border: none;
+  margin-top: 10px;
+}
+
+.add-submit input:hover{
+  cursor: pointer;
+}
+
+.add-submit input:active{
+  transform: scale(0.8);
+}
+
 .close {
   float: right;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
 }
+
 .event-display {
-  text-decoration: cornsilk underline;
+  text-decoration: snow underline;
 }
