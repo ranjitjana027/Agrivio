@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/price/mandiPrice.css">
-  <script src="${pageContext.request.contextPath}/assets/js/price/mandiPrice.js" charset="utf-8"></script>
       <div class="grid-content">
         <div class="select-location">
             <label for="state">State: </label>
@@ -28,3 +27,5 @@
             </tr>
         </table>
       </div>
+
+    <script src="${pageContext.request.contextPath}/assets/js/price/mandiPrice.js" charset="utf-8"></script>
