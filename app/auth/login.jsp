@@ -1,7 +1,6 @@
 <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,17 +49,21 @@
                     rs.updateRow();
                 }
                 rs.close();
-                
+
                 con.close();
                 if((String)session.getAttribute("userid")!=null)
                     {
-                      response.sendRedirect(request.getContextPath()+"/dashboard");
+                      if(request.getParameter("redirect")==null)
+                        response.sendRedirect(request.getContextPath()+"/dashboard");
+                      else{
+                        response.sendRedirect(request.getContextPath()+request.getParameter("redirect"));
+                      }
                     }
                 else
                     errorMessage="Invalid Username/Password.";
             }
             catch (Exception e) {
-				errorMessage="sckjhjkh";
+				        errorMessage="Something went wrong";
                 e.printStackTrace();
             }
         }
