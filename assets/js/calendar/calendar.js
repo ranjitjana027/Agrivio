@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded",()=>{
+
   eventdata=null;
   fillCalendar(new Date().getFullYear(),new Date().getMonth());
   document.getElementById('btn-prev').onclick=()=>{
@@ -375,4 +375,3 @@ function fetchEventUtil(data)
               + evt.target.offsetParent.children[2].innerText;
       }
   }
-});

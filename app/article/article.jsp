@@ -1,14 +1,14 @@
 <%
 if(session.getAttribute("userid")==null){
-  response.sendRedirect(request.getContextPath()+"/index");
+  response.sendRedirect(request.getContextPath()+"/login?redirect=/calendar");
 }
 else if( session.getAttribute("role").equals("FARMER")){
 %>
 
 
 <jsp:include page="/app/user/layout.jsp">
-  <jsp:param name="filename" value="../weather/weather_forecast_view.jsp" />
-  <jsp:param name="title" value="Weather Forecast" />
+  <jsp:param name="filename" value="<%=\"../article/article_view.jsp?id=\"+request.getParameter(\"id\") %>" />
+  <jsp:param name="title" value="Article" />
 </jsp:include>
 
 

@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         document.querySelector('#currTemp').innerHTML = Math.round(data.main.temp);
         document.querySelector('#feelTemp').innerHTML = Math.round(data.main.feels_like);
         document.querySelector('#desc').innerHTML = data.weather[0].description;
-
+        document.querySelector('#weather-icon').href.baseVal = "/webProject/assets/img/weather/" +data.weather[0].icon + "@2x.png";
         document.querySelector('#clouds').innerHTML = data.clouds.all;
         document.querySelector('#wind-speed').innerHTML = data.wind.speed;
         /*document.querySelector('#wind-direction').innerHTML = data.wind.deg;*/

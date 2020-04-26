@@ -157,6 +157,16 @@
     <url-pattern>/api/weather/current-weather</url-pattern>
   </servlet-mapping>
 
+  <!-- Article -->
+  <servlet>
+    <servlet-name>Article</servlet-name>
+    <jsp-file>/app/article/article.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Article</servlet-name>
+    <url-pattern>/article</url-pattern>
+  </servlet-mapping>
+
 
 
 </web-app>
