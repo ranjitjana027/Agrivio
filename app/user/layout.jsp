@@ -14,7 +14,7 @@ else{
 	%>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/spinner.css">
 	<script src="${pageContext.request.contextPath}/assets/js/lib/spinner.js"></script>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/dashboard.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/layout.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/header.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/footer.css">
 	<script src="${pageContext.request.contextPath}/assets/js/admin/layout.js" charset="utf-8"></script>
@@ -49,13 +49,18 @@ else{
 					<jsp:include page="../weather/weather.jsp" />
 				</div>
 
-				<!--change to other contents like statistics -->
+
+					<!--change to other contents like statistics -->
+
 
 
 			</div>
 
 			<!-- include grid content here -->
-			<jsp:include page="<%= request.getParameter(\"filename\")%>" />
+			<div id="main-content">
+				<jsp:include page="<%= request.getParameter(\"filename\")%>" />
+			</div>
+
 
 
 		</div>
