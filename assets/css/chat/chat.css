@@ -1,13 +1,27 @@
 .container{
+    height: 80vh;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    column-gap: 5vw;
+    border-radius: 6px;
+}
+
+.chat{
     background-color: #8bf1cb2e;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+    border-radius: 6px;    
+    border: 2px #009688 solid;
+    height: fit-content;
 }
 
 .chat-room{
-    border: 2px #1f6dbb solid;
-    width: 500px;
-    height: auto;
-    padding: 20px;;
+    padding: 20px;
+    height: 70vh;
+    display: grid;
+    align-items: end;
+    overflow: auto;
 }
+
 .chat-message{
     text-align: justify;
     padding: 10px;
@@ -15,17 +29,23 @@
     display: block;
     border-radius: 5px;
 }
+
 .you{
-    width: 80%;
+    height: fit-content;
+    width: fit-content;
+    max-width: 80%;
     margin-left: 15%;
     background-color: #009688;
-    color: aliceblue;
+    color: snow;
+    justify-self: end;
 }
 .they{
-    width: 80%;
+    height: fit-content;
+    width: fit-content;
+    max-width: 80%;
     background-color: teal;
-    color: aliceblue;
-
+    color: snow;
+    justify-self: start;
 }
 
 .you  .sender{
@@ -44,27 +64,62 @@
 .input-message{
     display: block;
     text-align: right;
-    width: 500px;
     padding: 20px;
+    border-top: 2px #009688 solid;
+    display: flex;
+    justify-content: space-evenly;
 }
 
-.submit{
-    background-color: #3f51b5;
-    border: none;
-    /* width: 100px; */
-    padding: 7px 30px;
-    color: azure;
-    border-radius: 8px;
-    outline: none;
-}
-.submit:hover{
-    background-color: #152894;
-}
 .chat-input{
     padding: 5px;
     width: 60%;
-    outline: none;
+    height: 60px;
     border-radius: 7px;
-    /* border: inset; */
     border-color: chartreuse;
+    outline: none;
+}
+
+.submit{
+    background-color: #3fb549;
+    border: none;
+    padding: 10px 30px;
+    color: snow;
+    border-radius: 8px;
+    align-self: center;
+    outline: none;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5);;
+}
+.submit:hover{
+    background-color: #009688;
+}
+.submit:active{
+    box-shadow: none;
+}
+
+
+
+.faq{
+    background-color: snow;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+    overflow: auto;
+    border-radius: 6px;
+}
+
+.faq div {
+    padding: 10px;
+}
+
+.faq div:nth-child(odd) {
+    background-color: #8bf1cb2e;
+}
+
+
+@media (max-width: 1000px){
+.container{
+    grid-template-columns: 80%;
+    justify-content: center;
+}
+    .faq{
+        display: none;
+    }
 }
