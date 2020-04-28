@@ -1,0 +1,51 @@
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px #009688 solid;
+}
+
+h2{
+    color: #1f6f78;
+    font-weight: bolder;
+}
+
+.bg{
+    background-color: #009688;
+    color: snow;
+}
+
+.article{
+    margin-top: 2vh;
+    border-radius: 6px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.heading{
+    text-align: center;
+    padding: 2vh;
+    border-bottom: 2px #009688 solid;
+}
+
+.section{
+    border-radius: 6px 6px 0 0;
+}
+
+.section-body{
+    border: 2px #009688 solid;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.requirements div,
+.content div{
+    padding-left: 2vw;
+}
+
+footer{
+    display: block !important;
+    text-align: center;
+    padding-bottom: 2vh;
+}
