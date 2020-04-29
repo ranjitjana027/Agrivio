@@ -11,6 +11,6 @@ public class CropSuggestion implements java.io.Serializable {
       this.soil_type=s;
     }
     public String[] getSuggestion(){
-      return new String[]{this.soil_taxonomy,"NULL"};
+      return new String[]{"rice","wheat","maize"};
     }
 }

@@ -15,7 +15,7 @@ body {
 
 .grid-section {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 285px auto;
   padding: 1vh 1vw;
 }
 
@@ -46,7 +46,7 @@ body {
 }
 
 @media (max-width: 1100px){
-  
+
   .grid-section{
     padding-left: 0;
   }
