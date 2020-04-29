@@ -11,27 +11,23 @@ System.out.println(request.getParameter("room")==null);
 <script src="${pageContext.request.contextPath}/assets/js/chat/chat.js" charset="utf-8"></script>
 <%@ page import="java.sql.*" %>
 <%
+	Connection con=null;
+	PreparedStatement st=null;
+	ResultSet rs=null;
     try {
 
 			// Initialize the database
-			//String dbURL =  "jdbc:oracle:thin:dummy/passsword@localhost:1521:XE";
-			//Connection con = DriverManager.getConnection(dbURL );
       new org.postgresql.Driver();
 			java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
 
       String username = dbUri.getUserInfo().split(":")[0];
       String password = dbUri.getUserInfo().split(":")[1];
       String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+			con=DriverManager.getConnection(dbUrl, username, password);
 
-      Connection con=DriverManager.getConnection(dbUrl, username, password);
-
-
-
-
-			//Statement stmt = con.createStatement();
-			PreparedStatement st = con.prepareStatement("SELECT * FROM chat_messages where room= ?");//+session.getAttribute("userid"));
+		 	st = con.prepareStatement("SELECT * FROM chat_messages where room= ?");//+session.getAttribute("userid"));
 			st.setInt(1, Integer.parseInt(request.getParameter("room")));
-			ResultSet rs=st.executeQuery();
+			rs=st.executeQuery();
 
 
 
@@ -77,6 +73,21 @@ System.out.println(request.getParameter("room")==null);
         		catch (Exception e) {
         			e.printStackTrace();
         		}
+						finally {
+
+              if (rs != null) {
+                try { rs.close(); } catch (SQLException e) { ; }
+                rs = null;
+              }
+              if (st != null) {
+                try { st.close(); } catch (SQLException e) { ; }
+                st = null;
+              }
+              if (con != null) {
+                try { con.close(); } catch (SQLException e) { ; }
+                con = null;
+              }
+            }
 
             %>
 

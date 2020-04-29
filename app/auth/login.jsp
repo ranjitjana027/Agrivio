@@ -18,6 +18,10 @@
             out.print("<script>alert(\"You're already logged in\"); location.href=\""+request.getContextPath()+"/dashboard \"</script>");
         }
         if(!request.getMethod().equals("GET")){
+
+          Connection con = null;
+          PreparedStatement st = null;  // Or PreparedStatement if needed
+          ResultSet rs = null;
             try {
 
                 // Initialize the database
@@ -28,14 +32,14 @@
                 String password = dbUri.getUserInfo().split(":")[1];
                 String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 
-                Connection con=DriverManager.getConnection(dbUrl, username, password);
+                con=DriverManager.getConnection(dbUrl, username, password);
 
                 //Statement stmt = con.createStatement();
-                PreparedStatement st = con.prepareStatement("SELECT * FROM users where mobile=?  and password=?",
+                st = con.prepareStatement("SELECT * FROM users where mobile=?  and password=?",
                   ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 st.setString(1, request.getParameter("mobile"));
                 st.setString(2, request.getParameter("password"));
-                ResultSet rs=st.executeQuery();
+                rs=st.executeQuery();
 
 
                 if(rs.next())
@@ -49,7 +53,7 @@
                     rs.updateRow();
                 }
                 rs.close();
-
+                st.close();
                 con.close();
                 if((String)session.getAttribute("userid")!=null)
                     {
@@ -65,6 +69,21 @@
             catch (Exception e) {
 				        errorMessage="Something went wrong";
                 e.printStackTrace();
+            }
+            finally {
+            
+              if (rs != null) {
+                try { rs.close(); } catch (SQLException e) { ; }
+                rs = null;
+              }
+              if (st != null) {
+                try { st.close(); } catch (SQLException e) { ; }
+                st = null;
+              }
+              if (con != null) {
+                try { con.close(); } catch (SQLException e) { ; }
+                con = null;
+              }
             }
         }
         %>

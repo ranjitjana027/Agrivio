@@ -1,5 +1,8 @@
 <%@ page import="java.sql.*" %>
 <%
+	Connection con=null;
+	Statement stmt=null;
+	ResultSet rs=null;
 	try{
 		new org.postgresql.Driver();
 		java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
@@ -8,12 +11,12 @@
 		String password = dbUri.getUserInfo().split(":")[1];
 		String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 
-		Connection con=DriverManager.getConnection(dbUrl, username, password);
+		con=DriverManager.getConnection(dbUrl, username, password);
 
-		Statement stmt =con.createStatement();
+		stmt =con.createStatement();
 		String qstring="SELECT DISTINCT on (user_id) * from  location_info where user_id="
 																					+session.getAttribute("userid")+" order by user_id, loc_time desc";
-		ResultSet rs=stmt.executeQuery(qstring);
+		rs=stmt.executeQuery(qstring);
 
 
 %>
@@ -124,12 +127,27 @@
 	/>
 	<%
 
-
+			stmt.close();
 			rs.close();
 			con.close();
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
+		}
+		finally {
+
+			if (rs != null) {
+				try { rs.close(); } catch (SQLException e) { ; }
+				rs = null;
+			}
+			if (stmt != null) {
+				try { stmt.close(); } catch (SQLException e) { ; }
+				stmt = null;
+			}
+			if (con != null) {
+				try { con.close(); } catch (SQLException e) { ; }
+				con = null;
+			}
 		}
 	%>

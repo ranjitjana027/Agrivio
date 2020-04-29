@@ -5,6 +5,9 @@
 %>
 <%@ page import="java.sql.*" %>
 <%
+  Connection con=null;
+  ResultSet rs=null;
+  Statement stmt=null;
   try{
     new org.postgresql.Driver();
     java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
@@ -13,10 +16,10 @@
     String password = dbUri.getUserInfo().split(":")[1];
     String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 
-    Connection con=DriverManager.getConnection(dbUrl, username, password);
-    Statement stmt=con.createStatement();
+    con=DriverManager.getConnection(dbUrl, username, password);
+    stmt=con.createStatement();
     String query="select * from articles where id="+request.getParameter("id");
-    ResultSet rs=stmt.executeQuery(query);
+    rs=stmt.executeQuery(query);
     if(rs.next()){
 %>
 <div class="article">
@@ -104,6 +107,20 @@
   catch (Exception e) {
 
       e.printStackTrace();
+  }
+  finally {
+    if (rs != null) {
+      try { rs.close(); } catch (SQLException e) { ; }
+      rs = null;
+    }
+    if (stmt != null) {
+      try { stmt.close(); } catch (SQLException e) { ; }
+      stmt = null;
+    }
+    if (con != null) {
+      try { con.close(); } catch (SQLException e) { ; }
+      con = null;
+    }
   }
 
 %>

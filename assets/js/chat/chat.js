@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded",()=>{
           if(window.WebSocket)
           {
               ws=new WebSocket((window.location.protocol == 'http:' ? 'ws:' :'wss:') + window.location.host +
-              '/farmer/chat/' + document.querySelector('#room').value + '/' +document.querySelector('#userid').value);
+              '/webProject/chat/' + document.querySelector('#room').value + '/' +document.querySelector('#userid').value);
           }
           else{
               alert("Browser doesn't support WebSocket");
