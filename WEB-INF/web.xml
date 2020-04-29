@@ -112,6 +112,14 @@
     <servlet-name>Calendar</servlet-name>
     <url-pattern>/calendar</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>FetchEvents</servlet-name>
+    <jsp-file>/app/event/fetchEvents.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FetchEvents</servlet-name>
+    <url-pattern>/calendar/events</url-pattern>
+  </servlet-mapping>
 
   <servlet>
     <servlet-name>Price</servlet-name>
@@ -137,6 +145,14 @@
   <servlet-mapping>
     <servlet-name>Weather</servlet-name>
     <url-pattern>/weather</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CropSuggestion</servlet-name>
+    <jsp-file>/app/suggestion/crop_suggestion.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CropSuggestion</servlet-name>
+    <url-pattern>/suggestion/crop</url-pattern>
   </servlet-mapping>
 
   <!-- APIs -->

@@ -1,8 +1,14 @@
 document.addEventListener("DOMContentLoaded",()=>{
 
   if(document.querySelector('#current-longitude').innerHTML!='' && document.querySelector('#current-latitude').innerHTML!='')
-  weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
-                Number(document.querySelector('#current-longitude').innerHTML));
+  {
+    weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
+                  Number(document.querySelector('#current-longitude').innerHTML));
+    window.setInterval(()=>{
+      weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
+                    Number(document.querySelector('#current-longitude').innerHTML));
+    },3000000);
+  }
   else {
     navigator.geolocation.getCurrentPosition(showPosition,locationAccessBlocked);
   }
@@ -22,6 +28,10 @@ document.addEventListener("DOMContentLoaded",()=>{
     document.querySelector('#current-latitude').innerHTML=lat;
     document.querySelector('#current-longitude').innerHTML=lon;
     weatherUpdate(lat, lon);
+    window.setInterval(()=>{
+      weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
+                    Number(document.querySelector('#current-longitude').innerHTML));
+    },3000000);
   }
 
 
@@ -86,6 +96,18 @@ document.addEventListener("DOMContentLoaded",()=>{
     alert("Location access blocked. Set Location manually.");
     document.querySelector('.set-location').style.display='block';
     /* location from internet address */
+    document.querySelector('#current-latitude').innerHTML=22.57;
+    document.querySelector('#current-longitude').innerHTML=88.36;
+    var request=new XMLHttpRequest();
+    request.open("GET",location.protocol+"//"+location.host+"/webProject/app/API/user/set_location.jsp?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="
+                        +document.querySelector('#current-longitude').innerHTML);
+    request.onload=()=>{
+      if(request.status==200)
+      {
+        console.log("location updated");
+      }
+    }
+    request.send();
     setLocation(88.36,22.57);
 
   }
@@ -96,7 +118,22 @@ document.addEventListener("DOMContentLoaded",()=>{
     if(evt.target.classList.contains('set-location'))
     {
       document.querySelector('.set-location').style.display='none';
+      if(document.querySelector('#current-longitude').innerHTML!='' && document.querySelector('#current-latitude').innerHTML!='')
+      {
+        window.setInterval(()=>{
+          weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
+                        Number(document.querySelector('#current-longitude').innerHTML));
+        },3000000);
+        weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
+                      Number(document.querySelector('#current-longitude').innerHTML));
+
+      }
+      else{
+        alert("Your location is not set!");
+      }
+
     }
+
   });
   document.querySelector('#location-icon').onclick=()=>{
     document.querySelector('.set-location').style.display='block';

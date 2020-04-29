@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*" %>
 <% response.setContentType("application/json");
+Connection con=null;
+PreparedStatement st=null;
+ResultSet rs=null;
 
+try {
 
-try { 
-
-			// Initialize the database 
+			// Initialize the database
 			new org.postgresql.Driver();
 			java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
 
@@ -13,16 +15,16 @@ try {
 			String password = dbUri.getUserInfo().split(":")[1];
 			String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 
-			Connection con=DriverManager.getConnection(dbUrl, username, password);
+			con=DriverManager.getConnection(dbUrl, username, password);
 
 			//Statement stmt = con.createStatement();
-			PreparedStatement st = con.prepareStatement("SELECT * FROM events where user_id="+(String)session.getAttribute("userid"));
-			//st.setString(1, request.getParameter("mobile")); 
+			st = con.prepareStatement("SELECT * FROM events where user_id="+(String)session.getAttribute("userid"));
+			//st.setString(1, request.getParameter("mobile"));
 			//st.setString(2, request.getParameter("password"));
-			ResultSet rs=st.executeQuery();
+			rs=st.executeQuery();
 %>
 { "events": [
-<%			
+<%
 			if(rs.next())
 			{
 %>
@@ -34,10 +36,10 @@ try {
         "remark":"<%= rs.getString("remark")==null?"":rs.getString("remark") %>"
         }
 <%
-				
+
 			}
 %>
-<%			
+<%
 			while(rs.next())
 			{
 %>
@@ -49,17 +51,32 @@ try {
         "remark":"<%= rs.getString("remark")==null?"":rs.getString("remark") %>"
         }
 <%
-				
+
 			}
 %>
 ]
 }
 <%
-			
-		} 
-		catch (Exception e) { 
-			e.printStackTrace(); 
-		} 
+
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+
+			if (rs != null) {
+				try { rs.close(); } catch (SQLException e) { ; }
+				rs = null;
+			}
+			if (st != null) {
+				try { st.close(); } catch (SQLException e) { ; }
+				st = null;
+			}
+			if (con != null) {
+				try { con.close(); } catch (SQLException e) { ; }
+				con = null;
+			}
+		}
 
 
 %>
