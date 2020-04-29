@@ -27,6 +27,16 @@
   letter-spacing: .05rem;
 }
 
+.crop-suggestion{
+  list-style-type: none;
+  padding: 0;
+}
+.suggestion header{
+  padding:10px 20px 5px;
+font-size: 20px;
+font-weight: bold;
+}
+
 
 
 @media (max-width: 1100px){

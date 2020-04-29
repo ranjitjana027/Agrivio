@@ -22,6 +22,8 @@
 			errorMessage=null;
 
 			if(!request.getMethod().equals("GET")){
+				Connection con=null;
+				Statement  stmt=null;
 				try {
 
 					// Initialize the database
@@ -32,9 +34,9 @@
 					String password = dbUri.getUserInfo().split(":")[1];
 					String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 
-					Connection con=DriverManager.getConnection(dbUrl, username, password);
+					con=DriverManager.getConnection(dbUrl, username, password);
 
-					Statement stmt = con.createStatement();
+					stmt = con.createStatement();
 					String insert=("insert into users(firstname, lastname, mobile, email, password) values(  '"
 					+ request.getParameter("firstname")+"', '"+request.getParameter("lastname")+"','"+request.getParameter("mobile")
 					+"', '"+request.getParameter("email")+"', '" +request.getParameter("password")+ "')");
@@ -48,6 +50,17 @@
 				catch (Exception e) {
 					e.printStackTrace();
 					errorMessage="Error occured while signing up.";
+				}
+				finally {
+				
+					if (stmt != null) {
+						try { stmt.close(); } catch (SQLException e) { ; }
+						stmt = null;
+					}
+					if (con != null) {
+						try { con.close(); } catch (SQLException e) { ; }
+						con = null;
+					}
 				}
 			}
 		}
