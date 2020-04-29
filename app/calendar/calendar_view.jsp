@@ -4,6 +4,8 @@
 	if(session.getAttribute("userid")!=null){
         errorMessage=null;
         if(!request.getMethod().equals("GET")){
+					Connection con=null;
+					Statement stmt=null;
             try {
 
                 // Initialize the database
@@ -14,8 +16,8 @@
                 String password = dbUri.getUserInfo().split(":")[1];
                 String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 
-                Connection con=DriverManager.getConnection(dbUrl, username, password);
-                Statement stmt = con.createStatement();
+                con=DriverManager.getConnection(dbUrl, username, password);
+                stmt = con.createStatement();
                 int d=Integer.parseInt(request.getParameter("inp-date"));
                 int m=Integer.parseInt(request.getParameter("inp-month"));
                 int y=Integer.parseInt(request.getParameter("inp-year"));
@@ -32,6 +34,16 @@
             }
             catch (Exception e) {
                 e.printStackTrace();
+            }
+						finally {
+              if (stmt != null) {
+                try { stmt.close(); } catch (SQLException e) { ; }
+                stmt = null;
+              }
+              if (con != null) {
+                try { con.close(); } catch (SQLException e) { ; }
+                con = null;
+              }
             }
         }
     }
@@ -295,11 +307,11 @@
         <h2 class="event-title" style="display: inline;">Event Details</h2>
         <h4><b>Date :</b> <span class="event-date"></span> </h4>
         <ul class="event-list"></ul>
-        <div style="display: inline-block; 
-                    user-select:none; 
-                    -webkit-user-select:none; 
-                    -moz-user-select:none; 
-                    text-align: center; 
+        <div style="display: inline-block;
+                    user-select:none;
+                    -webkit-user-select:none;
+                    -moz-user-select:none;
+                    text-align: center;
                     width: 100%;">
 
             <svg height="60" width="60"
@@ -319,4 +331,3 @@
 </div>
 
 <script src="${pageContext.request.contextPath}/assets/js/calendar/calendar.js" charset="utf-8"></script>
-
