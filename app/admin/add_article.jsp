@@ -10,6 +10,8 @@ String error_message="";
 String message="";
 if(request.getMethod().equals("POST"))
 {
+  Connection con=null;
+  PreparedStatement ps=null;
     try{
         // Initialize the database
         new org.postgresql.Driver();
@@ -19,11 +21,11 @@ if(request.getMethod().equals("POST"))
         String password = dbUri.getUserInfo().split(":")[1];
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 
-        Connection con=DriverManager.getConnection(dbUrl, username, password);
+        con=DriverManager.getConnection(dbUrl, username, password);
 
         // prepared statement
         //PreparedStatement ps=con.prepareStatement("insert into weather_details(min_temp,max_temp,humidity,rainfall) values (?,?,?,?)");
-        PreparedStatement ps=con.prepareStatement("insert into articles( name , cpa , min_prod_time , profit ,"+
+        ps=con.prepareStatement("insert into articles( name , cpa , min_prod_time , profit ,"+
                                                 " min_temp , max_temp , humidity , rainfall , soil , land , season ,"+
                                                 " soil_prep , sowing , nurturing , production , coolingoff ,extra , conclusion) "+
                                                 "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -48,10 +50,22 @@ if(request.getMethod().equals("POST"))
 
         ps.executeUpdate();
         message="Article added successfully";
+        ps.close();
+        con.close();
     }
     catch(Exception e){
         e.printStackTrace();
         error_message="Error occured while adding the article.";
+    }
+    finally{
+      if(ps!=null){
+        try{ ps.close(); } catch(Exception e){;}
+        ps=null;
+      }
+      if(con!=null){
+        try{ con.close(); } catch(Exception e){;}
+        con=null;
+      }
     }
 
 

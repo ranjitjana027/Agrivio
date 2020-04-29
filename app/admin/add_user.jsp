@@ -15,6 +15,8 @@ if(request.getMethod().equals("POST"))
     error_message="Passwords did not match";
   }
   else{
+    Connection con=null;
+    PreparedStatement ps=null;
     try{
         // Initialize the database
         new org.postgresql.Driver();
@@ -24,13 +26,11 @@ if(request.getMethod().equals("POST"))
         String password = dbUri.getUserInfo().split(":")[1];
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 
-        Connection con=DriverManager.getConnection(dbUrl, username, password);
-        Statement stmt = con.createStatement();
-        String insert;
+        con=DriverManager.getConnection(dbUrl, username, password);
 
         if(request.getParameter("role").equals("FARMER"))
         {
-            PreparedStatement ps=con.prepareStatement("insert into users(firstname, lastname, mobile, email, password, premium)"+
+            ps=con.prepareStatement("insert into users(firstname, lastname, mobile, email, password, premium)"+
             "values( ?,?,?,?,?,?)");
             ps.setString(1,request.getParameter("firstname"));
             ps.setString(2,request.getParameter("lastname"));
@@ -39,10 +39,10 @@ if(request.getMethod().equals("POST"))
             ps.setString(5,request.getParameter("password2"));
             ps.setBoolean(6,Boolean.valueOf(request.getParameter("premium")));
             ps.executeUpdate();
-            ps.close();
+            
         }
         else{
-          PreparedStatement ps=con.prepareStatement("insert into users(firstname, lastname, mobile, email, password, role)"+
+          ps=con.prepareStatement("insert into users(firstname, lastname, mobile, email, password, role)"+
           "values( ?,?,?,?,?,?)");
           ps.setString(1,request.getParameter("firstname"));
           ps.setString(2,request.getParameter("lastname"));
@@ -51,11 +51,11 @@ if(request.getMethod().equals("POST"))
           ps.setString(5,request.getParameter("password2"));
           ps.setString(6,request.getParameter("role"));
           ps.executeUpdate();
-          ps.close();
+          
         }
 
 
-
+        ps.close();
         con.close();
         message="Successfully added a user";
 
@@ -63,6 +63,16 @@ if(request.getMethod().equals("POST"))
     catch(Exception e){
         e.printStackTrace();
         error_message="Error occured while adding the article";
+    }
+    finally{
+      if(ps!=null){
+        try{ ps.close(); } catch(Exception e){;}
+        ps=null;
+      }
+      if(con!=null){
+        try{ con.close(); } catch(Exception e){;}
+        con=null;
+      }
     }
   }
 
