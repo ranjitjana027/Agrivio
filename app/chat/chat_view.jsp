@@ -1,4 +1,3 @@
-
 <%
 System.out.println(request.getParameter("room")==null);
 	if(session.getAttribute("userid")==null)
@@ -32,7 +31,8 @@ System.out.println(request.getParameter("room")==null);
 
 
 %>
-    <div class="container">
+<div class="container">
+    <div class="chat">
         <div class="chat-room">
             <div class="chat-message <%= !((String)session.getAttribute("userid")).equals("you")?"you":"they" %>">
                 <p class="content">Hi I Want to ask you some question?</p>
@@ -62,7 +62,8 @@ System.out.println(request.getParameter("room")==null);
                 <p class="content"><%= rs.getString("content") %></p>
                 <small>
                     <span class="time"><%= rs.getTimestamp("c_time") %></span>
-                    <span class="sender"><%= ((String)session.getAttribute("userid")).equals(rs.getString("sender"))?"You":rs.getString("sender_name")  %></span>
+                    <span
+                        class="sender"><%= ((String)session.getAttribute("userid")).equals(rs.getString("sender"))?"You":rs.getString("sender_name")  %></span>
                 </small>
 
             </div>
@@ -99,6 +100,75 @@ System.out.println(request.getParameter("room")==null);
             <input type="submit" value="Send" class="submit" />
         </div>
     </div>
+    <div class="faq">
+        <div class="article">
+            <a href="#">
+                <h3>This Is an Article Name</h3>
+            </a>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s.</p>
+        </div>
+        <div class="article">
+            <a href="#">
+                <h3>This Is an Article Name</h3>
+            </a>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged.</p>
+        </div>
+        <div class="article">
+            <a href="#">
+                <h3>This Is an Article Name</h3>
+            </a>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+        <div class="article">
+            <a href="#">
+                <h3>This Is an Article Name</h3>
+            </a>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book.</p>
+        </div>
+        <div class="article">
+            <a href="#">
+                <h3>This Is an Article Name</h3>
+            </a>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged.</p>
+        </div>
+        <div class="article">
+            <a href="#">
+                <h3>This Is an Article Name</h3>
+            </a>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged.</p>
+        </div>
+        <div class="article">
+            <a href="#">
+                <h3>This Is an Article Name</h3>
+            </a>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged.</p>
+        </div>
+        <div class="article">
+            <a href="#">
+                <h3>This Is an Article Name</h3>
+            </a>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged.</p>
+        </div>
+    </div>
+</div>
 <%
 }
 %>
