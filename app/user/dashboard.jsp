@@ -15,7 +15,7 @@ else if( session.getAttribute("role").equals("FARMER")){
 <%
 }
 else if(session.getAttribute("role").equals("ADMIN") || session.getAttribute("role").equals("EXPERT")){
-  out.println("Coming Soon");
+  response.sendRedirect(request.getContextPath()+"/admin/dashboard");
 } else {
   out.println("Page doesn't exist");
 }
