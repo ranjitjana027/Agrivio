@@ -1,5 +1,9 @@
 <%@ page import="java.sql.*" %>
 <%
+
+  Connection con=null;
+  PreparedStatement st1=null, st2=null;
+  ResultSet farmerSet=null, expertSet=null;
     try {
 
 			// Initialize the database
@@ -11,18 +15,18 @@
       String password = dbUri.getUserInfo().split(":")[1];
       String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 
-      Connection con=DriverManager.getConnection(dbUrl, username, password);
+      con=DriverManager.getConnection(dbUrl, username, password);
 
 
 
 
 			//Statement stmt = con.createStatement();
-			PreparedStatement st1 = con.prepareStatement("SELECT * FROM farmers");
+			st1 = con.prepareStatement("SELECT * FROM farmers");
 			//st.setString(1, session.getAttribute("userid"));
-			ResultSet farmerSet=st1.executeQuery();
-      PreparedStatement st2 = con.prepareStatement("SELECT * FROM experts");
+			farmerSet=st1.executeQuery();
+      st2 = con.prepareStatement("SELECT * FROM experts");
       //st.setString(1, session.getAttribute("userid"));
-      ResultSet expertSet=st2.executeQuery();
+      expertSet=st2.executeQuery();
 
 
 
@@ -91,9 +95,32 @@
                 }
       %>
       <%
+
             }
         catch (Exception e) {
           e.printStackTrace();
+        }
+        finally{
+          if(farmerSet!=null){
+            try{ farmerSet.close(); } catch(Exception e){;}
+            farmerSet=null;
+          }
+          if(expertSet!=null){
+            try{ expertSet.close(); } catch(Exception e){;}
+            expertSet=null;
+          }
+          if(st1!=null){
+            try{ st1.close(); } catch(Exception e){;}
+            st1=null;
+          }
+          if(st2!=null){
+            try{ st2.close(); } catch(Exception e){;}
+            st2=null;
+          }
+          if(con!=null){
+            try{ con.close(); } catch(Exception e){;}
+            con=null;
+          }
         }
 
       %>
