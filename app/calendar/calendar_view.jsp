@@ -51,8 +51,7 @@
         errorMessage="You are not logged in.";
 	%>
 
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/calendar/calendar.css">
-
+  
 
 
 <div class="calendar">
