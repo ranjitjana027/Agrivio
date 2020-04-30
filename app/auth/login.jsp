@@ -20,7 +20,7 @@
         if(!request.getMethod().equals("GET")){
 
           Connection con = null;
-          PreparedStatement st = null;  // Or PreparedStatement if needed
+          PreparedStatement st = null; 
           ResultSet rs = null;
             try {
 
@@ -71,7 +71,7 @@
                 e.printStackTrace();
             }
             finally {
-            
+
               if (rs != null) {
                 try { rs.close(); } catch (SQLException e) { ; }
                 rs = null;

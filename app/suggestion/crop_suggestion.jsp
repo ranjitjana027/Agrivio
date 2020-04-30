@@ -8,25 +8,26 @@ String lon=request.getParameter("lon");
 String lat=request.getParameter("lat");
 String url="https://rest.soilgrids.org/query?lon="+lon+"&lat="+lat;
 if(lat!=null && lon!=null){
+  try{
 %>
-   <c:import var = "data" url = "<%=url%>"/>
-   <% Object obj=JSONValue.parse((String)pageContext.getAttribute("data"));
-      JSONObject obj1=(JSONObject)obj;
-      String st="";
-      if(((JSONObject)obj1.get("properties")).get("soilmask").equals("soil")){
-        st=(String)(((JSONObject)obj1.get("properties")).get("TAXGOUSDAMajor"));
-      }
-   %>
+
    <jsp:useBean id="cs" class="bean.CropSuggestion" scope="page" />
-   <jsp:setProperty name="cs" property="soil_taxonomy" value="<%=st%>" />
+   <jsp:setProperty name="cs" property="soil_taxonomy" value="aquents" />
    <%
+
    JSONObject obj3=new JSONObject();
    obj3.put("success",true);
-   obj3.put("demo",java.util.Arrays.asList(cs.getSuggestion()));
+   obj3.put("cropids",cs.getSuggestion());
    %>
    <%= obj3  %>
-<%}
+<% }
+catch(Exception e){
+  e.printStackTrace();
+  out.println("{\"success\":false}");
+}
+}
 else{
   out.println("{\"success\":false}");
 }
+
 %>
