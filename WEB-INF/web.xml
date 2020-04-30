@@ -45,6 +45,14 @@
     <url-pattern>/dashboard</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>UserProfile</servlet-name>
+    <jsp-file>/app/user/profile.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserProfile</servlet-name>
+    <url-pattern>/profile</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>AdminDashboard</servlet-name>
     <jsp-file>/app/admin/dashboard.jsp</jsp-file>
   </servlet>
