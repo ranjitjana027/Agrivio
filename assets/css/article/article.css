@@ -1,11 +1,11 @@
-header{
+.article-page header{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border: 2px #009688 solid;
 }
 
-h2{
+.article-page h2{
     color: #1f6f78;
     font-weight: bolder;
     padding-top: 0 !important;
@@ -16,7 +16,7 @@ h2{
     color: snow;
 }
 
-.article{
+.article-page{
     margin-top: 2vh;
     border-radius: 6px;
     box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
@@ -56,7 +56,7 @@ h2{
     border-bottom: none;
 }
 
-footer{
+footer.article-page{
     display: block !important;
     text-align: center;
     padding-bottom: 2vh;

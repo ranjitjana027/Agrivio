@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/price/mandiPrice.css">
-      <div class="grid-content">
+
+      <div class="price-content">
         <div class="select-location">
             <label for="state">State: </label>
             <select id="state">

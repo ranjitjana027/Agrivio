@@ -6,7 +6,7 @@ System.out.println(request.getParameter("room")==null);
     response.sendRedirect("${pageContext.request.contextPath}/dashboard");
   else {
 %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/chat/chat.css">
+
 <script src="${pageContext.request.contextPath}/assets/js/chat/chat.js" charset="utf-8"></script>
 <%@ page import="java.sql.*" %>
 <%

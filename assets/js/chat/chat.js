@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       function chat(){
           if(window.WebSocket)
           {
+            if(typeof(ws)=="undefined" || ws.readyState!=1)
               ws=new WebSocket((window.location.protocol == 'http:' ? 'ws:' :'wss:') + window.location.host +
               '/webProject/chat/' + document.querySelector('#room').value + '/' +document.querySelector('#userid').value);
           }

@@ -21,8 +21,7 @@
     rs=stmt.executeQuery(query);
     if(rs.next()){
 %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/article/article.css">
-<div class="article">
+<div class="article-page">
     <header class="section">
         <h2 class="heading"><%= rs.getString("name") %></h2>
 
@@ -99,7 +98,7 @@
         </div>
 </div>
 </article>
-<footer class="article">
+<footer class="article-page">
     <div class="section">
         <h3 class="heading bg">Conclusion</h3>
         <p class="data"><%= rs.getString("conclusion") %></p>

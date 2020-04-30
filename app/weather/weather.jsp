@@ -23,7 +23,6 @@
 
 
 <script src="/webProject/assets/js/weather/weather.js" charset="utf-8"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/weather/weather.css">
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
 

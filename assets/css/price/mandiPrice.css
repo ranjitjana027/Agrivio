@@ -1,4 +1,4 @@
-.grid-content {
+.price-content {
   display: block;
   padding: 16px 14px;
   background-color: snow;
@@ -16,23 +16,22 @@
   letter-spacing: 0.05rem;
 }
 
-.grid-content table {
+.price-content table {
   border-collapse: collapse;
   width: 100%;
   margin: auto;
 }
-.grid-content td {
+.price-content td {
   border: solid #0e5c54;
   text-align: center;
 }
-.grid-content tr:hover {
+.price-content tr:hover {
     background-color: #0e5c25a9;
     color: snow;
 }
 
-.grid-content th {
+.price-content th {
   height: 40px;
   color: snow;
   background-color: #0e5c25;
 }
-
