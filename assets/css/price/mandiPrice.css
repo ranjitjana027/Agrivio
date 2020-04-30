@@ -9,7 +9,7 @@
 
 .select-location {
   display: inline-block;
-  width: 250px;
+  min-width: 250px;
   color: #0e5c54;
   height: 30px;
   font-size: large;
