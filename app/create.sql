@@ -113,9 +113,53 @@ create table articles(
     conclusion text not null
 );
 
-/* soil data */
-create table soil_info(
+/* crop data */
+create table crop_info(
   id serial primary key,
-  name varchar(128),
-  moisture real
+  name varchar(128) not null,
+  article_id integer references articles(id) on delete cascade
+);
+insert into crop_info(name,article_id) values ("rice",1);
+insert into crop_info(name) values ('wheat');
+insert into crop_info(name) values ('cotton');
+insert into crop_info(name) values ('maize');
+
+update crop_info set article_id=2 where id=2;
+/* soil data */
+create table india_soil_info(
+  id serial primary key,
+  name varchar(128) not null
+);
+  insert into india_soil_info(name) values('alluvial');
+  insert into india_soil_info(name) values('black');
+  insert into india_soil_info(name) values('red');
+  insert into india_soil_info(name) values('laterite');
+  insert into india_soil_info(name) values('desert');
+
+create table usda_soil_info(
+  id serial primary key,
+  name varchar(128) not null,
+  indian_name integer references india_soil_info(id) on delete cascade
+);
+insert into usda_soil_info(name,indian_name) values('aquents',1);
+insert into usda_soil_info(name,indian_name) values('arents',1);
+
+select id from usda_soil_info where lower(name) in ('aquents','arents');
+create or replace view soil_info as
+  select A.id, A.name as usda_name, B.name as indian_name from usda_soil_info A, india_soil_info B where A.indian_name=B.id;
+
+create table soil_crop_mapping(
+  soil_id integer references usda_soil_info(id) on delete cascade,
+  crop_id integer references crop_info(id) on delete cascade
+);
+
+insert into soil_crop_mapping values(1,1);
+
+select * from crop_info
+where id in
+( select crop_id from soil_crop_mapping
+  where soil_id in
+  ( select id from usda_soil_info
+    where lower(name) = 'aquents'
+  )
 );

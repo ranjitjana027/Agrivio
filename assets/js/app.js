@@ -1,19 +1,25 @@
 /* get the page */
 function getPage(path,fun,title,url){
+
+  document.querySelector('.spinner').style.display="block";
   var request =new XMLHttpRequest();
   request.open("GET",location.protocol+"//"+location.host+"/webProject/app"+path);
   request.onload=()=>{
-    responseHTML=request.responseText;
-    document.querySelector("#main-content").innerHTML=responseHTML;
-    fun();
-    document.title=title;
-    history.pushState({'title':title,'text':document.body.innerHTML},title,url);
+    if(request.status==200){
+      responseHTML=request.responseText;
+      document.querySelector("#main-content").innerHTML=responseHTML;
+      fun(title,url);
+
+      /*window.setTimeout(()=>{
+        document.querySelector('.spinner').style.display="none";
+      },200);*/
+    }
   }
   request.send();
 }
 
 /** for chat **/
-function chat(){
+function chat(title,url){
     if(window.WebSocket)
     {
         ws=new WebSocket((window.location.protocol == 'http:' ? 'ws:' :'wss:') + window.location.host +
@@ -25,6 +31,11 @@ function chat(){
     }
     ws.onopen=()=>{
         console.log("connected");
+        document.querySelector('.spinner').style.display="none"; // remove spinner
+        /* push current state */
+        document.title=title;
+        history.pushState({'title':title,'text':document.body.innerHTML},title,url);
+
         document.querySelector('.chat-input').onkeydown=evt=>{
             if(evt.keyCode==13)
             {
@@ -87,7 +98,7 @@ function chat(){
 }
 
 /** for crop prices at different mandis **/
-function crop_price(){
+function crop_price(title,url){
 
     var request=new XMLHttpRequest();
     request.open("GET","https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001850c76ce49e246686075684ef0e11614&format=json&offset=0&limit=9999");
@@ -177,6 +188,10 @@ function crop_price(){
                     }
                 }
             }
+            document.querySelector('.spinner').style.display="none"; // remove spinner
+            /* push current state */
+            document.title=title;
+            history.pushState({'title':title,'text':document.body.innerHTML},title,url);
 
         }
 
@@ -347,19 +362,37 @@ function current_weather(){
 }
 
 /* crop suggestion */
-function get_suggestion() {
+function get_suggestion(title,url) {
   var request=new XMLHttpRequest();
   request.open("GET",location.protocol+"//"+location.host+"/webProject/suggestion/crop?lat=23&lon=88");
   request.onload=()=>{
-      var data=JSON.parse(request.responseText);
-      console.log(data);
+      if(request.status==200){
+        var data=JSON.parse(request.responseText);
+        console.log(data);
+        if(data.success){
+          for (var i of data.cropids) {
+            var aLink=document.createElement('a');
+            aLink.href=location.protocol+"//"+location.host+"/webProject/article?id="+i.id;
+            aLink.text="Cultivation Guide: "+i.name.replace(/^./,i.name[0].toUpperCase())
+            aLink.classList.add("link-article");
+            var aDiv =document.createElement('div');
+            aDiv.classList.add("article");
+            aDiv.append(aLink);
+            var aLi=document.createElement('li');
+            aLi.append(aDiv);
+            document.querySelector('.crop-suggestion').append(aLi);
+          }
+
+        }
+        loadArticle(title,url);
+      }
   }
   request.send();
 
 }
 
 /* calendar */
-function calendar_util() {
+function calendar_util(title,url) {
 
     eventdata=null;
     fillCalendar(new Date().getFullYear(),new Date().getMonth());
@@ -476,6 +509,7 @@ function calendar_util() {
         // testing phase
         fetchEvent();
         activateModal();
+
     }
 
     function fetchEvent() {
@@ -584,6 +618,11 @@ function calendar_util() {
         document.querySelector('.crop-stats').classList.add('show');
         document.querySelector('.event-type-stats').classList.add('show');
       }
+      document.querySelector('.spinner').style.display="none"; // remove spinner
+      /* push current state */
+      document.title=title;
+      history.pushState({'title':title,'text':document.body.innerHTML},title,url);
+
   }
 
 
@@ -741,13 +780,25 @@ function calendar_util() {
 }
 
 /** dashboard **/
-function loadArticle() {
+function loadArticle(title,url) {
   document.querySelectorAll(".link-article").forEach((item, i) => {
     item.onclick=()=>{
-      getPage("/article/article_view.jsp"+item.search,()=>{},"Article","article"+item.search);
+      getPage("/article/article_view.jsp"+item.search,
+      ()=>{
+        document.querySelector('.spinner').style.display="none";
+        document.title="Article";
+        history.pushState({'title':"Article",'text':document.body.innerHTML},"Article","article"+item.search);
+      }
+      ,"Article","article"+item.search);
       return false;
     }
   });
+
+  document.querySelector('.spinner').style.display="none"; //remove spinner
+  /* push current state */
+  document.title=title;
+  history.pushState({'title':title,'text':document.body.innerHTML},title,url);
+
 
 }
 
@@ -756,12 +807,16 @@ document.addEventListener("DOMContentLoaded",()=>{
   document.querySelector("#link-calendar").onclick=loadCalendar;
   document.querySelector("#link-price").onclick=loadPrice;
   document.querySelector("#link-chat").onclick=()=>{
+      document.querySelector('.spinner').style.display="block";
     getPage('/chat/chat_view.jsp'+document.querySelector("#link-chat").search
     , chat,"Ask Experts | Dashboard","ask-expert"+document.querySelector("#link-chat").search);
+
     return false;
   }
+  document.querySelector("#link-profile").onclick=loadProfile;
+  document.querySelector("#link-forecast").onclick=loadForecast;
   function loadHome() {
-    getPage('/user/dashboard_view.jsp',loadArticle,"Welcome | Dashboard","dashboard");
+    getPage('/user/dashboard_view.jsp',get_suggestion,"Welcome | Dashboard","dashboard");
 
     return false;
   }
@@ -771,6 +826,30 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
   function loadPrice(){
     getPage('/price/mandiPrice.jsp', crop_price,"Crop Price | Dashboard","crop-price");
+    return false;
+  }
+  function loadProfile(){
+    getPage('/user/profile_view.jsp',
+          ()=>{
+            document.querySelector('.spinner').style.display="none";
+            document.title="My Profile | Dashboard";
+            history.pushState({'title':'My Profile | Dashboard','text':document.body.innerHTML},'My Profile | Dashboard',"profile");
+          },
+          "My Profile | Dashboard",
+          "profile"
+        );
+    return false;
+  }
+  function loadForecast() {
+    getPage("/weather/weather_forecast_view.jsp",
+          ()=>{
+            document.querySelector('.spinner').style.display="none";
+            document.title="Weather | Dashboard";
+            history.pushState({'title':'Weather | Dashboard','text':document.body.innerHTML},'My Profile | Dashboard',"weather");
+          },
+          "Weather Forecast",
+          "weather"
+        );
     return false;
   }
 

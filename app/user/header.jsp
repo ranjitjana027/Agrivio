@@ -19,7 +19,7 @@
         <a href="${pageContext.request.contextPath}/crop-price" id="link-price">Crop Price</a>
       </li>
       <li>
-        <a href="${pageContext.request.contextPath}/weather" id="link-weather">Weather</a>
+        <a href="${pageContext.request.contextPath}/weather" id="link-forecast">Weather</a>
       </li>
       <li>
         <a href="${pageContext.request.contextPath}/ask-expert?room=<%= request.getParameter("userid") %>" id="link-chat">Ask Experts</a>
@@ -50,36 +50,9 @@
     </svg>
     <div class="user-menu">
       <ul>
-        <li><a href="#">Your Profile</a> </li>
-        <li><a href="google.com">Link2</a> </li>
+        <li><a href="${pageContext.request.contextPath}/profile" id="link-profile">Your Profile</a> </li>
         <li><a href="${pageContext.request.contextPath}/logout">Logout</a> </li>
       </ul>
     </div>
   </div>
-  <!--div class="header-item" >
-    <button class="menubar">Menu</button>
-    <ul class="menu">
-      <li class="menu-item"><a href="#">My Profile</a></li>
-      <li class="menu-item"><a href="../calendar/calendar.jsp">My Events</a></li>
-      <li class="menu-item"><a href="#">Add Event</a></li>
-      <li class="menu-item"><a href="../auth/logout.jsp">Logout</a></li>
-    </ul>
-  </div>
-
-  <div class="header-item">
-    <input type="text"><button>Search</button>
-    <h3 style="display:inline-block;">
-      Hi
-      <% String user=((String)session.getAttribute("user"));
-        if(user!=null)
-        out.print(user);
-        else
-        out.print("Guest!");
-      %>
-    </h3>
-
-  </div>
-  <div class="header-item">
-
-  </div>-->
 </div>
