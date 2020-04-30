@@ -20,7 +20,7 @@
 
       document.querySelector('#state').onchange = evt =>{
           state=evt.target.value;
-          wbdata = pdata["records"].filter(e => e.state.match(state))
+          wbdata = pdata["records"].filter(e => e.state.match(new RegExp(state)))
           stateSelect(wbdata);
       }
 
@@ -67,7 +67,7 @@
                   else
                       dist = ".*"
                   {
-                      ddata = wbdata.filter(e => e.district.match(dist));
+                      ddata = wbdata.filter(e => e.district.includes(dist));
                       console.log(ddata)
                       while (document.getElementById('price-list').rows.length > 1)
                           document.getElementById('price-list').deleteRow(-1)
