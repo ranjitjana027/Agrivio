@@ -5,24 +5,24 @@
   <div class="nav-bar-icon">
     &#9776;
   </div>
-  
+
   <!-- useful nav link -->
   <div class="user-nav">
     <ul>
       <li>
-        <a href="${pageContext.request.contextPath}/dashboard">Home</a>
+        <a href="${pageContext.request.contextPath}/dashboard" id="link-home">Home</a>
       </li>
       <li>
-        <a href="${pageContext.request.contextPath}/calendar">Calendar</a>
+        <a href="${pageContext.request.contextPath}/calendar" id="link-calendar">Calendar</a>
       </li>
       <li>
-        <a href="${pageContext.request.contextPath}/crop-price">Crop Price</a>
+        <a href="${pageContext.request.contextPath}/crop-price" id="link-price">Crop Price</a>
       </li>
       <li>
-        <a href="${pageContext.request.contextPath}/weather">Weather</a>
+        <a href="${pageContext.request.contextPath}/weather" id="link-weather">Weather</a>
       </li>
       <li>
-        <a href="${pageContext.request.contextPath}/ask-expert?room=<%= request.getParameter("userid") %>">Ask Experts</a>
+        <a href="${pageContext.request.contextPath}/ask-expert?room=<%= request.getParameter("userid") %>" id="link-chat">Ask Experts</a>
       </li>
     </ul>
   </div>
