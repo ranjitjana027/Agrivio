@@ -65,7 +65,3 @@
 
 	</div>
 </div>
-<script type="text/javascript">
-console.log('kjnkjn');
-get_suggestion("Welcome | Dashboard","dashboard");
-</script>

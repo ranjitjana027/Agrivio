@@ -12,7 +12,7 @@ if(lat!=null && lon!=null){
 %>
 
    <jsp:useBean id="cs" class="bean.CropSuggestion" scope="page" />
-   <jsp:setProperty name="cs" property="soil_taxonomy" value="aquents" />
+   <jsp:setProperty name="cs" property="soil_taxonomy" value="Aquents" />
    <%
 
    JSONObject obj3=new JSONObject();
