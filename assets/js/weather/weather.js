@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded",()=>{
       weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
                     Number(document.querySelector('#current-longitude').innerHTML));
     },3000000);
+    if(document.title=="Welcome | Dashboard"){
+      get_suggestion("Welcome | Dashboard","dashboard");
+    }
   }
   else {
     navigator.geolocation.getCurrentPosition(showPosition,locationAccessBlocked);
@@ -32,6 +35,9 @@ document.addEventListener("DOMContentLoaded",()=>{
       weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
                     Number(document.querySelector('#current-longitude').innerHTML));
     },3000000);
+    if(document.title=="Welcome | Dashboard"){
+      get_suggestion("Welcome | Dashboard","dashboard");
+    }
   }
 
 
@@ -89,7 +95,11 @@ document.addEventListener("DOMContentLoaded",()=>{
         }
       }
       request.send();
-      weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),Number(document.querySelector('#current-longitude').innerHTML));
+      weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
+                  Number(document.querySelector('#current-longitude').innerHTML));
+      if(document.title=="Welcome | Dashboard"){
+        get_suggestion("Welcome | Dashboard","dashboard");
+      }
     }
   })
   function locationAccessBlocked(){
@@ -126,6 +136,9 @@ document.addEventListener("DOMContentLoaded",()=>{
         },3000000);
         weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
                       Number(document.querySelector('#current-longitude').innerHTML));
+        if(document.title=="Welcome | Dashboard"){
+          get_suggestion("Welcome | Dashboard","dashboard");
+        }
 
       }
       else{

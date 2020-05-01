@@ -36,7 +36,7 @@ public class CropSuggestion implements java.io.Serializable {
             st=con.prepareStatement("select * from crop_info where id in ("+
               " select crop_id from soil_crop_mapping where soil_id in ("+
               " select id from usda_soil_info where lower(name) = ? ) ); ");
-            st.setString(1,this.soil_taxonomy );
+            st.setString(1,this.soil_taxonomy.toLowerCase() );
             rs=st.executeQuery();
             list=new JSONArray();
             while(rs.next()){

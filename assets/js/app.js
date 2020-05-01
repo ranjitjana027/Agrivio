@@ -364,7 +364,9 @@ function current_weather(){
 /* crop suggestion */
 function get_suggestion(title,url) {
   var request=new XMLHttpRequest();
-  request.open("GET",location.protocol+"//"+location.host+"/webProject/suggestion/crop?lat=23&lon=88");
+  request.open("GET",location.protocol+"//"+location.host+"/webProject/suggestion/crop?lat="+
+          document.querySelector('#current-latitude').innerHTML +"&lon="+
+          document.querySelector('#current-longitude').innerHTML);
   request.onload=()=>{
       if(request.status==200){
         var data=JSON.parse(request.responseText);
