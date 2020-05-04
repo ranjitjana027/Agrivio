@@ -5,34 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../../assets/css/admin/layout.css">
-    <script src="../../assets/js/admin/layout.js" charset="utf-8"></script>
-    <style media="screen">
-    .search-box form{
-      margin: 17px 0;
-      width:245px;
-      border: solid 2px;
-      border-radius: 15px;
 
-    }
-    .search-box input{
-      padding: 5px 0 5px 10px;
-      font-size: 16px;
-      border-radius: 14px 0 0 14px;
-      outline: none;
-      border:none;
-    }
-    .search-box input:focus{
-      background-color: aliceblue;
-    }
-      .search-box button{
-        background-color:transparent;
-        border:none;
-        outline: none;
-        cursor: pointer;
-        position: absolute;
-      }
+    <style media="screen">
 
     </style>
+    <link rel="stylesheet" href="../../assets/css/admin/add_soil_info.css">
+    <link rel="stylesheet" href="../../assets/css/lib/multiple-select.css">
+    
   </head>
   <body>
     <div class="grid">
@@ -43,15 +22,7 @@
           &#9776;
         </div>
         <div class="search-box" >
-          <form  method="post">
-            <input type="search" name="q" value="" >
-            <button type="submit" >
-              <svg height="30" width="35">
-                <circle cx="8" cy="12" r="7" fill="none" stroke="snow" stroke-width="3px" />
-                <path d="M13,15 L22,22" stroke="snow" stroke-width="4px" />
-              </svg>
-            </button>
-          </form>
+
         </div>
         <div class="" >
           <svg style="display:block;">
@@ -101,6 +72,20 @@
       <!-- main content -->
       <div class="grid-item">
 
+
+        <form  method="post">
+          <div class="form-header">
+            Add Crop Info
+          </div>
+          <div class="form-input">
+            <label for="">Name of Crop</label>
+            <input type="text" name="crop" value="">
+          </div>
+          <div class="form-input">
+            <label for="">Favourable Soil</label>
+            <input type="text" name="soils[]" value="">
+          </div>
+        </form>
       </div>
 
       <!-- footer -->
