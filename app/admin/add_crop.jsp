@@ -79,9 +79,9 @@ if(request.getMethod().equals("POST"))
 }
 %>
 <jsp:forward page="/app/admin/layout.jsp">
-  <jsp:param name="filename" value="add_user" />
+  <jsp:param name="filename" value="add_crop" />
   <jsp:param name="errormessage" value="<%= error_message %>" />
   <jsp:param name="message" value="<%= message %>" />
-  <jsp:param name="title" value="Add a User" />
+  <jsp:param name="title" value="Add Crop Info" />
 </jsp:forward>
 <% } %>

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     item.classList.remove('show');
     else
     item.classList.add('show');
-  }
+  }*/
 
   document.addEventListener("click",(evt)=>{
     item=document.querySelector(".user-nav").querySelector("ul");
@@ -32,5 +32,5 @@ document.addEventListener("DOMContentLoaded",()=>{
       document.querySelector(".nav-bar-icon").innerHTML = "&#65088;";
     }
   });
-*/
+
 });

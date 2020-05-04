@@ -372,6 +372,7 @@ function get_suggestion(title,url) {
         var data=JSON.parse(request.responseText);
         console.log(data);
         if(data.success){
+          document.querySelector('.crop-suggestion').innerHTML='';
           for (var i of data.cropids) {
             var aLink=document.createElement('a');
             aLink.href=location.protocol+"//"+location.host+"/webProject/article?id="+i.id;
