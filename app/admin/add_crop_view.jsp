@@ -1,8 +1,8 @@
 <%@ page import="java.sql.*" %>
 <%
   Connection con=null;
-  PreparedStatement st=null;
-  ResultSet soilSet=null;
+  PreparedStatement st=null, st1=null;
+  ResultSet soilSet=null, articleSet=null;
     try {
 
 			// Initialize the database
@@ -20,8 +20,6 @@
 
       st = con.prepareStatement("SELECT name FROM usda_soil_info");
       soilSet=st.executeQuery();
-
-
 
 %>
 <div class="page-header">
@@ -47,9 +45,7 @@
   </div>
 
   <div class="form-input">
-    <style media="screen">
 
-    </style>
     <label for="soils[]">Favourable Soil</label>
     <select class="multiple-select" name="soils[]" id="soils[]" multiple required>
     <%
@@ -63,6 +59,19 @@
     <div class="values">
 
     </div>
+  </div>
+  <div class="form-input">
+    <label for="">Article</label>
+    <select class="form-select" name="article_id">
+    <option value="">Choose ...</option>
+    <%
+    st1 = con.prepareStatement("select id, name, title from articles");
+    articleSet=st1.executeQuery();
+    while(articleSet.next()){
+    %>
+      <option value="<%= articleSet.getInt("id") %>"><%= articleSet.getString("name") %>: <%= articleSet.getString("title") %></option>
+    <% } %>
+    </select>
   </div>
   <div class="form-button">
     <div class="btn-left">
@@ -85,10 +94,18 @@
       try{ soilSet.close(); } catch(Exception e){;}
       soilSet=null;
     }
+    if(articleSet!=null){
+      try{ articleSet.close(); } catch(Exception e){;}
+      articleSet=null;
+    }
 
     if(st!=null){
       try{ st.close(); } catch(Exception e){;}
       st=null;
+    }
+    if(st1!=null){
+      try{ st1.close(); } catch(Exception e){;}
+      st1=null;
     }
     if(con!=null){
       try{ con.close(); } catch(Exception e){;}
@@ -99,3 +116,4 @@
 %>
 <script src="${pageContext.request.contextPath}/assets/js/lib/multiple-select.js" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/assets/js/admin/add_soil.js" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/assets/js/lib/custom-select.js" charset="utf-8"></script>

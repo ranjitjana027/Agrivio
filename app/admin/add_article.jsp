@@ -27,8 +27,8 @@ if(request.getMethod().equals("POST"))
         //PreparedStatement ps=con.prepareStatement("insert into weather_details(min_temp,max_temp,humidity,rainfall) values (?,?,?,?)");
         ps=con.prepareStatement("insert into articles( name , cpa , min_prod_time , profit ,"+
                                                 " min_temp , max_temp , humidity , rainfall , soil , land , season ,"+
-                                                " soil_prep , sowing , nurturing , production , coolingoff ,extra , conclusion) "+
-                                                "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                                                " soil_prep , sowing , nurturing , production , coolingoff ,extra , conclusion, title) "+
+                                                "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         ps.setString(1,request.getParameter("name"));
         ps.setDouble(2,Double.valueOf(request.getParameter("cpa")));
         ps.setDouble(3,Double.valueOf(request.getParameter("min_prod_time")));
@@ -47,6 +47,7 @@ if(request.getMethod().equals("POST"))
         ps.setString(16,request.getParameter("coolingoff"));
         ps.setString(17,request.getParameter("extra"));
         ps.setString(18,request.getParameter("conclusion"));
+        ps.setString(19,request.getParameter("title"));
 
         ps.executeUpdate();
         message="Article added successfully";

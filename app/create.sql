@@ -110,7 +110,8 @@ create table articles(
     production text not null,
     coolingoff text not null,
     extra text ,
-    conclusion text not null
+    conclusion text not null,
+    title text
 );
 
 /* crop data */
@@ -152,7 +153,7 @@ create table soil_crop_mapping(
   soil_id integer references usda_soil_info(id) on delete cascade,
   crop_id integer references crop_info(id) on delete cascade
 );
-
+ alter table soil_crop_mapping add primary key(soil_id,crop_id);
 insert into soil_crop_mapping values(1,1);
 
 select * from crop_info
@@ -163,3 +164,6 @@ where id in
     where lower(name) = 'aquents'
   )
 );
+
+create or replace view soil_crop_view AS
+   select A.id as crop_id, A.name as crop_name, A.article_id, B.id as soil_id, B.name as soil_name from crop_info A, usda_soil_info B, soil_crop_mapping C where C.soil_id=B.id and C.crop_id=A.id;

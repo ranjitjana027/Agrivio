@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded",()=>{
                   }
 
                 }
-                inp.placeholder="Type here...";
+                inp.placeholder="Press Enter to select";
                 ms.parentNode.append(inp);
                 ms.parentNode.append(datalist)
               });

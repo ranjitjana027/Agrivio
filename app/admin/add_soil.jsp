@@ -48,8 +48,15 @@ if(request.getMethod().equals("POST"))
             rs.moveToInsertRow();
             rs.updateString("name",request.getParameter("indian_name").toLowerCase());
             rs.insertRow();
-            indian_name_id=rs.getInt("id");
             rs.close();
+            ps.close();
+            ps=con.prepareStatement("select * from india_soil_info where lower(name)=?");
+            ps.setString(1,request.getParameter("indian_name").toLowerCase());
+            rs=ps.executeQuery();
+            if(rs.next()){
+              indian_name_id=rs.getInt("id");
+              rs.close();
+            }
           }
           ps.close();
           String crops[]=request.getParameterValues("crops[]");
@@ -69,8 +76,15 @@ if(request.getMethod().equals("POST"))
               rs.moveToInsertRow();
               rs.updateString("name",s.toLowerCase());
               rs.insertRow();
-              crops_id.add(rs.getInt("id"));
               rs.close();
+              ps.close();
+              ps=con.prepareStatement("select * from crop_info where lower(name)=?");
+              ps.setString(1, s.toLowerCase());
+              rs=ps.executeQuery();
+              if(rs.next()){
+                crops_id.add(rs.getInt("id"));
+                rs.close();
+              }
             }
             ps.close();
           }
@@ -96,13 +110,13 @@ if(request.getMethod().equals("POST"))
             ps.executeUpdate();
             ps.close();
           }
-
+          message="Successfully added soil info";
         }
 
 
 
         con.close();
-        message="Successfully added soil info";
+
 
     }
     catch(Exception e){

@@ -10,6 +10,8 @@ else {
     <li><a href="../admin/add-article">Add an Article</a> </li>
     <li><a href="../admin/add-user">Add a User</a> </li>
     <li><a href="../admin/view-users">View all Users</a> </li>
+    <li><a href="../admin/add-soil-info">Add Soil Info</a> </li>
+    <li><a href="../admin/add-crop-info">Add Crop Info</a> </li>
     <li><a href="../admin/view-chats">View Chats</a> </li>
   </ul>
 </div>
