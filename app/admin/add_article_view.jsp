@@ -1,11 +1,17 @@
 
     <!--link rel="stylesheet" href="../../assets/css/admin/add_user.css"-->
       <div class="page-header">Add an Article </div>
-        <form action="add_article.jsp" method="post">
+        <form  method="post">
           <% if(!request.getParameter("errormessage").equals("")){ %>
           <div class="errormessage">
             <span style="background-color: white; box-shadow: 2px 2px 10px 2px #000000; padding: 5px 15px; "> <%= request.getParameter("errormessage") %>.
             <span style="background-color: white; cursor:pointer;" onclick="this.parentNode.hidden=true;"> &#10007; </span></span>
+          </div>
+          <% } %>
+          <% if(!request.getParameter("message").equals("")){ %>
+          <div class="errormessage" style="color:green;">
+            <span style="background-color: white; box-shadow: 2px 2px 10px 2px #000000; padding: 5px 15px; "> <%= request.getParameter("message") %>.
+            <span style="background-color: white; cursor:pointer;" onclick="this.parentNode.hidden=true;"> &#10004; </span></span>
           </div>
           <% } %>
 
@@ -14,6 +20,10 @@
                 <div class="form-input">
                     <label for="name">Name of Crop</label>
                     <input type="text" placeholder="Crop" name="name" id="name" required>
+                </div>
+                <div class="form-input">
+                  <label for="title">Title</label>
+                  <input type="text" name="title" placeholder="Article Title" id="title" required>
                 </div>
             </div>
             <!-- step1 -->

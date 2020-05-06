@@ -1,5 +1,6 @@
 @import "add_article.css";
 @import "../lib/multiple-select.css";
+@import "../lib/custom-select.css";
 .form-input input[type=text], .form-input input[type=number]
 {
   min-width: 300px;
