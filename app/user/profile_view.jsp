@@ -20,9 +20,11 @@ ResultSet rs = null;
       rs=st.executeQuery(q);
       if(rs.next()){
 %>
+
 <div class="profile-details">
+  <div class="grid-item-profile" >
   <div class="profile-pic">
-    <img src="" alt="">
+    <img src="${pageContext.request.contextPath}/assets/img/user.png" alt="Profile Pic">
   </div>
   <div class="personal-info">
     <header>
@@ -30,24 +32,25 @@ ResultSet rs = null;
     </header>
     <table>
       <tr>
-        <th>Name</th><td><%= rs.getString("fullname") %></td><td>Edit</td>
+        <th>Name</th><td class="profile-data" ><%= rs.getString("fullname") %></td><td>Edit</td>
       </tr>
       <tr>
-        <th>Mobile</th><td><%= rs.getString("mobile") %></td><td>Change</td>
+        <th>Mobile</th><td class="profile-data" ><%= rs.getString("mobile") %></td><td>Change</td>
       </tr>
       <tr>
-        <th>Email</th><td><%= rs.getString("email") %></td>
+        <th>Email</th><td class="profile-data" ><%= rs.getString("email") %></td>
         <td><%= rs.getString("email").equals("")?"Add":"Change" %></td>
       </tr>
       <tr>
-        <th>Password</th><td>XXXXXXXX</td><td>Change</td>
+        <th>Password</th><td class="profile-data" >XXXXXXXX</td><td>Change</td>
       </tr>
       <tr>
-        <th>Premium</th><td><%= rs.getBoolean("premium")?"&#9989;":"&#10060;" %></td><td><%= rs.getBoolean("premium")?"":"Activate" %></td>
+        <th>Premium</th><td class="profile-data" ><%= rs.getBoolean("premium")?"&#9989;":"&#10060;" %></td><td><%= rs.getBoolean("premium")?"":"Activate" %></td>
       </tr>
     </table>
   </div>
 
+  </div>
 </div>
 <%
     }

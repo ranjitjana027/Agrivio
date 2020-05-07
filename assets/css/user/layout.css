@@ -42,7 +42,8 @@ body {
 } */
 
 .weather-window {
-  height: 170px;
+  height: 210px;
+  position: relative;
 }
 
 @media (max-width: 1100px){

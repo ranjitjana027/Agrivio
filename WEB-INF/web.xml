@@ -103,7 +103,7 @@
 
   <servlet>
     <servlet-name>SignUp</servlet-name>
-    <jsp-file>/app/auth/signup.jsp</jsp-file>
+    <jsp-file>/app/account/signup.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>SignUp</servlet-name>
@@ -112,7 +112,7 @@
 
   <servlet>
     <servlet-name>Login</servlet-name>
-    <jsp-file>/app/auth/login.jsp</jsp-file>
+    <jsp-file>/app/account/login.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
@@ -121,7 +121,7 @@
 
   <servlet>
     <servlet-name>Logout</servlet-name>
-    <jsp-file>/app/auth/logout.jsp</jsp-file>
+    <jsp-file>/app/account/logout.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Logout</servlet-name>

@@ -386,6 +386,8 @@ function get_suggestion(title,url) {
             document.querySelector('.crop-suggestion').append(aLi);
           }
 
+          document.querySelector('#loading-2').style.display="none";
+
         }
         loadArticle(title,url);
       }
