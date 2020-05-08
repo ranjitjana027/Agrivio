@@ -1,7 +1,5 @@
 @import "../lib/loading.css";
-.current-weather-container{
-  display: none;
-}
+
 .current-weather{
   height:170px;
 	display: grid;
@@ -44,7 +42,7 @@
     position: fixed;
     overflow: auto;
     display: none;
-    z-index: 1;
+    z-index: 10;
     width: 100vw;
     height:100vh;
     top:0;

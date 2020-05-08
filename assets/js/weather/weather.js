@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   function weatherUpdate(lat, lon) {
     document.querySelector('#loading-1').style.display="block";
-    document.querySelector('.current-weather-container').style.display="none";
+    document.querySelector('.current-weather').style.display="none";
     var request = new XMLHttpRequest();
     request.open("GET", location.protocol+"//"+location.host+"/webProject/app/weather/weatherJSON.jsp?lat="+lat+"&lon="+lon);
     request.onload = () => {
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         document.querySelector('#wind-speed').innerHTML = data.wind.speed;
         /*document.querySelector('#wind-direction').innerHTML = data.wind.deg;*/
         document.querySelector('#loading-1').style.display="none";
-        document.querySelector('.current-weather-container').style.display="block";
+        document.querySelector('.current-weather').style.display="grid";
       }
 
     }

@@ -81,13 +81,19 @@ public class ChatServer {
     @OnOpen
     public void start(@PathParam("user_id") int user_id, @PathParam("room") int room, Session session) {
         System.out.println("Web socket Connection request");
+
         this.session = session;
         this.user_id=user_id;
         this.room=room;
         this.setUser(user_id);
-        handlers.add(this);
-        broadcast("{\"sender\":\""+this.user_id+"\", \"sender_name\":\""+ this.user_name+"\", \"content\": \"joined\",\"status\":true}");
-        System.out.println("user: "+this.user_name+" connected");
+        if(handlers.contains(this)){
+          System.out.println("Alredy exists.");
+        }
+        else{
+          handlers.add(this);
+          broadcast("{\"sender\":\""+this.user_id+"\", \"sender_name\":\""+ this.user_name+"\", \"content\": \"joined\",\"status\":true}");
+          System.out.println("user: "+this.user_name+" connected");
+        }
     }
 
     @OnClose

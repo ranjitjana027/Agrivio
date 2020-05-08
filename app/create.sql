@@ -111,7 +111,9 @@ create table articles(
     coolingoff text not null,
     extra text ,
     conclusion text not null,
-    title text
+    title text,
+    other_names text,
+    intro text
 );
 
 /* crop data */
