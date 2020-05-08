@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded",()=>{
               alert("Browser doesn't support WebSocket");
               return;
           }
+          chatroom=document.querySelector('.chat-room');
+          chatroom.scrollTop=chatroom.scrollHeight-chatroom.offsetHeight;
           ws.onopen=()=>{
               console.log("connected");
               document.querySelector('.chat-input').onkeydown=evt=>{
@@ -72,6 +74,7 @@ document.addEventListener("DOMContentLoaded",()=>{
                   d.append(s);
               }
               document.querySelector('.chat-room').append(d);
+              chatroom.scrollTop=chatroom.scrollHeight-chatroom.offsetHeight;
           }
       }
 

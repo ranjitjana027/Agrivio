@@ -10,9 +10,16 @@ String url="https://rest.soilgrids.org/query?lon="+lon+"&lat="+lat;
 if(lat!=null && lon!=null){
   try{
 %>
-
+  <c:import var = "data" url = "<%=url%>"/>
+  <% Object obj=JSONValue.parse((String)pageContext.getAttribute("data"));
+    JSONObject obj1=(JSONObject)obj;
+    String st="";
+    if(((JSONObject)obj1.get("properties")).get("soilmask").equals("soil")){
+      st=(String)(((JSONObject)obj1.get("properties")).get("TAXGOUSDAMajor"));
+    }
+  %>
    <jsp:useBean id="cs" class="bean.CropSuggestion" scope="page" />
-   <jsp:setProperty name="cs" property="soil_taxonomy" value="Aquents" />
+   <jsp:setProperty name="cs" property="soil_taxonomy" value="<%= st %>" />
    <%
 
    JSONObject obj3=new JSONObject();

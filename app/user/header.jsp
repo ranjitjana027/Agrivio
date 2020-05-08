@@ -28,9 +28,9 @@
   </div>
   <!--search box -->
   <div class="search-box">
-    <form >
-      <input type="search" name="q" value="" placeholder="Search..">
-      <button type="submit" >
+    <form action="${pageContext.request.contextPath}/search" >
+      <input type="search" name="q" id="article-search" placeholder="Search..">
+      <button type="submit"  id="link-search">
         <svg height="30" width="35">
           <circle cx="8" cy="10" r="7" fill="none" stroke="snow" stroke-width="2px" />
           <path d="M13,13 L20,19" stroke="snow" stroke-width="3px" />

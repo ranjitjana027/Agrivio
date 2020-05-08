@@ -53,6 +53,14 @@
     <url-pattern>/profile</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>UserSearch</servlet-name>
+    <jsp-file>/app/user/search.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserSearch</servlet-name>
+    <url-pattern>/search</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>AdminDashboard</servlet-name>
     <jsp-file>/app/admin/dashboard.jsp</jsp-file>
   </servlet>

@@ -49,7 +49,7 @@
   min-width:150px;
   text-align:justify;
 }
-.personal-info th,td{
+.personal-info th, .personal-info td{
   border-bottom:solid 1px #009688;
   padding:5px;
   text-align:justify;
