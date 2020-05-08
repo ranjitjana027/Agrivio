@@ -1,0 +1,19 @@
+.multiple-select{
+  display:none;
+}
+.multiple-select-value{
+  font-size: 14px;
+  background-color: white;
+  color: #04674e;
+  padding: 0 2px;
+  pointer-events: all;
+  margin: 0 1px;
+}
+.multiple-select-value::after{
+  content: ' \2718';
+  color: #04674e;
+  background-color: white;
+  cursor: pointer;
+  pointer-events: all;
+  border-radius: 80%;
+}

@@ -53,6 +53,14 @@
     <url-pattern>/profile</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>UserSearch</servlet-name>
+    <jsp-file>/app/user/search.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserSearch</servlet-name>
+    <url-pattern>/search</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>AdminDashboard</servlet-name>
     <jsp-file>/app/admin/dashboard.jsp</jsp-file>
   </servlet>
@@ -77,6 +85,22 @@
     <url-pattern>/admin/add-user</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>AddSoil</servlet-name>
+    <jsp-file>/app/admin/add_soil.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddSoil</servlet-name>
+    <url-pattern>/admin/add-soil-info</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddCrop</servlet-name>
+    <jsp-file>/app/admin/add_crop.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCrop</servlet-name>
+    <url-pattern>/admin/add-crop-info</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>ViewUsers</servlet-name>
     <jsp-file>/app/admin/view_users.jsp</jsp-file>
   </servlet>
@@ -87,7 +111,7 @@
 
   <servlet>
     <servlet-name>SignUp</servlet-name>
-    <jsp-file>/app/auth/signup.jsp</jsp-file>
+    <jsp-file>/app/account/signup.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>SignUp</servlet-name>
@@ -96,7 +120,7 @@
 
   <servlet>
     <servlet-name>Login</servlet-name>
-    <jsp-file>/app/auth/login.jsp</jsp-file>
+    <jsp-file>/app/account/login.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
@@ -105,7 +129,7 @@
 
   <servlet>
     <servlet-name>Logout</servlet-name>
-    <jsp-file>/app/auth/logout.jsp</jsp-file>
+    <jsp-file>/app/account/logout.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Logout</servlet-name>

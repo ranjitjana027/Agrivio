@@ -1,7 +1,7 @@
 
 <%
 if( session.getAttribute("userid")==null || session.getAttribute("role")==null || !session.getAttribute("role").equals("ADMIN"))
-  response.sendRedirect("request.getContextPath()/index");
+  response.sendRedirect(request.getContextPath()+"/index");
 else {
 %>
 <%@ page import="java.sql.*" %>
@@ -39,7 +39,7 @@ if(request.getMethod().equals("POST"))
             ps.setString(5,request.getParameter("password2"));
             ps.setBoolean(6,Boolean.valueOf(request.getParameter("premium")));
             ps.executeUpdate();
-            
+
         }
         else{
           ps=con.prepareStatement("insert into users(firstname, lastname, mobile, email, password, role)"+
@@ -51,7 +51,7 @@ if(request.getMethod().equals("POST"))
           ps.setString(5,request.getParameter("password2"));
           ps.setString(6,request.getParameter("role"));
           ps.executeUpdate();
-          
+
         }
 
 
