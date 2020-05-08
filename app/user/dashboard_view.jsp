@@ -1,16 +1,37 @@
 
 <div class="dashboard">
 	<div class="grid-content">
+		<header>
+			Recommended Crops for You
+		</header>
 		<div class="suggestion">
-			<header>
-				Recommended Crops for You
-			</header>
-			<ul class="crop-suggestion">
+			<div class="loading-div-container" id="loading-2">
+				<div class="loading-div">
+					<svg class="loading-svg" viewBox="0 0 140 160">
+						<path d="M7,100 L20,85 40,95 M20,90 A51,51 0 0,0 120,90 M100,65 L120,75 133,60 M120,70 A51,51 0 0,0 20,70"
+							stroke="green" stroke-width="10px" fill="none" >
+							<animateTransform
+								attributeName="transform"
+								type="rotate"
+								begin="0s"
+								dur="1.1s"
+								from="0 70  80"
+								to="360 70 80"
+								repeatCount="indefinite"
+								/>
+						</path>
+					</svg>
+				</div>
+			</div>
 
-			</ul>
+
+				<ul class="crop-suggestion">
+
+				</ul>
+			
 		</div>
 		<header>
-			Other Popular Crops
+			Popular Crops
 		</header>
 		<div class="article">
 			<a class="link-article"  href="${pageContext.request.contextPath}/article?id=1"><h3>This Is an Article Name</h3></a>
@@ -65,7 +86,3 @@
 
 	</div>
 </div>
-<script type="text/javascript">
-console.log('kjnkjn');
-get_suggestion("Welcome | Dashboard","dashboard");
-</script>

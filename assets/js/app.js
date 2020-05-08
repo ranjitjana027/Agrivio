@@ -29,6 +29,7 @@ function chat(title,url){
         alert("Browser doesn't support WebSocket");
         return;
     }
+    chatroom=document.querySelector('.chat-room');
     ws.onopen=()=>{
         console.log("connected");
         document.querySelector('.spinner').style.display="none"; // remove spinner
@@ -36,6 +37,7 @@ function chat(title,url){
         document.title=title;
         history.pushState({'title':title,'text':document.body.innerHTML},title,url);
 
+        chatroom.scrollTop=chatroom.scrollHeight-chatroom.offsetHeight;
         document.querySelector('.chat-input').onkeydown=evt=>{
             if(evt.keyCode==13)
             {
@@ -94,6 +96,7 @@ function chat(title,url){
             d.append(s);
         }
         document.querySelector('.chat-room').append(d);
+        chatroom.scrollTop=chatroom.scrollHeight-chatroom.offsetHeight;
     }
 }
 
@@ -363,13 +366,17 @@ function current_weather(){
 
 /* crop suggestion */
 function get_suggestion(title,url) {
+  document.querySelector('#loading-2').style.display="block";
   var request=new XMLHttpRequest();
-  request.open("GET",location.protocol+"//"+location.host+"/webProject/suggestion/crop?lat=23&lon=88");
+  request.open("GET",location.protocol+"//"+location.host+"/webProject/suggestion/crop?lat="+
+          document.querySelector('#current-latitude').innerHTML +"&lon="+
+          document.querySelector('#current-longitude').innerHTML);
   request.onload=()=>{
       if(request.status==200){
         var data=JSON.parse(request.responseText);
         console.log(data);
         if(data.success){
+          document.querySelector('.crop-suggestion').innerHTML='';
           for (var i of data.cropids) {
             var aLink=document.createElement('a');
             aLink.href=location.protocol+"//"+location.host+"/webProject/article?id="+i.id;
@@ -382,6 +389,11 @@ function get_suggestion(title,url) {
             aLi.append(aDiv);
             document.querySelector('.crop-suggestion').append(aLi);
           }
+          if(data.cropids.length==0){
+            document.querySelector('.crop-suggestion').innerHTML="<p style='text-align:center;color:#8e8e8ed6;'>Nothing to show.</p>"
+          }
+
+          document.querySelector('#loading-2').style.display="none";
 
         }
         loadArticle(title,url);
@@ -815,6 +827,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
   document.querySelector("#link-profile").onclick=loadProfile;
   document.querySelector("#link-forecast").onclick=loadForecast;
+  document.querySelector("#link-search").onclick=loadSearchResult;
   function loadHome() {
     getPage('/user/dashboard_view.jsp',get_suggestion,"Welcome | Dashboard","dashboard");
 
@@ -852,7 +865,71 @@ document.addEventListener("DOMContentLoaded",()=>{
         );
     return false;
   }
+  function loadSearchResult() {
+    document.querySelector("#main-content").innerHTML='<div class="loading-div-container" style="max-width:300px; max-height:300px; margin:auto;">'+
+      '<div class="loading-div">'+
+        '<svg class="loading-svg" viewBox="0 0 140 160">'+
+          '<path d="M7,100 L20,85 40,95 M20,90 A51,51 0 0,0 120,90 M100,65 L120,75 133,60 M120,70 A51,51 0 0,0 20,70" stroke="green" stroke-width="10px" fill="none" >'+
+            '<animateTransform attributeName="transform" type="rotate" begin="0s" dur="1.1s" from="0 70  80" to="360 70 80"repeatCount="indefinite"/>'+
+          '</path>'+
+        '</svg>'+
+      '</div>'+
+    '</div>';
 
+    var request=new XMLHttpRequest();
+    q=document.querySelector("#article-search").value;
+    document.querySelector("#article-search").value="";
+    request.open("GET",location.protocol+"//"+location.host+"/webProject/search?q="+q);
+    request.onload=()=>{
+      if(request.status==200){
+        div1=document.createElement("div");
+        div1.classList.add('dashboard');
+        div2=document.createElement("div");
+        div2.classList.add('grid-content');
+        header=document.createElement("header");
+        header.innerHTML="Search Results";
+        div2.append(header);
+        div3=document.createElement("div");
+        div3.classList.add('grid-right');
+        div1.append(div2);
+        div1.append(div3);
+        var data=JSON.parse(request.responseText);
+        if(data.success){
+          console.log(data.results);
+          for( result of data.results ){
+            var article_div=document.createElement("div");
+            article_div.classList.add("article");
+            var aLink=document.createElement("a");
+            aLink.classList.add("link-article");
+            aLink.innerHTML="<h3>"+result.title+"</h3>";
+            aLink.href="/webProject/article?id="+result.id;
+            aLink.onclick=()=>{
+              getPage("/article/article_view.jsp?id="+result.id,
+              ()=>{
+                document.querySelector('.spinner').style.display="none";
+                document.title="Article";
+                history.pushState({'title':"Article",'text':document.body.innerHTML},"Article","article?id="+result.id);
+              }
+              ,"Article","article"+item.search);
+              return false;
+            };
+            var aP =document.createElement("p");
+            aP.innerHTML=result.name+": "+result.intro;
+            article_div.append(aLink);
+            article_div.append(aP);
+            div2.append(article_div);
+            console.log(article_div)
+          }
+        }
+        document.querySelector("#main-content").innerHTML="";
+        document.querySelector("#main-content").append(div1);
+        document.title="Search Results";
+        //history.pushState({'title':"Search Results",'text':document.body.innerHTML},"Search Results","search?q="+q);
+      }
+    }
+    request.send();
+    return false;
+  }
   window.onpopstate=e=>{
     const data=e.state;
     document.title=data.title;

@@ -59,6 +59,12 @@
             <li class="nav-item">
               <a href="${pageContext.request.contextPath}/admin/add-user"><i>&#xf039;</i> Add an User</a>
             </li >
+            <li class="nav-item">
+              <a href="${pageContext.request.contextPath}/admin/add-soil-info"><i>&#xf039;</i> Add Soil Info</a>
+            </li>
+            <li class="nav-item">
+              <a href="${pageContext.request.contextPath}/admin/add-crop-info"><i>&#xf039;</i> Add Crop Info</a>
+            </li >
           </ul>
         </div>
       </div>

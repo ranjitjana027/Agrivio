@@ -25,19 +25,26 @@
 <script src="/webProject/assets/js/weather/weather.js" charset="utf-8"></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
-
-<div class="target" style="height:170px;
-							display: grid;
-							grid-template-columns: 100px auto;
-							grid-template-rows: auto auto;
-							background-color:#fbfffa;
-							color: #009635;
-							width:268px;
-							font-family: sans-serif;
-							padding:5px 10px;
-							border-radius: 4px;
-							margin: 6px;
-							box-shadow: 0px 2px 5px rgba(0,0,0,0.5);">
+<div class="loading-div-container" id="loading-1">
+	<div class="loading-div">
+		<svg class="loading-svg" viewBox="0 0 140 160">
+			<path d="M7,100 L20,85 40,95 M20,90 A51,51 0 0,0 120,90 M100,65 L120,75 133,60 M120,70 A51,51 0 0,0 20,70"
+				stroke="green" stroke-width="10px" fill="none" >
+				<animateTransform
+					attributeName="transform"
+					type="rotate"
+					begin="0s"
+					dur="1.1s"
+					from="0 70  80"
+					to="360 70 80"
+					repeatCount="indefinite"
+					/>
+			</path>
+		</svg>
+	</div>
+</div>
+<div class="current-weather-container">
+<div class="current-weather" >
 	<div class="" style="height:60px;">
 		<span style="font-size:12px;">Currently</span>
 		<svg style="height:70px; width:100%; fill:#03c16f;">
@@ -118,6 +125,8 @@
 			</div>
 		</div>
 	</div>
+
+</div>
 	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
 	<link
 		rel="stylesheet"

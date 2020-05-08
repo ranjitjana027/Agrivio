@@ -1,7 +1,7 @@
 <script src="${pageContext.request.contextPath}/assets/js/lib/custom-select.js" charset="utf-8"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/custom-select.css">
 <div class="page-header">Add a user </div>
-<form action="add_user.jsp" method="post">
+<form  method="post">
   <% if(!request.getParameter("errormessage").equals("")){ %>
   <div class="errormessage">
     <span style="background-color: white; box-shadow: 2px 2px 10px 2px #000000; padding: 5px 15px; "> <%= request.getParameter("errormessage") %>.

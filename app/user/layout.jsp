@@ -9,6 +9,7 @@ else{
 <head>
 	<title><%= request.getParameter("title") %> | Dashboard</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<%
 	if(session.getAttribute("role").equals("FARMER")){
 	%>
@@ -18,7 +19,7 @@ else{
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/header.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/footer.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css">
-	<script src="${pageContext.request.contextPath}/assets/js/admin/layout.js" charset="utf-8"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/user/layout.js" charset="utf-8"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/app.js" charset="utf-8"></script>
 
 	<% }
