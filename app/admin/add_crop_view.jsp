@@ -43,11 +43,27 @@
     <label for="crop_name">Crop</label>
     <input type="text" name="crop_name" id="crop_name" placeholder="eg. rice" required>
   </div>
+  <div class="form-input">
+    <label>Indian Soil Name</label>
+    <select  name="indian_name" class="form-select"  >
+      <option value="">Choose ...</option>
+      <%
+        st1=con.prepareStatement("select name from india_soil_info");
+        articleSet=st1.executeQuery();
+        while(articleSet.next()){
+      %>
+      <option><%= articleSet.getString("name") %></option>
+      <% }
+      articleSet.close();
+      st1.close();
+      %>
+    </select>
+  </div>
 
   <div class="form-input">
 
     <label for="soils[]">Favourable Soil</label>
-    <select class="multiple-select" name="soils[]" id="soils[]" multiple required>
+    <select class="multiple-select" name="soils[]" id="soils[]" multiple >
     <%
     while(soilSet.next()){
     %>
