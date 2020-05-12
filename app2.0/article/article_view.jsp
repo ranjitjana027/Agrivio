@@ -2,7 +2,7 @@
   <div class="col-8 col-xs-12" >
     <div class="article" style="padding:10px;">
       <div class="article-header">
-        Lorem Ipsum
+        Lorem Ipsum dolor sit amet
       </div>
       <div class="article-metadata">
         Last Update : <span> 8th February, 2020</span>
