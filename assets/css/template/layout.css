@@ -202,6 +202,12 @@
     display: none;
   }
 }
+body {
+  margin: 0;
+  font-family: Microsoft JhengHei, sans-serif;
+  min-width: 200px;
+}
+
 .page-header {
   width: 100%;
 }
@@ -225,9 +231,16 @@
 }
 .page-header .header-top .top-subheader .main-logo {
   color: aliceblue;
-  font-family: serif;
-  font-size: 50px;
+  font-family: papyrus, serif;
+  font-size: 38px;
   padding-left: 30px;
+}
+.page-header .header-top .top-subheader .caption {
+  font-family: Brush Script MT;
+  font-size: 200%;
+  transform: rotate(357deg);
+  padding: 10px 40px;
+  color: #004000;
 }
 .page-header .header-top .top-subheader .bell-icon {
   display: inline-block;
@@ -303,12 +316,13 @@
   display: block;
   overflow: hidden;
   list-style-type: none;
+  width: 100%;
 }
 .page-header .header-bottom .user-nav li {
   display: inline-block;
 }
 .page-header .header-bottom .user-nav li a {
-  min-width: 100;
+  min-width: 100px;
   text-align: center;
   text-decoration: none;
   display: block;

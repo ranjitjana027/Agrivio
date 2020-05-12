@@ -11,8 +11,11 @@ $breakpoint-desktop: 1024px;
 
 @use '../base';
 
-
-
+body{
+	margin: 0;
+	font-family: Microsoft JhengHei, sans-serif;
+	min-width: 200px;
+ }
 .page-header{
   width: 100%;
   .header-top{
@@ -35,11 +38,18 @@ $breakpoint-desktop: 1024px;
       margin: auto;
       .main-logo{
         color: aliceblue;
-        font-family:  serif;
-        font-size: 50px;
+        font-family:  papyrus,serif;
+        font-size: 38px;
         padding-left: 30px;
 
       }
+	  .caption{
+		font-family: Brush Script MT;
+		font-size: 200%;
+		transform: rotate(357deg);
+		padding: 10px 40px;
+		color: #004000;
+	  }
       .bell-icon{
         display: inline-block;
         user-select: none;
@@ -119,11 +129,12 @@ $breakpoint-desktop: 1024px;
         display: block;
         overflow: hidden;
         list-style-type: none;
+        width:100%;
       }
       li{
         display: inline-block;
         a{
-          min-width: 100;
+          min-width: 100px;
           text-align: center;
           text-decoration: none;
           display: block;

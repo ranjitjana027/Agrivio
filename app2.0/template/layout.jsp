@@ -5,21 +5,13 @@
     <link rel="stylesheet" href="../../assets/css/template/layout.css">
     <link rel="stylesheet" href="../../assets/css/article2.0/article.css">
     <script src="../../assets/js/template/layout.js" charset="utf-8"></script>
-    <style media="screen">
-      body{
-        margin: 0;
-        font-family: Nunito Sans,sans-serif;
-        min-width: 200px;
-      }
-    </style>
-
   </head>
   <body>
     <!-- page header -->
     <div class="page-header">
       <div class="header-top">
           <div class="top-subheader row">
-            <div class="col-4 mobile-hidden tablet-hidden main-logo">
+            <div class="col-3 mobile-hidden tablet-hidden main-logo">
               Agriculture
 
             </div>
@@ -28,9 +20,9 @@
 
               </div>
             </div>
-            <div class="col-6 mobile-hidden tablet-hidden caption" style="font-family:cursive; transform:rotate(356deg); padding: 10px 40px; color:green;">
-
-            </div>
+            <div class="col-7 mobile-hidden tablet-hidden caption" style="">
+      			An ambitious agricultural expermient            
+      		</div>
 
             <div class="col-2 col-sm-8 col-xs-8 " style="text-align:right;">
               <!-- notification bell icon -->
@@ -40,17 +32,17 @@
                   <circle cx="50" cy="2" r="7" stroke-width="1px" />
                   <path d="M35,87 A17,17 0 0,0 65,87" stroke-width="1px"/>
                   <div style="
-                  position:absolute;
-                  margin-top:-40px;
-                  margin-left:30px ;
-                  background-color:red;
-                  padding:3px;
-                  border-radius:50%;
-                  font-size:13px;
-                  color:white;
-                  font-weight:bold;
-                  transform:scale(0.75);
-                  cursor: pointer;
+	                  position:absolute;
+	                  margin-top:-40px;
+	                  margin-left:30px ;
+	                  background-color:red;
+	                  padding:3px;
+	                  border-radius:50%;
+	                  font-size:13px;
+	                  color:white;
+	                  font-weight:bold;
+	                  transform:scale(0.75);
+	                  cursor: pointer;
                   ">
                     25
                   </div>
@@ -136,26 +128,26 @@
             <ul>
 
               <li >
-                <a href="#"><span class="mobile-only">Cultivation </span> Guides</a>
+                <a href="#"><span class="desktop-hidden">Cultivation </span> Guides</a>
               </li>
 
               <li>
                 <a href="/crop-price" id="link-price">Crop Price</a>
               </li>
               <li>
-                <a href="/weather" id="link-forecast"><span class="mobile-only">Weather </span> Forecast</a>
+                <a href="/weather" id="link-forecast"><span class="desktop-hidden">Weather </span> Forecast</a>
               </li>
               <li>
-                <a href="/calendar" id="link-calendar"><span class="mobile-only">Cultivation </span> Events</a>
+                <a href="/calendar" id="link-calendar"><span class="desktop-hidden">Cultivation </span> Events</a>
               </li>
               <li>
                 <a href="#">Ask Expert</a>
               </li>
               <li>
-                <a href="#">About <span class="mobile-only"> Website</span></a>
+                <a href="#">About <span class="desktop-hidden"> Website</span></a>
               </li>
               <li>
-                <a href="#">Contact <span class="mobile-only"> Us</span></a>
+                <a href="#">Contact <span class="desktop-hidden"> Us</span></a>
               </li>
 
             </ul>
