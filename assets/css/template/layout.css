@@ -13,7 +13,7 @@
   margin-top: 2%;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 767px) {
   [class*=col-xs] {
     float: left;
     box-sizing: border-box;
@@ -79,6 +79,68 @@
     display: none;
   }
 }
+@media (min-width: 768px) and (max-width: 1023px) {
+  [class*=col-sm] {
+    float: left;
+    box-sizing: border-box;
+    margin-right: 2%;
+  }
+  [class*=col-sm]:last-child {
+    margin-right: 0;
+  }
+
+  .col-sm-1 {
+    width: 6.5%;
+  }
+
+  .col-sm-2 {
+    width: 15%;
+  }
+
+  .col-sm-3 {
+    width: 23.5%;
+  }
+
+  .col-sm-4 {
+    width: 32%;
+  }
+
+  .col-sm-5 {
+    width: 40.5%;
+  }
+
+  .col-sm-6 {
+    width: 49%;
+  }
+
+  .col-sm-7 {
+    width: 57.5%;
+  }
+
+  .col-sm-8 {
+    width: 66%;
+  }
+
+  .col-sm-9 {
+    width: 74.5%;
+  }
+
+  .col-sm-10 {
+    width: 83%;
+  }
+
+  .col-sm-11 {
+    width: 91.5%;
+  }
+
+  .col-sm-12 {
+    width: 100%;
+  }
+
+  .tablet-hidden {
+    display: none;
+  }
+}
 @media (min-width: 1024px) {
   [class*=col-] {
     float: left;
@@ -136,7 +198,7 @@
     width: 100%;
   }
 
-  .mobile-only {
+  .desktop-hidden {
     display: none;
   }
 }
@@ -345,6 +407,11 @@
   max-height: 700px !important;
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .page-content {
+    max-width: 700px;
+  }
+}
 @media (max-width: 1023px) {
   .page-header .header-top .top-subheader .main-logo {
     padding: 10px 0 0 5px;
@@ -413,4 +480,4 @@
   }
 }
 
-/*# sourceMappingURL=demo3.css.map */
+/*# sourceMappingURL=layout.css.map */
