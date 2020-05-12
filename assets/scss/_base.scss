@@ -19,13 +19,20 @@ $breakpoint-desktop: 1024px;
   }
 }
 
-@media (max-width: $breakpoint-tablet) {
+// mobile display
+@media (max-width: $breakpoint-tablet - 1) {
   [class*="col-xs"]{
     float: left;
+    box-sizing: border-box;
     margin-right: $grid-space;
 
     &:last-child{
       margin-right: 0;
+    }
+  }
+  @for $i from 1 through 12 {
+    .col-xs-#{$i} {
+      width: ( $i *(100% - ( $grid-space * 11))/12 ) + (( $i - 1 ) * $grid-space);
     }
   }
 
@@ -33,44 +40,38 @@ $breakpoint-desktop: 1024px;
   .col-xs-1{
     width: (100%/12) - ($grid-space * 11)/12;
   }
-  .col-xs-2{
-    width: (100% *2/12) - ($grid-space * 11)/12;
-  }
-  .col-xs-3{
-    width: (100% *3/12) - ($grid-space * 11)/12;
-  }
-  .col-xs-4{
-    width: (100% /3) - ($grid-space * 11)/12;
-  }
-  .col-xs-5{
-    width: (100% *5/12) - ($grid-space * 11)/12;
-  }
-  .col-xs-6{
-    width: (100% /2) - ($grid-space * 11)/12;
-  }
-  .col-xs-7{
-    width: (100% *7/12) - ($grid-space * 11)/12;
-  }
-  .col-xs-8{
-    width: (100% *8/12) - ($grid-space * 11)/12;
-  }
-  .col-xs-9{
-    width: (100 *9%/12) - ($grid-space * 11)/12;
-  }
-  .col-xs-10{
-    width: (100% /1.2) - ($grid-space * 11)/12;
-  }
-  .col-xs-11{
-    width: (100% *11/12) - ($grid-space * 11)/12;
-  }
-  .col-xs-12{
-    width: 100%;
-  }
+
   .mobile-hidden{
     display: none;
   }
-  
+
 }
+
+// tablet display
+@media ( min-width: $breakpoint-tablet ) and (max-width: $breakpoint-desktop - 1) {
+  [class*="col-sm"]{
+    float: left;
+    box-sizing: border-box;
+    margin-right: $grid-space;
+
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+  @for $i from 1 through 12 {
+    .col-sm-#{$i} {
+      width: ( $i *(100% - ( $grid-space * 11))/12 ) + (( $i - 1 ) * $grid-space);
+    }
+  }
+
+
+  .tablet-hidden{
+    display: none;
+  }
+
+}
+
+// desktop display
 @media (min-width: $breakpoint-desktop) {
 
   [class*="col-"]{
@@ -81,45 +82,13 @@ $breakpoint-desktop: 1024px;
       margin-right: 0;
     }
   }
-
-  .col-1{
-    width: (100%/12) - ($grid-space * 11)/12;
-  }
-  .col-2{
-    width: (100% *2/12) - ($grid-space * 11)/12;
-  }
-  .col-3{
-    width: (100% *3/12) - ($grid-space * 11)/12;
-  }
-  .col-4{
-    width: (100% /3) - ($grid-space * 11)/12;
-  }
-  .col-5{
-    width: (100% *5/12) - ($grid-space * 11)/12;
-  }
-  .col-6{
-    width: (100% /2) - ($grid-space * 11)/12;
-  }
-  .col-7{
-    width: (100% *7/12) - ($grid-space * 11)/12;
-  }
-  .col-8{
-    width: (100% *8/12) - ($grid-space * 11)/12;
-  }
-  .col-9{
-    width: (100 *9%/12) - ($grid-space * 11)/12;
-  }
-  .col-10{
-    width: (100% /1.2) - ($grid-space * 11)/12;
-  }
-  .col-11{
-    width: (100% *11/12) - ($grid-space * 11)/12;
-  }
-  .col-12{
-    width: 100% ;
+  @for $i from 1 through 12{
+    .col-#{$i} {
+      width:( $i *(100% - ( $grid-space * 11))/12 ) + (( $i - 1 ) * $grid-space);
+    }
   }
 
-  .mobile-only{
+  .desktop-hidden{
     display: none;
   }
 
