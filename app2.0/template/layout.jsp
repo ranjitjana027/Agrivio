@@ -11,20 +11,20 @@
     <div class="page-header">
       <div class="header-top">
           <div class="top-subheader row">
-            <div class="col-3 mobile-hidden tablet-hidden main-logo">
-              Agriculture
-
-            </div>
-            <div class="col-sm-4 col-xs-4 desktop-hidden" style="color:aliceblue; font-size:40px; padding:0px 15px; font-weight:500;">
+            <div class="col-sm-2 col-xs-4 desktop-hidden" style="color:aliceblue; font-size:40px; padding:0px 15px; font-weight:500;">
               <div class="menu-icon">
 
               </div>
             </div>
+            <div class="col-3 col-sm-7 mobile-hidden main-logo">
+              Agriculture
+
+            </div>
             <div class="col-7 mobile-hidden tablet-hidden caption" style="">
-      			An ambitious agricultural expermient            
+      			An ambitious agricultural expermient
       		</div>
 
-            <div class="col-2 col-sm-8 col-xs-8 " style="text-align:right;">
+            <div class="col-2 col-sm-3 col-xs-8 " style="text-align:right;">
               <!-- notification bell icon -->
               <div class="bell-icon">
                 <svg width="60px" viewBox="0 0 100 100" style="position:relative;">
@@ -126,7 +126,9 @@
         <div class="row user-nav" >
           <div  class="col-12 col-sm-12 col-xs-12">
             <ul>
-
+              <li class="desktop-hidden tablet-hidden">
+                <a href="#">Home</a>
+              </li>
               <li >
                 <a href="#"><span class="desktop-hidden">Cultivation </span> Guides</a>
               </li>

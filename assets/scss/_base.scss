@@ -1,5 +1,5 @@
 $grid-space: 2%;
-$breakpoint-mobile: 640px;
+$breakpoint-mobile: 425px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
 
@@ -16,6 +16,16 @@ $breakpoint-desktop: 1024px;
 
   & + & {
     margin-top: $grid-space;
+  }
+}
+@media ( max-width: $breakpoint-mobile - 1){
+  .sm-mobile-hidden{
+    display: none !important;
+  }
+}
+@media (min-width: $breakpoint-mobile ) and (max-width: $breakpoint-tablet - 1){
+  .lg-mobile-hidden{
+    display: none !important;
   }
 }
 
@@ -37,12 +47,8 @@ $breakpoint-desktop: 1024px;
   }
 
 
-  .col-xs-1{
-    width: (100%/12) - ($grid-space * 11)/12;
-  }
-
   .mobile-hidden{
-    display: none;
+    display: none !important;
   }
 
 }
@@ -66,7 +72,7 @@ $breakpoint-desktop: 1024px;
 
 
   .tablet-hidden{
-    display: none;
+    display: none !important;
   }
 
 }
@@ -89,7 +95,7 @@ $breakpoint-desktop: 1024px;
   }
 
   .desktop-hidden{
-    display: none;
+    display: none !important;
   }
 
 }

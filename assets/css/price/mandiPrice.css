@@ -1,6 +1,6 @@
 .price-content {
   display: block;
-  padding: 16px 14px;
+  padding: 20px 0;
   background-color: snow;
   border-radius: 10px;
   padding: 10px 30px;
@@ -9,11 +9,14 @@
 
 .select-location {
   display: inline-block;
-  min-width: 250px;
   color: #0e5c54;
-  height: 30px;
+  padding: 10px 0;
   font-size: large;
   letter-spacing: 0.05rem;
+}
+.arrival-date{
+  font-size: large;
+  padding: 10px 0;
 }
 
 .price-content table {

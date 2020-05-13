@@ -1,7 +1,7 @@
 $header-bottom-bgcolor: #009663;
 $user-nav-link-color: snow;
 $user-nav-link-font-size:17px;
-$user-nav-link-padding:10px;
+$user-nav-link-padding:9px;
 $user-nav-link-hover-color:#0d6d63;
 $user-nav-link-hover-bgcolor:#fbfffa;
 $page-max-width:1020px;
@@ -15,6 +15,7 @@ body{
 	margin: 0;
 	font-family: Microsoft JhengHei, sans-serif;
 	min-width: 200px;
+	letter-spacing: 0.01rem;
  }
 .page-header{
   width: 100%;
@@ -49,6 +50,7 @@ body{
 		transform: rotate(357deg);
 		padding: 10px 40px;
 		color: #004000;
+		text-align:center;
 	  }
       .bell-icon{
         display: inline-block;

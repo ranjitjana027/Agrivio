@@ -5,27 +5,50 @@
     <link rel="stylesheet" href="assets/css/article2.0/article.css">
     <script src="assets/js/template/layout.js" charset="utf-8"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/price/price.css">
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded",()=>{
+        document.querySelectorAll('td:nth-child(3), td:nth-child(4), th:nth-child(3), th:nth-child(4)').forEach(item=>{
+            item.classList.add("mobile-hidden");
+        });
+        document.querySelectorAll(".collapse").forEach((item, i) => {
+          item.onclick=()=>{
+            item.classList.toggle("active");
+            item.nextElementSibling.classList.toggle("hidden-content");
+          }
+        });
+      });
+
+    </script>
+    <style media="screen">
+      .price-header{
+        font-size: x-large;
+        text-transform: capitalize;
+        padding: 10px 0;
+      }
+    </style>
   </head>
   <body>
     <!-- page header -->
     <div class="page-header">
       <div class="header-top">
           <div class="top-subheader row">
-            <div class="col-3 mobile-hidden tablet-hidden main-logo">
-              Agriculture
-
-            </div>
-            <div class="col-xs-4 col-sm-4 desktop-hidden" style="color:aliceblue; font-size:40px; padding:0px 15px; font-weight:500;">
+            <div class="col-xs-4 col-sm-2 desktop-hidden" style="color:aliceblue; font-size:40px; padding:0px 15px; font-weight:500;">
               <div class="menu-icon">
 
               </div>
             </div>
 
-            <div class="col-7 mobile-hidden tablet-hidden caption" style="">
-      				An ambitious agricultural expermient            
+            <div class="col-3 col-sm-7 mobile-hidden  main-logo">
+              Agriculture
+
+            </div>
+
+            <div class="col-7 tablet-hidden mobile-hidden caption" style="">
+      				An ambitious agricultural expermient
       			</div>
 
-            <div class="col-2 col-xs-8 col-sm-8" style="text-align:right;">
+            <div class="col-2 col-xs-8 col-sm-3" style="text-align:right;">
               <!-- notification bell icon -->
               <div class="bell-icon">
                 <svg width="60px" viewBox="0 0 100 100" style="position:relative;">
@@ -33,18 +56,18 @@
                   <circle cx="50" cy="2" r="7" stroke-width="1px" />
                   <path d="M35,87 A17,17 0 0,0 65,87" stroke-width="1px"/>
                   <div style="
-                  position:absolute;
-                  margin-top:-40px;
-                  margin-left:30px ;
-                  background-color:red;
-                  padding:3px;
-                  border-radius:50%;
-                  font-size:13px;
-                  color:white;
-                  font-weight:bold;
-                  transform:scale(0.75);
-                  cursor: pointer;
-                  ">
+                    position:absolute;
+                    margin-top:-40px;
+                    margin-left:30px ;
+                    background-color:red;
+                    padding:3px;
+                    border-radius:50%;
+                    font-size:13px;
+                    color:white;
+                    font-weight:bold;
+                    transform:scale(0.75);
+                    cursor: pointer;
+                    ">
                     25
                   </div>
                 </svg>
@@ -128,7 +151,9 @@
         <div class="row user-nav" >
           <div  class="col-12 col-sm-12 col-xs-12">
             <ul>
-
+              <li class="desktop-hidden tablet-hidden">
+                <a href="#">Home</a>
+              </li>
               <li >
                 <a href="#"><span class="desktop-hidden">Cultivation </span> Guides</a>
               </li>
@@ -168,117 +193,713 @@
     </div>
     <!-- main content here  -->
     <div class="page-content">
-      <div class="row">
-        <div class="col-8 col-sm-12 col-xs-12" >
-          <div class="article" style="padding:10px;">
-            <div class="article-header">
-              Lorem Ipsum dolor sit amet
-            </div>
-            <div class="article-metadata">
-              Last Update : <span> 8th February, 2020</span>
-            </div>
-            <figure>
-              <img class="article-image" src="assets/img/green-lawn.jpg" alt="">
-            </figure>
-            <div class="article-content">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Nulla consequat imperdiet magna, dictum fringilla erat.
-                Aliquam nec elit suscipit, mollis mauris in, scelerisque libero.
-                Sed finibus imperdiet euismod. Vivamus semper pellentesque ante,
-                id congue ligula congue sit amet. Cras eu volutpat erat.
-                Quisque purus leo, eleifend at vestibulum ut, sagittis non eros.
-                In sagittis pharetra tempus.
+      <!-- include page here -->
 
-              </p>
-              <div class="article-subheader">
-                posuere sapien tristique
-              </div>
-              <p>
-                Mauris blandit luctus diam, eu molestie lectus rhoncus at.
-                Etiam vulputate rutrum nulla. Integer facilisis pharetra fermentum.
-                Aenean eu porttitor mauris. Quisque quis nisi luctus, faucibus purus
-                non, molestie lorem. Vestibulum ante ipsum primis in faucibus orci
-                luctus et ultrices posuere cubilia curae; Aenean eget mattis leo.
-                Vestibulum ac lectus sed sem bibendum lobortis. Curabitur semper est
-                pellentesque risus eleifend elementum. Mauris feugiat, augue eget
-                vestibulum eleifend, quam augue tincidunt quam, et ultricies eros
-                nunc a nisl. Praesent hendrerit pellentesque varius.
-              </p>
-              <p>
-                Suspendisse finibus commodo nisl non viverra. Pellentesque vel laoreet
-                velit, non interdum velit. Pellentesque tincidunt dignissim arcu,
-                sed consequat augue luctus vel. Vestibulum hendrerit dui vestibulum
-                imperdiet vehicula. Praesent vitae turpis in massa eleifend egestas.
-                In quis imperdiet lacus, vitae tempus nunc. Quisque facilisis ex sit
-                amet feugiat commodo. Donec commodo, ante eu porta maximus, purus
-                ligula auctor lorem, ut lobortis velit metus eu ex. Suspendisse in
-                dui quis diam porttitor mattis. Duis lobortis ex vitae lacus tristique
-                tristique.
-              </p>
-              <figure>
-                <img class="article-image" src="assets/img/homepage.jpg" alt="">
-                <figcaption>Farming Land</figcaption>
-              </figure>
-              <p>
-                Morbi vitae turpis a turpis consectetur tristique. Sed et arcu dui.
-                Donec dapibus augue in augue fringilla volutpat. Vivamus mattis
-                interdum purus in finibus. In varius ac nisl id ornare. Aenean
-                malesuada ornare ex, in posuere sapien tristique at. Nulla diam arcu,
-                fringilla et purus at, cursus viverra urna. Ut quis bibendum erat,
-                non tincidunt neque. Praesent sed lobortis diam, eu molestie mi.
-              </p>
-              <div class="article-subheader">
-                interdum purus in finibus
-              </div>
-              <p>
-                Nunc dapibus dignissim massa. Aenean sit amet libero dolor.
-                Phasellus eu venenatis purus. Vestibulum vitae purus vehicula elit
-                luctus placerat. Maecenas dictum, odio auctor convallis posuere,
-                ligula ex malesuada mi, id convallis diam sem vitae risus. Nunc
-                varius, turpis pellentesque sollicitudin accumsan, nibh diam
-                viverra metus, quis tempor tortor arcu nec turpis. Vivamus vitae
-                hendrerit velit. Morbi lobortis leo ac velit iaculis suscipit.
-                Sed nisl nibh, ullamcorper vel finibus ut, egestas et mi.
-                Aenean maximus et libero euismod consequat.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-4 col-sm-12 col-xs-12"  >
-          <div class="suggestion">
-            <div class="suggestion-header">
-              Related Articles
-            </div>
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="suggestion-article">
-                  <img src="assets/img/farmland.jpg" alt="">
-                  <div class="suggestion-article-header">
-                    <a href="#">Quisque facilisis ex sit amet feugiat commodo</a>
+            <div class="price-content">
+              <div class="row">
+                <div class="col-8">
+                  <div class="price-header">
+                    Crop Prices at different kishan mandi
                   </div>
+                  <div class="row">
+                    <div class="col-6 col-sm-6 col-xs-12 select-location" >
+                        <label for="state">State: </label>
+                        <select id="state">
+                            <option value="">Select State</option>
+                        </select>
+                    </div>
+                    <div class="col-6 col-sm-6 col-xs-12 select-location" id="choose-district" hidden>
+                        <label for="district">District:</label>
+                        <select name="district" id="district">
+                            <option value="">Select District</option>
+
+                        </select>
+                    </div>
+                    <div class="col-6 col-sm-6 col-xs-12 arrival-date">
+                      Arrival Date: <span id="arrival-date">13/05/2020 </span>
+                    </div>
+                  </div>
+                  <div class="district-wise-price">
+                    <div class="">
+                      <div class="collapse">
+                        <div class="row" style="width:90%; display:inline-block;">
+                          <div class="col-6 col-sm-6 col-xs-12 district">
+                            <label for="">District </label> : <span>Burdwan</span>
+                          </div>
+                          <div class="col-6 col-sm-5 col-xs-12 market">
+                            <label for="">Market</label> : <span>Asansol</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="content show-content" style="">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Commodity</th>
+                              <th>Variety</th>
+                              <th>Max Price</th>
+                              <th>Min Price</th>
+                              <th>Modal Price</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Arhar (Tur/Red Gram)(Whole)</td>
+                              <td>Other</td>
+                              <td>8000</td>
+                              <td>8300</td>
+                              <td>8100</td>
+                            </tr>
+                            <tr>
+                              <td>Black Gram (Urd Beans)(Whole)</td>
+                              <td>Black Gram Dal</td>
+                              <td>9700</td>
+                              <td>10000</td>
+                              <td>9800</td>
+                            </tr>
+                            <tr>
+                              <td>Black Gram (Urd Beans)(Whole)</td>
+                              <td>Other</td>
+                              <td>8700</td>
+                              <td>9000</td>
+                              <td>8800</td>
+                            </tr>
+                            <tr>
+                              <td>Brinjal</td>
+                              <td>Other</td>
+                              <td>2550</td>
+                              <td>2700</td>
+                              <td>2620</td>
+                            </tr>
+                            <tr>
+                              <td>Ginger(Dry)</td>
+                              <td>Other</td>
+                              <td>8650</td>
+                              <td>8780</td>
+                              <td>8700</td>
+                            </tr>
+                            <tr>
+                              <td>Green Gram (Moong)(Whole)</td>
+                              <td>Green Gram Dhall-I</td>
+                              <td>10000</td>
+                              <td>10300</td>
+                              <td>10100</td>
+                            </tr>
+                            <tr>
+                              <td>Green Gram (Moong)(Whole)</td>
+                              <td>Other</td>
+                              <td>9400</td>
+                              <td>9700</td>
+                              <td>9500</td>
+                            </tr>
+                            <tr>
+                              <td>Lentil (Masur)(Whole)</td>
+                              <td>Masur Dal</td>
+                              <td>6300</td>
+                              <td>6500</td>
+                              <td>6400</td>
+                            </tr>
+                            <tr>
+                              <td>Mustard</td>
+                              <td>Other</td>
+                              <td>4350</td>
+                              <td>4450</td>
+                              <td>4400</td>
+                            </tr>
+                            <tr>
+                              <td>Onion</td>
+                              <td>Nasik</td>
+                              <td>1350</td>
+                              <td>1450</td>
+                              <td>1400</td>
+                            </tr>
+                            <tr>
+                              <td>Peas(Dry)</td>
+                              <td>Other</td>
+                              <td>6500</td>
+                              <td>6700</td>
+                              <td>6600</td>
+                            </tr>
+                            <tr>
+                              <td>Peas(Dry)</td>
+                              <td>Peas(Dry)</td>
+                              <td>5500</td>
+                              <td>5700</td>
+                              <td>5600</td>
+                            </tr>
+                            <tr>
+                              <td>Potato</td>
+                              <td>Jyoti</td>
+                              <td>1700</td>
+                              <td>1720</td>
+                              <td>1700</td>
+                            </tr>
+                            <tr>
+                              <td>Rice</td>
+                              <td>Fine</td>
+                              <td>2850</td>
+                              <td>2900</td>
+                              <td>2850</td>
+                            </tr>
+                            <tr>
+                              <td>Sweet Pumpkin</td>
+                              <td>Other</td>
+                              <td>530</td>
+                              <td>580</td>
+                              <td>560</td>
+                            </tr>
+                            <tr>
+                              <td>Tomato</td>
+                              <td>Hybrid</td>
+                              <td>1820</td>
+                              <td>1950</td>
+                              <td>1900</td>
+                            </tr>
+                            <tr>
+                              <td>Wheat</td>
+                              <td>Kalyan</td>
+                              <td>2450</td>
+                              <td>2540</td>
+                              <td>2500</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="">
+                      <div class="collapse">
+                        <div class="row" style="width:90%; display:inline-block;">
+                          <div class="col-6 col-sm-6 col-xs-12 district">
+                            <label for="">District </label> : <span>Burdwan</span>
+                          </div>
+                          <div class="col-6 col-sm-5 col-xs-12 market">
+                            <label for="">Market</label> : <span>Asansol</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="content show-content" style="">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Commodity</th>
+                              <th>Variety</th>
+                              <th>Max Price</th>
+                              <th>Min Price</th>
+                              <th>Modal Price</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Arhar (Tur/Red Gram)(Whole)</td>
+                              <td>Other</td>
+                              <td>8000</td>
+                              <td>8300</td>
+                              <td>8100</td>
+                            </tr>
+                            <tr>
+                              <td>Black Gram (Urd Beans)(Whole)</td>
+                              <td>Black Gram Dal</td>
+                              <td>9700</td>
+                              <td>10000</td>
+                              <td>9800</td>
+                            </tr>
+                            <tr>
+                              <td>Black Gram (Urd Beans)(Whole)</td>
+                              <td>Other</td>
+                              <td>8700</td>
+                              <td>9000</td>
+                              <td>8800</td>
+                            </tr>
+                            <tr>
+                              <td>Brinjal</td>
+                              <td>Other</td>
+                              <td>2550</td>
+                              <td>2700</td>
+                              <td>2620</td>
+                            </tr>
+                            <tr>
+                              <td>Ginger(Dry)</td>
+                              <td>Other</td>
+                              <td>8650</td>
+                              <td>8780</td>
+                              <td>8700</td>
+                            </tr>
+                            <tr>
+                              <td>Green Gram (Moong)(Whole)</td>
+                              <td>Green Gram Dhall-I</td>
+                              <td>10000</td>
+                              <td>10300</td>
+                              <td>10100</td>
+                            </tr>
+                            <tr>
+                              <td>Green Gram (Moong)(Whole)</td>
+                              <td>Other</td>
+                              <td>9400</td>
+                              <td>9700</td>
+                              <td>9500</td>
+                            </tr>
+                            <tr>
+                              <td>Lentil (Masur)(Whole)</td>
+                              <td>Masur Dal</td>
+                              <td>6300</td>
+                              <td>6500</td>
+                              <td>6400</td>
+                            </tr>
+                            <tr>
+                              <td>Mustard</td>
+                              <td>Other</td>
+                              <td>4350</td>
+                              <td>4450</td>
+                              <td>4400</td>
+                            </tr>
+                            <tr>
+                              <td>Onion</td>
+                              <td>Nasik</td>
+                              <td>1350</td>
+                              <td>1450</td>
+                              <td>1400</td>
+                            </tr>
+                            <tr>
+                              <td>Peas(Dry)</td>
+                              <td>Other</td>
+                              <td>6500</td>
+                              <td>6700</td>
+                              <td>6600</td>
+                            </tr>
+                            <tr>
+                              <td>Peas(Dry)</td>
+                              <td>Peas(Dry)</td>
+                              <td>5500</td>
+                              <td>5700</td>
+                              <td>5600</td>
+                            </tr>
+                            <tr>
+                              <td>Potato</td>
+                              <td>Jyoti</td>
+                              <td>1700</td>
+                              <td>1720</td>
+                              <td>1700</td>
+                            </tr>
+                            <tr>
+                              <td>Rice</td>
+                              <td>Fine</td>
+                              <td>2850</td>
+                              <td>2900</td>
+                              <td>2850</td>
+                            </tr>
+                            <tr>
+                              <td>Sweet Pumpkin</td>
+                              <td>Other</td>
+                              <td>530</td>
+                              <td>580</td>
+                              <td>560</td>
+                            </tr>
+                            <tr>
+                              <td>Tomato</td>
+                              <td>Hybrid</td>
+                              <td>1820</td>
+                              <td>1950</td>
+                              <td>1900</td>
+                            </tr>
+                            <tr>
+                              <td>Wheat</td>
+                              <td>Kalyan</td>
+                              <td>2450</td>
+                              <td>2540</td>
+                              <td>2500</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="">
+                      <div class="collapse">
+                        <div class="row" style="width:90%; display:inline-block;">
+                          <div class="col-6 col-sm-6 col-xs-12 district">
+                            <label for="">District </label> : <span>Burdwan</span>
+                          </div>
+                          <div class="col-6 col-sm-5 col-xs-12 market">
+                            <label for="">Market</label> : <span>Asansol</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="content show-content" style="">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Commodity</th>
+                              <th>Variety</th>
+                              <th>Max Price</th>
+                              <th>Min Price</th>
+                              <th>Modal Price</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Arhar (Tur/Red Gram)(Whole)</td>
+                              <td>Other</td>
+                              <td>8000</td>
+                              <td>8300</td>
+                              <td>8100</td>
+                            </tr>
+                            <tr>
+                              <td>Black Gram (Urd Beans)(Whole)</td>
+                              <td>Black Gram Dal</td>
+                              <td>9700</td>
+                              <td>10000</td>
+                              <td>9800</td>
+                            </tr>
+                            <tr>
+                              <td>Black Gram (Urd Beans)(Whole)</td>
+                              <td>Other</td>
+                              <td>8700</td>
+                              <td>9000</td>
+                              <td>8800</td>
+                            </tr>
+                            <tr>
+                              <td>Brinjal</td>
+                              <td>Other</td>
+                              <td>2550</td>
+                              <td>2700</td>
+                              <td>2620</td>
+                            </tr>
+                            <tr>
+                              <td>Ginger(Dry)</td>
+                              <td>Other</td>
+                              <td>8650</td>
+                              <td>8780</td>
+                              <td>8700</td>
+                            </tr>
+                            <tr>
+                              <td>Green Gram (Moong)(Whole)</td>
+                              <td>Green Gram Dhall-I</td>
+                              <td>10000</td>
+                              <td>10300</td>
+                              <td>10100</td>
+                            </tr>
+                            <tr>
+                              <td>Green Gram (Moong)(Whole)</td>
+                              <td>Other</td>
+                              <td>9400</td>
+                              <td>9700</td>
+                              <td>9500</td>
+                            </tr>
+                            <tr>
+                              <td>Lentil (Masur)(Whole)</td>
+                              <td>Masur Dal</td>
+                              <td>6300</td>
+                              <td>6500</td>
+                              <td>6400</td>
+                            </tr>
+                            <tr>
+                              <td>Mustard</td>
+                              <td>Other</td>
+                              <td>4350</td>
+                              <td>4450</td>
+                              <td>4400</td>
+                            </tr>
+                            <tr>
+                              <td>Onion</td>
+                              <td>Nasik</td>
+                              <td>1350</td>
+                              <td>1450</td>
+                              <td>1400</td>
+                            </tr>
+                            <tr>
+                              <td>Peas(Dry)</td>
+                              <td>Other</td>
+                              <td>6500</td>
+                              <td>6700</td>
+                              <td>6600</td>
+                            </tr>
+                            <tr>
+                              <td>Peas(Dry)</td>
+                              <td>Peas(Dry)</td>
+                              <td>5500</td>
+                              <td>5700</td>
+                              <td>5600</td>
+                            </tr>
+                            <tr>
+                              <td>Potato</td>
+                              <td>Jyoti</td>
+                              <td>1700</td>
+                              <td>1720</td>
+                              <td>1700</td>
+                            </tr>
+                            <tr>
+                              <td>Rice</td>
+                              <td>Fine</td>
+                              <td>2850</td>
+                              <td>2900</td>
+                              <td>2850</td>
+                            </tr>
+                            <tr>
+                              <td>Sweet Pumpkin</td>
+                              <td>Other</td>
+                              <td>530</td>
+                              <td>580</td>
+                              <td>560</td>
+                            </tr>
+                            <tr>
+                              <td>Tomato</td>
+                              <td>Hybrid</td>
+                              <td>1820</td>
+                              <td>1950</td>
+                              <td>1900</td>
+                            </tr>
+                            <tr>
+                              <td>Wheat</td>
+                              <td>Kalyan</td>
+                              <td>2450</td>
+                              <td>2540</td>
+                              <td>2500</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
-              <div class="col-sm-4">
-                <div class="suggestion-article">
-                  <img src="assets/img/farmland.jpg" alt="">
-                  <div class="suggestion-article-header">
-                    <a href="#">Quisque facilisis ex sit amet feugiat commodo</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="suggestion-article">
-                  <img src="assets/img/farmland.jpg" alt="">
-                  <div class="suggestion-article-header">
-                    <a href="#">Quisque facilisis ex sit amet feugiat commodo</a>
-                  </div>
-                </div>
-              </div>
+              <!--
+              <table id="price-list">
+                  <tbody>
+                    <tr>
+                      <th>District</th>
+                      <th>Market</th>
+                      <th>Commodity</th>
+                      <th>Variety</th>
+                      <th>Arrival Date</th>
+                      <th>Max Price</th>
+                      <th>Min Price</th>
+                      <th>Modal Price</th>
+                    </tr>
+                  </tbody>
+                  <tbody>
+                  </tbody>
+
+                    <tr>
+                      <td>Burdwan</td>
+                      <td>Durgapur</td>
+                      <td>Brinjal</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>2930</td>
+                      <td>3060</td>
+                      <td>3000</td>
+                    </tr>
+                    <tr>
+                      <td>Burdwan</td>
+                      <td>Durgapur</td>
+                      <td>Cabbage</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>700</td>
+                      <td>750</td>
+                      <td>700</td>
+                    </tr>
+                    <tr>
+                      <td>Burdwan</td>
+                      <td>Durgapur</td>
+                      <td>Lentil (Masur)(Whole)</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>6350</td>
+                      <td>6500</td>
+                      <td>6400</td>
+                    </tr>
+                    <tr>
+                      <td>Burdwan</td>
+                      <td>Durgapur</td>
+                      <td>Mustard</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>4350</td>
+                      <td>4450</td>
+                      <td>4400</td>
+                    </tr>
+                    <tr>
+                      <td>Burdwan</td>
+                      <td>Durgapur</td>
+                      <td>Mustard Oil</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>10050</td>
+                      <td>10150</td>
+                      <td>10100</td>
+                    </tr>
+                    <tr>
+                      <td>Burdwan</td>
+                      <td>Durgapur</td>
+                      <td>Onion</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>1060</td>
+                      <td>1140</td>
+                      <td>1100</td>
+                    </tr>
+                    <tr>
+                      <td>Burdwan</td>
+                      <td>Durgapur</td>
+                      <td>Potato</td>
+                      <td>Jyoti</td>
+                      <td>13/05/2020</td>
+                      <td>1680</td>
+                      <td>1700</td>
+                      <td>1700</td>
+                    </tr>
+                    <tr>
+                      <td>Burdwan</td>
+                      <td>Durgapur</td>
+                      <td>Potato</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>1580</td>
+                      <td>1600</td>
+                      <td>1600</td>
+                    </tr>
+                    <tr>
+                      <td>Burdwan</td>
+                      <td>Durgapur</td>
+                      <td>Rice</td>
+                      <td>Fine</td>
+                      <td>13/05/2020</td>
+                      <td>2850</td>
+                      <td>2900</td>
+                      <td>2850</td>
+                    </tr>
+                    <tr>
+                      <td>Burdwan</td>
+                      <td>Durgapur</td>
+                      <td>Rice</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>2650</td>
+                      <td>2700</td>
+                      <td>2650</td>
+                    </tr>
+                    <tr>
+                      <td>Burdwan</td>
+                      <td>Durgapur</td>
+                      <td>Tomato</td>
+                      <td>Hybrid</td>
+                      <td>13/05/2020</td>
+                      <td>2030</td>
+                      <td>2140</td>
+                      <td>2100</td>
+                    </tr>
+                    <tr>
+                      <td>Burdwan</td>
+                      <td>Durgapur</td>
+                      <td>Wheat</td>
+                      <td>Kalyan</td>
+                      <td>13/05/2020</td>
+                      <td>2500</td>
+                      <td>2550</td>
+                      <td>2500</td>
+                    </tr>
+                    <tr>
+                      <td>Burdwan</td>
+                      <td>Durgapur</td>
+                      <td>Wheat</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>2400</td>
+                      <td>2450</td>
+                      <td>2400</td>
+                    </tr>
+                    <tr>
+                      <td>Howrah</td>
+                      <td>Uluberia</td>
+                      <td>Bhindi(Ladies Finger)</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>1400</td>
+                      <td>1600</td>
+                      <td>1500</td>
+                    </tr>
+                    <tr>
+                      <td>Howrah</td>
+                      <td>Uluberia</td>
+                      <td>Brinjal</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>1600</td>
+                      <td>2200</td>
+                      <td>1800</td>
+                    </tr>
+                    <tr>
+                      <td>Howrah</td>
+                      <td>Uluberia</td>
+                      <td>Green Chilli</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>3500</td>
+                      <td>4200</td>
+                      <td>3800</td>
+                    </tr>
+                    <tr>
+                      <td>Howrah</td>
+                      <td>Uluberia</td>
+                      <td>Onion</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>1300</td>
+                      <td>1600</td>
+                      <td>1400</td>
+                    </tr>
+                    <tr>
+                      <td>Howrah</td>
+                      <td>Uluberia</td>
+                      <td>Pointed gourd (Parval)</td>
+                      <td>Other</td>
+                      <td>13/05/2020</td>
+                      <td>1600</td>
+                      <td>2000</td>
+                      <td>1700</td>
+                    </tr>
+                    <tr>
+                      <td>Howrah</td>
+                      <td>Uluberia</td>
+                      <td>Potato</td>
+                      <td>Jyoti</td>
+                      <td>13/05/2020</td>
+                      <td>1770</td>
+                      <td>1800</td>
+                      <td>1780</td>
+                    </tr>
+                    <tr>
+                      <td>Howrah</td>
+                      <td>Uluberia</td>
+                      <td>Rice</td>
+                      <td>Other</td><td>13/05/2020</td><td>2900</td><td>3100</td><td>3000</td>
+                    </tr>
+                    <tr><td>Howrah</td><td>Uluberia</td><td>Ridgeguard(Tori)</td><td>Other</td><td>13/05/2020</td><td>1400</td><td>1600</td><td>1500</td></tr>
+                    <tr><td>Howrah</td><td>Uluberia</td><td>Tomato</td><td>Other</td><td>13/05/2020</td><td>2000</td><td>2500</td><td>2200</td></tr>
+                    <tr><td>Nadia</td><td>Nadia</td><td>Brinjal</td><td>Round/Long</td><td>13/05/2020</td><td>3300</td><td>3500</td><td>3400</td></tr>
+                    <tr><td>Nadia</td><td>Nadia</td><td>Green Chilli</td><td>Other</td><td>13/05/2020</td><td>2300</td><td>2500</td><td>2400</td></tr>
+                    <tr><td>Nadia</td><td>Nadia</td><td>Mustard</td><td>Yellow (Black)</td><td>13/05/2020</td><td>3800</td><td>4000</td><td>3900</td></tr>
+                    <tr><td>Nadia</td><td>Nadia</td><td>Onion</td><td>Nasik</td><td>13/05/2020</td><td>1500</td><td>1700</td><td>1600</td></tr>
+                    <tr><td>Nadia</td><td>Nadia</td><td>Potato</td><td>Other</td><td>13/05/2020</td><td>1760</td><td>1800</td><td>1780</td></tr>
+                    <tr><td>Nadia</td><td>Nadia</td><td>Rice</td><td>Fine</td><td>13/05/2020</td><td>4000</td><td>4200</td><td>4100</td></tr>
+                    <tr><td>Nadia</td><td>Nadia</td><td>Sweet Pumpkin</td><td>Sweet Pumpkin</td><td>13/05/2020</td><td>700</td><td>900</td><td>800</td></tr>
+                    <tr><td>Puruliya</td><td>Balarampur</td><td>Bhindi(Ladies Finger)</td><td>Other</td><td>13/05/2020</td><td>900</td><td>1000</td><td>960</td></tr>
+                    <tr><td>Puruliya</td><td>Balarampur</td><td>Brinjal</td><td>Other</td><td>13/05/2020</td><td>1200</td><td>1350</td><td>1300</td></tr>
+                    <tr><td>Puruliya</td><td>Balarampur</td><td>Lentil (Masur)(Whole)</td><td>Other</td><td>13/05/2020</td><td>5420</td><td>5470</td><td>5450</td></tr>
+                    <tr><td>Puruliya</td><td>Balarampur</td><td>Mustard Oil</td><td>Other</td><td>13/05/2020</td><td>10200</td><td>10600</td><td>10400</td></tr>
+                    <tr><td>Puruliya</td><td>Balarampur</td><td>Onion</td><td>Other</td><td>13/05/2020</td><td>1200</td><td>1300</td><td>1250</td></tr>
+                    <tr><td>Puruliya</td><td>Balarampur</td><td>Potato</td><td>Other</td><td>13/05/2020</td><td>1500</td><td>1600</td><td>1560</td></tr>
+                    <tr><td>Puruliya</td><td>Balarampur</td><td>Rice</td><td>Other</td><td>13/05/2020</td><td>2650</td><td>2700</td><td>2680</td></tr>
+                    <tr><td>Puruliya</td><td>Balarampur</td><td>Ridgeguard(Tori)</td><td>Other</td><td>13/05/2020</td><td>1000</td><td>1100</td><td>1050</td></tr>
+                    <tr><td>Puruliya</td><td>Balarampur</td><td>Tomato</td><td>Other</td><td>13/05/2020</td><td>1400</td><td>1500</td><td>1450</td></tr>
+                    <tr><td>Uttar Dinajpur</td><td>Islampur</td><td>Potato</td><td>Jyoti</td><td>13/05/2020</td><td>1640</td><td>1670</td><td>1650</td></tr>
+                    <tr><td>Uttar Dinajpur</td><td>Islampur</td><td>Rice</td><td>Fine</td><td>13/05/2020</td><td>3300</td><td>3400</td><td>3350</td></tr>
+                    <tr><td>Uttar Dinajpur</td><td>Raiganj</td><td>Rice</td><td>Fine</td><td>13/05/2020</td><td>3250</td><td>3350</td><td>3300</td></tr>
+                  </table>
+              -->
             </div>
-          </div>
-        </div>
-      </div>
+
 
     </div>
     <!-- page footer -->
