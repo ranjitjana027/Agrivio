@@ -13,6 +13,16 @@
   margin-top: 2%;
 }
 
+@media (max-width: 424px) {
+  .sm-mobile-hidden {
+    display: none !important;
+  }
+}
+@media (min-width: 425px) and (max-width: 767px) {
+  .lg-mobile-hidden {
+    display: none !important;
+  }
+}
 @media (max-width: 767px) {
   [class*=col-xs] {
     float: left;
@@ -71,12 +81,8 @@
     width: 100%;
   }
 
-  .col-xs-1 {
-    width: 6.5%;
-  }
-
   .mobile-hidden {
-    display: none;
+    display: none !important;
   }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -138,7 +144,7 @@
   }
 
   .tablet-hidden {
-    display: none;
+    display: none !important;
   }
 }
 @media (min-width: 1024px) {
@@ -199,13 +205,14 @@
   }
 
   .desktop-hidden {
-    display: none;
+    display: none !important;
   }
 }
 body {
   margin: 0;
   font-family: Microsoft JhengHei, sans-serif;
   min-width: 200px;
+  letter-spacing: 0.01rem;
 }
 
 .page-header {
@@ -241,6 +248,7 @@ body {
   transform: rotate(357deg);
   padding: 10px 40px;
   color: #004000;
+  text-align: center;
 }
 .page-header .header-top .top-subheader .bell-icon {
   display: inline-block;
@@ -326,7 +334,7 @@ body {
   text-align: center;
   text-decoration: none;
   display: block;
-  padding: 10px;
+  padding: 9px;
   color: snow;
   font-size: 17px;
   transition: color 0.5s, background-color 0.5s;
