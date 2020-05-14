@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" >
   <div class="col-8 col-xs-12" >
     <div class="article" style="padding:10px;">
       <div class="article-header">

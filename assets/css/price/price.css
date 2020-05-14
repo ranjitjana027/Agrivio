@@ -1,8 +1,15 @@
 @charset "UTF-8";
+body {
+  background-color: white !important;
+}
+
 .price-content {
   display: block;
-  padding: 20px 10px;
   margin: 2% 0;
+}
+.price-content .price-content-column {
+  padding: 20px 10px;
+  background-color: white;
 }
 .price-content .price-header {
   font-size: x-large;

@@ -1,5 +1,8 @@
-
+body{
+  background-color: white !important;
+}
 .article{
+  background-color: white;
   figure{
     padding: 0;
     margin: 0;
@@ -50,6 +53,7 @@
   border-bottom: dashed 1px;
   border-bottom-left-radius: 10px;
   border-color: #02b377;
+  background-color: white;
 
   .suggestion-header{
     font-size: 20px;
