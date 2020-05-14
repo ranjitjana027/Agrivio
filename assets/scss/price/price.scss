@@ -1,7 +1,13 @@
+body{
+  background-color: white !important;
+}
 .price-content {
   display: block;
-  padding: 20px 10px;
   margin: 2% 0;
+  .price-content-column{
+    padding: 20px 10px;
+    background-color: white;
+  }
   .price-header{
     font-size: x-large;
     font-weight: 600;
