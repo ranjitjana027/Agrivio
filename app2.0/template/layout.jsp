@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/template/layout.css">
-    <link rel="stylesheet" href="../../assets/css/price/price.css">
+    <link rel="stylesheet" href="../../assets/css/profile/profile.css">
     <script src="../../assets/js/template/layout.js" charset="utf-8"></script>
   </head>
   <body>
@@ -169,7 +169,7 @@
     <!-- main content here  -->
     <div class="page-content">
       <!-- include page here -->
-      <jsp:include page="../price/price_view.jsp" />
+      <jsp:include page="../profile/profile_view.jsp" />
 
     </div>
     <!-- page footer -->
