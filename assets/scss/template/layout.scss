@@ -1,4 +1,4 @@
-$header-bottom-bgcolor: #009663;
+$header-bottom-bgcolor: #02b377;
 $user-nav-link-color: snow;
 $user-nav-link-font-size:17px;
 $user-nav-link-padding:9px;
@@ -14,14 +14,14 @@ $breakpoint-desktop: 1024px;
 body{
 	margin: 0;
 	font-family: Microsoft JhengHei, sans-serif;
-	min-width: 200px;
+	min-width: 250px;
 	letter-spacing: 0.01rem;
 	background-color: #fafafa;
  }
 .page-header{
   width: 100%;
   .header-top{
-    height:60px;
+    /*min-height:60px;*/
     position: relative;
 
     &:before{
@@ -38,6 +38,7 @@ body{
     .top-subheader{
       max-width: $page-max-width;
       margin: auto;
+			position: relative;
       .main-logo{
         color: aliceblue;
         font-family:  papyrus,serif;
@@ -49,14 +50,24 @@ body{
 					text-decoration: none;
 				}
       }
-	  .caption{
-		font-family: Brush Script MT;
-		font-size: 200%;
-		transform: rotate(357deg);
-		padding: 10px 40px;
-		color: #004000;
-		text-align:center;
-	  }
+		  .caption{
+			font-family: Brush Script MT;
+			font-size: 200%;
+			transform: rotate(357deg);
+			padding: 10px 40px;
+			color: #004000;
+			text-align:center;
+		  }
+			.search-icon{
+				display: inline-block;
+
+				svg{
+					width: 40px;
+					height:40px;
+					display:inline-block;
+					cursor: pointer;
+				}
+			}
       .bell-icon{
         display: inline-block;
         user-select: none;
@@ -77,7 +88,7 @@ body{
         margin-left: -360px;
         margin-top: 60px;
         z-index: 2;
-        border-radius: 1px;
+        border-radius: 5px;
         box-shadow: -1px 2px 10px;
 
         &:before{
@@ -271,7 +282,18 @@ body{
           &::before{
             content: "\2630";
           }
+					&:hover{
+						transform: scale(1.1);
+					}
         }
+				.menu-icon-active{
+					width: fit-content;
+					cursor: pointer;
+					&::before{
+						content: "\2715";
+					}
+				}
+
         .notification-list{
           position: absolute;
           margin: auto ;

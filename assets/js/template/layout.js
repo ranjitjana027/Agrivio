@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   /* show /hide navigation list */
   window.addEventListener("click",evt=>{
     if(evt.target.classList!=undefined && evt.target.classList.contains("menu-icon")){
+      evt.target.classList.toggle("menu-icon-active");
       var user_nav_list=document.querySelector("div.user-nav ul");
       if(user_nav_list.classList.contains("show-nav")){
         user_nav_list.classList.remove("show-nav");
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
     else{
       document.querySelector("div.user-nav ul").classList.remove("show-nav");
+      document.querySelector(".menu-icon").classList.remove("menu-icon-active");
     }
   });
 
@@ -54,5 +56,5 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
   });
 
-  
+
 });
