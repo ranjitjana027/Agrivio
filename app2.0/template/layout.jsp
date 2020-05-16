@@ -11,41 +11,50 @@
     <div class="page-header">
       <div class="header-top">
           <div class="top-subheader row">
-            <div class="col-sm-2 col-xs-4 desktop-hidden" style="color:aliceblue; font-size:40px; padding:0px 15px; font-weight:500;">
+            <div class="col-xs-4 col-sm-2 desktop-hidden menu-icon-container" style="">
               <div class="menu-icon">
 
               </div>
             </div>
-            <div class="col-3 col-sm-7 mobile-hidden main-logo">
-              Agriculture
+
+            <div class="col-3 col-sm-3 mobile-hidden  main-logo">
+              <a href="#">Agriculture</a>
 
             </div>
-            <div class="col-7 mobile-hidden tablet-hidden caption" style="">
-      			An ambitious agricultural expermient
-      		</div>
 
-            <div class="col-2 col-sm-3 col-xs-8 " style="text-align:right;">
+            <!--div class="col-6 tablet-hidden mobile-hidden caption" >
+      				An ambitious agricultural expermient
+      			</div-->
+            <div class="col-9 col-xs-8 col-sm-7 user-nav-bar" style="">
+
+              <!-- Search Box for tablet and desktop -->
+              <div class="search-box mobile-hidden">
+                <form action="search" id="search-form" >
+                  <div class="inline-input" style="">
+                    <input type="search" name="q" placeholder="Search...">
+                  </div>
+                  <div class="search-icon" onclick="document.querySelector('#search-form').submit();">
+                     <svg viewBox="0 0 20 20">
+                        <circle cx="8" cy="10" r="7" fill="none" stroke="snow" stroke-width="2px" />
+                        <path d="M13,13 L20,19" stroke="snow" stroke-width="4px" />
+                      </svg>
+                  </div>
+                </form>
+              </div>
+              <!-- search icon logo for mobile-->
+              <div class="search-logo tablet-hidden desktop-hidden">
+                <svg viewBox="0 0 40 40">
+                  <circle cx="20" cy="20" r="10" stroke="white" stroke-width="3px" fill="none" />
+                  <path d="M28,28 L35,33" stroke="white" stroke-width="5px"/>
+                </svg>
+              </div>
               <!-- notification bell icon -->
               <div class="bell-icon">
                 <svg width="60px" viewBox="0 0 100 100" style="position:relative;">
                   <path d="M0,85 S15,85 20,35 A10,10 0 0,1 80,35 S85,85 100,85 z" stroke-width="1px"  />
                   <circle cx="50" cy="2" r="7" stroke-width="1px" />
                   <path d="M35,87 A17,17 0 0,0 65,87" stroke-width="1px"/>
-                  <div style="
-	                  position:absolute;
-	                  margin-top:-40px;
-	                  margin-left:30px ;
-	                  background-color:red;
-	                  padding:3px;
-	                  border-radius:50%;
-	                  font-size:13px;
-	                  color:white;
-	                  font-weight:bold;
-	                  transform:scale(0.75);
-	                  cursor: pointer;
-                  ">
-                    25
-                  </div>
+                  <div>25</div>
                 </svg>
               </div>
               <!-- notification list -->
@@ -100,34 +109,58 @@
                 </div>
 
               </div>
+
               <!-- user icon -->
-              <svg class="user-icon" viewBox=" 0 0 40 40" style="
-                                                                height: 40px;
-                                                                margin: 10px 10px 0 0;
-                                                                background-color: #ecefec;
-                                                                border-radius: 50%;
-                                                                cursor: pointer;
-                                                                display: inline-block;
-                                                                ">
-                <defs>
-                  <pattern id="user-icon-pattern" x="0" y="0" height="200" width="200" patternUnits="userSpaceOnUse" >
-                    <circle cx="20" cy="14" r="9" stroke="black" fill="none" stroke-width="2px" />
-                    <path d="M0,40 S20,0 40,40" stroke="black" fill="none" stroke-width="2px" />
-                  </pattern>
-                </defs>
-                <circle cx="20" cy="20" r="20" stroke="black"  fill="url(#user-icon-pattern)" stroke-width="2px" />
-              </svg>
+              <div class="" style="display:inline-block; width:fit-content;">
+                <svg class="user-icon" viewBox=" 0 0 40 40">
+                  <defs>
+                    <pattern id="user-icon-pattern" x="0" y="0" height="200" width="200" patternUnits="userSpaceOnUse" >
+                      <circle cx="20" cy="14" r="9" stroke="black" fill="none" stroke-width="2px" />
+                      <path d="M0,40 S20,0 40,40" stroke="black" fill="none" stroke-width="2px" />
+                    </pattern>
+                  </defs>
+                  <circle cx="20" cy="20" r="20" stroke="black"  fill="url(#user-icon-pattern)" stroke-width="2px" />
+                </svg>
+              </div>
+              <!-- account navigation -->
+              <div class="account-nav hidden" >
+                <ul>
+                  <li><a href="#">Account</a> </li>
+                  <li><a href="#">Subscription</a> </li>
+                  <li><a href="#">Logout</a> </li>
+                </ul>
+              </div>
 
             </div>
           </div>
       </div>
       <div class="header-bottom">
+        <!-- mobile search bar -->
+        <div class="mobile-search-bar" >
+          <div class="search-box desktop-hidden tablet-hidden">
+            <form action="search" id="search-form-mobile" >
+              <div class="inline-input" >
+                <input type="search" name="q"  placeholder="Search...">
+              </div>
+              <div class="search-icon" onclick="document.querySelector('#search-form-mobile').submit();" style="">
+                 <!---svg viewBox="0 0 20 20">
+                    <circle cx="8" cy="10" r="7" fill="none" stroke="snow" stroke-width="2px" />
+                    <path d="M13,13 L20,19" stroke="snow" stroke-width="4px" />
+                  </svg-->
+                  <span>&#10153;</span>
+              </div>
+            </form>
+          </div>
+        </div>
         <!--user nav link -->
         <div class="row user-nav" >
           <div  class="col-12 col-sm-12 col-xs-12">
             <ul>
               <li class="desktop-hidden tablet-hidden">
                 <a href="#">Home</a>
+              </li>
+              <li>
+                <a href="#">Suggestion</a>
               </li>
               <li >
                 <a href="#"><span class="desktop-hidden">Cultivation </span> Guides</a>
@@ -154,15 +187,6 @@
 
             </ul>
           </div>
-
-
-        </div>
-        <div class="account-nav hidden" >
-          <ul>
-            <li><a href="#">Account</a> </li>
-            <li><a href="#">Subscription</a> </li>
-            <li><a href="#">Logout</a> </li>
-          </ul>
         </div>
       </div>
     </div>

@@ -56,5 +56,28 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
   });
 
+  /* expand serch bar on focus */
+  document.querySelector(".search-box input").onfocus=()=>{
+    document.querySelector(".search-box").classList.add("full-width")
+  }
+
+  /* shrink search bar on blur */
+  document.querySelector(".search-box input").onblur=()=>{
+    document.querySelector(".search-box").classList.remove("full-width")
+  }
+
+  /* show/hide mobile search bar */
+  window.onclick=evt=>{
+    if(( evt.target && evt.target.parentNode &&
+      evt.target.parentNode.classList && evt.target.parentNode.classList.contains("search-logo")) || (
+      evt.target.parentNode.parentNode &&
+      evt.target.parentNode.parentNode.classList && evt.target.parentNode.parentNode.classList.contains("search-logo")))
+      {
+        document.querySelector(".mobile-search-bar").classList.toggle("show-mobile-search-bar");
+      }
+      /*else{
+        document.querySelector(".mobile-search-bar").classList.remove("show-mobile-search-bar");
+      }*/
+  }
 
 });
