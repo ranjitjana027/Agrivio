@@ -1,30 +1,38 @@
+@import "../../css/lib/custom-select";
+
+body{
+  background-color: white !important;
+}
+
+
 .calendar {
-  display: grid;
-  grid-template-columns: 740px auto;
-  grid-column-gap: 2px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  margin: 2% 0;
+  background-color: white;
+
+  .calendar-header{
+    font-size: 21px;
+    font-weight: 600;
+    padding: 10px 0;
+  }
 
   .calendar-content {
-    padding: 40px;
-    font-family: verdana, serif;
-    background-color: snow;
-
+    font-family: verdana, sans-serif;
     .cal-box {
       box-shadow: 5px 5px 10px 1px;
 
       .cal-head {
         background-color: #04674e8c;
-        display: grid;
-        grid-template-columns: auto 80% auto;
-        text-align: center;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 80px;
 
         .change-month-arrow {
           display: inline;
+          padding: 30px 0 0;
           user-select: none;
           -webkit-user-select: none;
           -moz-user-select: none;
-          padding: 35px 0 0 15px;
 
           svg{
             cursor: pointer;
@@ -33,6 +41,10 @@
               transform: scale(0.7);
             }
           }
+        }
+
+        .month-header{
+          padding-top: 25px;
         }
 
       }
@@ -55,16 +67,16 @@
           th{
             color: rgb(217, 255, 0);
             font-size: large;
-            padding: 10px;
+            /*padding: 10px;*/
 
             &:first-child {
               color: rgb(255, 166, 0);
             }
           }
 
-          td{
+          /*td{
             padding: 10px;
-          }
+          }*/
         }
       }
     }
@@ -73,25 +85,28 @@
   .calendar-stats {
     padding: 20px ;
     font-family: verdana, serif;
-    background-color: snow;
-    border-left: 5px solid #096945;
+    border-left: 1px solid #096945;
 
     .stats-overview, .crop-stats, .event-type-stats {
       display: none;
+      max-width: 100%;
+      margin: auto;
+      text-align: center;
     }
 
     label {
       padding: 5px;
       line-height: 40px;
-      font-size: x-large;
+      font-size: 20px;
       color: #096945;
       text-transform: capitalize;
-      font-variant: all-petite-caps;
     }
 
     table {
       border-collapse: collapse;
       min-width: 250px;
+      width: 100%;
+      margin: auto;
 
       th, td {
        padding: 5px 10px;
@@ -136,8 +151,6 @@
 
 .show {
   display: block !important;
-  max-width: 200px;
-  text-align: center;
 }
 
 .today {
@@ -196,7 +209,9 @@
   background-color: rgba(0, 0, 0, 0.4);
 
   .modal-content {
-    display: block;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
     background-color: aliceblue;
     width: 0;
     max-height: 0;
@@ -205,13 +220,13 @@
     left: 0;
     right: 0;
     bottom: 0;
-    margin: 5% auto;
+    margin: 5vh auto;
     padding: 10px;
     border-radius: 6px;
     /*max-height: 90vh;*/
     overflow: auto;
     opacity: 0;
-    animation: myanimation 1s ease forwards 1s;
+    animation: myanimation 1s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards 1s;
 
     .add-event-icon-container{
       display: inline-block;
@@ -307,6 +322,9 @@
 
     .event-list{
       list-style-type: none;
+      padding: 0;
+      margin: auto;
+      width: fit-content;
 
       table{
         border: 1.5px solid #0e5c25;
@@ -346,9 +364,81 @@
 }
 
 
+@media (max-width:767px) {
+  .select {
+    max-width: 180px !important;
+  }
 
+  .select-options{
 
+    .option{
 
+      max-width: 180px !important;
+    }
+  }
+
+  .calendar{
+
+    .calendar-header{
+      padding: 10px;
+    }
+
+    .calendar-content{
+      padding: 10px;
+
+      .calendar-stats{
+        border: none;
+      }
+
+      .cal-box{
+
+        .cal-head{
+
+          .change-month-arrow{
+            padding: 0;
+          }
+
+          .month-header{
+            padding: 0;
+          }
+        }
+      }
+    }
+
+  }
+
+  .modal{
+
+    .modal-content{
+
+      .event-list{
+
+      }
+
+      .event-selection{
+
+        & > div{
+
+          input{
+            max-width: 180px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+  .calendar{
+
+    .calendar-stats{
+      border: none;
+      .stats-overview{
+        width: 50%;
+      }
+    }
+  }
+}
 
 .event-display {
   text-decoration: snow underline;
