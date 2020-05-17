@@ -3,7 +3,7 @@ $breakpoint-mobile: 425px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
 
-*{
+*, *::after, *::before{
   box-sizing: border-box;
 }
 %clearflow:after{

@@ -208,14 +208,20 @@ body{
         }
       }
 
-			.user-icon{
-				height: 40px;
-				/*margin: 10px 10px 0 0;*/
-				background-color: #ecefec;
-				border-radius: 50%;
-				cursor: pointer;
-				display: inline-block;
-				position: relative;
+			.user-icon-container{
+				display:inline-block;
+				width:fit-content;
+				padding-right: 2px;
+
+				.user-icon{
+					height: 40px;
+					/*margin: 10px 10px 0 0;*/
+					background-color: #ecefec;
+					border-radius: 50%;
+					cursor: pointer;
+					display: inline-block;
+					position: relative;
+				}
 			}
 
 			.account-nav{
@@ -406,6 +412,11 @@ body{
     padding: 10px;
   }
 
+}
+
+.active-link {
+    background-color: aliceblue;
+    color: #48d00f !important;
 }
 
 .hidden{
