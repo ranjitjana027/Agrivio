@@ -232,12 +232,12 @@ function fetchEventUtil(data)
               event.target.offsetParent.style.display="none";
           };
       });
-      window.onclick=evt=>{
+      window.addEventListener("click",evt=>{
           document.querySelectorAll('.modal').forEach(function (item) {
               if(evt.target==item)
                   item.style.display = "none";
       });
-      }
+      });
 
   }
   function addEvent(evt){

@@ -7,20 +7,19 @@
         font-family: sans-serif;
       }
       .option{
-        height: 25px;
         border-bottom: solid 1px;
         border-collapse: collapse;
         width: 280px;
         padding: 5px 15px;
-        background-color: yellow;
-        color: red;
+        background-color: #169c4f;
+        color: white;
         cursor: default;
         text-align: center;
         overflow: hidden;
         text-overflow: ellipsis;
       }
       .option:hover{
-        background-color: #e8de55;
+        background-color: #08713a;
       }
 
       .select{
@@ -34,10 +33,12 @@
         text-overflow: ellipsis;
       }
       .select-options{
-        display: none;
+        max-height: 0;
+        overflow: hidden;
         position: absolute;
         z-index: 1;
         user-select: none;
+        transition: max-height 0.3s;
       }
 
 
@@ -54,6 +55,6 @@
         top:8px;
         border-color: transparent transparent #009688 transparent;
       }
-      .show{
-        display: block;
+      .show-options{
+        max-height: 100vh !important;
       }

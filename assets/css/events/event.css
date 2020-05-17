@@ -1,0 +1,297 @@
+.calendar {
+  display: grid;
+  grid-template-columns: 740px auto;
+  grid-column-gap: 2px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.calendar .calendar-content {
+  padding: 40px;
+  font-family: verdana, serif;
+  background-color: snow;
+}
+.calendar .calendar-content .cal-box {
+  box-shadow: 5px 5px 10px 1px;
+}
+.calendar .calendar-content .cal-box .cal-head {
+  background-color: #04674e8c;
+  display: grid;
+  grid-template-columns: auto 80% auto;
+  text-align: center;
+}
+.calendar .calendar-content .cal-box .cal-head .change-month-arrow {
+  display: inline;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  padding: 35px 0 0 15px;
+}
+.calendar .calendar-content .cal-box .cal-head .change-month-arrow svg {
+  cursor: pointer;
+}
+.calendar .calendar-content .cal-box .cal-head .change-month-arrow svg:active {
+  transform: scale(0.7);
+}
+.calendar .calendar-content .cal-box .cal-main {
+  background-color: #096945;
+  width: 100%;
+  height: 400px;
+}
+.calendar .calendar-content .cal-box .cal-main table {
+  column-count: auto;
+  width: inherit;
+  height: inherit;
+}
+.calendar .calendar-content .cal-box .cal-main table .cal-day, .calendar .calendar-content .cal-box .cal-main table .cal-num {
+  text-align: center;
+  color: snow;
+}
+.calendar .calendar-content .cal-box .cal-main table th {
+  color: #d9ff00;
+  font-size: large;
+  padding: 10px;
+}
+.calendar .calendar-content .cal-box .cal-main table th:first-child {
+  color: #ffa600;
+}
+.calendar .calendar-content .cal-box .cal-main table td {
+  padding: 10px;
+}
+.calendar .calendar-stats {
+  padding: 20px;
+  font-family: verdana, serif;
+  background-color: snow;
+  border-left: 5px solid #096945;
+}
+.calendar .calendar-stats .stats-overview, .calendar .calendar-stats .crop-stats, .calendar .calendar-stats .event-type-stats {
+  display: none;
+}
+.calendar .calendar-stats label {
+  padding: 5px;
+  line-height: 40px;
+  font-size: x-large;
+  color: #096945;
+  text-transform: capitalize;
+  font-variant: all-petite-caps;
+}
+.calendar .calendar-stats table {
+  border-collapse: collapse;
+  min-width: 250px;
+}
+.calendar .calendar-stats table th, .calendar .calendar-stats table td {
+  padding: 5px 10px;
+  text-align: center;
+  border: solid #096945;
+}
+.calendar .calendar-stats table th {
+  color: snow;
+  background-color: #0e5c25;
+}
+.calendar .calendar-stats table td {
+  color: #096945;
+}
+
+.curr-month:first-child {
+  color: #e6b4b4;
+}
+
+.date-day {
+  cursor: pointer;
+}
+
+.prev-month,
+.next-month {
+  font-weight: lighter;
+  opacity: 0.8;
+}
+
+.curr-month {
+  font-weight: 600;
+}
+
+.show {
+  display: block !important;
+  max-width: 200px;
+  text-align: center;
+}
+
+.today {
+  border-radius: 50%;
+  border: solid #333 2px;
+  color: aliceblue;
+  background-color: #333;
+}
+
+@keyframes myanimation {
+  0% {
+    top: 0px;
+    bottom: 0;
+    width: 0;
+    max-height: 0;
+    opacity: 1;
+  }
+  100% {
+    max-width: 500px;
+    width: 95%;
+    max-height: 90vh;
+    height: max-content;
+    top: 0;
+    bottom: 0;
+    opacity: 1;
+  }
+}
+@keyframes revealbg {
+  0% {
+    width: 0%;
+    height: 5px;
+    background-color: black;
+  }
+  50% {
+    width: 100%;
+    height: 5px;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    height: 100%;
+    width: 100%;
+  }
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  animation: revealbg 1.2s ease forwards;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal .modal-content {
+  display: block;
+  background-color: aliceblue;
+  width: 0;
+  max-height: 0;
+  /*width: 400px;*/
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 5% auto;
+  padding: 10px;
+  border-radius: 6px;
+  /*max-height: 90vh;*/
+  overflow: auto;
+  opacity: 0;
+  animation: myanimation 1s ease forwards 1s;
+}
+.modal .modal-content .add-event-icon-container {
+  display: inline-block;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  text-align: right;
+  padding-right: 20px;
+  width: 100%;
+}
+.modal .modal-content .add-event-icon-container svg {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
+}
+.modal .modal-content .close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.modal .modal-content .event-title {
+  color: #096945;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #096945;
+}
+.modal .modal-content .event-selection {
+  display: block;
+  padding-bottom: 20px;
+  color: #096945;
+}
+.modal .modal-content .event-selection > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.modal .modal-content .event-selection > div label {
+  padding: 0 15px;
+}
+.modal .modal-content .event-selection > div input {
+  width: 280px;
+  padding: 5px;
+  color: #28948a;
+  outline: none;
+  border: none;
+  font-size: medium;
+}
+.modal .modal-content .event-selection > div input::placeholder {
+  color: #8dd9d1;
+}
+.modal .modal-content .add-submit {
+  display: block;
+}
+.modal .modal-content .add-submit input {
+  background-color: #0e5c25;
+  padding: 8px 20px;
+  color: snow;
+  font-size: large;
+  border-radius: 6px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
+  border: none;
+}
+.modal .modal-content .add-submit input:hover {
+  cursor: pointer;
+}
+.modal .modal-content .add-submit input:active {
+  transform: scale(0.8);
+}
+.modal .modal-content th {
+  color: #d9ff00;
+  font-size: large;
+}
+.modal .modal-content td, .modal .modal-content th {
+  padding: 10px;
+}
+.modal .modal-content .event-list {
+  list-style-type: none;
+}
+.modal .modal-content .event-list table {
+  border: 1.5px solid #0e5c25;
+  border-radius: 2px;
+  width: 300px;
+  margin-bottom: 2px;
+}
+.modal .modal-content .event-list table tr th {
+  color: #0e5c25;
+  padding: 5px;
+  border-right: 1.5px solid #0e5c25;
+  border-bottom: 1px solid #0e5c25;
+}
+.modal .modal-content .event-list table tr td {
+  padding: 5px;
+  border-bottom: 1px solid #0e5c25;
+}
+.modal .modal-content .event-list table tr:last-child th, .modal .modal-content .event-list table tr:last-child td {
+  border-bottom: none;
+}
+.modal .modal-content .event-list li:nth-child(odd) table {
+  background-color: snow;
+  align-self: center;
+}
+
+.event-display {
+  text-decoration: snow underline;
+}
+
+/*# sourceMappingURL=event.css.map */

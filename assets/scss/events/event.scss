@@ -1,0 +1,355 @@
+.calendar {
+  display: grid;
+  grid-template-columns: 740px auto;
+  grid-column-gap: 2px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+
+  .calendar-content {
+    padding: 40px;
+    font-family: verdana, serif;
+    background-color: snow;
+
+    .cal-box {
+      box-shadow: 5px 5px 10px 1px;
+
+      .cal-head {
+        background-color: #04674e8c;
+        display: grid;
+        grid-template-columns: auto 80% auto;
+        text-align: center;
+
+        .change-month-arrow {
+          display: inline;
+          user-select: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          padding: 35px 0 0 15px;
+
+          svg{
+            cursor: pointer;
+
+            &:active{
+              transform: scale(0.7);
+            }
+          }
+        }
+
+      }
+
+      .cal-main {
+        background-color: #096945;
+        width: 100%;
+        height: 400px;
+
+        table {
+          column-count: auto;
+          width: inherit;
+          height: inherit;
+
+          .cal-day, .cal-num {
+            text-align: center;
+            color: snow;
+          }
+
+          th{
+            color: rgb(217, 255, 0);
+            font-size: large;
+            padding: 10px;
+
+            &:first-child {
+              color: rgb(255, 166, 0);
+            }
+          }
+
+          td{
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .calendar-stats {
+    padding: 20px ;
+    font-family: verdana, serif;
+    background-color: snow;
+    border-left: 5px solid #096945;
+
+    .stats-overview, .crop-stats, .event-type-stats {
+      display: none;
+    }
+
+    label {
+      padding: 5px;
+      line-height: 40px;
+      font-size: x-large;
+      color: #096945;
+      text-transform: capitalize;
+      font-variant: all-petite-caps;
+    }
+
+    table {
+      border-collapse: collapse;
+      min-width: 250px;
+
+      th, td {
+       padding: 5px 10px;
+       text-align: center;
+       border: solid #096945;
+     }
+
+     th {
+       color: snow;
+       background-color: #0e5c25;
+     }
+
+     td {
+       color: #096945;
+     }
+    }
+  }
+}
+
+
+.curr-month:first-child {
+  color: rgb(230, 180, 180);
+}
+
+.date-day {
+  cursor: pointer;
+}
+
+
+
+.prev-month,
+.next-month {
+  font-weight: lighter;
+  opacity: 0.8;
+}
+
+.curr-month {
+  font-weight: 600;
+}
+
+
+
+.show {
+  display: block !important;
+  max-width: 200px;
+  text-align: center;
+}
+
+.today {
+  border-radius: 50%;
+  border: solid #333 2px;
+  color: aliceblue;
+  background-color: #333;
+}
+
+  @keyframes myanimation {
+    0% {
+         top: 0px;
+         bottom: 0;
+         width:0;
+         max-height:0;
+         opacity: 1;
+      }
+    100% {
+         max-width: 500px;
+         width:95%;
+         max-height:90vh;
+         height: max-content;
+         top: 0;
+         bottom: 0;
+         opacity: 1;
+      }
+  }
+
+  @keyframes revealbg {
+    0%{
+      width: 0%;
+      height: 5px;
+      background-color: rgba(0, 0, 0, 1);
+    }
+    50%{
+      width: 100%;
+      height: 5px;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    100%{
+      height: 100%;
+      width: 100%;
+    }
+  }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  animation:  revealbg 1.2s ease forwards;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  .modal-content {
+    display: block;
+    background-color: aliceblue;
+    width: 0;
+    max-height: 0;
+    /*width: 400px;*/
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 5% auto;
+    padding: 10px;
+    border-radius: 6px;
+    /*max-height: 90vh;*/
+    overflow: auto;
+    opacity: 0;
+    animation: myanimation 1s ease forwards 1s;
+
+    .add-event-icon-container{
+      display: inline-block;
+      user-select:none;
+      -webkit-user-select:none;
+      -moz-user-select:none;
+      text-align: right;
+      padding-right: 20px;
+      width: 100%;
+
+      svg{
+        height: 60px;
+        width: 60px;
+        border-radius:50%;
+        cursor: pointer;
+        box-shadow: 0px 2px 5px rgba(0,0,0,0.8);
+      }
+    }
+
+    .close {
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .event-title{
+      color: #096945;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #096945;
+    }
+
+    .event-selection{
+      display:block;
+      padding-bottom: 20px;
+      color: #096945;
+
+      & > div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+
+        label{
+          padding: 0 15px;
+        }
+
+        input{
+          width: 280px;
+          padding: 5px;
+          color: #28948a;
+          outline: none;
+          border: none;
+          font-size: medium;
+
+          &::placeholder{
+            color: #8dd9d1;
+          }
+        }
+      }
+    }
+
+    .add-submit {
+      display: block;
+
+      input{
+        background-color: #0e5c25;
+        padding: 8px 20px;
+        color: snow;
+        font-size: large;
+        border-radius: 6px;
+        box-shadow: 0px 2px 5px rgba(0,0,0,0.8);
+        border: none;
+
+        &:hover{
+          cursor: pointer;
+        }
+
+        &:active{
+          transform: scale(0.8);
+        }
+      }
+    }
+
+    th {
+      color: rgb(217, 255, 0);
+      font-size: large;
+    }
+
+    td,th {
+      padding: 10px;
+    }
+
+    .event-list{
+      list-style-type: none;
+
+      table{
+        border: 1.5px solid #0e5c25;
+        border-radius: 2px;
+        width: 300px;
+        margin-bottom: 2px;
+
+        tr{
+
+          th{
+           color: #0e5c25;
+           padding: 5px;
+           border-right: 1.5px solid #0e5c25;
+           border-bottom: 1px solid #0e5c25;
+          }
+
+          td{
+            padding: 5px;
+            border-bottom: 1px solid #0e5c25;
+          }
+
+          &:last-child{
+            th, td{
+              border-bottom: none;
+            }
+          }
+        }
+      }
+
+      li:nth-child(odd) table{
+       background-color: snow;
+       align-self: center;
+     }
+    }
+
+  }
+}
+
+
+
+
+
+
+.event-display {
+  text-decoration: snow underline;
+}

@@ -384,7 +384,12 @@ body {
   background-color: rgba(0, 255, 0, 0.03);
   cursor: default;
 }
-.page-header .header-top .top-subheader .user-icon {
+.page-header .header-top .top-subheader .user-icon-container {
+  display: inline-block;
+  width: fit-content;
+  padding-right: 2px;
+}
+.page-header .header-top .top-subheader .user-icon-container .user-icon {
   height: 40px;
   /*margin: 10px 10px 0 0;*/
   background-color: #ecefec;

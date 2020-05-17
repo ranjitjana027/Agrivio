@@ -111,7 +111,7 @@
               </div>
 
               <!-- user icon -->
-              <div class="" style="display:inline-block; width:fit-content;">
+              <div class="user-icon-container">
                 <svg class="user-icon" viewBox=" 0 0 40 40">
                   <defs>
                     <pattern id="user-icon-pattern" x="0" y="0" height="200" width="200" patternUnits="userSpaceOnUse" >
