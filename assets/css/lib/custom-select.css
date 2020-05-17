@@ -18,6 +18,9 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
+      .option:last-child{
+        border-bottom: none;
+      }
       .option:hover{
         background-color: #08713a;
       }
@@ -57,4 +60,5 @@
       }
       .show-options{
         max-height: 100vh !important;
+        box-shadow: 0 0 2px 1px;
       }
