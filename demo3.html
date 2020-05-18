@@ -9,31 +9,87 @@
     <script src="assets/js/lib/custom-select.js" charset="utf-8"></script>
     <script type="text/javascript">
       document.addEventListener("DOMContentLoaded",()=>{
-
-        document.querySelector(".search-box input").onfocus=()=>{
-          document.querySelector(".search-box").classList.add("full-width")
-        }
-
-        document.querySelector(".search-box input").onblur=()=>{
-          document.querySelector(".search-box").classList.remove("full-width")
-        }
-
-        window.onclick=evt=>{
-          if(( evt.target && evt.target.parentNode &&
-            evt.target.parentNode.classList && evt.target.parentNode.classList.contains("search-logo")) || (
-            evt.target.parentNode.parentNode &&
-            evt.target.parentNode.parentNode.classList && evt.target.parentNode.parentNode.classList.contains("search-logo")))
-            {
-              document.querySelector(".mobile-search-bar").classList.toggle("show-mobile-search-bar");
-            }
-            /*else{
-              document.querySelector(".mobile-search-bar").classList.remove("show-mobile-search-bar");
-            }*/
+        var v=document.querySelector('.plant-frontpage > .row').children;
+        document.querySelector("input[name='filter-plant']").onkeyup=evt=>{
+          console.log(evt.target.value);
         }
       });
     </script>
     <style media="screen">
+      .plant-frontpage{
+          margin: 2% 0;
+          padding:0 8px;
+      }
 
+      .plant-article-card{
+        overflow: hidden;
+        display: block;
+      }
+      .plant-frontpage [class*='col']{
+        padding: 10px 0;
+      }
+
+      .article-image{
+        position:relative;
+        width:100%;
+        padding-top:140%;
+      }
+
+      .article-image img{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 100%;
+        z-index: -1;
+      }
+      .plant-name a{
+        text-decoration: none;
+        font-size: 18px;
+        display: block;
+        text-align: center;
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 10px;
+        margin-top : -50px;
+        text-transform: capitalize;
+      }
+      .plant-frontpage header{
+        padding: 10px 0;
+        display: block;
+        font-size: 21px;
+        font-weight: 600;
+      }
+      @media (max-width:767px) {
+        .plant-frontpage .col-xs-6:nth-child(2n){
+          margin-right: 0;
+        }
+      }
+      @media (max-width:1023px) and (min-width:768px) {
+        .plant-frontpage .col-sm-4:nth-child(3n){
+          margin-right: 0;
+        }
+      }
+      @media (min-width:1024px) {
+        .plant-frontpage .col-3:nth-child(4n){
+          margin-right: 0;
+        }
+      }
+      .filter-item{
+        display: block;
+        text-align: center;
+        padding: 10px;
+      }
+      .filter-item input{
+        width: 250px;
+        padding: 5px;
+        outline: none;
+        font-size: 16px;
+      }
+      .filter-item input::placeholder{
+        letter-spacing: 0.02rem;
+      }
 
     </style>
   </head>
@@ -200,14 +256,20 @@
               <li>
                 <a href="/crop-price" id="link-price">Crop Price</a>
               </li>
-              <li>
+              <!--li>
                 <a href="/weather" id="link-forecast"><span class="desktop-hidden">Weather </span> Forecast</a>
-              </li>
+              </li-->
               <li>
                 <a href="/calendar" id="link-calendar"><span class="desktop-hidden">Cultivation </span> Events</a>
               </li>
               <li>
                 <a href="#">Ask Expert</a>
+              </li>
+              <li>
+                <a href="#">Plants</a>
+              </li>
+              <li>
+                <a href="#">Pests</a>
               </li>
               <li>
                 <a href="#">About <span class="desktop-hidden"> Website</span></a>
@@ -225,300 +287,121 @@
     <!-- main content here  -->
     <div class="page-content" style="min-height:125px;">
       <!-- include page here -->
-
-      <div class="calendar">
-        <div class="calendar-header">
-          Cultivation Events
+      <div class="plant-frontpage">
+        <header>
+          Plants
+        </header>
+        <div>
+          <div class="filter-item">
+            <input type="text" name="filter-plant" placeholder="Filter by Crop Name">
+          </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            <div class="calendar-content">
-                <div class="mobile-hidden" style="height:40px; ">
-                    <svg viewBox="0 0 660 150" style="max-height:400px!important; width:100%;">
-                        <path d="M-10,60 C-10,0 40,0 40,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="20" cy="60" r="6" />
-                        <path d="M20,60 C20,0  70,0 70,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="50" cy="60" r="6" />
-                        <path d="M50,60 C50,0  100,0 100,040 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="80" cy="60" r="6" />
-                        <path d="M80,60 C80,0  130,0 130,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="110" cy="60" r="6" />
-                        <path d="M110,60 C110,0 160,0 160,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="140" cy="60" r="6" />
-                        <path d="M140,60 C140,0  190,0 190,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="170" cy="60" r="6" />
-                        <path d="M170,60 C170,0  220,0 220,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="200" cy="60" r="6" />
-                        <path d="M200,60 C200,0  250,0 250,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="230" cy="60" r="6" />
-                        <path d="M230,60 C230,0  280,0 280,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="260" cy="60" r="6" />
-                        <path d="M260,60 C260,0  310,0 310,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="290" cy="60" r="6" />
-                        <path d="M290,60 C290,0  340,0 340,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="320" cy="60" r="6" />
-                        <path d="M320,60 C320,0  370,0 370,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="350" cy="60" r="6" />
-                        <path d="M350,60 C350,0  400,0 400,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="380" cy="60" r="6" />
-                        <path d="M380,60 C380,0  430,0 430,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="410" cy="60" r="6" />
-                        <path d="M410,60 C410,0  460,0 460,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="440" cy="60" r="6" />
-                        <path d="M440,60 C440,0  490,0 490,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="470" cy="60" r="6" />
-                        <path d="M470,60 C470,0  520,0 520,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="500" cy="60" r="6" />
-                        <path d="M500,60 C500,0  550,0 550,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="530" cy="60" r="6" />
-                        <path d="M530,60 C530,0  580,0 580,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="560" cy="60" r="6" />
-                        <path d="M560,60 C560,0  610,0 610,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="590" cy="60" r="6" />
-                        <path d="M590,60 C590,0  640,0 640,40 " stroke="gray" fill="none" stroke-width="2px" />
-
-                        <circle cx="620" cy="60" r="6" />
-                        <path d="M620,60 C620,0  670,0 660,40 " stroke="gray" fill="none" stroke-width="2px" />
-                    </svg>
-
-                </div>
-                <div class="cal-box">
-                    <div class="cal-head">
-                        <div class="change-month-arrow">
-                            <svg width="30" height="20" id="btn-prev">
-                                <path d="M30,0 L0, 10 L30, 20 z" fill="black" stroke="black" />
-                            </svg>
-                            <span id="prev-month" hidden></span>
-                            <span id="prev-year" hidden></span>
-                        </div>
-                        <div class="month-header">
-                            <h3 style="color:white;"><span id="cal-month"></span>, <span id="cal-year"></span></h3>
-                        </div>
-                        <div class="change-month-arrow">
-
-                            <svg width="30" height="20" id="btn-next">
-                                <path d="M0,0 L30, 10 L0, 20 z" fill="black" stroke="black" />
-                            </svg>
-
-                            <span id="next-month" hidden></span>
-                            <span id="next-year" hidden></span>
-                        </div>
-                    </div>
-                    <div class="cal-main">
-                        <table>
-                            <tr class="cal-day">
-                                <th>Sun</th>
-                                <th>Mon</th>
-                                <th>Tue</th>
-                                <th>Wed</th>
-                                <th>Thu</th>
-                                <th>Fri</th>
-                                <th>Sat</th>
-                            </tr>
-                            <tr class="cal-num">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr class="cal-num">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr class="cal-num">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr class="cal-num">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr class="cal-num">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr class="cal-num">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                            </tr>
-                            </tr>
-
-                        </table>
-
-                    </div>
-
-                </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="calendar-stats">
-                <div class="row">
-                  <div class="col-12 col-sm-12 col-xs-12">
-                    <div class="stats-overview">
-                        <label for="table1" class="table-label">This month</label>
-                        <table id="table1">
-
-                        </table><br>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12 col-sm-6 col-xs-12">
-                    <div class="crop-stats">
-                        <label for="" class="table-label">Crops</label>
-                        <table>
-                            <tr>
-                                <th>Crop</th>
-                                <th>No of Events</th>
-                            </tr>
-                            <tbody id="table2-body">
-
-                            </tbody>
-
-                        </table><br>
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-6 col-xs-12">
-                    <div class="event-type-stats">
-                        <label for="" class="table-label">Type of Events</label>
-                        <table>
-                            <tr>
-                                <th>Event Type</th>
-                                <th>No of Events</th>
-                            </tr>
-                            <tbody id="table3-body">
-
-                            </tbody>
-                        </table>
-                    </div>
-                  </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal" id="add-event-modal">
-          <div class="modal-content" style="text-align: center;">
-              <span class="close">&times;</span>
-              <form method="POST" style="margin-bottom: 10px;">
-
-                  <h2 class="event-title">Add New Event</h2>
-
-                  <div>
-                      <input type="number" name="inp-date" id="inp-date" hidden>
-                      <input type="number" name="inp-month" id="inp-month" hidden>
-                      <input type="number" name="inp-year" id="inp-year" hidden>
-                  </div>
-
-                  <div class="event-selection">
-                      <div>
-                          <label for="">Crop</label>
-                          <select name="crop" class="form-select">
-                              <option value="Paddy">Paddy</option>
-                              <option value="Wheat">Wheat</option>
-                              <option value="Dal">Dal</option>
-                              <option value="Vegetable1">Vegetable1</option>
-                              <option value="Vegetable2">Vegetable2</option>
-                              <option value="Vegetable3">Vegetable3</option>
-                              <option value="Vegetable4">Vegetable4</option>
-                          </select>
-                      </div>
-                      <div>
-                          <label for="">Event</label>
-                          <select name="eventtype" class="form-select">
-                              <option value="Sowing">Sowing</option>
-                              <option value="Harvesting">Harvesting</option>
-                              <option value="Fertilizing">Fertilizing</option>
-                          </select>
-                      </div>
-                      <div>
-                        <label for="">Type</label>
-                        <select class="form-select" name="type">
-                          <option value="Event">Event</option>
-                          <option value="Remainder">Remainder</option>
-                        </select>
-                      </div>
-                      <div>
-                          <label for="">Remark</label>
-                          <input type="text" name="remark" placeholder="Remark">
-                      </div>
-                  </div>
-                  <div class="add-submit">
-                      <input type="submit" value="Add Event">
-                  </div>
-              </form>
-          </div>
-      </div>
-      <div class="modal" id="show-event-modal">
-          <div class="modal-content" style="text-align: center;">
-              <span class="close">&times;</span>
-              <h2 class="event-title" style="display: inline;">Event Details</h2>
-              <h4><b>Date :</b> <span class="event-date"></span> </h4>
-              <ul class="event-list"></ul>
-              <div class="add-event-icon-container">
-                  <svg onclick="document.querySelector('#show-event-modal').style.display='none'; document.querySelector('#add-event-modal').style.display='block';">
-                      <path d="M10,30 L30,30 " stroke="blue" stroke-width="5" />
-                      <path d="M30,30 L50,30" stroke="#ffc107" stroke-width="5" />
-                      <path d="M30,30 L30,50" stroke="red" stroke-width="5" />
-                      <path d="M30,30 L30,10" stroke="green" stroke-width="5" />
-                      <circle cx="30" cy="30" r="30" fill="gray" opacity="0.1" />
-                  </svg>
+          <div class="col-3 col-sm-4 col-xs-6">
+            <div class="plant-article-card">
+              <div class="article-image">
+                <img src="assets/img/homepage.jpg" alt="">
               </div>
-
+              <div class="plant-name">
+                <a href="#">Lorem ipsum dolor</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 col-sm-4 col-xs-6">
+            <div class="plant-article-card">
+              <div class="article-image">
+                <img src="assets/img/homepage.jpg" alt="">
+              </div>
+              <div class="plant-name">
+                <a href="#">Lorem ipsum dolor</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 col-sm-4 col-xs-6">
+            <div class="plant-article-card">
+              <div class="article-image">
+                <img src="assets/img/homepage.jpg" alt="">
+              </div>
+              <div class="plant-name">
+                <a href="#">Lorem ipsum dolor</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 col-sm-4 col-xs-6">
+            <div class="plant-article-card">
+              <div class="article-image">
+                <img src="assets/img/homepage.jpg" alt="">
+              </div>
+              <div class="plant-name">
+                <a href="#">Lorem ipsum dolor</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 col-sm-4 col-xs-6">
+            <div class="plant-article-card">
+              <div class="article-image">
+                <img src="assets/img/homepage.jpg" alt="">
+              </div>
+              <div class="plant-name">
+                <a href="#">Lorem ipsum dolor</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 col-sm-4 col-xs-6">
+            <div class="plant-article-card">
+              <div class="article-image">
+                <img src="assets/img/homepage.jpg" alt="">
+              </div>
+              <div class="plant-name">
+                <a href="#">Lorem ipsum dolor</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 col-sm-4 col-xs-6">
+            <div class="plant-article-card">
+              <div class="article-image">
+                <img src="assets/img/homepage.jpg" alt="">
+              </div>
+              <div class="plant-name">
+                <a href="#">Lorem ipsum dolor</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 col-sm-4 col-xs-6">
+            <div class="plant-article-card">
+              <div class="article-image">
+                <img src="assets/img/homepage.jpg" alt="">
+              </div>
+              <div class="plant-name">
+                <a href="#">Lorem ipsum dolor</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 col-sm-4 col-xs-6">
+            <div class="plant-article-card">
+              <div class="article-image">
+                <img src="assets/img/homepage.jpg" alt="">
+              </div>
+              <div class="plant-name">
+                <a href="#">Lorem ipsum dolor</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 col-sm-4 col-xs-6">
+            <div class="plant-article-card">
+              <div class="article-image">
+                <img src="assets/img/homepage.jpg" alt="">
+              </div>
+              <div class="plant-name">
+                <a href="#">Lorem ipsum dolor</a>
+              </div>
+            </div>
           </div>
 
-      </div>
 
-      <script src="assets/js/calendar/calendar.js" charset="utf-8"></script>
+        </div>
+
+      </div>
 
     </div>
 
@@ -532,13 +415,16 @@
         <div class="col-3 col-xs-12">
           <ul>
             <li class="footer-title">Services</li>
+            <li><a href="#">Suggestion</a> </li>
             <li><a href="#">Guides</a> </li>
             <li><a href="#">Crop Price</a> </li>
-            <li><a href="#">Weather Forecast</a> </li>
+            <!--li><a href="#">Weather Forecast</a> </li-->
             <li><a href="#">Events</a> </li>
             <li><a href="#">Ask Expert</a> </li>
-            <li><a href="#">Benificial Insects</a> </li>
-            <li><a href="#">Plant Diseases</a> </li>
+            <li><a href="#">Plants</a> </li>
+            <li><a href="#">Pests</a> </li>
+            <!--li><a href="#">Benificial Insects</a> </li>
+            <li><a href="#">Plant Diseases</a> </li-->
             <li><a href="#">Search</a> </li>
           </ul>
         </div>

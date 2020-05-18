@@ -1,5 +1,5 @@
 @charset "UTF-8";
-* {
+*, *::after, *::before {
   box-sizing: border-box;
 }
 
@@ -421,7 +421,7 @@ body {
   border: solid 10px;
   border-color: transparent transparent white;
   position: absolute;
-  margin-top: -37px;
+  margin-top: -27px;
   margin-left: -30px;
 }
 .page-header .header-top .top-subheader .account-nav ul li {
@@ -507,7 +507,9 @@ body {
 .page-header .header-bottom .user-nav ul {
   margin: 0;
   padding: 0;
-  display: block;
+  /*display: block;*/
+  display: flex;
+  justify-content: space-around;
   overflow: hidden;
   list-style-type: none;
   width: 100%;
@@ -516,11 +518,11 @@ body {
   display: inline-block;
 }
 .page-header .header-bottom .user-nav li a {
-  min-width: 100px;
+  /*min-width: 109.5px;*/
   text-align: center;
   text-decoration: none;
   display: block;
-  padding: 9px;
+  padding: 9px 22px;
   color: snow;
   font-size: 17px;
   transition: color 0.5s, background-color 0.5s;
@@ -567,6 +569,11 @@ body {
   padding: 10px;
 }
 
+.active-link {
+  background-color: aliceblue;
+  color: #48d00f !important;
+}
+
 .hidden {
   display: none !important;
 }
@@ -611,7 +618,7 @@ body {
     content: "☰";
   }
   .page-header .header-top .top-subheader .menu-icon-container .menu-icon:hover {
-    transform: scale(1.1);
+    transform: scale(0.97);
   }
   .page-header .header-top .top-subheader .menu-icon-container .menu-icon-active {
     width: fit-content;
@@ -636,6 +643,8 @@ body {
     position: relative;
   }
   .page-header .header-bottom .user-nav ul {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     background-color: white;
     border-bottom: solid 10px;

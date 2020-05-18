@@ -1,0 +1,64 @@
+.front-page {
+  margin: 2% 0;
+}
+.front-page .recently-featured .main-article .article-intro, .front-page .recommendation .main-article .article-intro {
+  font-size: 15px;
+  cursor: default;
+}
+.front-page .recently-featured img, .front-page .recommendation img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+}
+.front-page .recently-featured img:hover, .front-page .recommendation img:hover {
+  filter: brightness(1.1);
+}
+.front-page .recently-featured .article-header, .front-page .recommendation .article-header {
+  display: block;
+  font-size: 20px;
+}
+.front-page .recently-featured .article-link a, .front-page .recommendation .article-link a {
+  text-decoration: none;
+  color: #1ea883;
+}
+.front-page .recently-featured .article-link a:hover, .front-page .recommendation .article-link a:hover {
+  filter: brightness(0.5);
+}
+.front-page .recently-featured .other-article, .front-page .recommendation .other-article {
+  padding: 15px 0;
+}
+.front-page .recently-featured header, .front-page .recommendation header {
+  font-size: 21px;
+  padding: 10px 0;
+  font-weight: 600;
+  cursor: default;
+}
+
+@media (max-width: 767px) {
+  .front-page {
+    width: 95%;
+    margin: 2% auto;
+  }
+}
+@media (min-width: 1024px) {
+  .front-page {
+    padding: 0 8px;
+  }
+}
+@media (min-width: 768px) {
+  .article-image {
+    position: relative;
+    width: 100%;
+    padding-top: 56%;
+  }
+  .article-image img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+  }
+}
+
+/*# sourceMappingURL=article_frontpage.css.map */
