@@ -3,7 +3,7 @@
 
 <head>
 	<title>Landing Page </title>
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/spinner.css">
 	<script src="${pageContext.request.contextPath}/assets/js/lib/spinner.js" ></script>

@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/template/layout.css">
-    <link rel="stylesheet" href="../../assets/css/events/event.css">
+    <link rel="stylesheet" href="../../assets/css/article2.0/article_frontpage.css">
     <script src="../../assets/js/template/layout.js" charset="utf-8"></script>
   </head>
   <body>
@@ -169,14 +169,20 @@
               <li>
                 <a href="/crop-price" id="link-price">Crop Price</a>
               </li>
-              <li>
+              <!--li>
                 <a href="/weather" id="link-forecast"><span class="desktop-hidden">Weather </span> Forecast</a>
-              </li>
+              </li-->
               <li>
                 <a href="/calendar" id="link-calendar"><span class="desktop-hidden">Cultivation </span> Events</a>
               </li>
               <li>
                 <a href="#">Ask Expert</a>
+              </li>
+              <li>
+                <a href="#">Plants</a>
+              </li>
+              <li>
+                <a href="#">Pests</a>
               </li>
               <li>
                 <a href="#">About <span class="desktop-hidden"> Website</span></a>
@@ -193,7 +199,7 @@
     <!-- main content here  -->
     <div class="page-content">
       <!-- include page here -->
-      <jsp:include page="../events/event_view.jsp" />
+      <jsp:include page="../article/article_frontpage_view.jsp" />
 
     </div>
     <!-- page footer -->
@@ -206,13 +212,16 @@
         <div class="col-3 col-xs-12">
           <ul>
             <li class="footer-title">Services</li>
+            <li><a href="#">Suggestion</a> </li>
             <li><a href="#">Guides</a> </li>
             <li><a href="#">Crop Price</a> </li>
-            <li><a href="#">Weather Forecast</a> </li>
+            <!--li><a href="#">Weather Forecast</a> </li-->
             <li><a href="#">Events</a> </li>
             <li><a href="#">Ask Expert</a> </li>
-            <li><a href="#">Benificial Insects</a> </li>
-            <li><a href="#">Plant Diseases</a> </li>
+            <!--li><a href="#">Benificial Insects</a> </li>
+            <li><a href="#">Plant Diseases</a> </li-->
+            <li><a href="#">Plants</a> </li>
+            <li><a href="#">Pests</a> </li>
             <li><a href="#">Search</a> </li>
           </ul>
         </div>

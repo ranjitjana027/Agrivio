@@ -33,7 +33,7 @@ body {
 }
 .article .article-content .article-subheader {
   font-size: 22px;
-  padding: 5px 0;
+  padding: 20px 0 0;
   font-weight: 600;
   text-transform: capitalize;
 }
