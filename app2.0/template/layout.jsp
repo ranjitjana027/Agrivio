@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/template/layout.css">
-    <link rel="stylesheet" href="../../assets/css/article2.0/article_frontpage.css">
+    <link rel="stylesheet" href="../../assets/css/article2.0/plant_article_frontpage.css">
     <script src="../../assets/js/template/layout.js" charset="utf-8"></script>
   </head>
   <body>
@@ -199,7 +199,7 @@
     <!-- main content here  -->
     <div class="page-content">
       <!-- include page here -->
-      <jsp:include page="../article/article_frontpage_view.jsp" />
+      <jsp:include page="../article/plant_article_frontpage_view.jsp" />
 
     </div>
     <!-- page footer -->
