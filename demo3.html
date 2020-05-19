@@ -4,92 +4,24 @@
     <link rel="stylesheet" href="assets/css/template/layout.css">
     <script src="assets/js/template/layout.js" charset="utf-8"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/events/event.css">
-    <link rel="stylesheet" href="assets/css/lib/custom-select.css">
+    <link rel="stylesheet" href="assets/css/article2.0/plant_article_frontpage.css">
     <script src="assets/js/lib/custom-select.js" charset="utf-8"></script>
     <script type="text/javascript">
       document.addEventListener("DOMContentLoaded",()=>{
-        var v=document.querySelector('.plant-frontpage > .row').children;
+        var v=document.querySelector('.plant-frontpage > .parent').children;
         document.querySelector("input[name='filter-plant']").onkeyup=evt=>{
-          console.log(evt.target.value);
+
+          for (var i of v) {
+            i.classList.remove("hidden");
+            if(evt.target.value!="" && !i.innerText.toLowerCase().includes(evt.target.value.toLowerCase())){
+              console.log(evt.target.value.toLowerCase());
+              i.classList.add("hidden");
+            }
+          }
         }
       });
     </script>
     <style media="screen">
-      .plant-frontpage{
-          margin: 2% 0;
-          padding:0 8px;
-      }
-
-      .plant-article-card{
-        overflow: hidden;
-        display: block;
-      }
-      .plant-frontpage [class*='col']{
-        padding: 10px 0;
-      }
-
-      .article-image{
-        position:relative;
-        width:100%;
-        padding-top:140%;
-      }
-
-      .article-image img{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        height: 100%;
-        z-index: -1;
-      }
-      .plant-name a{
-        text-decoration: none;
-        font-size: 18px;
-        display: block;
-        text-align: center;
-        background: rgba(0,0,0,0.7);
-        color: white;
-        padding: 10px;
-        margin-top : -50px;
-        text-transform: capitalize;
-      }
-      .plant-frontpage header{
-        padding: 10px 0;
-        display: block;
-        font-size: 21px;
-        font-weight: 600;
-      }
-      @media (max-width:767px) {
-        .plant-frontpage .col-xs-6:nth-child(2n){
-          margin-right: 0;
-        }
-      }
-      @media (max-width:1023px) and (min-width:768px) {
-        .plant-frontpage .col-sm-4:nth-child(3n){
-          margin-right: 0;
-        }
-      }
-      @media (min-width:1024px) {
-        .plant-frontpage .col-3:nth-child(4n){
-          margin-right: 0;
-        }
-      }
-      .filter-item{
-        display: block;
-        text-align: center;
-        padding: 10px;
-      }
-      .filter-item input{
-        width: 250px;
-        padding: 5px;
-        outline: none;
-        font-size: 16px;
-      }
-      .filter-item input::placeholder{
-        letter-spacing: 0.02rem;
-      }
 
     </style>
   </head>
@@ -266,7 +198,7 @@
                 <a href="#">Ask Expert</a>
               </li>
               <li>
-                <a href="#">Plants</a>
+                <a href="#">Crops</a>
               </li>
               <li>
                 <a href="#">Pests</a>
@@ -288,112 +220,114 @@
     <div class="page-content" style="min-height:125px;">
       <!-- include page here -->
       <div class="plant-frontpage">
-        <header>
-          Plants
-        </header>
+
         <div>
           <div class="filter-item">
             <input type="text" name="filter-plant" placeholder="Filter by Crop Name">
           </div>
         </div>
-        <div class="row">
-          <div class="col-3 col-sm-4 col-xs-6">
+        <header>
+          Crop Cultivation Guides
+          <span>Click on a crop to get detailed article on how to cultivate it.</span>
+        </header>
+        <div class="parent">
+          <div class="custom-class">
             <div class="plant-article-card">
               <div class="article-image">
-                <img src="assets/img/homepage.jpg" alt="">
+                <a href="#"><img src="assets/img/homepage.jpg" alt=""></a>
               </div>
               <div class="plant-name">
                 <a href="#">Lorem ipsum dolor</a>
               </div>
             </div>
           </div>
-          <div class="col-3 col-sm-4 col-xs-6">
+          <div class="custom-class">
             <div class="plant-article-card">
               <div class="article-image">
-                <img src="assets/img/homepage.jpg" alt="">
+                <a href="#"><img src="assets/img/homepage.jpg" alt=""></a>
               </div>
               <div class="plant-name">
-                <a href="#">Lorem ipsum dolor</a>
+                <a href="#">Aliquam volutpat ligula</a>
               </div>
             </div>
           </div>
-          <div class="col-3 col-sm-4 col-xs-6">
+          <div class="custom-class">
             <div class="plant-article-card">
               <div class="article-image">
-                <img src="assets/img/homepage.jpg" alt="">
+                <a href="#"><img src="assets/img/homepage.jpg" alt=""></a>
               </div>
               <div class="plant-name">
-                <a href="#">Lorem ipsum dolor</a>
+                <a href="#">Praesent venenatis ligula</a>
               </div>
             </div>
           </div>
-          <div class="col-3 col-sm-4 col-xs-6">
+          <div class="custom-class">
             <div class="plant-article-card">
               <div class="article-image">
-                <img src="assets/img/homepage.jpg" alt="">
+                <a href="#"><img src="assets/img/homepage.jpg" alt=""></a>
               </div>
               <div class="plant-name">
-                <a href="#">Lorem ipsum dolor</a>
+                <a href="#">Fusce facilisis</a>
               </div>
             </div>
           </div>
-          <div class="col-3 col-sm-4 col-xs-6">
+          <div class="custom-class">
             <div class="plant-article-card">
               <div class="article-image">
-                <img src="assets/img/homepage.jpg" alt="">
+                <a href="#"><img src="assets/img/homepage.jpg" alt=""></a>
               </div>
               <div class="plant-name">
-                <a href="#">Lorem ipsum dolor</a>
+                <a href="#">Aenean vulputate</a>
               </div>
             </div>
           </div>
-          <div class="col-3 col-sm-4 col-xs-6">
+          <div class="custom-class">
             <div class="plant-article-card">
               <div class="article-image">
-                <img src="assets/img/homepage.jpg" alt="">
+                <a href="#"><img src="assets/img/homepage.jpg" alt=""></a>
               </div>
               <div class="plant-name">
-                <a href="#">Lorem ipsum dolor</a>
+                <a href="#">Phasellus ultricies</a>
               </div>
             </div>
           </div>
-          <div class="col-3 col-sm-4 col-xs-6">
+          <div class="custom-class">
             <div class="plant-article-card">
               <div class="article-image">
-                <img src="assets/img/homepage.jpg" alt="">
+                <a href="#"><img src="assets/img/homepage.jpg" alt=""></a>
               </div>
               <div class="plant-name">
-                <a href="#">Lorem ipsum dolor</a>
+                <a href="#">hendrerit pellentesque </a>
               </div>
             </div>
           </div>
-          <div class="col-3 col-sm-4 col-xs-6">
+          <div class="custom-class">
             <div class="plant-article-card">
               <div class="article-image">
-                <img src="assets/img/homepage.jpg" alt="">
+                <a href="#"><img src="assets/img/homepage.jpg" alt=""></a>
               </div>
               <div class="plant-name">
-                <a href="#">Lorem ipsum dolor</a>
+                <a href="#">Aenean vel tristique</a>
               </div>
             </div>
           </div>
-          <div class="col-3 col-sm-4 col-xs-6">
+          <div class="custom-class">
             <div class="plant-article-card">
               <div class="article-image">
-                <img src="assets/img/homepage.jpg" alt="">
+                <a href="#"><img src="assets/img/homepage.jpg" alt=""></a>
               </div>
               <div class="plant-name">
-                <a href="#">Lorem ipsum dolor</a>
+                <a href="#">nulla eros ultrices</a>
               </div>
             </div>
           </div>
-          <div class="col-3 col-sm-4 col-xs-6">
+          <div class="custom-class">
             <div class="plant-article-card">
               <div class="article-image">
-                <img src="assets/img/homepage.jpg" alt="">
+                <a href="#"><img src="assets/img/homepage.jpg" alt=""></a>
               </div>
               <div class="plant-name">
-                <a href="#">Lorem ipsum dolor</a>
+                <a href="#">Aliquam sed</a>
               </div>
             </div>
           </div>
