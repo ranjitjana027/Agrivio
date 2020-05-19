@@ -1,0 +1,100 @@
+.pest-frontpage{
+    margin: 2% 0;
+    padding:0 8px;
+
+    .filter-item{
+      display: block;
+      text-align: center;
+      padding: 10px;
+
+      input{
+        width: 250px;
+        padding: 5px;
+        outline: none;
+        font-size: 16px;
+
+        &::placeholder{
+          letter-spacing: 0.02rem;
+        }
+      }
+    }
+
+    header{
+      padding: 20px 0;
+      display: block;
+      font-size: 22px;
+      font-weight: 600;
+      text-align: center;
+
+      span{
+        font-size:16px;
+        font-weight:400;
+        display:block;
+        padding-top:10px;
+      }
+    }
+
+    .parent{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+
+      .custom-class{
+        padding: 5px;
+
+        .pest-article-card{
+          overflow: hidden;
+          display: block;
+
+          .article-image{
+            position:relative;
+            width:100%;
+            padding-top:70%;
+
+            img{
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              right: 0;
+              left: 0;
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+
+              &:hover{
+                filter: brightness(1.1);
+              }
+            }
+          }
+
+          .pest-name a{
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            text-align: center;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px;
+            margin-top : -50px;
+            text-transform: capitalize;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            position: relative;
+
+            &:hover{
+              color: #0af17c;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+}
+
+
+@media (max-width:767px) {
+
+  .pest-frontpage .parent{
+    grid-template-columns: repeat(auto-fill, minmax(120px,1fr))
+  }
+}
