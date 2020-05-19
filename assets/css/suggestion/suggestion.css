@@ -1,0 +1,69 @@
+@import "../../css/weather/weather.css";
+.recommendation-system {
+  margin: 2% 0;
+  padding: 10px;
+}
+.recommendation-system header {
+  padding: 10px 0;
+  font-size: 20px;
+}
+.recommendation-system .no-location-info {
+  padding: 10px;
+  font-weight: 100;
+  font-size: 15px;
+}
+.recommendation-system .user-location-options {
+  text-align: center;
+  line-height: 30px;
+  padding: 10px 0;
+}
+.recommendation-system .user-location-options button {
+  background: linear-gradient(to top, #009688, #4CAF50, #009688, #4CAF50);
+  border: none;
+  outline: none;
+  padding: 5px 25px;
+  font-size: 16px;
+  color: snow;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border: solid 1px green;
+  border-radius: 5px;
+  transition: background 0.3s;
+  background-size: 1px 100px;
+}
+.recommendation-system .user-location-options button:hover {
+  background-position: 100px;
+}
+.recommendation-system table {
+  width: 99%;
+  text-align: center;
+  margin: auto;
+  border-collapse: collapse;
+}
+.recommendation-system table td, .recommendation-system table th {
+  padding: 5px;
+  border: solid 1px snow;
+}
+.recommendation-system table tr:nth-child(even) {
+  background-color: #8fbc8f5e;
+}
+.recommendation-system table tr:nth-child(odd) {
+  background-color: aliceblue;
+}
+.recommendation-system table th {
+  color: snow;
+  font-size: 18px;
+  font-weight: normal;
+  background-color: #1aa26d;
+  border: solid 1px;
+}
+
+.location-info {
+  text-align: center;
+}
+
+.current-weather {
+  margin: auto;
+}
+
+/*# sourceMappingURL=suggestion.css.map */
