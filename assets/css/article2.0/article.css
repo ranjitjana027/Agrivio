@@ -1,7 +1,3 @@
-body {
-  background-color: white !important;
-}
-
 .article {
   background-color: white;
 }
@@ -44,10 +40,10 @@ body {
 
 .suggestion {
   padding: 10px;
-  border-left: dashed 1px;
+  /*border-left: dashed 1px;
   border-bottom: dashed 1px;
   border-bottom-left-radius: 10px;
-  border-color: #02b377;
+  border-color: #02b377;*/
   background-color: white;
 }
 .suggestion .suggestion-header {
@@ -74,6 +70,15 @@ body {
 @media (max-width: 1023px) {
   .suggestion {
     border: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  .parent .custom-class {
+    padding: 5px;
   }
 }
 

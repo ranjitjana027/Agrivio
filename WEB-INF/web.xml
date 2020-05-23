@@ -214,7 +214,95 @@
     <servlet-name>Article</servlet-name>
     <url-pattern>/article</url-pattern>
   </servlet-mapping>
+  <!-- new version -->
+  <servlet>
+    <servlet-name>Article2.0</servlet-name>
+    <jsp-file>/app2.0/article/article.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Article2.0</servlet-name>
+    <url-pattern>/latest/article</url-pattern>
+  </servlet-mapping>
 
+  <servlet>
+    <servlet-name>Article2.0All</servlet-name>
+    <jsp-file>/app2.0/article/article_frontpage.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Article2.0All</servlet-name>
+    <url-pattern>/latest/article/all</url-pattern>
+  </servlet-mapping>
 
+  <servlet>
+    <servlet-name>Article2.0Pests</servlet-name>
+    <jsp-file>/app2.0/article/pest_article_frontpage.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Article2.0Pests</servlet-name>
+    <url-pattern>/latest/article/pests/all</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Article2.0Plant</servlet-name>
+    <jsp-file>/app2.0/article/plant_article_frontpage.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Article2.0Plant</servlet-name>
+    <url-pattern>/latest/article/plants/all</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>CropPrice</servlet-name>
+    <jsp-file>/app2.0/price/price.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CropPrice</servlet-name>
+    <url-pattern>/latest/price/crops</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>CropSuggestion2.0</servlet-name>
+    <jsp-file>/app2.0/suggestion/suggestion.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CropSuggestion2.0</servlet-name>
+    <url-pattern>/latest/suggestion/crops</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AllEvents</servlet-name>
+    <jsp-file>/app2.0/events/events.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllEvents</servlet-name>
+    <url-pattern>/latest/events</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AskExpert</servlet-name>
+    <jsp-file>/app2.0/chat/chat.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AskExpert</servlet-name>
+    <url-pattern>/latest/ask-expert</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MyAccount</servlet-name>
+    <jsp-file>/app2.0/profile/profile.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyAccount</servlet-name>
+    <url-pattern>/latest/profile</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>NotificationRead</servlet-name>
+    <jsp-file>/app2.0/template/notification_read.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NotificationRead</servlet-name>
+    <url-pattern>/notification/read</url-pattern>
+  </servlet-mapping>
 
 </web-app>
