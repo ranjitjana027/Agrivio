@@ -293,5 +293,5 @@
 
     </div>
 </div>
-<script src="../../assets/js/lib/custom-select.js" charset="utf-8"></script>
-<script src="../../assets/js/calendar/calendar.js" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/assets/js/lib/custom-select.js" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/assets/js/calendar/calendar.js" charset="utf-8"></script>

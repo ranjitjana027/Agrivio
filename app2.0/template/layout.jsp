@@ -2,9 +2,10 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/template/layout.css">
-    <link rel="stylesheet" href="../../assets/css/article2.0/pest_article_frontpage.css">
-    <script src="../../assets/js/template/layout.js" charset="utf-8"></script>
+      <title><%= request.getParameter("title")  %></title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/template/layout.css">
+    <link rel="stylesheet" href='${pageContext.request.contextPath}<%= request.getParameter("cssfile") %>'>
+    <script src="${pageContext.request.contextPath}/assets/js/template/layout.js" charset="utf-8"></script>
   </head>
   <body>
     <!-- page header -->
@@ -18,7 +19,7 @@
             </div>
 
             <div class="col-3 col-sm-3 mobile-hidden  main-logo">
-              <a href="#">Agriculture</a>
+              <a href="${pageContext.request.contextPath}/index">Agriculture</a>
 
             </div>
 
@@ -54,10 +55,29 @@
                   <path d="M0,85 S15,85 20,35 A10,10 0 0,1 80,35 S85,85 100,85 z" stroke-width="1px"  />
                   <circle cx="50" cy="2" r="7" stroke-width="1px" />
                   <path d="M35,87 A17,17 0 0,0 65,87" stroke-width="1px"/>
-                  <div>25</div>
+                  <div id="notification-count">25</div>
                 </svg>
               </div>
               <!-- notification list -->
+              <%@ page import="java.sql.*" %>
+              <%
+                Connection con = null;
+                Statement st = null;
+                ResultSet rs = null;
+                  try {
+
+                    // Initialize the database
+                    new org.postgresql.Driver();
+                    java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
+
+                    String username = dbUri.getUserInfo().split(":")[0];
+                    String password = dbUri.getUserInfo().split(":")[1];
+                    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+
+                    con=DriverManager.getConnection(dbUrl, username, password);
+                    st=con.createStatement();
+                    rs=st.executeQuery("select * from notifications where user_id="+(String)session.getAttribute("userid")+" order by n_time desc");
+              %>
               <div class="notification-list hidden">
                 <div class="notification-header" >
                   <header>
@@ -65,11 +85,44 @@
                   </header>
                 </div>
                 <div class="notifications">
-                  <div class="notification">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nullam eu suscipit dolor. Curabitur eget faucibus odio.
+                <%  while(rs.next()){ %>
+                  <div class='notification <%= rs.getBoolean("read")?"read": ""%>' n_id='<%= rs.getString("id") %>'>
+                    <%= rs.getString("content") %>
                   </div>
-                  <div class="notification">
+                  <% }
+                  }
+                  catch (Exception e) {
+                      /*errorMessage="Something went wrong";*/
+                      e.printStackTrace();
+                  }
+                  finally {
+
+                    if (rs != null) {
+                      try { rs.close(); } catch (SQLException e) { ; }
+                      rs = null;
+                    }
+                    if (st != null) {
+                      try { st.close(); } catch (SQLException e) { ; }
+                      st = null;
+                    }
+                    if (con != null) {
+                      try { con.close(); } catch (SQLException e) { ; }
+                      con = null;
+                    }
+                  }
+                  %>
+                  <script>
+                    var c=0;
+                    document.querySelectorAll(".notification").forEach(item=>{
+                      if(!item.classList.contains("read"))
+                      c++;
+                    });
+                    document.querySelector("#notification-count").innerHTML=c;
+                    if(c<1){
+                      document.querySelector("#notification-count").classList.add("hidden")
+                    }
+                  </script>
+                  <!--<div class="notification">
                     Quisque condimentum lacinia felis, ut commodo ligula rhoncus eu.
                     Vivamus interdum purus nisl, eget pulvinar sem pellentesque nec.
                   </div>
@@ -105,7 +158,7 @@
                   <div class="notification">
                     Vivamus pulvinar tortor eros, auctor eleifend tellus pellentesque in.
                     Maecenas in placerat nisi, id euismod massa.
-                  </div>
+                  </div>-->
                 </div>
 
               </div>
@@ -125,9 +178,9 @@
               <!-- account navigation -->
               <div class="account-nav hidden" >
                 <ul>
-                  <li><a href="#">Account</a> </li>
+                  <li><a href="${pageContext.request.contextPath}/latest/profile">Account</a> </li>
                   <li><a href="#">Subscription</a> </li>
-                  <li><a href="#">Logout</a> </li>
+                  <li><a href="${pageContext.request.contextPath}/logout">Logout</a> </li>
                 </ul>
               </div>
 
@@ -157,32 +210,32 @@
           <div  class="col-12 col-sm-12 col-xs-12">
             <ul>
               <li class="desktop-hidden tablet-hidden">
-                <a href="#">Home</a>
+                <a href="${pageContext.request.contextPath}/index">Home</a>
               </li>
               <li>
-                <a href="#">Suggestion</a>
+                <a href="${pageContext.request.contextPath}/latest/suggestion/crops">Suggestion</a>
               </li>
               <li >
-                <a href="#"><span class="desktop-hidden">Cultivation </span> Guides</a>
+                <a href="${pageContext.request.contextPath}/latest/article/all"><span class="desktop-hidden">Cultivation </span> Guides</a>
               </li>
 
               <li>
-                <a href="/crop-price" id="link-price">Crop Price</a>
+                <a href="${pageContext.request.contextPath}/latest/price/crops" >Crop Price</a>
               </li>
               <!--li>
                 <a href="/weather" id="link-forecast"><span class="desktop-hidden">Weather </span> Forecast</a>
               </li-->
               <li>
-                <a href="/calendar" id="link-calendar"><span class="desktop-hidden">Cultivation </span> Events</a>
+                <a href="${pageContext.request.contextPath}/latest/events" ><span class="desktop-hidden">Cultivation </span> Events</a>
               </li>
               <li>
-                <a href="#">Ask Expert</a>
+                <a href="${pageContext.request.contextPath}/latest/ask-expert">Ask Expert</a>
               </li>
               <li>
-                <a href="#">Plants</a>
+                <a href="${pageContext.request.contextPath}/latest/article/plants/all">Plants</a>
               </li>
               <li>
-                <a href="#">Pests</a>
+                <a href="${pageContext.request.contextPath}/latest/article/pests/all">Pests</a>
               </li>
               <li>
                 <a href="#">About <span class="desktop-hidden"> Website</span></a>
@@ -199,7 +252,7 @@
     <!-- main content here  -->
     <div class="page-content">
       <!-- include page here -->
-      <jsp:include page="../article/pest_article_frontpage_view.jsp" />
+      <jsp:include page="<%= request.getParameter(\"filename\") %>" />
 
     </div>
     <!-- page footer -->
@@ -212,23 +265,23 @@
         <div class="col-3 col-xs-12">
           <ul>
             <li class="footer-title">Services</li>
-            <li><a href="#">Suggestion</a> </li>
-            <li><a href="#">Guides</a> </li>
-            <li><a href="#">Crop Price</a> </li>
+            <li><a href="${pageContext.request.contextPath}/latest/suggestion/crops">Suggestion</a> </li>
+            <li><a href="${pageContext.request.contextPath}/latest/article/all">Guides</a> </li>
+            <li><a href="${pageContext.request.contextPath}/latest/price/crops">Crop Price</a> </li>
             <!--li><a href="#">Weather Forecast</a> </li-->
-            <li><a href="#">Events</a> </li>
-            <li><a href="#">Ask Expert</a> </li>
+            <li><a href="${pageContext.request.contextPath}/latest/events">Events</a> </li>
+            <li><a href="${pageContext.request.contextPath}/latest/ask-expert">Ask Expert</a> </li>
             <!--li><a href="#">Benificial Insects</a> </li>
             <li><a href="#">Plant Diseases</a> </li-->
-            <li><a href="#">Plants</a> </li>
-            <li><a href="#">Pests</a> </li>
+            <li><a href="${pageContext.request.contextPath}/latest/article/plants/all">Plants</a> </li>
+            <li><a href="${pageContext.request.contextPath}/latest/article/pests/all">Pests</a> </li>
             <li><a href="#">Search</a> </li>
           </ul>
         </div>
         <div class="col-3 col-xs-12">
           <ul>
             <li class="footer-title">Site Navigation</li>
-            <li><a href="#">Home</a> </li>
+            <li><a href="${pageContext.request.contextPath}/index">Home</a> </li>
             <li><a href="#">About</a> </li>
             <li><a href="#">Subscription</a> </li>
             <li><a href="#">Contact</a> </li>

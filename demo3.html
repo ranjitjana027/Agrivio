@@ -4,8 +4,7 @@
     <link rel="stylesheet" href="assets/css/template/layout.css">
     <script src="assets/js/template/layout.js" charset="utf-8"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/suggestion/suggestion.css">
-    <script src="assets/js/lib/custom-select.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="assets/css/article2.0/article.css">
     <script type="text/javascript">
       document.addEventListener("DOMContentLoaded",()=>{
 
@@ -209,162 +208,130 @@
     <!-- main content here  -->
     <div class="page-content" style="min-height:125px;">
       <!-- include page here -->
-      <div class="recommendation-system">
-        <div class="row">
-          <div class="col-4 col-sm-6 col-xs-12">
-            <header>
-              Set your location
-            </header>
-            <div class="user-location-options">
-
-              <div class="">
-                <button id="manual-location-btn">Manually</button><br> or <br><button id="gps-location-btn">using GPS</button>
-              </div>
+      <div class="row" >
+        <div class="col-8 col-sm-12 col-xs-12" >
+          <div class="article" style="padding:10px;">
+            <div class="article-header">
+              Get Rid of pests with home remedies
             </div>
-            <script src="/webProject/assets/js/weatherv2/weather.js" charset="utf-8"></script>
-            <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
-            <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
-            <!--div class="loading-div-container" id="loading-1">
-            	<div class="loading-div">
-            		<svg class="loading-svg" viewBox="0 0 140 160">
-            			<path d="M7,100 L20,85 40,95 M20,90 A51,51 0 0,0 120,90 M100,65 L120,75 133,60 M120,70 A51,51 0 0,0 20,70"
-            				stroke="green" stroke-width="10px" fill="none" >
-            				<animateTransform
-            					attributeName="transform"
-            					type="rotate"
-            					begin="0s"
-            					dur="1.1s"
-            					from="0 70  80"
-            					to="360 70 80"
-            					repeatCount="indefinite"
-            					/>
-            			</path>
-            		</svg>
-            	</div>
-            </div-->
+            <div class="article-metadata">
+              Last Update : <span> 22th May, 2020</span>
+            </div>
 
-            <div class="current-weather-container">
-              <header>
-                Current Weather
-              </header>
-              <p class="no-location-info">
-                Weather info will appear after you set location.
+            <div class="article-content">
+              <figure>
+                <img class="article-image" src="assets/img/articles/guides/1/homemade_mosquito_trap.jpg" alt="">
+              </figure>
+              <p>
+                The arrival of warm weather means more insects will be out, some of whom will turn out to be garden pests. Homemade traps can be used to identify pests and monitor their activities, and sometimes traps are so effective that they provide a respectable level of control. Here are six homemade traps for garden pests to help you monitor insect life in your garden and warn you when pests are active.
               </p>
-              <div class="current-weather" >
-              	<div class="" style="height:60px;">
-              		<span style="font-size:12px;">Currently</span>
-              		<svg style="height:70px; width:100%; fill:#03c16f;">
-              			<text x="0" y="40" style="font-size:50px;">
-
-              				<tspan x="0" id="currTemp"></tspan>
-              				<tspan x="60" style="baseline-shift:super; font-size:30px;">&deg;</tspan>
-              				<tspan x="60" style="font-size:30px;">c</tspan>
-              				<tspan></tspan>
-              			</text>
-              		</svg>
-              	</div>
-              	<div class="" style="height:60px;">
-              		<svg style="height:70px; width:100%; fill:#018383;">
-              			<text>
-              				<tspan x="0" y="30" id="desc"></tspan>
-              				<tspan x="0" y="55">Feels Like</tspan>
-              				<tspan id="feelTemp"> </tspan>
-              				<tspan>&deg;</tspan>
-              			</text>
-              		</svg>
-              	</div>
-              	<div style="height:100px;">
-              		<svg viewBox="00 0 100 100">
-              			<image id="weather-icon" xlink:href="" x="0" y="0" height="100" width="100" />
-              		</svg>
-              	</div>
-              	<div>
-              		<svg style="height:70px; width:100%; fill:#018383;">
-              			<text>
-              				<tspan x="0" y="30">Wind </tspan>
-              				<tspan id="wind-speed"> </tspan>
-              				<tspan> km/h </tspan>
-              				<tspan id="wind-direction"></tspan>
-              				<tspan x="0" y="55">CloudCover</tspan>
-              				<tspan id="clouds"> </tspan>
-              				<tspan>&#37;</tspan>
-              			</text>
-              		</svg>
-              	</div>
-
+              <div class="article-subheader">
+                Pit Traps for Slugs and Earwigs
               </div>
-              <div class="location-info">
-              	Your current location:
-              	<svg viewBox="0 0 70 90" height="20px" id="location-icon">
-              		<path d="M35,85 L15,55 C-35,-15 105,-15 55,55 z " stroke="#08796f" fill="none" stroke-width="4px" />
-              		<circle cx="35" cy="30" r="17" stroke="#08796f"  fill="none" stroke-width="4px"/>
-              	</svg>
-              	<span id="current-location"> </span>
-            <!--  <% if(rs.next()){ %>
-              	<span id="current-longitude" hidden><%= (rs.getArray("last_location")!=null)? ((Float[])(rs.getArray("last_location")).getArray())[1]:"" %></span>
-              	<span id="current-latitude" hidden><%= (rs.getArray("last_location")!=null)?  ((Float[])(rs.getArray("last_location")).getArray())[0]:"" %></span>
-              <% } else { %> -->
-              <span id="current-longitude" hidden></span>
-              <span id="current-latitude" hidden></span>
-            <!--  <% } %> -->
+              <p>
+                Leaf-eating slugs like to go out at night for a bit of beer, the most popular bait for slug traps. Shallow containers filled with an inch of beer are placed among lettuce, strawberries, or other plants with slug issues, and the slugs come for a drink and then fall in and drown. You also can use sugar water with a light sprinkling of yeast instead of beer, or a thin slurry of flour, yeast and sugar. Slugs are attracted by the fermentation gases, preferring the traps over your plants.
+              </p>
+              <p>
+                The bane of container gardeners, earwigs hide under pots during the day and come out at night to chew ragged holes in plants. Shallow containers baited with vegetable oil and a spritz of soy sauce are remarkably effective earwig traps when placed among container plants at night.
+              </p>
+              <!--<figure>
+                <img class="article-image" src="../../assets/img/homepage.jpg" alt="">
+                <figcaption>Farming Land</figcaption>
+              </figure>-->
+              <div class="article-subheader">
+                Sticky Traps for Tiny Insects
               </div>
-              <div class="set-location">
-
-              		<div class="set-location-content" style="width:95%; max-width:800px;">
-              			<div>
-              				Drag the marker to your location.
-              			</div>
-              			<div class="" style="width:100%;">
-              				<div class="target" style="height:500px; width:100%;" >
-              					<div id='map' ></div>
-              					<pre id="coordinates" class="coordinates">cfedf</pre>
-              				</div>
-              				<div class="">
-              					<button type="button"
-              						class="btn-ok"
-              						onclick="document.querySelector('.set-location').style.display='none'">
-              						Save
-              					</button>
-
-
-              				</div>
-              			</div>
-              		</div>
-              	</div>
-
+              <p>
+                Small insects including aphids, flies, flea beetles, and whiteflies can be caught with sticky traps, which can be made from cards, cups or other objects coated with a sticky substance. Tangle Trap is great because it’s weatherproof, but you will snare plenty of little victims with petroleum jelly or any thick syrup as a sticky coating for your homemade traps.
+              </p>
+              <p>
+                It is important to think strategically. In my garden, I have a problem with onion maggots, the larvae of a fast-moving little fly that’s active in late spring. Yellow sticky traps placed among my garlic let me know if it’s looking like a good year or a bad one. If I catch more than a few flies in early May, the plants get covered with row cover.
+              </p>
+              <p>
+                A wide variety of insects are attracted to the color yellow, including flies, flea beetles, and cucumber beetles, but some aphids prefer spring green, and thrips are drawn to the color blue. You can paint homemade sticky traps the color you want before applying a sticky coating. Also install any hanging hooks or hardware in your trap before you get out the sticky stuff.
+              </p>
+              <div class="article-subheader">
+                Yellow Pan Traps for Aphids and Squash Vine Borers
+              </div>
+              <p>
+                If you have ever left a yellow bucket filled with water sitting in your garden, you have probably seen a yellow pan trap in action. Insects are attracted by the color yellow, but end up stuck in the water. Adding a few drops of liquid soap to the water in a pan trap helps insects drown faster by hampering their ability to swim.
+              </p>
+              <p>
+                Very shallow containers such as yellow frisbees are fine for catching aphids and other small insects, but deeper vessels that hold more than two inches of water are better for nabbing larger creatures such as the moth whose young become squash vine borers. The large black and orange moths fly during the day, making a loud buzzing noise, starting in early summer. Yellow pan traps placed among squash plants can help you monitor their emergence, robbing this pest of its stealth advantage.
+              </p>
+              <div class="article-subheader">
+                Yellow Traps for Cucumber Beetles
+              </div>
+              <p>
+                One of the problems with open pan traps is that they may also capture bees and other beneficial insects. To prevent these types of unwanted casualties, you can make jug or bottle traps with entry holes tailored to the size of the pest insect you want to trap. For example, a paper hole punch is a handy tool for making small holes to exclude bees in traps intended for cucumber beetles like the one above. To make the trap work better, cucumber peels added to the jar will work as a lure.
+              </p>
+              <p>
+                What if you put out a trap and catch nothing? This is good! Wait a week or two and monitor again, and continue to watch your plants for signs of serious trouble. Some trapping here, some hand picking there, and you may just have an easy season
+              </p>
             </div>
-          	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
-          	<link
-          		rel="stylesheet"
-          		href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
-          		type="text/css"
-          	   />
           </div>
-          <div class="col-8 col-sm-6 col-xs-12">
-            <header>
-              Recommended Crops
-            </header>
-            <p class="no-location-info">
-              Recommendation will appear after you set location.
-            </p>
-            <table id="recommendation-table">
-              <tr>
-                <th>Crop</th><th class="mobile-hidden tablet-hidden">Season</th> <th>Cost</th><th>Profit</th>
-              </tr>
-              <tr>
-                <td>Lorem Ipsum</td> <td class="mobile-hidden tablet-hidden">Nulla quis</td><td>3456</td><td>1251</td>
-              </tr>
-              <tr>
-                <td>Phasellus</td><td class="mobile-hidden tablet-hidden">Curabitur </td><td>098765</td><td>3456</td>
-              </tr>
-              <tr>
-                <td> Pellentesque</td><td class="mobile-hidden tablet-hidden">Donec eu lorem sagittis</td><td>4567</td><td>4565</td>
-              </tr>
-
-            </table>
+        </div>
+        <div class="col-4 col-sm-12 col-xs-12"  >
+          <div class="suggestion">
+            <div class="suggestion-header">
+              Related Articles
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="suggestion-article">
+                  <img src="assets/img/farmland.jpg" alt="">
+                  <div class="suggestion-article-header">
+                    <a href="#">Quisque facilisis ex sit amet feugiat commodo</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="suggestion-article">
+                  <img src="assets/img/farmland.jpg" alt="">
+                  <div class="suggestion-article-header">
+                    <a href="#">Quisque facilisis ex sit amet feugiat commodo</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="suggestion-article">
+                  <img src="assets/img/farmland.jpg" alt="">
+                  <div class="suggestion-article-header">
+                    <a href="#">Quisque facilisis ex sit amet feugiat commodo</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="suggestion-article">
+                  <img src="assets/img/farmland.jpg" alt="">
+                  <div class="suggestion-article-header">
+                    <a href="#">Quisque facilisis ex sit amet feugiat commodo</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="suggestion-article">
+                  <img src="assets/img/farmland.jpg" alt="">
+                  <div class="suggestion-article-header">
+                    <a href="#">Quisque facilisis ex sit amet feugiat commodo</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="suggestion-article">
+                  <img src="assets/img/farmland.jpg" alt="">
+                  <div class="suggestion-article-header">
+                    <a href="#">Quisque facilisis ex sit amet feugiat commodo</a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
 
     </div>
 

@@ -29,6 +29,26 @@ document.addEventListener("DOMContentLoaded",()=>{
         var target=document.querySelector(".notification-list");
         if(target.classList.contains("hidden")){
           target.classList.remove("hidden");
+          if(Number(document.querySelector("#notification-count").innerHTML)>0){
+            console.log("Ok")
+            var request=new XMLHttpRequest();
+            request.open("POST", location.protocol+"//"+location.host+"/webProject/notification/read");
+            request.onload = function (){
+              if(request.status==200){
+                document.querySelector("#notification-count").innerHTML="0";
+                document.querySelector("#notification-count").classList.add("hidden");
+
+                document.querySelectorAll(".notification").forEach(item=>{
+                  item.classList.add("read");
+                });
+              }
+            }
+            var fData=new FormData();
+            fData.append("lastId",document.querySelector(".notification").getAttribute("n_id"));
+            fData.append("key","value")
+            request.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
+            request.send("lastId="+document.querySelector(".notification").getAttribute("n_id"));
+          }
         }
         else{
           target.classList.add("hidden");

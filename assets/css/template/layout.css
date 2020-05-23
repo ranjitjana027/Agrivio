@@ -384,6 +384,9 @@ body {
   background-color: rgba(0, 255, 0, 0.03);
   cursor: default;
 }
+.page-header .header-top .top-subheader .notification-list .notifications .read {
+  opacity: 0.7;
+}
 .page-header .header-top .top-subheader .user-icon-container {
   display: inline-block;
   width: fit-content;
