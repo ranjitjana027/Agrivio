@@ -20,7 +20,7 @@
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
   version="4.0"
-  metadata-complete="true">
+  metadata-complete="false">
 
   <display-name>Agricultural Project</display-name>
   <description>
@@ -305,4 +305,35 @@
     <url-pattern>/notification/read</url-pattern>
   </servlet-mapping>
 
+
+
+  <servlet>
+      <description></description>
+      <servlet-name>UploadFile</servlet-name>
+      <jsp-file>/uploadFileWithServlet3API.jsp</jsp-file>
+      <multipart-config>
+          <max-file-size>20848820</max-file-size>
+          <max-request-size>418018841</max-request-size>
+          <file-size-threshold>1048576</file-size-threshold>
+      </multipart-config>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>UploadFile</servlet-name>
+      <url-pattern>/uploadFileWithServlet3API.jsp</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+      <description></description>
+      <servlet-name>AddArticleAPI</servlet-name>
+      <jsp-file>/add_article.jsp</jsp-file>
+      <multipart-config>
+          <max-file-size>20848820</max-file-size>
+          <max-request-size>418018841</max-request-size>
+          <file-size-threshold>1048576</file-size-threshold>
+      </multipart-config>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>AddArticleAPI</servlet-name>
+      <url-pattern>/add_article.jsp</url-pattern>
+  </servlet-mapping>
 </web-app>

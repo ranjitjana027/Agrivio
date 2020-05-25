@@ -4,6 +4,14 @@
 .front-page .recently-featured .main-article .article-intro, .front-page .recommendation .main-article .article-intro {
   font-size: 15px;
   cursor: default;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 40px;
+  width: 100%;
+}
+.front-page .recently-featured .main-article .article-intro p, .front-page .recommendation .main-article .article-intro p {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .front-page .recently-featured img, .front-page .recommendation img {
   width: 100%;

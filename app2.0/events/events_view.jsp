@@ -1,3 +1,58 @@
+<%@ page import="java.sql.*" %>
+<%! String errorMessage; %>
+<%
+	if(session.getAttribute("userid")!=null){
+        errorMessage=null;
+        if(!request.getMethod().equals("GET")){
+					Connection con=null;
+					Statement stmt=null;
+            try {
+
+                // Initialize the database
+                new org.postgresql.Driver();
+                java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
+
+                String username = dbUri.getUserInfo().split(":")[0];
+                String password = dbUri.getUserInfo().split(":")[1];
+                String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+
+                con=DriverManager.getConnection(dbUrl, username, password);
+                stmt = con.createStatement();
+                int d=Integer.parseInt(request.getParameter("inp-date"));
+                int m=Integer.parseInt(request.getParameter("inp-month"));
+                int y=Integer.parseInt(request.getParameter("inp-year"));
+                String date=String.format("%4d-%02d-%02d",y,m+1,d);
+                String insert=("insert into events(day,crop,eventtype,remark,user_id) values( TO_DATE('"+
+                            date+"', 'YYYY-MM-DD'), '"+request.getParameter("crop")+
+                            "','"+request.getParameter("eventtype")+"', '"+request.getParameter("remark")+"', "+
+                            (String)session.getAttribute("userid") +")");
+
+                stmt.executeUpdate(insert);
+
+                stmt.close();
+                con.close();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+						finally {
+              if (stmt != null) {
+                try { stmt.close(); } catch (SQLException e) { ; }
+                stmt = null;
+              }
+              if (con != null) {
+                try { con.close(); } catch (SQLException e) { ; }
+                con = null;
+              }
+            }
+        }
+    }
+    else
+        errorMessage="You are not logged in.";
+	%>
+
+  
+
 <div class="calendar">
   <div class="calendar-header">
     Cultivation Events
