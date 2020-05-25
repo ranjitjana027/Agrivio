@@ -49,7 +49,9 @@ document.addEventListener("DOMContentLoaded",()=>{
 
               }
               else
-              {   d.classList.add('chat-message');
+              {
+                  var outerDiv=document.createElement("div");
+                  outerDiv.classList.add('chat-message');
                   var p=document.createElement('p');
                   p.classList.add('content');
                   var s=document.createElement('small');
@@ -58,7 +60,7 @@ document.addEventListener("DOMContentLoaded",()=>{
                   s1.classList.add('time');
                   s2.classList.add('sender');
                   s1.innerText=data.date;
-                  s2.innerText=data.sender;
+                  s2.innerText=data.sender_name;
                   if(data.sender==document.querySelector('#userid').value){
                       s2.innerText="You";
                       d.classList.add('you');
@@ -70,8 +72,9 @@ document.addEventListener("DOMContentLoaded",()=>{
                   p.innerText=data.content;
                   s.append(s1);
                   s.append(s2);
-                  d.append(p);
-                  d.append(s);
+                  outerDiv.append(p);
+                  outerDiv.append(s);
+                  d.append(outerDiv);
               }
               document.querySelector('.chat-room').append(d);
               chatroom.scrollTop=chatroom.scrollHeight-chatroom.offsetHeight;

@@ -21,12 +21,15 @@
 <div style="margin:2% 0;">
 <div class="row" >
   <div class="col-8 col-xs-12" >
-    <div class="article" style="padding:10px;">
+    <div class="article" >
       <div class="article-header">
         <%= rs.getString("title") %>
       </div>
       <div class="article-metadata">
-        Published on : <span> <%= rs.getDate("published_on") %></span>
+        Published on : <span> <%= rs.getDate("published_on") %></span>, Written by <span><%= rs.getString("author") %></span>
+      </div>
+      <div  class='article-image'>
+        <%= "<img src='data:image/jpeg;base64,"+new String(java.util.Base64.getEncoder().encode(rs.getBytes("thumbnail")),"UTF-8")+"' />" %>
       </div>
       <div class="article-content">
       <%= rs.getString("content") %>
@@ -36,12 +39,12 @@
   <%
     }
     rs.close();
-    rs=st.executeQuery("select id, title from article order by published_on desc");
+    rs=st.executeQuery("select id, title,thumbnail from article where id<>"+request.getParameter("id")+" order by published_on desc limit 6");
   %>
   <div class="col-4 col-sm-12 col-xs-12"  >
     <div class="suggestion">
       <div class="suggestion-header">
-        Related Articles
+        Latest Articles
       </div>
       <div class="parent">
       <%
@@ -50,7 +53,9 @@
       %>
         <div class="custom-class">
           <div class="suggestion-article">
-            <img src="../../assets/img/farmland.jpg" alt="">
+            <div class="article-image">
+              <img src='data:image/jpeg;base64,<%=new String(java.util.Base64.getEncoder().encode(rs.getBytes("thumbnail")),"UTF-8")%>' alt="">
+            </div>
             <div class="suggestion-article-header">
               <a href='${pageContext.request.contextPath}/latest/article?id=<%= rs.getString("id") %>'><%= rs.getString("title") %></a>
             </div>

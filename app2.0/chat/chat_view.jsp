@@ -1,3 +1,10 @@
+<%@ page import="java.sql.*" %>
+<%
+	Connection con=null;
+	PreparedStatement st=null;
+	ResultSet rs=null;
+%>
+
 <div class="chat-content">
 
   <div class="row">
@@ -7,7 +14,59 @@
         </div>
         <div class="chat">
             <div class="chat-room">
-                <div class="you">
+            <%
+                try {
+
+                  // Initialize the database
+                  new org.postgresql.Driver();
+                  java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
+
+                  String username = dbUri.getUserInfo().split(":")[0];
+                  String password = dbUri.getUserInfo().split(":")[1];
+                  String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+                  con=DriverManager.getConnection(dbUrl, username, password);
+
+                  st = con.prepareStatement("SELECT * FROM chat_messages where room= ?");//+session.getAttribute("userid"));
+                  st.setInt(1, Integer.parseInt(request.getParameter("room")));
+                  rs=st.executeQuery();
+                    while(rs.next())
+                    {
+                %>
+            <div class="<%= ((String)session.getAttribute("userid")).equals(rs.getString("sender"))?"you":"they" %>">
+              <div class="chat-message">
+                <p class="content"><%= rs.getString("content") %></p>
+                <small>
+                    <span class="time"><%= rs.getTimestamp("c_time") %></span>
+                    <span
+                        class="sender"><%= ((String)session.getAttribute("userid")).equals(rs.getString("sender"))?"You":rs.getString("sender_name")  %></span>
+                </small>
+              </div>
+
+            </div>
+            <%
+                    }
+                }
+        		catch (Exception e) {
+        			e.printStackTrace();
+        		}
+						finally {
+
+              if (rs != null) {
+                try { rs.close(); } catch (SQLException e) { ; }
+                rs = null;
+              }
+              if (st != null) {
+                try { st.close(); } catch (SQLException e) { ; }
+                st = null;
+              }
+              if (con != null) {
+                try { con.close(); } catch (SQLException e) { ; }
+                con = null;
+              }
+            }
+
+            %>
+                <!--<div class="you">
                   <div class="chat-message">
                       <p class="content">Hi I Want to ask you some question?</p>
                       <small>
@@ -89,7 +148,7 @@
                       </small>
 
                   </div>
-                </div>
+                </div>-->
 
             </div>
             <div class="input-message">
@@ -98,8 +157,8 @@
                     .
                   </div>
                   <div class="col-9 col-sm-8 col-xs-7" style="padding:5px;">
-                    <input type="number" id="userid" value="" readonly hidden />
-                    <input type="number" id="room"  readonly hidden />
+                    <input type="number" id="userid" value="<%= ((String)session.getAttribute("userid")) %>" readonly hidden />
+                    <input type="number" id="room" value="<%= request.getParameter("room") %>"  readonly hidden />
                     <input type="text" class="chat-input" placeholder="Type here .." />
                   </div>
                   <div class="col-2 col-sm-3 col-xs-4">
@@ -137,3 +196,4 @@
   </div>
 
 </div>
+<script src="${pageContext.request.contextPath}/assets/js/chat/chat.js" charset="utf-8"></script>

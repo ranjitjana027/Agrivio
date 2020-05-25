@@ -201,6 +201,8 @@ add column published_on TIMESTAMPTZ default (now() at time zone 'utc');
 alter table article
 add column thumbnail bytea;
 
+alter table article add  unique(title);
+
 insert into article(title,content,keywords,author)
 values('Get Rid of pests with home remedies',
   '<figure><img class="article-image" src="/webProject/assets/img/articles/guides/1/homemade_mosquito_trap.jpg" alt=""></figure>
@@ -221,7 +223,7 @@ values('Get Rid of pests with home remedies',
   ,
   'guides, pests , home remedies'
   ,
-  'Dinesh Kanoria'
+  'Dinesh Tripathi'
 );
 
 insert into article(title,content,keywords,author)

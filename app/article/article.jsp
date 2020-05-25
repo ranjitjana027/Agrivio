@@ -1,6 +1,6 @@
 <%
 if(session.getAttribute("userid")==null){
-  response.sendRedirect(request.getContextPath()+"/login?redirect=/calendar");
+  response.sendRedirect(request.getContextPath()+"/login?redirect=/article?id="+request.getParameter("id"));
 }
 else if( session.getAttribute("role").equals("FARMER")){
 %>
