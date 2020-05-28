@@ -8,7 +8,7 @@ else if( session.getAttribute("role").equals("FARMER")){
 
 <jsp:include page="/app/user/layout.jsp">
   <jsp:param name="filename" value="<%=\"../article/article_view.jsp?id=\"+request.getParameter(\"id\") %>" />
-  <jsp:param name="title" value="Article" />
+  <jsp:param name="title" value="Article | Guides" />
 </jsp:include>
 
 

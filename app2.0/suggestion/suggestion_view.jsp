@@ -133,18 +133,17 @@
         Recommendation will appear after you set location.
       </p>
       <table id="recommendation-table">
-        <tr>
-          <th>Crop</th><th class="mobile-hidden tablet-hidden">Season</th> <th>Cost</th><th>Profit</th>
-        </tr>
-        <tr>
-          <td>Lorem Ipsum</td> <td class="mobile-hidden tablet-hidden">Nulla quis</td><td>3456</td><td>1251</td>
-        </tr>
-        <tr>
-          <td>Phasellus</td><td class="mobile-hidden tablet-hidden">Curabitur </td><td>098765</td><td>3456</td>
-        </tr>
-        <tr>
-          <td> Pellentesque</td><td class="mobile-hidden tablet-hidden">Donec eu lorem sagittis</td><td>4567</td><td>4565</td>
-        </tr>
+        <thead>
+          <tr>
+            <th rowspan="2">Crop</th><th colspan="3">Season</th> <!--<th>Cost</th><th>Profit</th>-->
+          </tr>
+          <tr>
+            <th>Rabi</th><th>Kharif</th><th>Summer</th>
+          </tr>
+        </thead>
+        <tbody id="recommendation-table-body">
+
+        </tbody>
 
       </table>
     </div>

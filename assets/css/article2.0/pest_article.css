@@ -16,7 +16,7 @@ body {
   background-color: rgba(0, 0, 0, 0.05);
 }
 .article .article-header {
-  padding: 20px 0 0;
+  padding: 20px 0;
   font-size: 25px;
   font-weight: 600;
   text-transform: capitalize;
@@ -46,7 +46,6 @@ body {
 .article .article-content .article-subheader {
   font-size: 22px;
   padding: 20px 0 0;
-  font-weight: 600;
   text-transform: capitalize;
 }
 .article .article-content p:first-child::first-letter {
@@ -119,4 +118,4 @@ body {
   }
 }
 
-/*# sourceMappingURL=article.css.map */
+/*# sourceMappingURL=pest_article.css.map */
