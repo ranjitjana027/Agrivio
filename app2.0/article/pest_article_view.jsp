@@ -15,7 +15,7 @@
     con=DriverManager.getConnection(dbUrl, username, password);
     st=con.createStatement();
     int id=Integer.parseInt(request.getParameter("id"));
-    rs=st.executeQuery("select * from article where type='GUIDE' and id="+id);
+    rs=st.executeQuery("select * from article where type='PEST' and id="+id);
 %>
 <div style="margin:2% 0;">
 <div class="row" >
@@ -25,9 +25,9 @@
       <div class="article-header">
         <%= rs.getString("title") %>
       </div>
-      <div class="article-metadata">
+      <!--div class="article-metadata">
         Published on : <span> <%= rs.getDate("published_on") %></span>, Written by <span><%= rs.getString("author") %></span>
-      </div>
+      </div-->
       <div  class='article-image'>
         <%= "<img src='data:image/jpeg;base64,"+new String(java.util.Base64.getEncoder().encode(rs.getBytes("thumbnail")),"UTF-8")+"' />" %>
       </div>

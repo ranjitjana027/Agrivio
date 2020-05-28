@@ -4,8 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONValue;
 import org.json.simple.JSONObject;
 /** compile with
-  javac -cp WEB-INF\lib\json-simple-1.1.1.jar;WEB-INF\lib\postgresql-42.2.12.jre6.jar
-  WEB-INF\classes\bean\CropSuggestion.java */
+  javac -cp WEB-INF\lib\json-simple-1.1.1.jar;WEB-INF\lib\postgresql-42.2.12.jre6.jar WEB-INF\classes\bean\CropSuggestion.java */
 public class CropSuggestion implements java.io.Serializable {
     String soil_taxonomy;
     String soil_type;
@@ -43,6 +42,9 @@ public class CropSuggestion implements java.io.Serializable {
               JSONObject obj1=new JSONObject();
               obj1.put("id",rs.getInt("article_id"));
               obj1.put("name",rs.getString("name"));
+              obj1.put("rabi",rs.getBoolean("rabi"));
+              obj1.put("kharif",rs.getBoolean("kharif"));
+              obj1.put("summer",rs.getBoolean("summer"));
               list.add(obj1);
             }
           }

@@ -14,7 +14,7 @@
 
     con=DriverManager.getConnection(dbUrl, username, password);
     st=con.createStatement();
-    rs=st.executeQuery("select * from article order by published_on desc limit 5");
+    rs=st.executeQuery("select * from article where type='GUIDE' order by published_on desc limit 5");
 %>
 <div class="front-page">
   <div class="recently-featured">
@@ -24,13 +24,13 @@
       <% if(rs.next()){ %>
         <div class="main-article">
           <div>
-            <a href='${pageContext.request.contextPath}/latest/article?id=<%= rs.getString("id") %>'>
+            <a href='${pageContext.request.contextPath}/latest/article/guides?id=<%= rs.getString("id") %>'>
               <img src='data:image/jpeg;base64,<%=new String(java.util.Base64.getEncoder().encode(rs.getBytes("thumbnail")),"UTF-8")%>' alt="">
             </a>
           </div>
           <div class="article-header">
             <div class="article-link">
-              <a href='${pageContext.request.contextPath}/latest/article?id=<%= rs.getString("id") %>'><%= rs.getString("title") %></a>
+              <a href='${pageContext.request.contextPath}/latest/article/guides?id=<%= rs.getString("id") %>'><%= rs.getString("title") %></a>
             </div>
             <div class="article-intro">
               <%= rs.getString("content") %>
@@ -45,12 +45,12 @@
       <div class="col-3 col-sm-3 col-xs-12">
         <div class="other-article">
           <div class="article-image">
-          <a href='${pageContext.request.contextPath}/latest/article?id=<%= rs.getString("id") %>'>
+          <a href='${pageContext.request.contextPath}/latest/article/guides?id=<%= rs.getString("id") %>'>
             <img src='data:image/jpeg;base64,<%=new String(java.util.Base64.getEncoder().encode(rs.getBytes("thumbnail")),"UTF-8")%>' alt="">
           </a>
           </div>
           <div class="article-link">
-            <a href='${pageContext.request.contextPath}/latest/article?id=<%= rs.getString("id") %>'>
+            <a href='${pageContext.request.contextPath}/latest/article/guides?id=<%= rs.getString("id") %>'>
               <%= rs.getString("title") %>
             </a>
           </div>
@@ -99,7 +99,7 @@
   </div>
   <%
     rs.close();
-    rs=st.executeQuery("select * from article order by published_on limit 5");
+    rs=st.executeQuery("select * from article where type='GUIDE' order by published_on limit 5");
   %>
   <div class="recommendation">
     <header>Recommended for You</header>
@@ -108,13 +108,13 @@
       <% if(rs.next()){ %>
         <div class="main-article">
           <div>
-            <a href='${pageContext.request.contextPath}/latest/article?id=<%= rs.getString("id") %>'>
+            <a href='${pageContext.request.contextPath}/latest/article/guides?id=<%= rs.getString("id") %>'>
               <img src='data:image/jpeg;base64,<%=new String(java.util.Base64.getEncoder().encode(rs.getBytes("thumbnail")),"UTF-8")%>' alt="">
             </a>
           </div>
           <div class="article-header">
             <div class="article-link">
-              <a href='${pageContext.request.contextPath}/latest/article?id=<%= rs.getString("id") %>'><%= rs.getString("title") %></a>
+              <a href='${pageContext.request.contextPath}/latest/article/guides?id=<%= rs.getString("id") %>'><%= rs.getString("title") %></a>
             </div>
             <div class="article-intro">
               <%= rs.getString("content") %>
@@ -129,12 +129,12 @@
     <div class="col-3 col-sm-3 col-xs-12">
       <div class="other-article">
         <div class="article-image">
-        <a href='${pageContext.request.contextPath}/latest/article?id=<%= rs.getString("id") %>'>
-          <img src='data:image/jpeg;base64,<%=new String(java.util.Base64.getEncoder().encode(rs.getBytes("thumbnail")),"UTF-8")%>' alt="">
-        </a>
+          <a href='${pageContext.request.contextPath}/latest/article/guides?id=<%= rs.getString("id") %>'>
+            <img src='data:image/jpeg;base64,<%=new String(java.util.Base64.getEncoder().encode(rs.getBytes("thumbnail")),"UTF-8")%>' alt="">
+          </a>
         </div>
         <div class="article-link">
-          <a href='${pageContext.request.contextPath}/latest/article?id=<%= rs.getString("id") %>'>
+          <a href='${pageContext.request.contextPath}/latest/article/guides?id=<%= rs.getString("id") %>'>
             <%= rs.getString("title") %>
           </a>
         </div>

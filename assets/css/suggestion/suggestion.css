@@ -57,6 +57,9 @@
   background-color: #1aa26d;
   border: solid 1px;
 }
+.recommendation-system table td:nth-child(1) {
+  text-transform: capitalize;
+}
 
 .location-info {
   text-align: center;

@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     document.querySelector('#current-latitude').innerHTML=lat;
     document.querySelector('#current-longitude').innerHTML=lon;
     weatherUpdate(lat, lon);
+    get_suggestion();
   }
 
 
@@ -113,6 +114,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       request.send();
       weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
                   Number(document.querySelector('#current-longitude').innerHTML));
+      get_suggestion();
     }
   })
 
@@ -146,6 +148,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       {
         weatherUpdate(Number(document.querySelector('#current-latitude').innerHTML),
                       Number(document.querySelector('#current-longitude').innerHTML));
+        get_suggestion();
 
       }
       else{
@@ -194,5 +197,48 @@ document.addEventListener("DOMContentLoaded",()=>{
 
         marker.on('dragend', onDragEnd);
       }
+    }
+
+    /* crop suggestion */
+    function get_suggestion() {
+      //document.querySelector('#loading-2').style.display="block";
+      var request=new XMLHttpRequest();
+      request.open("GET",location.protocol+"//"+location.host+"/webProject/suggestion/crop?lat="+
+              document.querySelector('#current-latitude').innerHTML +"&lon="+
+              document.querySelector('#current-longitude').innerHTML);
+      request.onload=()=>{
+          if(request.status==200){
+            var data=JSON.parse(request.responseText);
+            console.log(data);
+            if(data.success){
+              document.querySelector('#recommendation-table-body').innerHTML='';
+              for (var i of data.cropids) {
+                var tr=document.createElement("tr");
+                var td1=document.createElement("td");
+                td1.innerHTML=i.name;
+                var td2=document.createElement("td");
+                td2.innerHTML=i.rabi?"&#9989;":"&#10060;"
+                var td3=document.createElement("td");
+                td3.innerHTML=i.kharif?"&#9989;":"&#10060;"
+                var td4=document.createElement("td");
+                td4.innerHTML=i.summer?"&#9989;":"&#10060;"
+                tr.append(td1);
+                tr.append(td2);
+                tr.append(td3);
+                tr.append(td4);
+                document.querySelector('#recommendation-table-body').append(tr);
+              }
+              /*if(data.cropids.length==0){
+                document.querySelector('.crop-suggestion').innerHTML="<p style='text-align:center;color:#8e8e8ed6;'>Nothing to show.</p>"
+              }
+              */
+            //  document.querySelector('#loading-2').style.display="none";
+
+            }
+            //loadArticle(title,url);
+          }
+      }
+      request.send();
+
     }
 })

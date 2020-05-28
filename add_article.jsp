@@ -43,12 +43,13 @@ if(request.getMethod().equals("POST")){
 
         con=DriverManager.getConnection(dbUrl, username, password);
 
-        st=con.prepareStatement("insert into article(title,content,keywords,author,thumbnail) values(?,?,?,?,?)");
+        st=con.prepareStatement("insert into article(title,content,keywords,author,thumbnail,type) values(?,?,?,?,?,?)");
         st.setString(1,title);
         st.setString(2,content);
         st.setString(3,keywords);
         st.setString(4,author);
         st.setBinaryStream(5,fileContent);
+        st.setString(6,request.getParameter("type"));
         st.executeUpdate();
         status=true;
         message="Article added successfully.";
@@ -172,9 +173,9 @@ else{
         <h2>Article Preview</h2>
         <div id="article-title" class="article-header"></div>
         <div class="article-metadata">Published on: <span id="today"></span>, Written by <span id="article-author"></span> </div>
-        <figure >
-          <img src="" class="article-image" id="article-thumbnail">
-        </figure>
+        <div class="article-image">
+          <img alt="Article Thumbnail"  id="article-thumbnail">
+        </div>
         <div class="article-content">
 
         </div>
@@ -198,6 +199,14 @@ else{
         <div class="add-article-title">
           <label for="">Article Title</label><br>
           <input type="text" name="title" onkeyup="document.querySelector('#article-title').innerText=this.value;" value="">
+        </div>
+        <div class="">
+          <label for="">Add Article Type</label>
+          <select class="" name="type">
+            <option value="GUIDE">Guide</option>
+            <option value="PEST">Pest</option>
+            <option value="PLANT">Plant</option>
+          </select>
         </div>
         <div class="add-keywords">
           <label for="">Keywords</label><br>
@@ -250,7 +259,7 @@ else{
     function reset() {
       document.querySelector("input[name='author']").value="";
       document.querySelector("input[name='title']").value="";
-      document.querySelector("input[name='keywords']").value="";
+      document.querySelector("select[name='type']").value="";
       document.querySelector(".article-content").innerHTML="";
       document.querySelector("#article-title").innerText="";
       document.querySelector("#article-author").innerText="";
@@ -289,6 +298,7 @@ else{
         f.append("author",author);
         f.append("file",document.querySelector('#imgfile').files[0]);
         f.append("keywords",keywords);
+        f.append("type",document.querySelector("select[name='type']").value);
         request.onload=()=>{
           if(request.status==200){
             var data=JSON.parse(request.responseText);

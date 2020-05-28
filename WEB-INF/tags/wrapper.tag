@@ -1,3 +1,4 @@
+<%@tag description="Layout Wrapper Tag" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -59,7 +60,7 @@
                 </svg>
               </div>
               <!-- notification list -->
-              <%@ page import="java.sql.*" %>
+              <%@ tag import="java.sql.*" %>
               <%
                 Connection con = null;
                 Statement st = null;
@@ -252,7 +253,7 @@
     <!-- main content here  -->
     <div class="page-content">
       <!-- include page here -->
-      <jsp:include page="<%= request.getParameter(\"filename\") %>" />
+      <jsp:doBody />
 
     </div>
     <!-- page footer -->

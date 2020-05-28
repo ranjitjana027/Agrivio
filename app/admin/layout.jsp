@@ -22,7 +22,7 @@
 
         </div>
         <div class="" >
-          <svg style="display:block;">
+          <svg style="display:block; max-width:150px; max-height:70px;">
             <defs>
               <pattern id="user-icon-pattern" x="0" y="0" height="200" width="200" patternUnits="userSpaceOnUse" >
                 <image x="39" y="15" xlink:href="${pageContext.request.contextPath}/assets/img/user.png" height="40" width="70" ></image>

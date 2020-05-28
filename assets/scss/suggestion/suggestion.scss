@@ -65,6 +65,9 @@
       background-color: #1aa26d;
       border: solid 1px;
     }
+    td:nth-child(1){
+      text-transform: capitalize;
+    }
   }
 }
 

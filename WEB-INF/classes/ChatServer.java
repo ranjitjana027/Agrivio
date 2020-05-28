@@ -148,19 +148,22 @@ public class ChatServer {
     }
 
     @OnMessage
-    public void onMessage(String msg) {
+    public void onMessage(String content) {
         Date d=new Date();
-        /*JSONParser parser=new JSONParser();
-        String content="";
         try{
-          Object obj=parser.parse(msg);
-          JSONObject obj1=(JSONObject)obj;
-          this.room=obj1.get("room");
-          content=ovj1.get("content");
-        }*/
-        String message="{\"sender\":\""+this.user_id+"\", \"sender_name\":\""+this.user_name+"\", \"content\": \""+msg+"\", \"date\":\""+d+"\",\"status\":false}";
-        this.save(msg);
-        broadcast(message,this.room);
+          JSONParser parser=new JSONParser();
+          JSONObject json=(JSONObject)parser.parse(content);
+          String msg=json.get("content").toString();
+          String tstamp=json.get("timestamp").toString();
+          if (!msg.trim().equals("")) {
+            String message="{\"sender\":\""+this.user_id+"\", \"sender_name\":\""+this.user_name+"\", \"content\": \""+msg+"\", \"date\":\""+d+"\",\"status\":false, \"timestamp\":\""+tstamp+"\"}";
+            this.save(msg);
+            broadcast(message,this.room);
+          }
+        }
+        catch(Exception e){
+          e.printStackTrace();
+        }
     }
 
     private static void broadcast(String msg,int room) {
