@@ -198,22 +198,25 @@
             var data=JSON.parse(message.data);
             if(data.status)
             {
-              document.querySelector(".pulse").classList.toggle("connected");
+              if(data.content=="joined" && data.room==document.querySelector("#room").value)
+                document.querySelector(".pulse").classList.add("connected");
+              else if (data.room == document.querySelector("#room").value && data.content == "has left")
+                document.querySelector(".pulse").classList.remove("connected");
             }
-            else{
+            else if(data.room == document.querySelector("#room").value){
               if(data.sender==document.querySelector("#userid").value)
-                {
-                  Array.from(document.querySelectorAll('small > .timestamp')).filter(item=>item.innerText==data.timestamp)[0].parentElement.firstElementChild.classList.add('sent')
-                }
-                else{
-                  add_message(data);
-                }
+              {
+                Array.from(document.querySelectorAll('small > .timestamp')).filter(item=>item.innerText==data.timestamp)[0].parentElement.firstElementChild.classList.add('sent')
+              }
+              else{
+                add_message(data);
+              }
             }
         }
     }
 
     function add_message(msg){
-      
+
       var d=document.createElement('div');
       var outerDiv=document.createElement("div");
       outerDiv.classList.add('chat-message');
@@ -239,7 +242,7 @@
 
 
     }
-    
+
     function send_message(){
       var msg={
         timestamp: new Date().getTime(),

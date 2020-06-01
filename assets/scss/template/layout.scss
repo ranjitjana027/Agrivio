@@ -47,10 +47,20 @@ body{
         font-family:  papyrus,serif;
         font-size: 38px;
         padding-left: 30px;
+				height: 60px;
 
 				a{
 					color: inherit;
 					text-decoration: none;
+					display: flex;
+					height: inherit;
+
+					img{
+						display: block;
+						object-fit: cover;
+						/*width: 70%;*/
+						height: 100%;
+					}
 				}
       }
 

@@ -56,6 +56,28 @@
     }
 
   }
+
+  #view-all-guides{
+    text-align: center;
+    padding-top: 0.8rem;
+
+    button{
+      outline: none;
+      padding: 0.5rem 1.5rem;
+      font-size: 1.1rem;
+      color: #fdfdfd;
+      background: linear-gradient(to top, #09bb8b,#129c56,#4CAF50, #0b9a74,#129c56,#4CAF50);
+      border: none;
+      cursor: pointer;
+      background-size: 1px 100px;
+      border-radius: 5px;
+
+      &:hover{
+        background-position: 100px;
+        color: black;;
+      }
+    }
+  }
 }
 
 @media (max-width:767px) {

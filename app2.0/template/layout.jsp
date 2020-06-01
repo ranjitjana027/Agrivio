@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title><%= request.getParameter("title")  %></title>
+    <title><%= request.getParameter("title")  %></title>
+    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/assets/img/favicon.svg">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/spinner.css">
+    <script src="${pageContext.request.contextPath}/assets/js/lib/spinner.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/template/layout.css">
     <link rel="stylesheet" href='${pageContext.request.contextPath}<%= request.getParameter("cssfile") %>'>
     <script src="${pageContext.request.contextPath}/assets/js/template/layout.js" charset="utf-8"></script>
   </head>
   <body>
+
+    <div class="spinner" style="">
+      <div class="spinner-container" style="">
+        <svg height="300">
+          <ellipse id="circle1" cx="150" cy="150" r="0" stroke="snow" fill="none" />
+          <ellipse id="circle2" cx="150" cy="150" r="0" stroke="snow" fill="none" />
+          <ellipse id="circle3" cx="150" cy="150" r="0" stroke="snow" fill="none" />
+          <ellipse id="circle4" cx="150" cy="150" r="0" stroke="snow" fill="none" />
+        </svg>
+      </div>
+
+    </div>
     <!-- page header -->
     <div class="page-header">
       <div class="header-top">
@@ -18,15 +34,18 @@
               </div>
             </div>
 
-            <div class="col-3 col-sm-3 mobile-hidden  main-logo">
-              <a href="${pageContext.request.contextPath}/index">Agriculture</a>
+            <div class="col-5 col-sm-3 mobile-hidden  main-logo">
+              <a href="${pageContext.request.contextPath}/index">
+                <img class="logo" src="${pageContext.request.contextPath}/assets/img/logo-sm.png" alt="AgriCulture Logo">
+                <img class="website-name" src="${pageContext.request.contextPath}/assets/img/AgriCulture@2x.png"  alt="AgriCulture" >
+              </a>
 
             </div>
 
             <!--div class="col-6 tablet-hidden mobile-hidden caption" >
       				An ambitious agricultural expermient
       			</div-->
-            <div class="col-9 col-xs-8 col-sm-7 user-nav-bar" style="">
+            <div class="col-7 col-xs-8 col-sm-7 user-nav-bar" style="">
 
               <!-- Search Box for tablet and desktop -->
               <div class="search-box mobile-hidden">

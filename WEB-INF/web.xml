@@ -117,12 +117,16 @@
     <url-pattern>/admin/chat</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>AdminViewChat</servlet-name>
+    <servlet-name>ViewChats</servlet-name>
     <jsp-file>/app/admin/chatJSON.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AdminViewChat</servlet-name>
+    <servlet-name>ViewChats</servlet-name>
     <url-pattern>/admin/view-chats</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewChats</servlet-name>
+    <url-pattern>/latest/view-chats</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -262,7 +266,7 @@
 
   <servlet>
     <servlet-name>GuideArticle2.0All</servlet-name>
-    <jsp-file>/app2.0/article/article_frontpage.jsp</jsp-file>
+    <jsp-file>/app2.0/article/guide_article_frontpage.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>GuideArticle2.0All</servlet-name>
@@ -372,4 +376,22 @@
       <servlet-name>AddArticleAPI</servlet-name>
       <url-pattern>/add_article.jsp</url-pattern>
   </servlet-mapping>
+
+
+
+  <!-- Filters oder of execution as order of mapping -->
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/latest/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>AdminFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
 </web-app>

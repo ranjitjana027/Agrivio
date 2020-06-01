@@ -243,10 +243,19 @@ body {
   font-family: papyrus, serif;
   font-size: 38px;
   padding-left: 30px;
+  height: 60px;
 }
 .page-header .header-top .top-subheader .main-logo a {
   color: inherit;
   text-decoration: none;
+  display: flex;
+  height: inherit;
+}
+.page-header .header-top .top-subheader .main-logo a img {
+  display: block;
+  object-fit: cover;
+  /*width: 70%;*/
+  height: 100%;
 }
 .page-header .header-top .top-subheader .user-nav-bar {
   text-align: right;

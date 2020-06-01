@@ -57,44 +57,6 @@
         </div>
       </div>
       <% } %>
-      <!--
-      <div class="col-3 col-sm-3 col-xs-12">
-        <div class="other-article">
-          <div class="article-image">
-            <a href="#"><img src="../../assets/img/greengrass.jpg" alt="article-image"></a>
-          </div>
-          <div class="article-link">
-            <a href="#">
-              Suspendisse finibus commodo nisl non viverra
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-3 col-sm-3 col-xs-12">
-        <div class="other-article">
-          <div class="article-image">
-            <a href="#"><img src="../../assets/img/green-lawn.jpg" alt="article-image"></a>
-          </div>
-          <div class="article-link">
-            <a href="#">
-              Suspendisse finibus commodo nisl non viverra
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-3 col-sm-3 col-xs-12">
-        <div class="other-article">
-          <div class="article-image">
-            <a href="#"><img src="../../assets/img/homepage.jpg" alt="article-image"></a>
-          </div>
-          <div class="article-link">
-            <a href="#">
-              Suspendisse finibus commodo nisl non viverra
-            </a>
-          </div>
-        </div>
-      </div>
-      -->
     </div>
   </div>
   <%
@@ -141,57 +103,10 @@
       </div>
     </div>
     <% } %>
-      <!--
-      <div class="col-3 col-sm-3 col-xs-12">
-        <div class="other-article">
-          <div class="article-image">
-            <a href="#"><img src="../../assets/img/farmland.jpg" alt="article-image"></a>
-          </div>
-          <div class="article-link">
-            <a href="#">
-              Suspendisse finibus commodo nisl non viverra
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-3 col-sm-3 col-xs-12">
-        <div class="other-article">
-          <div class="article-image">
-            <a href="#"><img src="../../assets/img/greengrass.jpg" alt="article-image"></a>
-          </div>
-          <div class="article-link">
-            <a href="#">
-              Suspendisse finibus commodo nisl non viverra
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-3 col-sm-3 col-xs-12">
-        <div class="other-article">
-          <div class="article-image">
-              <a href="#"><img src="../../assets/img/green-lawn.jpg" alt="article-image"></a>
-          </div>
-          <div class="article-link">
-            <a href="#">
-              Suspendisse finibus commodo nisl non viverra
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-3 col-sm-3 col-xs-12">
-        <div class="other-article">
-          <div class="article-image">
-            <a href="#"><img src="../../assets/img/homepage.jpg" alt="article-image"></a>
-          </div>
-          <div class="article-link">
-            <a href="#">
-              Suspendisse finibus commodo nisl non viverra
-            </a>
-          </div>
-        </div>
-      </div>
-      -->
     </div>
+  </div>
+  <div id="view-all-guides">
+    <button>View All</button>
   </div>
 </div>
 <%
