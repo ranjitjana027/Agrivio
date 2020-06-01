@@ -106,12 +106,12 @@ public class ChatServer {
             newList.add(this);
             handlerMap.put(room, newList);
           }
-          broadcast("{\"sender\":\""+this.user_id+"\", \"sender_name\":\""+ this.user_name+"\", \"content\": \"joined\",\"status\":true}",this.room);
+          broadcast("{\"sender\":\""+this.user_id+"\",\"room\":\""+room +"\", \"sender_name\":\""+ this.user_name+"\", \"content\": \"joined\",\"status\":true}",this.room);
           System.out.println("user: "+this.user_name+" connected to "+ this.room);
         }
         else {
           try {
-            session.getBasicRemote().sendText("{\"sender\":\""+this.user_id+"\", \"sender_name\":\""+ this.user_name+"\", \"content\": \"were denied access.\",\"status\":true}");
+            session.getBasicRemote().sendText("{\"sender\":\""+this.user_id+"\",\"room\":\""+room +"\", \"sender_name\":\""+ this.user_name+"\", \"content\": \"were denied access.\",\"status\":true}");
           } catch(Exception e) {
             System.out.println("Access Denied for "+this.user_name);
           }
@@ -141,7 +141,7 @@ public class ChatServer {
           }
         }
         if ( handlerMap.containsKey(room) && handlerMap.get(room).contains(this)) {
-          broadcast("{\"sender\":\""+this.user_id+"\", \"sender_name\":\""+ this.user_name+"\", \"content\": \"has left\",\"status\":true}",this.room);
+          broadcast("{\"sender\":\""+this.user_id+"\",\"room\":\""+room +"\", \"sender_name\":\""+ this.user_name+"\", \"content\": \"has left\",\"status\":true}",this.room);
         }
 
         System.out.println(user_name + " has left");
@@ -156,7 +156,7 @@ public class ChatServer {
           String msg=json.get("content").toString();
           String tstamp=json.get("timestamp").toString();
           if (!msg.trim().equals("")) {
-            String message="{\"sender\":\""+this.user_id+"\", \"sender_name\":\""+this.user_name+"\", \"content\": \""+msg+"\", \"date\":\""+d+"\",\"status\":false, \"timestamp\":\""+tstamp+"\"}";
+            String message="{\"sender\":\""+this.user_id+"\",\"room\":\""+room +"\", \"sender_name\":\""+this.user_name+"\", \"content\": \""+msg+"\", \"date\":\""+d+"\",\"status\":false, \"timestamp\":\""+tstamp+"\"}";
             this.save(msg);
             broadcast(message,this.room);
           }

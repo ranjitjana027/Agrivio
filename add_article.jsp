@@ -1,7 +1,4 @@
-<% if (session.getAttribute("userid")==null || !session.getAttribute("role").equals("ADMIN") ){
-  response.sendRedirect(request.getContextPath()+"/login?redirect=/add_article.jsp");
-}
-%>
+
 <%@page import="java.io.*,java.nio.file.*,java.sql.*" %>
 <%
 if(request.getMethod().equals("POST")){

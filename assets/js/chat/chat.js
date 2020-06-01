@@ -42,9 +42,12 @@ document.addEventListener("DOMContentLoaded",()=>{
               var data=JSON.parse(message.data);
               if(data.status)
               {
-                document.querySelector(".pulse").classList.toggle("connected");
+                if(data.content=="joined" && data.room==document.querySelector("#room").value)
+                  document.querySelector(".pulse").classList.add("connected");
+                else if (data.room == document.querySelector("#room").value && data.content == "has left")
+                  document.querySelector(".pulse").classList.remove("connected");
               }
-              else{
+              else if(data.room == document.querySelector("#room").value){
                 if(data.sender==document.querySelector("#userid").value)
                 {
                   Array.from(document.querySelectorAll('small > .timestamp')).filter(item=>item.innerText==data.timestamp)[0].parentElement.firstElementChild.classList.add('sent')
@@ -98,7 +101,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       }
 
       function add_message(msg){
-        
+
         var d=document.createElement('div');
         var outerDiv=document.createElement("div");
         outerDiv.classList.add('chat-message');
@@ -127,58 +130,63 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       function get_chats(room){
         var request=new XMLHttpRequest();
-        request.open("GET",location.protocol+"//"+location.host+"/webProject/admin/view-chats?room="+room);
+        request.open("GET",location.protocol+"//"+location.host+"/webProject/latest/view-chats?room="+room);
         request.onload=()=>{
-          var data=JSON.parse(request.responseText);
-          console.log(data);
-          document.querySelector('.chat-room').innerHTML="";
-          data.messages.forEach(item=>{
-            var d=document.createElement('div');
-            if(item.status)
-            {
-                d.classList.add('status');
-                if (item.sender == document.querySelector('#userid').value) {
-                d.innerText='You '+item.content;
-                }
-                else {
-                    d.innerText=item.sender_name+' '+item.content;
-                }
+          if(request.status==200){
+            var data=JSON.parse(request.responseText);
+            console.log(data);
+            document.querySelector('.chat-room').innerHTML="";
+            data.messages.forEach(item=>{
+              var d=document.createElement('div');
+              if(item.status)
+              {
+                  d.classList.add('status');
+                  if (item.sender == document.querySelector('#userid').value) {
+                  d.innerText='You '+item.content;
+                  }
+                  else {
+                      d.innerText=item.sender_name+' '+item.content;
+                  }
 
-            }
-            else
-            {
-                var outerDiv=document.createElement("div");
-                outerDiv.classList.add('chat-message');
-                var p=document.createElement('p');
-                p.classList.add('content');
-                var s=document.createElement('small');
-                var s1=document.createElement('span');
-                var s2=document.createElement('span');
-                s1.classList.add('time');
-                s1.classList.add("sent");
-                s2.classList.add('sender');
-                s1.innerText=new Date(item.date+" GMT+00:00").toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                s2.innerText=item.sender_name;
-                if(item.sender==document.querySelector('#userid').value){
-                    s2.innerText="You";
-                    d.classList.add('you');
-                }
-                else{
-                    d.classList.add('they');
-                }
+              }
+              else
+              {
+                  var outerDiv=document.createElement("div");
+                  outerDiv.classList.add('chat-message');
+                  var p=document.createElement('p');
+                  p.classList.add('content');
+                  var s=document.createElement('small');
+                  var s1=document.createElement('span');
+                  var s2=document.createElement('span');
+                  s1.classList.add('time');
+                  s1.classList.add("sent");
+                  s2.classList.add('sender');
+                  s1.innerText=new Date(item.date+" GMT+00:00").toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                  s2.innerText=item.sender_name;
+                  if(item.sender==document.querySelector('#userid').value){
+                      s2.innerText="You";
+                      d.classList.add('you');
+                  }
+                  else{
+                      d.classList.add('they');
+                  }
 
-                p.innerText=item.content;
-                s.append(s1);
-                outerDiv.append(s2);
-                outerDiv.append(p);
-                outerDiv.append(s);
-                d.append(outerDiv);
-            }
-            document.querySelector('.chat-room').append(d);
-          });
-          document.querySelector('.chat-room').scrollTop=document.querySelector('.chat-room').scrollHeight-document.querySelector('.chat-room').offsetHeight;
-          document.querySelector(".chat-input").disabled=false;
-          document.querySelector(".submit").disabled=false;
+                  p.innerText=item.content;
+                  s.append(s1);
+                  outerDiv.append(s2);
+                  outerDiv.append(p);
+                  outerDiv.append(s);
+                  d.append(outerDiv);
+              }
+              document.querySelector('.chat-room').append(d);
+            });
+            document.querySelector('.chat-room').scrollTop=document.querySelector('.chat-room').scrollHeight-document.querySelector('.chat-room').offsetHeight;
+            document.querySelector(".chat-input").disabled=false;
+            document.querySelector(".submit").disabled=false;
+          }
+          else{
+            document.querySelector('.chat-room').innerHTML="Unable to fetch chats. Refresh page to retry."
+          }
         };
         request.send();
       }
