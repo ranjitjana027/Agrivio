@@ -232,7 +232,6 @@ body {
   align-items: center;
   max-width: 450px;
   margin: auto;
-  padding: 5% 0;
 }
 .wrap .header {
   width: min(400px, 100%);
@@ -259,7 +258,7 @@ body {
   font-weight: bolder;
   margin-top: 0;*/
 }
-.wrap .header div.welcome-message {
+.wrap .header .message {
   margin-top: 0.5rem;
   font-size: 1.25rem;
   color: #00b3bb;
@@ -274,8 +273,11 @@ body {
 .form h2 {
   padding: 0 10px;
 }
-.form div {
+.form div.form-item {
   margin: 0.625rem 1.5rem;
+}
+.form div.form-item .form-input {
+  margin: 0;
 }
 .form span {
   font-size: 0.95rem;
@@ -287,6 +289,13 @@ body {
 .form span a:hover {
   text-decoration: underline;
   color: #015a05;
+}
+.form #tnc + label {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+.form #tnc:checked + label {
+  opacity: 1;
 }
 .form .signup-redirect a {
   color: #00b337;
@@ -317,7 +326,7 @@ body {
 .form-btn {
   text-align: center;
 }
-.form-btn .login-btn {
+.form-btn .signup-btn {
   background: none;
   border: 2px solid;
   /*line-height: 1;*/
@@ -332,8 +341,8 @@ body {
   padding: 0.55rem;
   outline: none;
 }
-.form-btn .login-btn:hover {
-  box-shadow: 0 0 0 0 #1f6f78, inset 6em 3.5em 0 0 #16d284;
+.form-btn .signup-btn:hover {
+  box-shadow: 0 0 0 0 #1f6f78, inset 6em 3.5em 0 0 #13b97b;
   color: white;
 }
 
@@ -343,4 +352,4 @@ body {
   }
 }
 
-/*# sourceMappingURL=login.css.map */
+/*# sourceMappingURL=signup.css.map */

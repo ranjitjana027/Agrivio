@@ -4,7 +4,6 @@
   margin: 10px;
   height: auto;
 }
-
 .form-input input {
   font-size: 1rem;
   width: 100%;
@@ -15,15 +14,12 @@
   transition: padding 0.1s;
   letter-spacing: 0.05rem;
 }
-
 .form-input input:focus {
   box-shadow: 0 0 3px 0px green;
 }
-
 .form-input input::placeholder {
   color: transparent;
 }
-
 .form-input label {
   position: absolute;
   display: block;
@@ -33,6 +29,7 @@
   top: 0;
   transition: padding 0.1s;
   letter-spacing: 0.05rem;
+  cursor: text;
 }
 
 .focus {
@@ -44,7 +41,5 @@
   font-size: 0.8rem !important;
   /*font-weight: 100 !important;*/
 }
-
-/*# sourceMappingURL=form-label-animation.scss.map */
 
 /*# sourceMappingURL=form-label-animation.css.map */
