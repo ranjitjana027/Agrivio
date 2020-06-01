@@ -73,9 +73,9 @@
       <div class="col-6 ">
         <div class="wrap">
           <div class="header">
-            <img class="logo" src="${pageContext.request.contextPath}/assets/img/logo-sm.png" alt="AgriCulture Logo">
-            <img class="website-name" src="${pageContext.request.contextPath}/assets/img/agrivio-1.png"  alt="AgriCulture" >
-
+            <!--img class="logo" src="${pageContext.request.contextPath}/assets/img/logo-sm.png" alt="agrivio Logo"-->
+            <img class="website-name" src="${pageContext.request.contextPath}/assets/img/agrivio-1.png"  alt="agrivio" >
+            <div class="welcome-message">Welcome Back</div>
           </div>
           <form method="post"  class="form">
 
@@ -107,7 +107,7 @@
             </div>
             <div class="signup-redirect">
               <p>
-                Don&apos;t Have any account? <a href="${pageContext.request.contextPath}/signup"> Create one.</a>
+                Don&apos;t have any account? <a href="${pageContext.request.contextPath}/signup"> Create one.</a>
               </p>
             </div>
           </form>
