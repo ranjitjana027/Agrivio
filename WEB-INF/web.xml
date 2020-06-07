@@ -22,11 +22,18 @@
   version="4.0"
   metadata-complete="false">
 
-  <display-name>Agricultural Project</display-name>
+  <display-name>Agrivio</display-name>
   <description>
-     Welcome
+     agricultural Project
   </description>
-
+  <servlet>
+    <servlet-name>FileUpload</servlet-name>
+    <servlet-class>UploadFileController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileUpload</servlet-name>
+    <url-pattern>/UploadFileController</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>Index</servlet-name>
     <jsp-file>/app/index.jsp</jsp-file>
@@ -236,6 +243,14 @@
   </servlet-mapping>
 
   <!-- new version -->
+  <servlet>
+    <servlet-name>ArticleDashboard</servlet-name>
+    <jsp-file>/app2.0/article/article_frontpage.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArticleDashboard</servlet-name>
+    <url-pattern>/latest/article</url-pattern>
+  </servlet-mapping>
 
   <servlet>
     <servlet-name>PestArticle</servlet-name>

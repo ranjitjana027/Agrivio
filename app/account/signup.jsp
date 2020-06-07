@@ -83,7 +83,9 @@
       <div class="wrap">
         <div class="header">
           <!--img class="logo" src="${pageContext.request.contextPath}/assets/img/logo-sm.png" alt="agrivio Logo"-->
-          <img class="website-name" src="${pageContext.request.contextPath}/assets/img/agrivio-1.png"  alt="agrivio" >
+          <a href="${pageContext.request.contextPath}/index">
+            <img class="website-name" src="${pageContext.request.contextPath}/assets/img/agrivio-1.png"  alt="agrivio" >
+          </a>
           <div class="message">
             Create an account
           </div>
@@ -106,30 +108,29 @@
           </div>
     			<div class="form-item">
             <div class="form-input">
-              <label for="mobile">Mobile</label>
-              <input class="input-field " type="text" name="mobile" id="mobile" placeholder="10 digit mobile number" pattern="^[6-9]\d{9}$">
+              <label for="mobile">Ten digit Mobile No</label>
+              <input class="input-field " type="text" name="mobile" id="mobile" placeholder="10 digit mobile number" pattern="^[6-9]\d{9}$" minlength="10" maxlength="10">
             </div>
           </div>
           <div class="form-item">
             <div class="form-input">
-              <label for="email">Email</label>
+              <label for="email">Email(Optional)</label>
               <input class="input-field " type="email" id="email" name="email" placeholder="Email" optional>
             </div>
           </div>
         <div class="form-item">
           <div class="form-input">
             <label for="password">Password</label>
-            <input class="input-field" type="password" id="password" name="password" placeholder="Password"
-              minlength="8" pattern=^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$
-              required>
+            <input class="input-field" type="password" id="password" name="password" placeholder="Password"   minlength="8" maxlength="20" required >
+            <small>Password must be 6-20 character in length.</small>
           </div>
         </div>
   				<div class="form-item">
             <div class="form-input">
               <label for="re_password">Confirm Password</label>
-  						<input class="input-field" type="password" id='re_password' name="re_password" placeholder="Confirm Password" minlength="8" pattern=^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$ required>
+  						<input class="input-field" type="password" id='re_password' name="re_password" placeholder="Confirm Password" minlength="8" maxlength="20"  required>
             </div>
-  					<small id="password_message"></small>
+  					<small id="password_message" class="alert"></small>
   				</div>
 
   				<div class="form-item">
@@ -137,7 +138,7 @@
   				</div>
   				<div class="form-item">
             <div class="form-btn">
-              <button type="submit" class="signup-btn" style="width: 100%;">Sign Up</button>
+              <button type="submit" class="signup-btn" style="width: 100%;" onclick="return checkPassword();">Sign Up</button>
             </div>
           </div>
 
@@ -164,6 +165,37 @@
       </div>
     </div>
   </div>
+  <script>
+    document.querySelector("#password").addEventListener("keyup",chkPwd);
+    document.querySelector("#re_password").addEventListener("keyup",chkPwd);
+
+    function checkPassword()
+  			{
+  				let p1=document.querySelector("#password").value;
+  				let p2=document.querySelector("#re_password").value;
+
+  				if(p1!=p2)
+  				{
+  					document.querySelector('#password_message').innerHTML="Passwords did not match.";
+  					return false;
+  				}
+  		 }
+
+   function chkPwd()
+		 {
+			 let p1=document.querySelector("#password").value;
+			 let p2=document.querySelector("#re_password").value;
+
+			 if(p1!=="" && p2!="" && p1!=p2)
+			 {
+				 document.querySelector('#password_message').innerText="Passwords did not match.";
+
+
+			 }
+			 else
+			 document.querySelector('#password_message').innerText="";
+		}
+  </script>
 </body>
 
 </html>

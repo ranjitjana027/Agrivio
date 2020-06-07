@@ -52,7 +52,7 @@ body{
 				a{
 					color: inherit;
 					text-decoration: none;
-					display: flex;
+					display: block;
 					height: inherit;
 
 					img{
@@ -468,8 +468,8 @@ body{
 			.top-subheader{
 
 				.main-logo{
-          padding:10px 0 0 5px;
-          font-size: 30px;
+          /*padding:10px 0 0 5px;
+          font-size: 30px;*/
         }
 
 				.caption{

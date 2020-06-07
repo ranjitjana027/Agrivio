@@ -74,7 +74,7 @@ body {
     }
 
     div.form-item{
-      margin:  0.625rem 1.5rem;
+      margin:  0.5rem 1.5rem;
 
       .form-input{
           margin: 0;
@@ -122,6 +122,9 @@ body {
     border-radius: 5px;
   }
 
+  .alert{
+    color: red;
+  }
 
 
   .image{
