@@ -3,7 +3,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <c:choose>
   <c:when test="${sessionScope.userid!=null}">
-    <c:redirect url="/dashboard" />
+    <c:redirect url="/latest/article" />
   </c:when>
   <c:otherwise>
     <c:catch var="exception" >
@@ -21,7 +21,8 @@
 					</c:when>
 					<c:otherwise>
 						<c:set var="dbUri"  value="<%=new java.net.URI(System.getenv(\"DATABASE_URL\")) %>"/>
-		        <sql:setDataSource var="connection" driver="org.postgresql.Driver" url="jdbc:postgresql://${dbUri.getHost()}:${dbUri.getPort()}${dbUri.getPath()}?sslmode=require" user="${dbUri.getUserInfo().split(\":\")[0]}" password="${dbUri.getUserInfo().split(\":\")[1]}" />
+		        <sql:setDataSource
+              var="connection" driver="org.postgresql.Driver" url="jdbc:postgresql://${dbUri.getHost()}:${dbUri.getPort()}${dbUri.getPath()}?sslmode=require" user="${dbUri.getUserInfo().split(\":\")[0]}" password="${dbUri.getUserInfo().split(\":\")[1]}" />
 		        <sql:update dataSource="${connection}" var="count">
 		          insert into users(firstname, lastname, mobile, email, password) values(?,?,?,?,?);
 		          <sql:param value="${param.firstname}" />
@@ -46,7 +47,7 @@
 		              <sql:param value="<%=new java.sql.Timestamp(new java.util.Date().getTime())%>" />
 		              <sql:param value="${result.rows[0].id}" />
 		            </sql:update>
-								<c:redirect url="/dashboard" />
+								<c:redirect url="/latest/article" />
 		          </c:when>
 		          <c:otherwise>
 		            <c:set var="errorMessage" >
@@ -60,7 +61,6 @@
     </c:catch>
     <c:if test="${not empty exception}">
       <c:set var="errorMessage" value="Something went wrong"/>
-			${exception.message}
     </c:if>
   </c:otherwise>
 </c:choose>

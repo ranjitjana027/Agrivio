@@ -27,7 +27,9 @@ public class LoginFilter implements Filter {
       chain.doFilter(request,response);
     }
     else{
-      response.sendRedirect(request.getContextPath() + "/login?redirect="+request.getServletPath());
+      String url=request.getContextPath() + "/login?redirect="+request.getServletPath();
+      url=(request.getQueryString()==null)?url:(url+"?"+request.getQueryString());
+      response.sendRedirect(url);
     }
     System.out.println("Login Filtered");
 

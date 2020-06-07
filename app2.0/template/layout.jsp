@@ -323,7 +323,7 @@
       </div>
       </div>
       <div class="footer-bottom">
-      &copy; 2020 agrivio. All rights reserved.
+      &copy; 2020 <span class="website-name">agrivio</span>. All rights reserved.
       </div>
     </div>
   </body>

@@ -57,6 +57,9 @@ body {
   text-align: justify;
   font-size: 15px;
 }
+.article .article-content img {
+  width: 100%;
+}
 
 .suggestion {
   padding: 10px;
