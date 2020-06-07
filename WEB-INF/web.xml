@@ -34,6 +34,16 @@
     <servlet-name>FileUpload</servlet-name>
     <url-pattern>/UploadFileController</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Demo</servlet-name>
+    <jsp-file>/demo.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Demo</servlet-name>
+    <url-pattern>/demo/*</url-pattern>
+  </servlet-mapping>
+
   <servlet>
     <servlet-name>Index</servlet-name>
     <jsp-file>/app/index.jsp</jsp-file>

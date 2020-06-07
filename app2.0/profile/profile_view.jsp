@@ -15,7 +15,7 @@ ResultSet rs = null;
 
       con=DriverManager.getConnection(dbUrl, username, password);
       st=con.createStatement();
-      rs=st.executeQuery("select * from users where id="+"1");
+      rs=st.executeQuery("select * from users where id="+(String)session.getAttribute("userid"));
       if(rs.next()){
 %>
 <div class="profile-header">

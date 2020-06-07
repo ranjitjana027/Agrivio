@@ -7,7 +7,7 @@
           <c:redirect url="${param.redirect}" />
         </c:when>
         <c:otherwise>
-          <c:redirect url="/dashboard" />
+          <c:redirect url="/latest/article" />
         </c:otherwise>
     </c:choose>
   </c:when>
@@ -39,7 +39,7 @@
                   <c:redirect url="${param.redirect}" />
                 </c:when>
                 <c:otherwise>
-                  <c:redirect url="/dashboard" />
+                  <c:redirect url="/latest/article" />
                 </c:otherwise>
             </c:choose>
           </c:when>

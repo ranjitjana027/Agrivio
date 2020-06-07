@@ -134,7 +134,7 @@ if((String)session.getAttribute("userid")!=null)
 		</div>
 		<div class="copyright">
 			<hr>
-			&copy; 2020 agrivio. All rights reserved.
+			&copy; 2020 <span class="website-name">agrivio</span>. All rights reserved.
 		</div>
 	</div>
 </body>

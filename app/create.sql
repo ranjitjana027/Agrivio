@@ -103,7 +103,7 @@ insert into notifications(content,user_id)
   values('Hello! A warm welcome from our side. For any issues kindly contact us.',1);
 insert into notifications(content,user_id)
   values('Thanks for choosing us.',1);
-/* article */
+/* article renamed to crop_details  */
 create table articles(
     id serial primary key,
     name varchar(128) not null UNIQUE,
@@ -129,6 +129,8 @@ create table articles(
     intro text
 );
 
+alter table articles rename to crop_details;
+
 /* crop data */
 create table crop_info(
   id serial primary key,
@@ -143,9 +145,11 @@ insert into crop_info(name) values ('maize');
 update crop_info set article_id=2 where id=2;
 
 alter table crop_info add column rabi boolean default false;
-alter table crop_info add column kharif boolean default false;   
+alter table crop_info add column kharif boolean default false;
 alter table crop_info add column summer boolean default false;
+
 /* soil data */
+
 create table india_soil_info(
   id serial primary key,
   name varchar(128) not null
@@ -208,3 +212,17 @@ add column thumbnail bytea;
 alter table article add  unique(title);
 
 alter table article add column type varchar(20) not null default 'GUIDE';
+
+/* articles */
+
+create table articles(
+  id serial primary key,
+  title varchar(200) not null unique,
+  content text not null,
+  keywords varchar(200),
+  author varchar(100) not null,
+  type varchar(20) not null default 'GUIDE',
+  published_on TIMESTAMPTZ default (now() at time zone 'utc'),
+  thumbnail varchar(100) not null
+);
+ alter table articles alter column thumbnail type varchar(500);
