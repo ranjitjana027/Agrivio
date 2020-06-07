@@ -106,7 +106,7 @@
     </div>
   </div>
   <div id="view-all-guides">
-    <button>View All</button>
+    <button onclick="location.href='${pageContext.request.contextPath}/latest/article/guides/all'">View All</button>
   </div>
 </div>
 <%

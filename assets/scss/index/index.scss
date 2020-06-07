@@ -1,0 +1,333 @@
+$slide-time:1s;
+
+@use '../base';
+body, html{
+  height: 100%;
+  margin: 0;
+  min-height: 100vh;
+  font-family: Microsoft JhengHei, sans-serif;
+
+  [class^='bgimagediv']{
+    position: relative;
+
+  }
+  .bgimagediv-1{
+    min-height: 100%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+
+    &::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background-image: url('https://agrivio-assets.s3.amazonaws.com/index/bgimage1.jpg');
+      background-position: center;
+      background-size: cover;
+      opacity: 0.65;
+      background-attachment: fixed;
+    }
+    .signin-option a{
+      color:snow;
+      text-decoration:none;
+      position:absolute;
+      top:5%;
+      right:5%;
+      font-size:1.25rem;
+      transition: 0.3s;
+
+      &:hover{
+        color: snow;
+        top: 4.5%;
+        text-decoration: underline;
+      }
+    }
+
+    .caption{
+      text-align:center;
+      position:absolute;
+      top:30%;
+      width:100%;
+
+      .quote{
+        font:1.75rem cursive, sans-serif;
+        padding:0.5rem 0;
+      }
+
+      .signup-option{
+
+        a{
+          text-decoration: none;
+  		    color: #f9f9f9;
+  				background: #0d8282;
+  				width: fit-content;
+  		    padding: 0.35rem 2rem;
+  				margin: auto;
+  				margin-top: 0.5rem;
+  				border-radius: 3rem;
+  		    display: block;
+  		    font-size: 2rem;
+  		    font-family: 'Raleway', sans-serif;
+  		    letter-spacing: 0.05rem;
+
+          &:hover{
+            color: #02f3a5;
+
+          }
+        }
+      }
+
+    }
+  }
+
+  .intro{
+    padding:2rem;
+    font-family:verdana, sans-serif;
+    text-align:center;
+
+    h2{
+      font-weight:normal;
+      font-size:2rem;
+      color:#138213;
+      text-transform:capitalize;
+    }
+
+    span{
+      width:min(90%,800px);
+      display:block;
+      margin:auto;
+      margin-bottom:1.75rem;
+    }
+  }
+  .bgimagediv-2{
+    background-image: url('https://agrivio-assets.s3.amazonaws.com/index/bgimage2.jpg');
+    min-height: 400px;
+  }
+
+  .slide-show{
+    width: 100%;
+    height: ( 4* 300px ) / 9 ;
+    margin: auto;
+    position: relative;
+
+    .slide{
+      position: absolute;
+      width: 0%;
+      height: 100%;
+
+      &:hover ~ button[name='prev'], &:hover ~ button[name='next']{
+        visibility: visible;
+      }
+
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        margin: auto;
+      }
+
+    }
+
+
+    button[name='prev'], button[name='next']{
+      visibility: hidden;
+      position: absolute;
+      top:45%;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 1.25rem;
+      color: white;
+      transition: 0.3s;
+
+      &:hover{
+        background-color: black;
+        visibility: visible;
+      }
+    }
+
+    button[name='prev']{
+      left: 3.5%
+    }
+
+    button[name='next']{
+      right: 3.5%;
+    }
+
+    .dots{
+      position: absolute;
+      bottom: 8%;
+      right: 0;
+      left: 0;
+      text-align: center;
+
+      .dot{
+        padding: 0.4rem;
+        margin: 0 0.4rem;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        background-color: #bababa;
+        transition: 0.5s;
+      }
+
+      .active{
+        background-color: white;
+        padding: 0.42rem;
+      }
+    }
+  }
+  .services{
+    padding:2rem;
+    max-width: 95%;
+    margin: auto;
+    text-align: center;
+
+    h2{
+      font-weight:normal;
+      font-family:'Raleway',sans-serif;
+      font-size:2rem;
+      color:#138213;
+    }
+
+    .service{
+      max-width: 350px;
+      margin: auto;
+    }
+    img{
+      display: block;
+      margin: auto;
+    }
+  }
+
+  .footer{
+    padding: 2rem;
+    background-color: rgba(0,0,0,0.9);
+    color: rgba(255,255,255,0.75);
+
+    .logo{
+      margin: auto;
+      width: fit-content;
+      padding: 0.5rem;
+
+      img{
+        height: 3rem;
+      }
+    }
+
+    .contact-details{
+      display:flex;
+      flex-wrap: wrap;
+      max-width: min(95%,500px);
+      margin: auto;
+
+      div{
+        flex:1 1 140px;
+        text-align: center;
+      }
+    }
+
+    .copyright{
+      text-align:center;
+      line-height:1.8;
+
+      hr{
+        background:linear-gradient(to right,rgba(0,0,0,0.9),rgba(255,255,255,0.75),rgba(0,0,0,0.9));
+        height:1px;
+        border:none;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.slideLeft{
+  animation: slideLeft $slide-time forwards;
+}
+@keyframes slideLeft {
+  from{
+    right: 0;
+    opacity: 0.4;
+    width: 0;
+  }
+  to{
+    right: 0;
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+.slideLeftOut{
+  animation: slideLeftOut $slide-time forwards;
+}
+@keyframes slideLeftOut {
+  from{
+    width: 100%;
+    opacity: 1;
+  }
+  to{
+    width: 0;
+    opacity: 0.4;
+  }
+}
+.slideRight{
+  animation: slideRight $slide-time ease-out forwards;
+}
+@keyframes slideRight {
+  from{
+    opacity: 0.4;
+    width: 0;
+  }
+  to{
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+.slideRightOut{
+  animation: slideRightOut $slide-time ease-out forwards;
+}
+@keyframes slideRightOut {
+  from{
+    opacity: 1;
+    width: 100%;
+    right: 0;
+  }
+  to{
+    opacity: 0.4;
+    width: 0;
+    right: 0;
+  }
+}
+.hidden{
+  display: none;
+}
+@media (min-width:768px) and (max-width:1023px) {
+  .services{
+    width: 700px;
+
+    [class^=col-]:nth-child(even){
+      border-left: solid 1px;
+    }
+  }
+  .slide-show{
+    /*width: 700px !important;*/
+    height: ( 4 * 768px ) / 9 !important;
+  }
+}
+@media(min-width:1024px){
+  .services{
+    width: 900px;
+
+    [class^=col-]:nth-child(even){
+      border-left: solid 1px;
+    }
+  }
+  .slide-show{
+    /*width: 900px !important;*/
+    height: 400px !important;
+  }
+}

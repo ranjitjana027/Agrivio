@@ -1,4 +1,4 @@
-
+<!--
 <%@page import="java.io.*,java.nio.file.*,java.sql.*" %>
 <%
 if(request.getMethod().equals("POST")){
@@ -115,7 +115,7 @@ else{
       }
     }
 */
-%>
+%>-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -174,7 +174,6 @@ else{
           <img alt="Article Thumbnail"  id="article-thumbnail">
         </div>
         <div class="article-content">
-
         </div>
         <hr>
       </div>
@@ -243,39 +242,39 @@ else{
       </div>
     </div>
     <script type="text/javascript">
-    function clearFileInput(input) {
-      var newInput=document.createElement("input");
-      newInput.type="file";
-      newInput.name=input.name;
-      newInput.id=input.id;
-      newInput.accept=input.accept;
-      newInput.onchange=input.onchange;
-      input.parentNode.replaceChild(newInput,input)
-    }
-
-    function reset() {
-      document.querySelector("input[name='author']").value="";
-      document.querySelector("input[name='title']").value="";
-      document.querySelector("select[name='type']").value="";
-      document.querySelector(".article-content").innerHTML="";
-      document.querySelector("#article-title").innerText="";
-      document.querySelector("#article-author").innerText="";
-      document.querySelector("#article-keywords").value="";
-      document.querySelector("#article-thumbnail").src="";
-      clearFileInput(document.querySelector('#imgfile'));
-    }
-
-
-    var d=new Date();
-    var date=d.getDate();
-    var mon=d.getMonth()+1;
-    var yyyy=d.getFullYear();
-    document.querySelector("#today").innerText=date+"-"+ ((mon>9)?mon:("0"+mon))+"-"+ yyyy;
-
-      document.querySelector("#add-subheader-btn").onclick=function(){
-        document.querySelector('.article-content').innerHTML+="<div class='article-subheader'>"+document.querySelector("#subheader").value+"</div>";
-        document.querySelector("#subheader").value="";
+      function clearFileInput(input) {
+        var newInput=document.createElement("input");
+        newInput.type="file";
+        newInput.name=input.name;
+        newInput.id=input.id;
+        newInput.accept=input.accept;
+        newInput.onchange=input.onchange;
+        input.parentNode.replaceChild(newInput,input)
       }
+
+      function reset() {
+        document.querySelector("input[name='author']").value="";
+        document.querySelector("input[name='title']").value="";
+        document.querySelector("select[name='type']").value="";
+        document.querySelector(".article-content").innerHTML="";
+        document.querySelector("#article-title").innerText="";
+        document.querySelector("#article-author").innerText="";
+        document.querySelector("#article-keywords").value="";
+        document.querySelector("#article-thumbnail").src="";
+        clearFileInput(document.querySelector('#imgfile'));
+      }
+
+
+      var d=new Date();
+      var date=d.getDate();
+      var mon=d.getMonth()+1;
+      var yyyy=d.getFullYear();
+      document.querySelector("#today").innerText=date+"-"+ ((mon>9)?mon:("0"+mon))+"-"+ yyyy;
+
+        document.querySelector("#add-subheader-btn").onclick=function(){
+          document.querySelector('.article-content').innerHTML+="<div class='article-subheader'>"+document.querySelector("#subheader").value+"</div>";
+          document.querySelector("#subheader").value="";
+        }
 
       document.querySelector("#add-paragraph-btn").onclick=function(){
         document.querySelector('.article-content').innerHTML+="<p>"+document.querySelector("#paragraph").value+"</p>";
@@ -315,6 +314,8 @@ else{
     </script>
   </body>
 </html>
+<!--
 <%
   }
 %>
+-->

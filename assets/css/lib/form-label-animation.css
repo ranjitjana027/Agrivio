@@ -30,6 +30,7 @@
   transition: padding 0.1s;
   letter-spacing: 0.05rem;
   cursor: text;
+  user-select: none;
 }
 
 .focus {

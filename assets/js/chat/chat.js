@@ -48,9 +48,10 @@ document.addEventListener("DOMContentLoaded",()=>{
                   document.querySelector(".pulse").classList.remove("connected");
               }
               else if(data.room == document.querySelector("#room").value){
-                if(data.sender==document.querySelector("#userid").value)
+                var target=Array.from(document.querySelectorAll('small > .timestamp' ) ).filter( item => item.innerText == data.timestamp );
+                if(target.length>0 && data.sender==document.querySelector("#userid").value)
                 {
-                  Array.from(document.querySelectorAll('small > .timestamp')).filter(item=>item.innerText==data.timestamp)[0].parentElement.firstElementChild.classList.add('sent')
+                  target[0].parentElement.firstElementChild.classList.add('sent')
                 }
                 else{
                   add_message(data);
@@ -113,8 +114,15 @@ document.addEventListener("DOMContentLoaded",()=>{
         s1.classList.add('time');
         s2.classList.add('sender');
         s1.innerText=new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        s2.innerText=msg.sender_name;
-        d.classList.add('they');
+        if(msg.sender==document.querySelector("#userid").value){
+          s1.classList.add('sent')
+          s2.innerText = 'You';
+          d.classList.add('you');
+        }
+        else{
+          s2.innerText=msg.sender_name;
+          d.classList.add('they');
+        }
         p.innerText=msg.content;
         s.append(s1);
         outerDiv.append(s2);

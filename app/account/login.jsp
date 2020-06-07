@@ -74,7 +74,9 @@
         <div class="wrap">
           <div class="header">
             <!--img class="logo" src="${pageContext.request.contextPath}/assets/img/logo-sm.png" alt="agrivio Logo"-->
-            <img class="website-name" src="${pageContext.request.contextPath}/assets/img/agrivio-1.png"  alt="agrivio" >
+            <a href="${pageContext.request.contextPath}/index">
+              <img class="website-name" src="${pageContext.request.contextPath}/assets/img/agrivio-1.png"  alt="agrivio" >
+            </a>
             <div class="welcome-message">Welcome Back</div>
           </div>
           <form method="post"  class="form">

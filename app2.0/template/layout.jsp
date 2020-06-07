@@ -36,8 +36,8 @@
 
             <div class="col-5 col-sm-3 mobile-hidden  main-logo">
               <a href="${pageContext.request.contextPath}/index">
-                <img class="logo" src="${pageContext.request.contextPath}/assets/img/logo-sm.png" alt="AgriCulture Logo">
-                <img class="website-name" src="${pageContext.request.contextPath}/assets/img/AgriCulture@2x.png"  alt="AgriCulture" >
+                <!--img class="logo" src="${pageContext.request.contextPath}/assets/img/logo-sm.png" alt="AgriCulture Logo"-->
+                <img class="website-name" src="${pageContext.request.contextPath}/assets/img/agrivio-2.png"  alt="agrivio" >
               </a>
 
             </div>
@@ -323,7 +323,7 @@
       </div>
       </div>
       <div class="footer-bottom">
-      &copy; Agrinomy Pvt Ltd 2020
+      &copy; 2020 agrivio. All rights reserved.
       </div>
     </div>
   </body>

@@ -248,7 +248,7 @@ body {
 .page-header .header-top .top-subheader .main-logo a {
   color: inherit;
   text-decoration: none;
-  display: flex;
+  display: block;
   height: inherit;
 }
 .page-header .header-top .top-subheader .main-logo a img {
@@ -610,8 +610,8 @@ body {
 }
 @media (max-width: 1023px) {
   .page-header .header-top .top-subheader .main-logo {
-    padding: 10px 0 0 5px;
-    font-size: 30px;
+    /*padding:10px 0 0 5px;
+    font-size: 30px;*/
   }
   .page-header .header-top .top-subheader .caption {
     font-size: 10px;
