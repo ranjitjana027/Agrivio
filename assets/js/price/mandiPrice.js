@@ -13,6 +13,7 @@
           opt.value = str;
           document.querySelector('#state').append(opt);
       }
+
       document.querySelector('#state').value = 'West Bengal'
       //document.write(data["records"]);
       wbdata = pdata["records"].filter(e => e.state.match(/.*Bengal/))
@@ -65,7 +66,7 @@
                   if (evt.target.value != "")
                       dist = evt.target.value;
                   else
-                      dist = ".*"
+                      dist = ""
                   {
                       ddata = wbdata.filter(e => e.district.includes(dist));
                       console.log(ddata)

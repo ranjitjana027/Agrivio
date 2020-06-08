@@ -1,4 +1,61 @@
-<%@ page import="java.sql.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<c:choose>
+  <c:when test="${sessionScope.userid!=null}">
+    <c:choose >
+        <c:when test="${ not empty param.redirect}">
+          <c:redirect url="${param.redirect}" />
+        </c:when>
+        <c:otherwise>
+          <c:redirect url="/latest/article" />
+        </c:otherwise>
+    </c:choose>
+  </c:when>
+  <c:otherwise>
+    <c:catch var="exception" >
+      <c:if test="${pageContext.request.method=='POST'}">
+        <c:set var="dbUri"  value="<%=new java.net.URI(System.getenv(\"DATABASE_URL\")) %>"/>
+
+        <sql:setDataSource var="connection" driver="org.postgresql.Driver" url="jdbc:postgresql://${dbUri.getHost()}:${dbUri.getPort()}${dbUri.getPath()}?sslmode=require" user="${dbUri.getUserInfo().split(\":\")[0]}" password="${dbUri.getUserInfo().split(\":\")[1]}" />
+        <sql:query dataSource="${connection}" var="result">
+          SELECT * FROM users where mobile=?  and password=?;
+          <sql:param value="${param.mobile}" />
+          <sql:param value="${param.password}"/>
+        </sql:query>
+
+        <c:choose>
+          <c:when test="${result.rowCount>0}">
+            <c:set var="userid" scope="session">${result.rows[0].id}</c:set>
+            <c:set var="user" value="${result.rows[0].firstname} ${result.rows[0].lastname}" scope="session" />
+            <c:set var="mobile" value="${result.rows[0].mobile}" scope="session" />
+            <c:set var="role" value="${result.rows[0].role}" scope="session" />
+            <sql:update dataSource="${connection}" >
+              update users set last_login=? where id=?;
+              <sql:param value="<%=new java.sql.Timestamp(new java.util.Date().getTime())%>" />
+              <sql:param value="${result.rows[0].id}" />
+            </sql:update>
+            <c:choose >
+                <c:when test="${ not empty param.redirect}">
+                  <c:redirect url="${param.redirect}" />
+                </c:when>
+                <c:otherwise>
+                  <c:redirect url="/latest/article" />
+                </c:otherwise>
+            </c:choose>
+          </c:when>
+          <c:otherwise>
+            <c:set var="errorMessage" >
+              Invalid Username/Password
+            </c:set>
+          </c:otherwise>
+        </c:choose>
+      </c:if>
+    </c:catch>
+    <c:if test="${not empty exception}">
+      <c:set var="errorMessage" value="Something went wrong"/>
+    </c:if>
+  </c:otherwise>
+</c:choose>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,133 +63,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Page</title>
-
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/auth/login.css">
+    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/assets/img/favicon.svg">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/lib/form-label-animation.css">
+    <script src="${pageContext.request.contextPath}/assets/js/lib/form-label-animation.js" ></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/account/login.css">
 </head>
-
 <body>
+    <div class="row">
+      <div class="col-6 ">
+        <div class="wrap">
+          <div class="header">
+            <!--img class="logo" src="${pageContext.request.contextPath}/assets/img/logo-sm.png" alt="agrivio Logo"-->
+            <a href="${pageContext.request.contextPath}/index">
+              <img class="website-name" src="${pageContext.request.contextPath}/assets/img/agrivio-1.png"  alt="agrivio" >
+            </a>
+            <div class="welcome-message">Welcome Back</div>
+          </div>
+          <form method="post"  class="form">
 
-    <%! String errorMessage; %>
-    <%
-        if(session.getAttribute("userid")!=null){
-            out.print("<script>alert(\"You're already logged in\"); location.href=\""+request.getContextPath()+"/dashboard \"</script>");
-        }
-        if(!request.getMethod().equals("GET")){
+            <div class="form-input">
+                <label for="fi1">Mobile</label>
+                <input type="text" name="mobile" placeholder="Mobile" id="fi1" required>
+            </div>
+            <div class="form-input">
+                <label for="fi2">Password</label>
+                <input type="password" name="password" placeholder="Password" id="fi2" required>
+            </div>
+            <div class="form-btn">
+                <input class="login-btn" type="submit" value="Login" id="fi3">
+            </div>
+            <c:if test="${not empty errorMessage}" >
+                  <div class="form-item error-box">
+                      <span>
+                          <span>&#9888;</span>
+                          ${errorMessage}
+                          <c:remove var="errorMessage" />
+                      </span>
+                  </div>
+            </c:if>
+            <div>
+                <span>By continuing, you are agree to our
+                    <a href="${pageContext.request.contextPath}/app/auth/terms&condition.html">Conditions of Use</a>
+                    and <a href="${pageContext.request.contextPath}/app/auth/terms&condition.html">Privacy Notice</a>.</span>
 
-          Connection con = null;
-          PreparedStatement st = null; 
-          ResultSet rs = null;
-            try {
+            </div>
+            <div class="signup-redirect">
+              <p>
+                Don&apos;t have any account? <a href="${pageContext.request.contextPath}/signup"> Create one.</a>
+              </p>
+            </div>
+          </form>
 
-                // Initialize the database
-                new org.postgresql.Driver();
-                java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
+        </div>
 
-                String username = dbUri.getUserInfo().split(":")[0];
-                String password = dbUri.getUserInfo().split(":")[1];
-                String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
-
-                con=DriverManager.getConnection(dbUrl, username, password);
-
-                //Statement stmt = con.createStatement();
-                st = con.prepareStatement("SELECT * FROM users where mobile=?  and password=?",
-                  ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                st.setString(1, request.getParameter("mobile"));
-                st.setString(2, request.getParameter("password"));
-                rs=st.executeQuery();
-
-
-                if(rs.next())
-                {
-                    out.println(rs.getString("id"));
-                    session.setAttribute("userid",rs.getString("id") );
-                    session.setAttribute("user",rs.getString("firstname")+" "+rs.getString("lastname"));
-                    session.setAttribute("mobile",rs.getString("mobile"));
-                    session.setAttribute("role",rs.getString("role"));
-                    rs.updateTimestamp("last_login",new java.sql.Timestamp(new java.util.Date().getTime()));
-                    rs.updateRow();
-                }
-                rs.close();
-                st.close();
-                con.close();
-                if((String)session.getAttribute("userid")!=null)
-                    {
-                      if(request.getParameter("redirect")==null)
-                        response.sendRedirect(request.getContextPath()+"/dashboard");
-                      else{
-                        response.sendRedirect(request.getContextPath()+request.getParameter("redirect"));
-                      }
-                    }
-                else
-                    errorMessage="Invalid Username/Password.";
-            }
-            catch (Exception e) {
-				        errorMessage="Something went wrong";
-                e.printStackTrace();
-            }
-            finally {
-
-              if (rs != null) {
-                try { rs.close(); } catch (SQLException e) { ; }
-                rs = null;
-              }
-              if (st != null) {
-                try { st.close(); } catch (SQLException e) { ; }
-                st = null;
-              }
-              if (con != null) {
-                try { con.close(); } catch (SQLException e) { ; }
-                con = null;
-              }
-            }
-        }
-        %>
-
-    <div class="nav">
-        <h1 class="wesite-name">Kishan Bandhu</h1>
-    </div>
-    <div class="container">
+      </div>
+      <div class="col-6 mobile-hidden tablet-hidden">
         <div class="image">
             <img class="farmer" src="${pageContext.request.contextPath}/assets/img/auth/farmer.png" alt="farmer">
         </div>
-
-
-		<form method="post"  class="wrap">
-            <div class="form-item">
-                <b>Mobile:</b>
-                <br>
-                <input class="input-field" type="text" name="mobile" placeholder="Mobile" id="fi1" required>
-
-            </div>
-
-            <div class="form-item">
-                <b>Password:</b>
-                <br>
-                <input class="input-field" type="password" name="password" placeholder="Password" id="fi2" required>
-            </div>
-
-            <div>
-                <input class="login" type="submit" value="Login" id="fi3">
-            </div>
-			<% if(errorMessage!=null) { %>
-            <div class="form-item error-box">
-                <p>
-                    <span>!</span>
-                    <%= errorMessage %>
-                    <% errorMessage=null; %>
-                </p>
-            </div>
-			<% } %>
-
-            <div>
-                <p>By continuing, you are agree to our
-                    <a href="${pageContext.request.contextPath}/app/auth/terms&condition.html">Conditions of Use</a>
-                    and <a href="${pageContext.request.contextPath}/app/auth/terms&condition.html">Privacy Notice</a>.</p>
-                <p>Need help?</p>
-            </div>
-            </form>
-
+      </div>
     </div>
+
 </body>
 
 </html>

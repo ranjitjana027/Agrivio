@@ -1,0 +1,169 @@
+@use '../base';
+body {
+    background-image: linear-gradient(to right,#fff ,#32b57a);
+
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Raleway', sans-serif;
+    /*position: relative;
+
+    .row{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      height: fit-content;
+    }*/
+  }
+
+  .wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 450px;
+    margin: auto;
+
+    .header{
+      width: min(400px,100%);
+      padding:0 10px;
+      text-align: center;
+      margin:2rem 0 1rem;
+
+      .logo{
+        height: 5rem;
+        display: block;
+        margin: auto;
+      }
+
+      .website-name {
+        /*margin: 20px auto 0 50px;
+        color: white;
+        margin-top: 0;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 2.5rem;*/
+        height: 5rem;
+        /*font-family: papyrus;
+        font-size: 2.5rem;
+        padding: 0.5rem;
+        color: mediumseagreen;
+        font-weight: bolder;
+        margin-top: 0;*/
+      }
+
+      .message{
+        margin-top: 0.5rem;
+        font-size: 1.25rem;
+        color: #00b3bb;
+      }
+    }
+
+
+  }
+
+  .form{
+    width: min(400px,100%);
+    display: flex;
+    flex-direction: column;
+    /*background-color: #23c58e;*/
+
+    h2{
+      padding: 0 10px;
+    }
+
+    div.form-item{
+      margin:  0.5rem 1.5rem;
+
+      .form-input{
+          margin: 0;
+      }
+    }
+
+    span{
+      font-size: 0.95rem;
+
+      a{
+        color: #054e40;
+        text-decoration: none;
+
+        &:hover{
+          text-decoration: underline;
+          color: #015a05;
+        }
+      }
+    }
+
+    #tnc + label{
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+    #tnc:checked + label{
+      opacity: 1;
+    }
+
+    .signup-redirect a{
+      color: #00b337;
+      text-decoration: none;
+
+      &:hover{
+        text-decoration: underline;
+        color: green;
+      }
+    }
+  }
+
+  .form-item.error-box {
+    background-color: white;
+    color: red;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .alert{
+    color: red;
+  }
+
+
+  .image{
+    overflow: hidden;
+
+    img.farmer {
+        width: 70%;
+        margin:15% auto 0;
+        display: block;
+    }
+  }
+  .form-btn{
+    text-align: center;
+
+    .signup-btn {
+      background: none;
+      border: 2px solid;
+      /*line-height: 1;*/
+      color: #13a719;
+      transition: 0.25s;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1.25rem;
+      text-align: center;
+      width: 100%;
+      letter-spacing: 0.1rem;
+      padding: 0.55rem;
+      outline: none;
+
+      &:hover {
+        box-shadow: 0 0 0 0 #1f6f78, inset 6em 3.5em 0 0 #13b97b;
+        color: white;
+      }
+    }
+  }
+
+
+@media (max-width:1023px) {
+  body{
+    background:#2cf7b21c;
+  }
+}

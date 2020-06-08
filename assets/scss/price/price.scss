@@ -1,0 +1,91 @@
+body{
+  background-color: white !important;
+}
+.price-content {
+  display: block;
+  margin: 2% 0;
+  .price-content-column{
+    padding: 20px 10px;
+    background-color: white;
+  }
+  .price-header{
+    font-size: x-large;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 10px 0;
+  }
+  .select-location, .arrival-date {
+    display: inline-block;
+    color: #0e5c54;
+    padding: 10px 0;
+    font-size: large;
+    letter-spacing: 0.05rem;
+  }
+  .select-location{
+    #state, #district{
+      width: 100%;
+      padding: 5px;
+    }
+  }
+  .arrival-date{
+    text-align: center;
+    #arrival-date{
+      font-size:medium;
+    }
+  }
+  .search{
+    padding: 5px;
+    width: 100%;
+  }
+  .content{
+    overflow: hidden;
+    transition: max-height 0.3s, opacity 0.3s, visibility 0.1s ease-out;
+  }
+  .collapse{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 5px;
+    margin: 1% 0;
+    cursor: pointer;
+  }
+  .collapse:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .collapse::after{
+    content: "\2212";
+    float: right;
+    margin-right: 2%;
+  }
+  .active::after{
+    content: "\002B";
+    float: right;
+    margin-right: 2%;
+  }
+  .hidden-content{
+    max-height: 0 !important;
+  }
+  .show-content{
+    max-height: 1000px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+
+    tr:hover {
+        background-color: #0e5c25a9;
+        color: snow;
+    }
+    th {
+      height: 40px;
+      color: snow;
+      background-color: #0e5c25;
+    }
+
+    td {
+      border: solid #0e5c54;
+      text-align: center;
+    }
+  }
+}

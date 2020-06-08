@@ -90,7 +90,20 @@ VALUES(
 create or replace view chat_messages AS
   select chats.*, users.firstname||' '|| users.lastname as sender_name from chats , users where chats.sender=users.id;
 
-/* article */
+/* Notifications */
+create table notifications(
+  id serial primary key,
+  content varchar(200),
+  n_time TIMESTAMPTZ default (now() at time zone 'utc'),
+  user_id integer references users(id) on delete cascade
+);
+alter table notifications
+add column read bool default false;
+insert into notifications(content,user_id)
+  values('Hello! A warm welcome from our side. For any issues kindly contact us.',1);
+insert into notifications(content,user_id)
+  values('Thanks for choosing us.',1);
+/* article renamed to crop_details  */
 create table articles(
     id serial primary key,
     name varchar(128) not null UNIQUE,
@@ -116,6 +129,8 @@ create table articles(
     intro text
 );
 
+alter table articles rename to crop_details;
+
 /* crop data */
 create table crop_info(
   id serial primary key,
@@ -128,7 +143,13 @@ insert into crop_info(name) values ('cotton');
 insert into crop_info(name) values ('maize');
 
 update crop_info set article_id=2 where id=2;
+
+alter table crop_info add column rabi boolean default false;
+alter table crop_info add column kharif boolean default false;
+alter table crop_info add column summer boolean default false;
+
 /* soil data */
+
 create table india_soil_info(
   id serial primary key,
   name varchar(128) not null
@@ -169,3 +190,44 @@ where id in
 
 create or replace view soil_crop_view AS
    select A.id as crop_id, A.name as crop_name, A.article_id, B.id as soil_id, B.name as soil_name from crop_info A, usda_soil_info B, soil_crop_mapping C where C.soil_id=B.id and C.crop_id=A.id;
+
+
+/*Plants article*/
+
+create table article(
+  id serial primary key,
+  keywords text ,
+  title varchar(200) not null,
+  content text not null
+);
+alter table article
+add column author varchar(100) not null;
+
+alter table article
+add column published_on TIMESTAMPTZ default (now() at time zone 'utc');
+
+alter table article
+add column thumbnail bytea;
+
+alter table article add  unique(title);
+
+alter table article add column type varchar(20) not null default 'GUIDE';
+
+/* articles */
+
+create table articles(
+  id serial primary key,
+  title varchar(200) not null unique,
+  content text not null,
+  keywords varchar(200),
+  author varchar(100) not null,
+  type varchar(20) not null default 'GUIDE',
+  published_on TIMESTAMPTZ default (now() at time zone 'utc'),
+  thumbnail varchar(100) not null
+);
+ alter table articles alter column thumbnail type varchar(500);
+ alter table articles alter column thumbnail drop not null;
+ insert into articles(title,content,keywords,author,type) select title,content,keywords,author,type from article where id=?;
+ alter table articles add column url varchar(100) unique;
+ alter table articles rename column url to url_path;
+ alter table articles alter column url_path set not null;
