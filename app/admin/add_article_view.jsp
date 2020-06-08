@@ -25,6 +25,14 @@
                   <label for="title">Title</label>
                   <input type="text" name="title" placeholder="Article Title" id="title" required>
                 </div>
+                <div class="form-input">
+                  <label for="other_names">Other Names</label>
+                  <input type="text" name="other_names" placeholder="add multiple name by adding ," id="other_names">
+                </div>
+                <div class="form-input">
+                  <label for="intro">Intro</label>
+                  <input type="text" name="Intro" placeholder="Introduction" id="intro">
+                </div>
             </div>
             <!-- step1 -->
             <div class="overview">

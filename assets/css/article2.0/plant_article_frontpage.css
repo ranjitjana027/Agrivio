@@ -1,0 +1,85 @@
+.plant-frontpage {
+  margin: 2% 0;
+  padding: 0 8px;
+}
+.plant-frontpage .filter-item {
+  display: block;
+  text-align: center;
+  padding: 10px;
+}
+.plant-frontpage .filter-item input {
+  width: 250px;
+  padding: 5px;
+  outline: none;
+  font-size: 16px;
+  font-family: inherit;
+}
+.plant-frontpage .filter-item input::placeholder {
+  letter-spacing: 0.02rem;
+}
+.plant-frontpage header {
+  padding: 20px 0;
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+.plant-frontpage header span {
+  font-size: 16px;
+  font-weight: 400;
+  display: block;
+  padding-top: 10px;
+}
+.plant-frontpage .parent {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.plant-frontpage .parent .custom-class {
+  padding: 5px;
+}
+.plant-frontpage .parent .custom-class .plant-article-card {
+  overflow: hidden;
+  display: block;
+}
+.plant-frontpage .parent .custom-class .plant-article-card .article-image {
+  position: relative;
+  width: 100%;
+  padding-top: 140%;
+}
+.plant-frontpage .parent .custom-class .plant-article-card .article-image img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+}
+.plant-frontpage .parent .custom-class .plant-article-card .article-image img:hover {
+  filter: brightness(1.1);
+}
+.plant-frontpage .parent .custom-class .plant-article-card .plant-name a {
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  margin-top: -50px;
+  text-transform: capitalize;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+.plant-frontpage .parent .custom-class .plant-article-card .plant-name a:hover {
+  color: #24e62c;
+}
+
+@media (max-width: 767px) {
+  .plant-frontpage .parent {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
+
+/*# sourceMappingURL=plant_article_frontpage.css.map */

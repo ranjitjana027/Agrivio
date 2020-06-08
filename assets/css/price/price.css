@@ -1,0 +1,90 @@
+@charset "UTF-8";
+body {
+  background-color: white !important;
+}
+
+.price-content {
+  display: block;
+  margin: 2% 0;
+}
+.price-content .price-content-column {
+  padding: 20px 10px;
+  background-color: white;
+}
+.price-content .price-header {
+  font-size: x-large;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 10px 0;
+}
+.price-content .select-location, .price-content .arrival-date {
+  display: inline-block;
+  color: #0e5c54;
+  padding: 10px 0;
+  font-size: large;
+  letter-spacing: 0.05rem;
+}
+.price-content .select-location #state, .price-content .select-location #district {
+  width: 100%;
+  padding: 5px;
+}
+.price-content .arrival-date {
+  text-align: center;
+}
+.price-content .arrival-date #arrival-date {
+  font-size: medium;
+}
+.price-content .search {
+  padding: 5px;
+  width: 100%;
+}
+.price-content .content {
+  overflow: hidden;
+  transition: max-height 0.3s, opacity 0.3s, visibility 0.1s ease-out;
+}
+.price-content .collapse {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 5px;
+  margin: 1% 0;
+  cursor: pointer;
+}
+.price-content .collapse:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.price-content .collapse::after {
+  content: "−";
+  float: right;
+  margin-right: 2%;
+}
+.price-content .active::after {
+  content: "+";
+  float: right;
+  margin-right: 2%;
+}
+.price-content .hidden-content {
+  max-height: 0 !important;
+}
+.price-content .show-content {
+  max-height: 1000px;
+}
+.price-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: auto;
+}
+.price-content table tr:hover {
+  background-color: #0e5c25a9;
+  color: snow;
+}
+.price-content table th {
+  height: 40px;
+  color: snow;
+  background-color: #0e5c25;
+}
+.price-content table td {
+  border: solid #0e5c54;
+  text-align: center;
+}
+
+/*# sourceMappingURL=price.css.map */

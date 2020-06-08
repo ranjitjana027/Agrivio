@@ -4,16 +4,16 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     //console.log(event.target)
     if(event.target.classList.contains('select')){
-        if(event.target.parentNode.querySelector('.select-options').classList.contains('show')){
-          event.target.parentNode.querySelector('.select-options').classList.remove('show');
+        if(event.target.parentNode.querySelector('.select-options').classList.contains('show-options')){
+          event.target.parentNode.querySelector('.select-options').classList.remove('show-options');
           event.target.parentNode.querySelector('.selected-option').classList.remove('option-expanded');
         }
         else{
           document.querySelectorAll('.custom-select').forEach((item, i)=>{
-            item.querySelector('.select-options').classList.remove('show');
+            item.querySelector('.select-options').classList.remove('show-options');
             item.querySelector('.selected-option').classList.remove('option-expanded');
           });
-          event.target.parentNode.querySelector('.select-options').classList.add('show');
+          event.target.parentNode.querySelector('.select-options').classList.add('show-options');
           event.target.parentNode.querySelector('.selected-option').classList.add('option-expanded');
         }
     }
@@ -21,22 +21,22 @@ document.addEventListener("DOMContentLoaded",()=>{
     {
       //console.log(event.target.parentNode.parentNode.querySelector('.select-options').style.display)
       //console.log(event.target.parentNode.parentNode.querySelector('.select-options'))
-        if(event.target.parentNode.parentNode.querySelector('.select-options').classList.contains('show')){
-          event.target.parentNode.parentNode.querySelector('.select-options').classList.remove('show');
+        if(event.target.parentNode.parentNode.querySelector('.select-options').classList.contains('show-options')){
+          event.target.parentNode.parentNode.querySelector('.select-options').classList.remove('show-options');
           event.target.parentNode.parentNode.querySelector('.selected-option').classList.remove('option-expanded');
         }
         else{
           document.querySelectorAll('.custom-select').forEach((item, i)=>{
-            item.querySelector('.select-options').classList.remove('show');
+            item.querySelector('.select-options').classList.remove('show-options');
             item.querySelector('.selected-option').classList.remove('option-expanded');
           });
-          event.target.parentNode.parentNode.querySelector('.select-options').classList.add('show');
+          event.target.parentNode.parentNode.querySelector('.select-options').classList.add('show-options');
           event.target.parentNode.parentNode.querySelector('.selected-option').classList.add('option-expanded');
         }
     }
     else {
       document.querySelectorAll('.custom-select').forEach((item, i)=>{
-        item.querySelector('.select-options').classList.remove('show');
+        item.querySelector('.select-options').classList.remove('show-options');
         item.querySelector('.selected-option').classList.remove('option-expanded');
       });
     }
@@ -85,12 +85,12 @@ document.querySelectorAll('.custom-select').forEach((item, i) => {
       };
   });
   /*item.querySelector('.select').onclick=()=>{
-    if(!item.querySelector('.select-options').classList.contains('show')){
-      item.querySelector('.select-options').classList.add('show');
+    if(!item.querySelector('.select-options').classList.contains('show-options')){
+      item.querySelector('.select-options').classList.add('show-options');
       item.querySelector('.selected-option').classList.add('option-expanded');
     }
     else{
-      item.querySelector('.select-options').classList.remove('show');
+      item.querySelector('.select-options').classList.remove('show-options');
       item.querySelector('.selected-option').classList.remove('option-expanded');
     }
 

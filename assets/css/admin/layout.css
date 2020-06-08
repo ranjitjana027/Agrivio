@@ -97,7 +97,7 @@ svg{
   max-height: 100%;
 }
 .grid-header{
-
+  z-index: 1;
   display: grid;
   grid-template-columns: 60px auto 150px;
   grid-gap: 5px;

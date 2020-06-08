@@ -1,0 +1,49 @@
+.form-input {
+  display: block;
+  position: relative;
+  margin: 10px;
+  height: auto;
+
+  input {
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.75rem;
+    border: solid 1px;
+    border-radius: 5px;
+    outline: none;
+    transition: padding 0.1s;
+    letter-spacing: 0.05rem;
+
+    &:focus {
+      box-shadow: 0 0 3px 0px green;
+    }
+
+    &::placeholder {
+      color: transparent;
+    }
+  }
+
+  label {
+    position: absolute;
+    display: block;
+    padding: 0.75rem;
+    width: fit-content;
+    color: #3c3535cf;
+    top: 0;
+    transition: padding 0.1s;
+    letter-spacing: 0.05rem;
+    cursor: text;
+    user-select: none;
+  }
+}
+
+
+.focus {
+  padding: 1.25rem 0.75rem 0.25rem !important;
+}
+
+.input-focus {
+  padding: 0.25rem 0.75rem !important;
+  font-size: 0.8rem !important;
+  /*font-weight: 100 !important;*/
+}

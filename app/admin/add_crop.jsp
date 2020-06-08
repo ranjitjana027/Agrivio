@@ -58,6 +58,16 @@ if(request.getMethod().equals("POST"))
       System.out.println("running1");
       String[] soils=request.getParameterValues("soils[]");
       java.util.List<Integer> soil_ids=new java.util.ArrayList<>();
+      if(!((String)request.getParameter("indian_name")).equals("")){
+        ps=con.prepareStatement(" select id from soil_info where indian_name=?");
+        ps.setString(1,request.getParameter("indian_name"));
+        rs=ps.executeQuery();
+        while(rs.next()){
+          soil_ids.add(rs.getInt("id"));
+        }
+        rs.close();
+        ps.close();
+      }
       if(soils!=null){
         for(String s : soils){
           ps=con.prepareStatement("select * from usda_soil_info where lower(name)=?",

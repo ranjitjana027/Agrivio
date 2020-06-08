@@ -20,12 +20,29 @@
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
   version="4.0"
-  metadata-complete="true">
+  metadata-complete="false">
 
-  <display-name>Agricultural Project</display-name>
+  <display-name>Agrivio</display-name>
   <description>
-     Welcome
+     agricultural Project
   </description>
+  <servlet>
+    <servlet-name>FileUpload</servlet-name>
+    <servlet-class>UploadFileController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileUpload</servlet-name>
+    <url-pattern>/UploadFileController</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Demo</servlet-name>
+    <jsp-file>/demo1.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Demo</servlet-name>
+    <url-pattern>/demo/*</url-pattern>
+  </servlet-mapping>
 
   <servlet>
     <servlet-name>Index</servlet-name>
@@ -108,6 +125,26 @@
     <servlet-name>ViewUsers</servlet-name>
     <url-pattern>/admin/view-users</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminChat</servlet-name>
+    <jsp-file>/app/admin/chat.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminChat</servlet-name>
+    <url-pattern>/admin/chat</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ViewChats</servlet-name>
+    <jsp-file>/app/admin/chatJSON.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewChats</servlet-name>
+    <url-pattern>/admin/view-chats</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewChats</servlet-name>
+    <url-pattern>/latest/view-chats</url-pattern>
+  </servlet-mapping>
 
   <servlet>
     <servlet-name>SignUp</servlet-name>
@@ -135,7 +172,7 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-
+ <!-- app older version-->
   <servlet>
     <servlet-name>Calendar</servlet-name>
     <jsp-file>/app/calendar/calendar.jsp</jsp-file>
@@ -144,6 +181,7 @@
     <servlet-name>Calendar</servlet-name>
     <url-pattern>/calendar</url-pattern>
   </servlet-mapping>
+  <!-- in use in new version-->
   <servlet>
     <servlet-name>FetchEvents</servlet-name>
     <jsp-file>/app/event/fetchEvents.jsp</jsp-file>
@@ -152,7 +190,7 @@
     <servlet-name>FetchEvents</servlet-name>
     <url-pattern>/calendar/events</url-pattern>
   </servlet-mapping>
-
+  <!-- -->
   <servlet>
     <servlet-name>Price</servlet-name>
     <jsp-file>/app/price/crop_price.jsp</jsp-file>
@@ -206,6 +244,7 @@
   </servlet-mapping>
 
   <!-- Article -->
+  <!--
   <servlet>
     <servlet-name>Article</servlet-name>
     <jsp-file>/app/article/article.jsp</jsp-file>
@@ -214,7 +253,173 @@
     <servlet-name>Article</servlet-name>
     <url-pattern>/article</url-pattern>
   </servlet-mapping>
+  -->
+
+  <!-- new version -->
+  <servlet>
+    <servlet-name>ArticleDashboard</servlet-name>
+    <jsp-file>/app/article/article_frontpage.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArticleDashboard</servlet-name>
+    <url-pattern>/latest/article</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>PestArticle</servlet-name>
+    <jsp-file>/app/article/pest_article.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PestArticle</servlet-name>
+    <url-pattern>/latest/article/pests/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>PlantArticle</servlet-name>
+    <jsp-file>/app/article/plant_article.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlantArticle</servlet-name>
+    <url-pattern>/latest/article/plants/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>GuideArticle</servlet-name>
+    <jsp-file>/app/article/article.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GuideArticle</servlet-name>
+    <url-pattern>/latest/article/guides/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>GuideArticle2.0All</servlet-name>
+    <jsp-file>/app/article/guide_article_frontpage.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GuideArticle2.0All</servlet-name>
+    <url-pattern>/latest/article/guides/all</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Article2.0Pests</servlet-name>
+    <jsp-file>/app/article/pest_article_frontpage.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Article2.0Pests</servlet-name>
+    <url-pattern>/latest/article/pests/all</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Article2.0Plant</servlet-name>
+    <jsp-file>/app/article/plant_article_frontpage.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Article2.0Plant</servlet-name>
+    <url-pattern>/latest/article/plants/all</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>CropPrice</servlet-name>
+    <jsp-file>/app/price/price.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CropPrice</servlet-name>
+    <url-pattern>/latest/price/crops</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>CropSuggestion2.0</servlet-name>
+    <jsp-file>/app/suggestion/suggestion.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CropSuggestion2.0</servlet-name>
+    <url-pattern>/latest/suggestion/crops</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AllEvents</servlet-name>
+    <jsp-file>/app/events/events.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllEvents</servlet-name>
+    <url-pattern>/latest/events</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AskExpert</servlet-name>
+    <jsp-file>/app/chat/chat.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AskExpert</servlet-name>
+    <url-pattern>/latest/ask-expert</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MyAccount</servlet-name>
+    <jsp-file>/app/profile/profile.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyAccount</servlet-name>
+    <url-pattern>/latest/profile</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>NotificationRead</servlet-name>
+    <jsp-file>/app/template/notification_read.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NotificationRead</servlet-name>
+    <url-pattern>/notification/read</url-pattern>
+  </servlet-mapping>
 
 
 
+  <servlet>
+      <description></description>
+      <servlet-name>UploadFile</servlet-name>
+      <jsp-file>/uploadFileWithServlet3API.jsp</jsp-file>
+      <multipart-config>
+          <max-file-size>20848820</max-file-size>
+          <max-request-size>418018841</max-request-size>
+          <file-size-threshold>1048576</file-size-threshold>
+      </multipart-config>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>UploadFile</servlet-name>
+      <url-pattern>/uploadFileWithServlet3API.jsp</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+      <description></description>
+      <servlet-name>AddArticleAPI</servlet-name>
+      <jsp-file>/add_article.jsp</jsp-file>
+      <multipart-config>
+          <max-file-size>20848820</max-file-size>
+          <max-request-size>418018841</max-request-size>
+          <file-size-threshold>1048576</file-size-threshold>
+      </multipart-config>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>AddArticleAPI</servlet-name>
+      <url-pattern>/add_article.jsp</url-pattern>
+  </servlet-mapping>
+
+
+
+  <!-- Filters oder of execution as order of mapping -->
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/latest/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>AdminFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
 </web-app>
