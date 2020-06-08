@@ -1,4 +1,4 @@
-<img src="https://agrivio.herokuapp.com/assets/img/agrivio-1.png" height="30">
+<img src="https://agrivio.herokuapp.com/assets/img/agrivio-1.png" height="50">
 
 ## Title:  A Java-based Web Application for guiding farmers on each steps of cultivation
 - ### Features:
