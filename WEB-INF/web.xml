@@ -244,6 +244,7 @@
   </servlet-mapping>
 
   <!-- Article -->
+  <!--
   <servlet>
     <servlet-name>Article</servlet-name>
     <jsp-file>/app/article/article.jsp</jsp-file>
@@ -252,11 +253,12 @@
     <servlet-name>Article</servlet-name>
     <url-pattern>/article</url-pattern>
   </servlet-mapping>
+  -->
 
   <!-- new version -->
   <servlet>
     <servlet-name>ArticleDashboard</servlet-name>
-    <jsp-file>/app2.0/article/article_frontpage.jsp</jsp-file>
+    <jsp-file>/app/article/article_frontpage.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>ArticleDashboard</servlet-name>
@@ -265,7 +267,7 @@
 
   <servlet>
     <servlet-name>PestArticle</servlet-name>
-    <jsp-file>/app2.0/article/pest_article.jsp</jsp-file>
+    <jsp-file>/app/article/pest_article.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>PestArticle</servlet-name>
@@ -274,7 +276,7 @@
 
   <servlet>
     <servlet-name>PlantArticle</servlet-name>
-    <jsp-file>/app2.0/article/plant_article.jsp</jsp-file>
+    <jsp-file>/app/article/plant_article.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>PlantArticle</servlet-name>
@@ -283,7 +285,7 @@
 
   <servlet>
     <servlet-name>GuideArticle</servlet-name>
-    <jsp-file>/app2.0/article/article.jsp</jsp-file>
+    <jsp-file>/app/article/article.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>GuideArticle</servlet-name>
@@ -292,7 +294,7 @@
 
   <servlet>
     <servlet-name>GuideArticle2.0All</servlet-name>
-    <jsp-file>/app2.0/article/guide_article_frontpage.jsp</jsp-file>
+    <jsp-file>/app/article/guide_article_frontpage.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>GuideArticle2.0All</servlet-name>
@@ -301,7 +303,7 @@
 
   <servlet>
     <servlet-name>Article2.0Pests</servlet-name>
-    <jsp-file>/app2.0/article/pest_article_frontpage.jsp</jsp-file>
+    <jsp-file>/app/article/pest_article_frontpage.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Article2.0Pests</servlet-name>
@@ -310,7 +312,7 @@
 
   <servlet>
     <servlet-name>Article2.0Plant</servlet-name>
-    <jsp-file>/app2.0/article/plant_article_frontpage.jsp</jsp-file>
+    <jsp-file>/app/article/plant_article_frontpage.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Article2.0Plant</servlet-name>
@@ -319,7 +321,7 @@
 
   <servlet>
     <servlet-name>CropPrice</servlet-name>
-    <jsp-file>/app2.0/price/price.jsp</jsp-file>
+    <jsp-file>/app/price/price.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>CropPrice</servlet-name>
@@ -328,7 +330,7 @@
 
   <servlet>
     <servlet-name>CropSuggestion2.0</servlet-name>
-    <jsp-file>/app2.0/suggestion/suggestion.jsp</jsp-file>
+    <jsp-file>/app/suggestion/suggestion.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>CropSuggestion2.0</servlet-name>
@@ -337,7 +339,7 @@
 
   <servlet>
     <servlet-name>AllEvents</servlet-name>
-    <jsp-file>/app2.0/events/events.jsp</jsp-file>
+    <jsp-file>/app/events/events.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>AllEvents</servlet-name>
@@ -346,7 +348,7 @@
 
   <servlet>
     <servlet-name>AskExpert</servlet-name>
-    <jsp-file>/app2.0/chat/chat.jsp</jsp-file>
+    <jsp-file>/app/chat/chat.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>AskExpert</servlet-name>
@@ -355,7 +357,7 @@
 
   <servlet>
     <servlet-name>MyAccount</servlet-name>
-    <jsp-file>/app2.0/profile/profile.jsp</jsp-file>
+    <jsp-file>/app/profile/profile.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>MyAccount</servlet-name>
@@ -364,7 +366,7 @@
 
   <servlet>
     <servlet-name>NotificationRead</servlet-name>
-    <jsp-file>/app2.0/template/notification_read.jsp</jsp-file>
+    <jsp-file>/app/template/notification_read.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>NotificationRead</servlet-name>

@@ -6,10 +6,10 @@ else if( session.getAttribute("role").equals("FARMER")){*/
 %>
 
 
-<jsp:include page="/app2.0/template/layout.jsp">
-  <jsp:param name="filename" value="../suggestion/suggestion_view.jsp"/>
-  <jsp:param name="cssfile" value="/assets/css/suggestion/suggestion.css" />
-  <jsp:param name="title" value="Crop Suggestion" />
+<jsp:include page="/app/template/layout.jsp">
+  <jsp:param name="filename" value="../events/events_view.jsp"/>
+  <jsp:param name="cssfile" value="/assets/css/events/events.css" />
+  <jsp:param name="title" value="All Events" />
 </jsp:include>
 
 

@@ -62,9 +62,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article Editor</title>
-    <link rel="stylesheet" href="assets/css/lib/grid.css">
-    <link rel="stylesheet" href="assets/css/lib/form-label-animation.css">
-    <script src="assets/js/lib/form-label-animation.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/grid.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/form-label-animation.css">
+    <script src="${pageContext.request.contextPath}/assets/js/lib/form-label-animation.js" charset="utf-8"></script>
     <style media="screen">
       body{
         margin: 0;
