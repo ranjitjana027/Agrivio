@@ -341,7 +341,7 @@ body {
 .page-header .header-top:before {
   content: "";
   position: absolute;
-  background-image: url("../../img/greengrass.jpg");
+  background-image: url("https://agrivio-assets.s3.amazonaws.com/layout/greengrass.jpg");
   width: 100%;
   height: 100%;
   background-position: center;
@@ -409,7 +409,8 @@ body {
   width: 100%;
   height: 100%;
   font-size: medium;
-  font-weight: lighter;
+  /*font-weight:lighter;*/
+  font-family: inherit;
 }
 .page-header .header-top .top-subheader .search-box form input:focus {
   background-color: snow;
@@ -602,7 +603,8 @@ body {
   width: 100%;
   height: 100%;
   font-size: medium;
-  font-weight: normal;
+  /*font-weight:normal;*/
+  font-family: inherit;
 }
 .page-header .header-bottom .mobile-search-bar .search-box form input:focus {
   background-color: snow;
@@ -653,6 +655,7 @@ body {
   color: snow;
   font-size: 17px;
   transition: color 0.5s, background-color 0.5s;
+  font-weight: 500;
 }
 .page-header .header-bottom .user-nav li a:hover {
   /*transform: scale3d(1.05,1.05,1.05);*/
@@ -687,6 +690,7 @@ body {
 .page-footer .footer-top ul li a {
   text-decoration: none;
   color: inherit;
+  font-weight: 500;
 }
 .page-footer .footer-bottom {
   text-align: center;

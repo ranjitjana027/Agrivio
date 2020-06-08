@@ -1,12 +1,13 @@
 <%@tag description="Layout Wrapper Tag" pageEncoding="UTF-8"%>
+<%@ attribute name="header" fragment="true" %>
 <!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title><%= request.getParameter("title")  %></title>
+    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/assets/img/favicon.svg">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/template/layout.css">
-    <link rel="stylesheet" href='${pageContext.request.contextPath}<%= request.getParameter("cssfile") %>'>
     <script src="${pageContext.request.contextPath}/assets/js/template/layout.js" charset="utf-8"></script>
+    <jsp:invoke fragment="header" />
   </head>
   <body>
     <!-- page header -->

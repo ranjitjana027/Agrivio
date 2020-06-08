@@ -18,7 +18,7 @@
   }
 }
 .connected circle {
-  fill: #F44336 !important;
+  fill: #0ef918 !important;
 }
 
 .chat-content {
@@ -139,6 +139,7 @@
   border: none;
   outline: none;
   border-radius: 5px;
+  font-family: inherit;
 }
 .chat-content .chat .input-message .submit {
   background-color: #3fb549;

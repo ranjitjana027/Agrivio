@@ -17,7 +17,7 @@
 }
 .connected {
   circle{
-    fill:#F44336 !important;
+    fill:#0ef918 !important;
   }
 }
 
@@ -163,6 +163,7 @@
               border: none;
               outline: none;
               border-radius: 5px;
+              font-family: inherit;
           }
 
           .submit{

@@ -3,7 +3,7 @@
 }
 
 .custom-select {
-  font-family: sans-serif;
+  /*font-family: sans-serif;*/
 }
 
 .option {
@@ -36,6 +36,7 @@
   position: relative;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: inherit;
 }
 
 .select-options {
@@ -54,11 +55,13 @@
   right: 10px;
   border: solid 6px transparent;
   border-color: #009688 transparent transparent transparent;
+  transition: transform 0.3s, top 0.3s;
 }
 
 .selected-option.option-expanded::after {
   top: 8px;
-  border-color: transparent transparent #009688 transparent;
+  /*border-color: transparent transparent #009688 transparent;*/
+  transform: rotate(-180deg);
 }
 
 .show-options {
@@ -313,6 +316,7 @@ body {
   outline: none;
   border: none;
   font-size: medium;
+  font-family: inherit;
 }
 .modal .modal-content .event-selection > div input::placeholder {
   color: #8dd9d1;
@@ -328,6 +332,7 @@ body {
   border-radius: 6px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
   border: none;
+  font-family: inherit;
 }
 .modal .modal-content .add-submit input:hover {
   cursor: pointer;
@@ -413,4 +418,4 @@ body {
   text-decoration: snow underline;
 }
 
-/*# sourceMappingURL=event.css.map */
+/*# sourceMappingURL=events.css.map */
