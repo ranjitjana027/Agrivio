@@ -10,25 +10,27 @@
     <c:choose>
       <c:when test="${not empty param.article_id}">
         <sql:update dataSource="${connection}" var="count">
-          update articles set title=?, author=?, content=?, keywords=?, thumbnail=?, type=? where id= ?
+          update articles set title=?, author=?, content=?, keywords=?, thumbnail=?, type=?, url_path=? where id= ?
           <sql:param value="${param.title}"/>
           <sql:param value="${param.author}" />
           <sql:param value="${param.content}" />
           <sql:param value="${param.keywords}" />
           <sql:param value="${param.thumbnail}" />
           <sql:param value="${param.type}" />
+          <sql:param value="${param.url_path}" />
           <sql:param value="${Integer.parseInt(param.article_id)}"/>
         </sql:update>
       </c:when>
       <c:otherwise>
       <sql:update dataSource="${connection}" var="count">
-        insert into articles(title,author,content,keywords,thumbnail,type) values(?,?,?,?,?,?)
+        insert into articles(title,author,content,keywords,thumbnail,type,url_path) values(?,?,?,?,?,?,?)
         <sql:param value="${param.title}"/>
         <sql:param value="${param.author}" />
         <sql:param value="${param.content}" />
         <sql:param value="${param.keywords}" />
         <sql:param value="${param.thumbnail}" />
         <sql:param value="${param.type}" />
+        <sql:param value="${param.url_path}" />
       </sql:update>
       </c:otherwise>
     </c:choose>
@@ -88,7 +90,7 @@
       .target .article-image{
         width:100%;
       }
-      .target .article-image img{
+      .target img{
         width:100%;
       }
       select{
@@ -167,7 +169,10 @@
       @media (min-width:1024px) {
         .input-area{
           margin: auto;
-          max-width:1020px;
+          max-width:95%;
+        }
+        .target{
+          height:450px;
         }
       }
       @media (max-width:1023px) and (min-width:768px) {
@@ -386,6 +391,29 @@
           <div class="target" contenteditable="true">
           ${result.rows[0].content}
           </div>
+          <div class="row">
+            <div class="col-4 col-sm-4">
+              <div class="form-input">
+                <label for="search-value">Search Value</label>
+                <input type="text" id="search-value">
+              </div>
+            </div>
+            <div class="col-4 col-sm-4">
+              <div class="form-input">
+                <label for="new-value">New Value</label>
+                <input type="text" id="new-value">
+              </div>
+            </div>
+            <div class="col-4 col-sm-4">
+              <button style="padding: 10px; margin: 0.8rem 0 0.1rem 0; cursor: pointer;" onclick = " document.querySelector('.target').innerHTML = document.querySelector('.target').innerHTML.replace( document.querySelector('#search-value').value , document.querySelector('#new-value').value )" >
+                Replace
+              </button>
+              <button style="padding: 10px; margin: 0.8rem 0 0 0.1rem; cursor: pointer;" onclick = "var text=document.querySelector('.target').innerHTML; text = text.split( document.querySelector('#search-value').value ).join(document.querySelector('#new-value').value );  document.querySelector('.target').innerHTML=text; " >
+                Replace All
+              </button>
+            </div>
+
+          </div>
         </div>
         <div class="col-4 col-sm-12 col-xs-12">
           <form  method="post" onsubmit="this.content.value=document.querySelector('.target').innerHTML; ">
@@ -402,6 +430,10 @@
               <label for="keywords">Keywords</label>
               <input type="text" id="keywords" name="keywords" value="${result.rows[0].keywords}" required>
             </div>
+            <div class="form-input">
+              <label for="url_path">URL Path</label>
+              <input type="text" id="url_path" name="url_path" value="${result.rows[0].url_path}" required pattern="[A-Za-z0-9-_]+">
+            </div>
             <div class="form-select">
               <label for="">Add Article Type : </label>
               <select class="" name="type" required>
@@ -411,10 +443,11 @@
               </select>
             </div>
 
-            <div class="add-thumbnail">
-              <label for="upload-thumbnail">Thumbnail : </label>
-              <input type="file" id="upload-thumbnail" accept="image/jpeg, image/png" onchange="uploadThumbnail();" ${empty result.rows[0].thumbnail?'required':''}>
-              <input type="text" name="thumbnail" value="${result.rows[0].thumbnail}">
+            <div class="form-input add-thumbnail">
+              <label for="upload-thumbnail">Thumbnail URL </label>
+              <input type="text" name="thumbnail" value="${result.rows[0].thumbnail}" readonly>
+              <input hidden type="file" id="upload-thumbnail" accept="image/jpeg, image/png" onchange="uploadThumbnail();" ${empty result.rows[0].thumbnail?'required':''}>
+
             </div>
             <input hidden name="article_id" value=${result.rows[0].id}>
             <input hidden  name="content" value="">

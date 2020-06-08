@@ -37,7 +37,7 @@
 
   <servlet>
     <servlet-name>Demo</servlet-name>
-    <jsp-file>/demo.jsp</jsp-file>
+    <jsp-file>/demo1.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Demo</servlet-name>
@@ -172,7 +172,7 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-
+ <!-- app older version-->
   <servlet>
     <servlet-name>Calendar</servlet-name>
     <jsp-file>/app/calendar/calendar.jsp</jsp-file>
@@ -181,6 +181,7 @@
     <servlet-name>Calendar</servlet-name>
     <url-pattern>/calendar</url-pattern>
   </servlet-mapping>
+  <!-- in use in new version-->
   <servlet>
     <servlet-name>FetchEvents</servlet-name>
     <jsp-file>/app/event/fetchEvents.jsp</jsp-file>
@@ -189,7 +190,7 @@
     <servlet-name>FetchEvents</servlet-name>
     <url-pattern>/calendar/events</url-pattern>
   </servlet-mapping>
-
+  <!-- -->
   <servlet>
     <servlet-name>Price</servlet-name>
     <jsp-file>/app/price/crop_price.jsp</jsp-file>
@@ -268,7 +269,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>PestArticle</servlet-name>
-    <url-pattern>/latest/article/pests</url-pattern>
+    <url-pattern>/latest/article/pests/*</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -277,7 +278,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>PlantArticle</servlet-name>
-    <url-pattern>/latest/article/plants</url-pattern>
+    <url-pattern>/latest/article/plants/*</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -286,7 +287,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>GuideArticle</servlet-name>
-    <url-pattern>/latest/article/guides</url-pattern>
+    <url-pattern>/latest/article/guides/*</url-pattern>
   </servlet-mapping>
 
   <servlet>

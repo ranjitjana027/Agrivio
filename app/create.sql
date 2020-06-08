@@ -226,3 +226,8 @@ create table articles(
   thumbnail varchar(100) not null
 );
  alter table articles alter column thumbnail type varchar(500);
+ alter table articles alter column thumbnail drop not null;
+ insert into articles(title,content,keywords,author,type) select title,content,keywords,author,type from article where id=?;
+ alter table articles add column url varchar(100) unique;
+ alter table articles rename column url to url_path;
+ alter table articles alter column url_path set not null;

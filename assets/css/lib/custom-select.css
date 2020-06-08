@@ -4,7 +4,7 @@
 
       }
       .custom-select{
-        font-family: sans-serif;
+        /*font-family: sans-serif;*/
       }
       .option{
         border-bottom: solid 1px;
@@ -34,6 +34,7 @@
         position: relative;
         overflow: hidden;
         text-overflow: ellipsis;
+        font-family: inherit;
       }
       .select-options{
         max-height: 0;
@@ -53,10 +54,12 @@
         right: 10px;
         border: solid 6px transparent;
         border-color: #009688 transparent transparent transparent;
+        transition: transform 0.3s, top 0.3s;
       }
       .selected-option.option-expanded::after{
         top:8px;
-        border-color: transparent transparent #009688 transparent;
+        /*border-color: transparent transparent #009688 transparent;*/
+        transform: rotate(-180deg);
       }
       .show-options{
         max-height: 100vh !important;
