@@ -4,7 +4,7 @@ if( session.getAttribute("userid")==null || !session.getAttribute("role").equals
 else {
 %>
 <div class="">
-  <h2>Admin Panel</h2>
+  <h2>Admin Console</h2>
   <h3><%=  request.getContextPath() %></h4>
   <ul>
     <li><a href="../admin/add-article">Add an Article</a> </li>
