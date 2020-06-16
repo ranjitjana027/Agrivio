@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded",()=>{
           if(Number(document.querySelector("#notification-count").innerHTML)>0){
             console.log("Ok")
             var request=new XMLHttpRequest();
-            request.open("POST", location.protocol+"//"+location.host+"/webProject/notification/read");
+            request.open("POST", location.protocol+"//"+location.host+"/notification/read");
             request.onload = function (){
               if(request.status==200){
                 document.querySelector("#notification-count").innerHTML="0";

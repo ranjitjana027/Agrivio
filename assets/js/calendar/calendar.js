@@ -123,7 +123,7 @@
           if(eventdata==null)
           {
             request = new XMLHttpRequest();
-            request.open("GET", location.protocol + "//" + location.host + "/webProject/calendar/events");
+            request.open("GET", location.protocol + "//" + location.host + "/calendar/events");
             request.onload = () => {
                 eventdata = JSON.parse(request.responseText)['events']
                 console.log(eventdata);
