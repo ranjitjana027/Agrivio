@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     lat = position.coords.latitude;
     lon = position.coords.longitude;
     var request=new XMLHttpRequest();
-    request.open("GET",location.protocol+"//"+location.host+"/webProject/app/API/user/set_location.jsp?lat="+lat+"&lon="+lon);
+    request.open("GET",location.protocol+"//"+location.host+"/app/API/user/set_location.jsp?lat="+lat+"&lon="+lon);
     request.onload=()=>{
       if(request.status==200)
       {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     document.querySelector('#loading-1').style.display="block";
     document.querySelector('.current-weather').style.display="none";
     var request = new XMLHttpRequest();
-    request.open("GET", location.protocol+"//"+location.host+"/webProject/app/weather/weatherJSON.jsp?lat="+lat+"&lon="+lon);
+    request.open("GET", location.protocol+"//"+location.host+"/app/weather/weatherJSON.jsp?lat="+lat+"&lon="+lon);
     request.onload = () => {
       if(request.status==200){
         var data = JSON.parse(request.responseText);
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         document.querySelector('#currTemp').innerHTML = Math.round(data.main.temp);
         document.querySelector('#feelTemp').innerHTML = Math.round(data.main.feels_like);
         document.querySelector('#desc').innerHTML = data.weather[0].description;
-        document.querySelector('#weather-icon').href.baseVal = "/webProject/assets/img/weather/" +data.weather[0].icon + "@2x.png";
+        document.querySelector('#weather-icon').href.baseVal = "/assets/img/weather/" +data.weather[0].icon + "@2x.png";
         document.querySelector('#clouds').innerHTML = data.clouds.all;
         document.querySelector('#wind-speed').innerHTML = data.wind.speed;
         /*document.querySelector('#wind-direction').innerHTML = data.wind.deg;*/
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 /*
   function currentWeather(key) {
     var request = new XMLHttpRequest();
-    request.open("GET", location.protocol+"//"+location.host+"/webProject/api/weather/current-weather?key="+key);
+    request.open("GET", location.protocol+"//"+location.host+"/api/weather/current-weather?key="+key);
     request.onload = () => {
       var data = JSON.parse(request.responseText);
       console.log(data);
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       document.querySelector('#desc').innerHTML = data[0].WeatherText;
       var wi = (Number(data[0].WeatherIcon) > 9) ? data[0].WeatherIcon : '0' + data[0].WeatherIcon;
 
-      document.querySelector('#weather-icon').href.baseVal = "/webProject/assets/img/weather/" + wi + "-s.png";
+      document.querySelector('#weather-icon').href.baseVal = "/assets/img/weather/" + wi + "-s.png";
       document.querySelector('#clouds').innerHTML = data[0].CloudCover;
       document.querySelector('#wind-speed').innerHTML = data[0].Wind.Speed.Metric.Value;
       document.querySelector('#wind-direction').innerHTML = data[0].Wind.Direction.English;
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     if(document.querySelector('#current-longitude').innerHTML!='' && document.querySelector('#current-latitude').innerHTML!='')
     {
       var request=new XMLHttpRequest();
-      request.open("GET",location.protocol+"//"+location.host+"/webProject/app/API/user/set_location.jsp?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="
+      request.open("GET",location.protocol+"//"+location.host+"/app/API/user/set_location.jsp?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="
                           +document.querySelector('#current-longitude').innerHTML);
       request.onload=()=>{
         if(request.status==200)
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     document.querySelector('#current-latitude').innerHTML=22.57;
     document.querySelector('#current-longitude').innerHTML=88.36;
     var request=new XMLHttpRequest();
-    request.open("GET",location.protocol+"//"+location.host+"/webProject/app/API/user/set_location.jsp?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="
+    request.open("GET",location.protocol+"//"+location.host+"/app/API/user/set_location.jsp?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="
                         +document.querySelector('#current-longitude').innerHTML);
     request.onload=()=>{
       if(request.status==200)
