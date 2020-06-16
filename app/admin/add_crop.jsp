@@ -105,11 +105,13 @@ if(request.getMethod().equals("POST"))
       }
 
       message="Successfully added crop info";
+      pageContext.setAttribute("message",message);
 
   }
   catch(Exception e){
       e.printStackTrace();
       error_message="Error occured while adding crop info";
+      pageContext.setAttribute("errormessage",error_message);
   }
   finally{
     if (rs!=null) {
@@ -129,10 +131,89 @@ if(request.getMethod().equals("POST"))
 
 }
 %>
-<jsp:forward page="/app/admin/layout.jsp">
-  <jsp:param name="filename" value="add_crop" />
-  <jsp:param name="errormessage" value="<%= error_message %>" />
-  <jsp:param name="message" value="<%= message %>" />
-  <jsp:param name="title" value="Add Crop Info" />
-</jsp:forward>
 <% } %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
+<c:set var="article_url_path" value="${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf('/')+1)}"/>
+<c:catch var="exception">
+  <c:set var="dbUri"  value="<%=new java.net.URI( System.getenv(\"DATABASE_URL\") ) %>"/>
+  <sql:setDataSource
+    var="connection" driver="org.postgresql.Driver" url="jdbc:postgresql://${dbUri.getHost()}:${dbUri.getPort()}${dbUri.getPath()}?sslmode=require" user="${dbUri.getUserInfo().split(\":\")[0]}" password="${dbUri.getUserInfo().split(\":\")[1]}" />
+  <sql:query dataSource="${connection}" var="soilSet">
+    select name from usda_soil_info;
+  </sql:query>
+  <sql:query dataSource="${connection}" var="indiaSoilSet">
+    select name from india_soil_info;
+  </sql:query>
+</c:catch>
+
+<c:if test="${not empty exception}" >
+  ${exception.message}
+</c:if>
+
+<t:admin-wrapper>
+  <jsp:attribute name="header">
+    <title>Add Crop Info</title>
+    <link rel="stylesheet" href='${pageContext.request.contextPath}/assets/css/admin/add_crop.css'>
+  </jsp:attribute>
+  <jsp:body>
+  <div class="page-header">
+    Add Crop Info
+  </div>
+  <form  method="post">
+    <c:if test="${ not empty errormessage}">
+      <div class="errormessage">
+        <span style="background-color: white; box-shadow: 2px 2px 10px 2px #000000; padding: 5px 15px; "> ${errormessage}.
+        <span style="background-color: white; cursor:pointer;" onclick="this.parentNode.hidden=true;"> &#10007; </span></span>
+      </div>
+    </c:if>
+    <c:if test="${ not empty message}">
+      <div class="errormessage" style="color:green;">
+        <span style="background-color: white; box-shadow: 2px 2px 10px 2px #000000; padding: 5px 15px; ">  ${message}.
+        <span style="background-color: white; cursor:pointer;" onclick="this.parentNode.hidden=true;"> &#10004; </span></span>
+      </div>
+    </c:if>
+    <div class="form-input">
+      <label for="crop_name">Crop</label>
+      <input type="text" name="crop_name" id="crop_name" placeholder="eg. rice" required>
+    </div>
+    <div class="form-input">
+      <label>Indian Soil Name</label>
+      <select  name="indian_name" class="form-select"  >
+        <option value="">Choose ...</option>
+          <c:forEach items="${indiaSoilSet.rows}" var="i">
+            <option>${i.name}</option>
+          </c:forEach>
+      </select>
+    </div>
+
+    <div class="form-input">
+
+      <label for="soils[]">Favourable Soil</label>
+      <select class="multiple-select" name="soils[]" id="soils[]" multiple >
+        <c:forEach items="${soilSet.rows}" var="i">
+          <option>${i.name}</option>
+        </c:forEach>
+      </select>
+      <div class="values">
+
+      </div>
+    </div>
+
+    <div class="form-button">
+      <div class="btn-left">
+        <button type="reset">Reset</button>
+      </div>
+      <div class="btn-right">
+        <button type="submit">Save</button>
+      </div>
+    </div>
+  </form>
+  <script src="${pageContext.request.contextPath}/assets/js/lib/multiple-select.js" charset="utf-8"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/admin/add_soil.js" charset="utf-8"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/lib/custom-select.js" charset="utf-8"></script>
+
+  </jsp:body>
+</t:admin-wrapper>

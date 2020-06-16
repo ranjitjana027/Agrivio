@@ -198,6 +198,9 @@
               <div class="account-nav hidden" >
                 <ul>
                   <li><a href="${pageContext.request.contextPath}/latest/profile">Account</a> </li>
+                  <% if( ((String)session.getAttribute("role")).equals("ADMIN") ){ %>
+                  <li><a href="${pageContext.request.contextPath}/admin/dashboard">Admin Console</a> </li>
+                  <% } %>
                   <li><a href="#">Subscription</a> </li>
                   <li><a href="${pageContext.request.contextPath}/logout">Logout</a> </li>
                 </ul>

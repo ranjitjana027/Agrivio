@@ -1,18 +1,32 @@
+<%@tag description="Admin Console Layout Wrapper Tag" pageEncoding="UTF-8"%>
+<%@ attribute name="header" fragment="true" %>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Console </title>
-    <link rel="stylesheet" href="../../assets/css/admin/layout.css">
-    <script src="../../assets/js/admin/layout.js" charset="utf-8"></script>
+    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/assets/img/favicon.svg">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/spinner.css">
+    <script src="${pageContext.request.contextPath}/assets/js/lib/spinner.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/layout.css">
+    <script src="${pageContext.request.contextPath}/assets/js/admin/layout.js" charset="utf-8"></script>
+    <jsp:invoke fragment="header" />
   </head>
   <body>
+    <div class="spinner" style="">
+      <div class="spinner-container" style="">
+        <svg height="300">
+          <ellipse id="circle1" cx="150" cy="150" r="0" stroke="snow" fill="none" />
+          <ellipse id="circle2" cx="150" cy="150" r="0" stroke="snow" fill="none" />
+          <ellipse id="circle3" cx="150" cy="150" r="0" stroke="snow" fill="none" />
+          <ellipse id="circle4" cx="150" cy="150" r="0" stroke="snow" fill="none" />
+        </svg>
+      </div>
 
+    </div>
     <div class="container">
       <!-- side bar -->
-      <div class="grid-sidebar zero-width">
-        <div class="logo sticky">
+      <div class="grid-sidebar">
+        <div class="logo ">
           <span  class="desktop-hidden tablet-hidden close" style="font-size:40px; float:right; cursor:pointer; color:red; margin:-20px -10px 0  0;" >
             &times;
           </span>
@@ -31,6 +45,9 @@
               <a href="${pageContext.request.contextPath}/admin/view-users"><i>&#xf039;</i> View all Users</a>
             </li>
             <li class="nav-item">
+              <a href="${pageContext.request.contextPath}/admin/chat"><i>&#xf039;</i> View Chats</a>
+            </li>
+            <li class="nav-item">
               <a href="${pageContext.request.contextPath}/admin/add-user"><i>&#xf039;</i> Add an User</a>
             </li >
             <li class="nav-item">
@@ -43,7 +60,7 @@
         </div>
       </div>
       <!--  header -->
-      <div class="grid-content sticky">
+      <div class="grid-content ">
         <div class="grid-header">
           <div class="nav-bar-icon">
             &#9776;
@@ -62,8 +79,10 @@
             </svg>
             <div class="user-menu">
               <ul>
-                <li><a href="#">Your Profile</a> </li>
-                <li><a href="https://www.google.com">Link2</a> </li>
+                <li><a href="${pageContext.request.contextPath}/latest/profile">Account</a> </li>
+
+                <li><a href="${pageContext.request.contextPath}/index">Exit Console</a> </li>
+
                 <li><a href="${pageContext.request.contextPath}/logout">Logout</a> </li>
               </ul>
             </div>
@@ -71,11 +90,7 @@
         </div>
         <!-- main content -->
         <div class="grid-item">
-
-            <!--jsp:include page="<%= request.getParameter(\"filename\")+\"_view.jsp\"%>" >
-            <jsp:param name="errormessage" value="<%= request.getParameter(\"errormessage\") %>" />
-            <jsp:param name="message" value="<%= request.getParameter(\"message\") %>" />
-          </jsp:include-->
+          <jsp:doBody />
         </div>
         <div class="grid-footer">
 
@@ -84,7 +99,7 @@
 
     </div>
     <script type="text/javascript">
-      document.querySelector("body > div > div.grid-content.sticky > div.grid-header > div.nav-bar-icon").onclick=document.querySelector('.close').onclick=()=>{
+      document.querySelector(" div.grid-header > div.nav-bar-icon").onclick=document.querySelector('.close').onclick=()=>{
         document.querySelector('.grid-sidebar').classList.toggle('zero-width')
       }
     </script>
