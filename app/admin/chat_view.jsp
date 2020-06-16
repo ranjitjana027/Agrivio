@@ -96,7 +96,7 @@
     // chat_messages
     function get_chats(room){
       var request=new XMLHttpRequest();
-      request.open("GET",location.protocol+"//"+location.host+"/webProject/admin/view-chats?room="+room);
+      request.open("GET",location.protocol+"//"+location.host+"/admin/view-chats?room="+room);
       request.onload=()=>{
         var data=JSON.parse(request.responseText);
         console.log(data);
@@ -159,12 +159,12 @@
         {
           if(typeof(ws)=="undefined" || ws.readyState!=1){
             ws=new WebSocket((window.location.protocol == 'http:' ? 'ws:' :'wss:') + window.location.host +
-            '/webProject/chat/' + document.querySelector('#room').value + '/' +document.querySelector('#userid').value);
+            '/chat/' + document.querySelector('#room').value + '/' +document.querySelector('#userid').value);
           }
           else{
             ws.close();
             ws=new WebSocket((window.location.protocol == 'http:' ? 'ws:' :'wss:') + window.location.host +
-            '/webProject/chat/' + document.querySelector('#room').value + '/' +document.querySelector('#userid').value);
+            '/chat/' + document.querySelector('#room').value + '/' +document.querySelector('#userid').value);
           }
 
         }
