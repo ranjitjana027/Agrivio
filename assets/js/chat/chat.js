@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded",()=>{
           {
             if(typeof(ws)=="undefined" || ws.readyState!=1)
               ws=new WebSocket((window.location.protocol == 'http:' ? 'ws:' :'wss:') + window.location.host +
-              '/webProject/chat/' + document.querySelector('#room').value + '/' +document.querySelector('#userid').value);
+              '/chat/' + document.querySelector('#room').value + '/' +document.querySelector('#userid').value);
           }
           else{
               alert("Browser doesn't support WebSocket");
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       function get_chats(room){
         var request=new XMLHttpRequest();
-        request.open("GET",location.protocol+"//"+location.host+"/webProject/latest/view-chats?room="+room);
+        request.open("GET",location.protocol+"//"+location.host+"/latest/view-chats?room="+room);
         request.onload=()=>{
           if(request.status==200){
             var data=JSON.parse(request.responseText);

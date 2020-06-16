@@ -3,7 +3,7 @@ function getPage(path,fun,title,url){
 
   document.querySelector('.spinner').style.display="block";
   var request =new XMLHttpRequest();
-  request.open("GET",location.protocol+"//"+location.host+"/webProject/app"+path);
+  request.open("GET",location.protocol+"//"+location.host+"/app"+path);
   request.onload=()=>{
     if(request.status==200){
       responseHTML=request.responseText;
@@ -23,7 +23,7 @@ function chat(title,url){
     if(window.WebSocket)
     {
         ws=new WebSocket((window.location.protocol == 'http:' ? 'ws:' :'wss:') + window.location.host +
-        '/webProject/chat/' + document.querySelector('#room').value + '/' +document.querySelector('#userid').value);
+        '/chat/' + document.querySelector('#room').value + '/' +document.querySelector('#userid').value);
     }
     else{
         alert("Browser doesn't support WebSocket");
@@ -224,7 +224,7 @@ function current_weather(){
       lat = position.coords.latitude;
       lon = position.coords.longitude;
       var request=new XMLHttpRequest();
-      request.open("GET",location.protocol+"//"+location.host+"/webProject/app/API/user/set_location.jsp?lat="+lat+"&lon="+lon);
+      request.open("GET",location.protocol+"//"+location.host+"/app/API/user/set_location.jsp?lat="+lat+"&lon="+lon);
       request.onload=()=>{
         if(request.status==200)
         {
@@ -244,7 +244,7 @@ function current_weather(){
 
     function weatherUpdate(lat, lon) {
       var request = new XMLHttpRequest();
-      request.open("GET", location.protocol+"//"+location.host+"/webProject/app/weather/weatherJSON.jsp?lat="+lat+"&lon="+lon);
+      request.open("GET", location.protocol+"//"+location.host+"/app/weather/weatherJSON.jsp?lat="+lat+"&lon="+lon);
       request.onload = () => {
         if(request.status==200){
           var data = JSON.parse(request.responseText);
@@ -252,7 +252,7 @@ function current_weather(){
           document.querySelector('#currTemp').innerHTML = Math.round(data.main.temp);
           document.querySelector('#feelTemp').innerHTML = Math.round(data.main.feels_like);
           document.querySelector('#desc').innerHTML = data.weather[0].description;
-          document.querySelector('#weather-icon').href.baseVal = "/webProject/assets/img/weather/" +data.weather[0].icon + "@2x.png";
+          document.querySelector('#weather-icon').href.baseVal = "/assets/img/weather/" +data.weather[0].icon + "@2x.png";
           document.querySelector('#clouds').innerHTML = data.clouds.all;
           document.querySelector('#wind-speed').innerHTML = data.wind.speed;
           /*document.querySelector('#wind-direction').innerHTML = data.wind.deg;*/
@@ -267,7 +267,7 @@ function current_weather(){
       if(document.querySelector('#current-longitude').innerHTML!='' && document.querySelector('#current-latitude').innerHTML!='')
       {
         var request=new XMLHttpRequest();
-        request.open("GET",location.protocol+"//"+location.host+"/webProject/app/API/user/set_location.jsp?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="
+        request.open("GET",location.protocol+"//"+location.host+"/app/API/user/set_location.jsp?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="
                             +document.querySelector('#current-longitude').innerHTML);
         request.onload=()=>{
           if(request.status==200)
@@ -286,7 +286,7 @@ function current_weather(){
       document.querySelector('#current-latitude').innerHTML=22.57;
       document.querySelector('#current-longitude').innerHTML=88.36;
       var request=new XMLHttpRequest();
-      request.open("GET",location.protocol+"//"+location.host+"/webProject/app/API/user/set_location.jsp?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="
+      request.open("GET",location.protocol+"//"+location.host+"/app/API/user/set_location.jsp?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="
                           +document.querySelector('#current-longitude').innerHTML);
       request.onload=()=>{
         if(request.status==200)
@@ -368,7 +368,7 @@ function current_weather(){
 function get_suggestion(title,url) {
   document.querySelector('#loading-2').style.display="block";
   var request=new XMLHttpRequest();
-  request.open("GET",location.protocol+"//"+location.host+"/webProject/suggestion/crop?lat="+
+  request.open("GET",location.protocol+"//"+location.host+"/suggestion/crop?lat="+
           document.querySelector('#current-latitude').innerHTML +"&lon="+
           document.querySelector('#current-longitude').innerHTML);
   request.onload=()=>{
@@ -379,7 +379,7 @@ function get_suggestion(title,url) {
           document.querySelector('.crop-suggestion').innerHTML='';
           for (var i of data.cropids) {
             var aLink=document.createElement('a');
-            aLink.href=location.protocol+"//"+location.host+"/webProject/article?id="+i.id;
+            aLink.href=location.protocol+"//"+location.host+"/article?id="+i.id;
             aLink.text="Cultivation Guide: "+i.name.replace(/^./,i.name[0].toUpperCase())
             aLink.classList.add("link-article");
             var aDiv =document.createElement('div');
@@ -531,7 +531,7 @@ function calendar_util(title,url) {
             if(eventdata==null)
             {
               request = new XMLHttpRequest();
-              request.open("GET", location.protocol + "//" + location.host + "/webProject/calendar/events");
+              request.open("GET", location.protocol + "//" + location.host + "/calendar/events");
               request.onload = () => {
                   eventdata = JSON.parse(request.responseText)['events']
                   console.log(eventdata);
@@ -879,7 +879,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     var request=new XMLHttpRequest();
     q=document.querySelector("#article-search").value;
     document.querySelector("#article-search").value="";
-    request.open("GET",location.protocol+"//"+location.host+"/webProject/search?q="+q);
+    request.open("GET",location.protocol+"//"+location.host+"/search?q="+q);
     request.onload=()=>{
       if(request.status==200){
         div1=document.createElement("div");
@@ -902,7 +902,7 @@ document.addEventListener("DOMContentLoaded",()=>{
             var aLink=document.createElement("a");
             aLink.classList.add("link-article");
             aLink.innerHTML="<h3>"+result.title+"</h3>";
-            aLink.href="/webProject/article?id="+result.id;
+            aLink.href="/article?id="+result.id;
             aLink.onclick=()=>{
               getPage("/article/article_view.jsp?id="+result.id,
               ()=>{
