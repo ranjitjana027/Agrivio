@@ -48,7 +48,7 @@
 
               <!-- Search Box for tablet and desktop -->
               <div class="search-box mobile-hidden">
-                <form action="search" id="search-form" >
+                <form action="${pageContext.request.contextPath}/search" id="search-form" >
                   <div class="inline-input" style="">
                     <input type="search" name="q" placeholder="Search...">
                   </div>
@@ -212,7 +212,7 @@
         <!-- mobile search bar -->
         <div class="mobile-search-bar" >
           <div class="search-box desktop-hidden tablet-hidden">
-            <form action="search" id="search-form-mobile" >
+            <form action="${pageContext.request.contextPath}/search" id="search-form-mobile" >
               <div class="inline-input" >
                 <input type="search" name="q"  placeholder="Search...">
               </div>

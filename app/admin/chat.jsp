@@ -3,7 +3,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 
 <c:set var="dbUri"  value="<%=new java.net.URI(System.getenv(\"DATABASE_URL\")) %>" />
-<c:catch var="exception"><sql:setDataSource var="connection" driver="org.postgresql.Driver" url="jdbc:postgresql://${dbUri.getHost()}:${dbUri.getPort()}${dbUri.getPath()}?sslmode=require" user="${dbUri.getUserInfo().split(\":\")[0]}" password="${dbUri.getUserInfo().split(\":\")[1]}"/>
+  <c:catch var="exception"><sql:setDataSource var="connection" driver="org.postgresql.Driver" url="jdbc:postgresql://${dbUri.getHost()}:${dbUri.getPort()}${dbUri.getPath()}?sslmode=require" user="${dbUri.getUserInfo().split(\":\")[0]}" password="${dbUri.getUserInfo().split(\":\")[1]}"/>
 
   <sql:query dataSource="${connection}" var="result">
     select * from farmers;
@@ -44,11 +44,11 @@
 
 
     </div>
-    <div class="chat-container mobile-hidden">
+    <div class="chat-container mobile-hidden tablet-hidden">
       <div class="chat-header transparent" id="room-name-header">
         <span id="back-arrow" class="desktop-hidden">&lArr;</span> <span id="room-name">Anonymous Guy</span>
       </div>
-      <div class="room-select-alert mobile-hidden">
+      <div class="room-select-alert mobile-hidden tablet-hidden">
         Select a user to display messages;
       </div>
       <div class="chat transparent">
@@ -91,6 +91,8 @@
         document.querySelector('.room-select-alert').classList.add("hidden");
         document.querySelector('.chat-room-selector').classList.add('mobile-hidden');
         document.querySelector('.chat-container').classList.remove('mobile-hidden');
+        document.querySelector('.chat-room-selector').classList.add('tablet-hidden');
+        document.querySelector('.chat-container').classList.remove('tablet-hidden');
 
         document.querySelector("#room").value=item.querySelector('.user-id').innerText.trim();
         document.querySelector('.chat-room').innerHTML="Loading";
@@ -103,6 +105,8 @@
   document.querySelector("#back-arrow").addEventListener("click",()=>{
     document.querySelector('.chat-room-selector').classList.remove('mobile-hidden');
     document.querySelector('.chat-container').classList.add('mobile-hidden');
+    document.querySelector('.chat-room-selector').classList.remove('tablet-hidden');
+    document.querySelector('.chat-container').classList.add('tablet-hidden');
   });
 
   // chat_messages

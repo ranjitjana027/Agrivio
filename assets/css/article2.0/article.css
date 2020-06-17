@@ -16,14 +16,13 @@ body {
   background-color: rgba(0, 0, 0, 0.05);
 }
 .article .article-header {
-  padding: 20px 0 0;
   font-size: 25px;
   font-weight: 600;
   text-transform: capitalize;
 }
 .article .article-metadata {
   font-size: 13px;
-  padding: 10px 0;
+  margin-bottom: 10px;
 }
 .article .article-image {
   position: relative;
@@ -71,7 +70,7 @@ body {
 }
 .suggestion .suggestion-header {
   font-size: 20px;
-  padding: 25px 15px;
+  padding: 15px;
 }
 .suggestion .suggestion-article {
   padding: 5px;
