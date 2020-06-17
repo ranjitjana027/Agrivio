@@ -70,7 +70,7 @@
 <head>
  	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Create an Account</title>
+	<title>Create an Account | Agrivio</title>
   <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/assets/img/favicon.svg">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/lib/form-label-animation.css">
   <script src="${pageContext.request.contextPath}/assets/js/lib/form-label-animation.js" ></script>

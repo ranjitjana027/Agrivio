@@ -412,6 +412,10 @@
     <filter-name>LoginFilter</filter-name>
     <url-pattern>/latest/*</url-pattern>
   </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/search</url-pattern>
+  </filter-mapping>
 
   <filter-mapping>
     <filter-name>LoginFilter</filter-name>

@@ -231,3 +231,4 @@ create table articles(
  alter table articles add column url varchar(100) unique;
  alter table articles rename column url to url_path;
  alter table articles alter column url_path set not null;
+ alter table articles add column snippet varchar(200);

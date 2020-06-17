@@ -7,10 +7,10 @@
   <sql:setDataSource
     var="connection" driver="org.postgresql.Driver" url="jdbc:postgresql://${dbUri.getHost()}:${dbUri.getPort()}${dbUri.getPath()}?sslmode=require" user="${dbUri.getUserInfo().split(\":\")[0]}" password="${dbUri.getUserInfo().split(\":\")[1]}" />
   <sql:query dataSource="${connection}" var="result1">
-    select title,thumbnail,content,url_path from articles where type='GUIDE' order by published_on desc limit 5;
+    select title,thumbnail,snippet,url_path from articles where type='GUIDE' order by published_on desc limit 5;
   </sql:query>
   <sql:query dataSource="${connection}" var="result2">
-    select title,thumbnail,content,url_path from articles where type='GUIDE' order by published_on limit 5;
+    select title,thumbnail,snippet,url_path from articles where type='GUIDE' order by published_on limit 5;
   </sql:query>
 </c:catch>
 
@@ -43,7 +43,7 @@
                 </a>
               </div>
               <div class="article-intro">
-                ${result1.rows[0].content}
+                ${result1.rows[0].snippet}
               </div>
             </div>
           </div>
@@ -88,7 +88,7 @@
                 </a>
               </div>
               <div class="article-intro">
-                ${result2.rows[0].content}
+                ${result2.rows[0].snippet}
               </div>
             </div>
           </div>

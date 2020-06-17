@@ -1,5 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 
 <c:if test="${pageContext.request.method=='POST' and not empty param.content and not empty param.title and not empty param.author and not empty param.keywords and not empty param.type and not empty param.thumbnail}">
@@ -11,7 +12,7 @@
     <c:choose>
       <c:when test="${not empty param.article_id}">
         <sql:update dataSource="${connection}" var="count">
-          update articles set title=?, author=?, content=?, keywords=?, thumbnail=?, type=?, url_path=? where id= ?
+          update articles set title=?, author=?, content=?, keywords=?, thumbnail=?, type=?, url_path=?, snippet=? where id= ?
           <sql:param value="${param.title}"/>
           <sql:param value="${param.author}" />
           <sql:param value="${param.content}" />
@@ -19,12 +20,13 @@
           <sql:param value="${param.thumbnail}" />
           <sql:param value="${param.type}" />
           <sql:param value="${param.url_path}" />
+          <sql:param value="${fn:substring(param.snippet,0,200)}" />
           <sql:param value="${Integer.parseInt(param.article_id)}"/>
         </sql:update>
       </c:when>
       <c:otherwise>
       <sql:update dataSource="${connection}" var="count">
-        insert into articles(title,author,content,keywords,thumbnail,type,url_path) values(?,?,?,?,?,?,?)
+        insert into articles(title,author,content,keywords,thumbnail,type,url_path,snippet) values(?,?,?,?,?,?,?,?)
         <sql:param value="${param.title}"/>
         <sql:param value="${param.author}" />
         <sql:param value="${param.content}" />
@@ -32,6 +34,7 @@
         <sql:param value="${param.thumbnail}" />
         <sql:param value="${param.type}" />
         <sql:param value="${param.url_path}" />
+        <sql:param value="${fn:substring(param.snippet,0,200)}" />
       </sql:update>
       </c:otherwise>
     </c:choose>
@@ -444,6 +447,10 @@
               <input type="text" name="thumbnail" value="${result.rows[0].thumbnail}" readonly>
               <input hidden type="file" id="upload-thumbnail" accept="image/jpeg, image/png" onchange="uploadThumbnail();" ${empty result.rows[0].thumbnail?'required':''}>
 
+            </div>
+            <div class="form-input">
+              <label for="snippet">Snippet</label>
+              <input type="text" id="snippet" name="snippet" value="${result.rows[0].snippet}" maxlength="200" >
             </div>
             <input hidden name="article_id" value=${result.rows[0].id}>
             <input hidden  name="content" value="">
