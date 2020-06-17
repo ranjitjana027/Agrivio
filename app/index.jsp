@@ -5,8 +5,9 @@ if((String)session.getAttribute("userid")!=null)
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Landing Page </title>
+		<title>Agrivio | The Smart Farming App </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/assets/img/favicon.svg">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/index.css">
 		<script src="${pageContext.request.contextPath}/assets/js/index/index.js" charset="utf-8"></script>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/spinner.css">
