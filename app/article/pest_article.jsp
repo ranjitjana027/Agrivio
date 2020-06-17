@@ -29,9 +29,14 @@
         <c:choose>
           <c:when test="${result.rowCount>0}">
             <div class="article" >
-              <div class="article-header">
+              <h1 class="article-header">
                 ${result.rows[0].title}
-              </div>
+                <c:if test="${sessionScope.role=='ADMIN'}">
+                  <span>
+                    <a href="${pageContext.request.contextPath}/admin/add-article?id=${result.rows[0].id}" style="text-decoration:none;"> &#9997;</a>
+                  </span>
+                </c:if>
+              </h1>
               <!--
               <div class="article-metadata">
                 Published on : <span> ${result.rows[0].published_on}</span>, Written by <span>${result.rows[0].author}</span>
