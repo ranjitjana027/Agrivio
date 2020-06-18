@@ -13,6 +13,7 @@ else {
     <li><a href="../admin/add-soil-info">Add Soil Info</a> </li>
     <li><a href="../admin/add-crop-info">Add Crop Info</a> </li>
     <li><a href="../admin/chat">View Chats</a> </li>
+    <li><a href="../admin/view-messages">View Messages</a> </li>
   </ul>
 </div>
 <%

@@ -645,6 +645,7 @@ body {
 }
 .page-header .header-bottom .user-nav li {
   display: inline-block;
+  flex: auto;
 }
 .page-header .header-bottom .user-nav li a {
   /*min-width: 109.5px;*/

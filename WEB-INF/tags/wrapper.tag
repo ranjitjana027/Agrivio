@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@tag description="Layout Wrapper Tag" pageEncoding="UTF-8"%>
 <%@ attribute name="header" fragment="true" %>
 <!DOCTYPE html>
@@ -103,6 +105,11 @@
                   </header>
                 </div>
                 <div class="notifications">
+                  <c:if test="${ empty sessionScope.userid}">
+                    <div class="notification">
+                      <a href="${pageContext.request.contextPath}/login">Login</a> to get access to event management and direct interaction with experts. Don't have an account, <a href="${pageContext.request.contextPath}/signup">create one</a>.
+                    </div>
+                  </c:if>
                 <%  while(rs.next()){ %>
                   <div class='notification <%= rs.getBoolean("read")?"read": ""%>' n_id='<%= rs.getString("id") %>'>
                     <%= rs.getString("content") %>
@@ -140,43 +147,6 @@
                       document.querySelector("#notification-count").classList.add("hidden")
                     }
                   </script>
-                  <!--<div class="notification">
-                    Quisque condimentum lacinia felis, ut commodo ligula rhoncus eu.
-                    Vivamus interdum purus nisl, eget pulvinar sem pellentesque nec.
-                  </div>
-                  <div class="notification">
-                    Nullam sodales est a dui laoreet, facilisis hendrerit dui commodo.
-                    Integer ac massa nibh. In sagittis nisl sed dolor vehicula, eget accumsan odio ullamcorper.
-                  </div>
-                  <div class="notification">
-                    Nulla posuere lacus eu arcu luctus mattis.
-                    Pellentesque varius nisi dui, vel convallis ligula egestas porttitor.
-                  </div>
-                  <div class="notification">
-                    Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-                    per inceptos himenaeos.
-                    Quisque tincidunt nunc eu placerat laoreet.
-                  </div>
-                  <div class="notification">
-                    Nunc erat lorem, consectetur sed viverra at, finibus ut massa.
-                    Sed ligula leo, fringilla a dapibus vel, venenatis at velit.
-                  </div>
-                  <div class="notification">
-                    Integer vel lacus malesuada, laoreet est a, convallis ipsum.
-                    Nulla tincidunt neque non dui aliquet condimentum.
-                  </div>
-                  <div class="notification">
-                    Vestibulum tincidunt volutpat tempor.
-                    Vivamus congue hendrerit iaculis.
-                  </div>
-                  <div class="notification">
-                    Praesent placerat lectus eros, a bibendum velit ullamcorper quis.
-                    Vestibulum sagittis felis sodales sagittis mattis.
-                  </div>
-                  <div class="notification">
-                    Vivamus pulvinar tortor eros, auctor eleifend tellus pellentesque in.
-                    Maecenas in placerat nisi, id euismod massa.
-                  </div>-->
                 </div>
 
               </div>
@@ -196,12 +166,20 @@
               <!-- account navigation -->
               <div class="account-nav hidden" >
                 <ul>
-                  <li><a href="${pageContext.request.contextPath}/latest/profile">Account</a> </li>
-                  <% if( ((String)session.getAttribute("role")).equals("ADMIN") ){ %>
-                  <li><a href="${pageContext.request.contextPath}/admin/dashboard">Admin Console</a> </li>
-                  <% } %>
+                  <c:if test="${not empty sessionScope.userid}">
+                    <li><a href="${pageContext.request.contextPath}/latest/profile">Account</a> </li>
+                  </c:if>
+                  <c:if test="${empty sessionScope.userid}">
+                    <li><a href="${pageContext.request.contextPath}/login">Login</a> </li>
+                    <li><a href="${pageContext.request.contextPath}/signup">Signup</a> </li>
+                  </c:if>
+                  <c:if test="${sessionScope.role=='ADMIN'}">
+                    <li><a href="${pageContext.request.contextPath}/admin/dashboard">Admin Console</a> </li>
+                  </c:if>
                   <li><a href="#">Subscription</a> </li>
-                  <li><a href="${pageContext.request.contextPath}/logout">Logout</a> </li>
+                  <c:if test="${not empty sessionScope.userid}">
+                    <li><a href="${pageContext.request.contextPath}/logout">Logout</a> </li>
+                  </c:if>
                 </ul>
               </div>
 
@@ -306,6 +284,10 @@
             <li><a href="${pageContext.request.contextPath}/latest/about-us">About</a> </li>
             <li><a href="#">Subscription</a> </li>
             <li><a href="${pageContext.request.contextPath}/latest/contact">Contact</a> </li>
+            <c:if test="${empty sessionScope.userid}">
+              <li><a href="${pageContext.request.contextPath}/login">Login</a> </li>
+              <li><a href="${pageContext.request.contextPath}/signup">Signup</a> </li>
+            </c:if>
             <li><a href="#">Terms &amp; Conditions</a> </li>
             <li><a href="#">Privacy Policy</a> </li>
           </ul>

@@ -44,6 +44,7 @@
     <servlet-name>Index</servlet-name>
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
+
   <servlet>
     <servlet-name>AboutUs</servlet-name>
     <jsp-file>/app/about_us.jsp</jsp-file>
@@ -51,6 +52,15 @@
   <servlet-mapping>
     <servlet-name>AboutUs</servlet-name>
     <url-pattern>/latest/about-us</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ContactUs</servlet-name>
+    <jsp-file>/app/contact_us.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ContactUs</servlet-name>
+    <url-pattern>/latest/contact</url-pattern>
   </servlet-mapping>
   <!-- Index -->
   <servlet>
@@ -126,6 +136,14 @@
     <url-pattern>/admin/view-users</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>ViewMessages</servlet-name>
+    <jsp-file>/app/admin/view_messages.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewMessages</servlet-name>
+    <url-pattern>/admin/view-messages</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>AdminChat</servlet-name>
     <jsp-file>/app/admin/chat.jsp</jsp-file>
   </servlet>
@@ -145,6 +163,7 @@
     <servlet-name>ViewChats</servlet-name>
     <url-pattern>/latest/view-chats</url-pattern>
   </servlet-mapping>
+
 
   <servlet>
     <servlet-name>SignUp</servlet-name>
@@ -408,14 +427,14 @@
 
 
   <!-- Filters oder of execution as order of mapping -->
-  <filter-mapping>
+  <!--<filter-mapping>
     <filter-name>LoginFilter</filter-name>
     <url-pattern>/latest/*</url-pattern>
   </filter-mapping>
   <filter-mapping>
     <filter-name>LoginFilter</filter-name>
     <url-pattern>/search</url-pattern>
-  </filter-mapping>
+  </filter-mapping>-->
 
   <filter-mapping>
     <filter-name>LoginFilter</filter-name>
