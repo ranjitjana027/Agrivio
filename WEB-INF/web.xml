@@ -35,14 +35,6 @@
     <url-pattern>/UploadFileController</url-pattern>
   </servlet-mapping>
 
-  <servlet>
-    <servlet-name>Demo</servlet-name>
-    <jsp-file>/demo1.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Demo</servlet-name>
-    <url-pattern>/demo/*</url-pattern>
-  </servlet-mapping>
 
   <servlet>
     <servlet-name>Index</servlet-name>
@@ -51,6 +43,14 @@
   <servlet-mapping>
     <servlet-name>Index</servlet-name>
     <url-pattern>/index</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AboutUs</servlet-name>
+    <jsp-file>/app/about_us.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AboutUs</servlet-name>
+    <url-pattern>/latest/about-us</url-pattern>
   </servlet-mapping>
   <!-- Index -->
   <servlet>
