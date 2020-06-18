@@ -260,10 +260,10 @@
                 <a href="${pageContext.request.contextPath}/latest/article/pests/all">Pests</a>
               </li>
               <li>
-                <a href="#">About <span class="desktop-hidden"> Website</span></a>
+                <a href="${pageContext.request.contextPath}/latest/about-us">About <span class="desktop-hidden"> Us</span></a>
               </li>
               <li>
-                <a href="#">Contact <span class="desktop-hidden"> Us</span></a>
+                <a href="${pageContext.request.contextPath}/latest/contact">Contact <span class="desktop-hidden"> Us</span></a>
               </li>
 
             </ul>
@@ -304,9 +304,9 @@
           <ul>
             <li class="footer-title">Site Navigation</li>
             <li><a href="${pageContext.request.contextPath}/index">Home</a> </li>
-            <li><a href="#">About</a> </li>
+            <li><a href="${pageContext.request.contextPath}/latest/about-us">About</a> </li>
             <li><a href="#">Subscription</a> </li>
-            <li><a href="#">Contact</a> </li>
+            <li><a href="${pageContext.request.contextPath}/latest/contact">Contact</a> </li>
             <li><a href="#">Terms &amp; Conditions</a> </li>
             <li><a href="#">Privacy Policy</a> </li>
           </ul>
