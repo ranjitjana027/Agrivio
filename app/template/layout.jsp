@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -104,6 +106,11 @@
                   </header>
                 </div>
                 <div class="notifications">
+                  <c:if test="${ empty sessionScope.userid}">
+                    <div class="notification">
+                      <a href="${pageContext.request.contextPath}/login">Login</a> to get access to event management and direct interaction with experts. Don't have an account, <a href="${pageContext.request.contextPath}/signup">create one</a>.
+                    </div>
+                  </c:if>
                 <%  while(rs.next()){ %>
                   <div class='notification <%= rs.getBoolean("read")?"read": ""%>' n_id='<%= rs.getString("id") %>'>
                     <%= rs.getString("content") %>
@@ -197,12 +204,21 @@
               <!-- account navigation -->
               <div class="account-nav hidden" >
                 <ul>
-                  <li><a href="${pageContext.request.contextPath}/latest/profile">Account</a> </li>
-                  <% if( ((String)session.getAttribute("role")).equals("ADMIN") ){ %>
-                  <li><a href="${pageContext.request.contextPath}/admin/dashboard">Admin Console</a> </li>
-                  <% } %>
+                  <c:if test="${not empty sessionScope.userid}">
+                    <li><a href="${pageContext.request.contextPath}/latest/profile">Account</a> </li>
+                  </c:if>
+                  <c:if test="${empty sessionScope.userid}">
+                    <li><a href="${pageContext.request.contextPath}/login">Login</a> </li>
+                    <li><a href="${pageContext.request.contextPath}/signup">Signup</a> </li>
+                  </c:if>
+                  <c:if test="${sessionScope.role=='ADMIN'}">
+                    <li><a href="${pageContext.request.contextPath}/admin/dashboard">Admin Console</a> </li>
+                  </c:if>
                   <li><a href="#">Subscription</a> </li>
-                  <li><a href="${pageContext.request.contextPath}/logout">Logout</a> </li>
+                  <c:if test="${not empty sessionScope.userid}">
+                    <li><a href="${pageContext.request.contextPath}/logout">Logout</a> </li>
+                  </c:if>
+
                 </ul>
               </div>
 
@@ -247,12 +263,15 @@
               <!--li>
                 <a href="/weather" id="link-forecast"><span class="desktop-hidden">Weather </span> Forecast</a>
               </li-->
+
               <li>
                 <a href="${pageContext.request.contextPath}/latest/events" ><span class="desktop-hidden">Cultivation </span> Events</a>
               </li>
               <li>
                 <a href="${pageContext.request.contextPath}/latest/ask-expert">Ask Expert</a>
               </li>
+
+
               <li>
                 <a href="${pageContext.request.contextPath}/latest/article/plants/all">Plants</a>
               </li>
@@ -307,6 +326,10 @@
             <li><a href="${pageContext.request.contextPath}/latest/about-us">About</a> </li>
             <li><a href="#">Subscription</a> </li>
             <li><a href="${pageContext.request.contextPath}/latest/contact">Contact</a> </li>
+            <c:if test="${empty sessionScope.userid}">
+              <li><a href="${pageContext.request.contextPath}/login">Login</a> </li>
+              <li><a href="${pageContext.request.contextPath}/signup">Signup</a> </li>
+            </c:if>
             <li><a href="#">Terms &amp; Conditions</a> </li>
             <li><a href="#">Privacy Policy</a> </li>
           </ul>

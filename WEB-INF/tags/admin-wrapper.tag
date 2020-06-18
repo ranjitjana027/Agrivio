@@ -48,6 +48,9 @@
               <a href="${pageContext.request.contextPath}/admin/chat"><i>&#xf039;</i> View Chats</a>
             </li>
             <li class="nav-item">
+              <a href="${pageContext.request.contextPath}/admin/view-messages"><i>&#xf039;</i> View Messages</a>
+            </li>
+            <li class="nav-item">
               <a href="${pageContext.request.contextPath}/admin/add-user"><i>&#xf039;</i> Add an User</a>
             </li >
             <li class="nav-item">

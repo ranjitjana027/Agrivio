@@ -232,3 +232,14 @@ create table articles(
  alter table articles rename column url to url_path;
  alter table articles alter column url_path set not null;
  alter table articles add column snippet varchar(200);
+
+
+/* mesages */
+create table messages(
+  name varchar(128) not null,
+  email varchar(64),
+  message text not null,
+  primary key(name,message)
+)
+alter table messages
+add column m_time TIMESTAMPTZ default (now() at time zone 'utc');

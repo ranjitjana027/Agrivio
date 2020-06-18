@@ -376,6 +376,7 @@ body{
       }
       li{
         display: inline-block;
+				flex: auto;
         a{
           /*min-width: 109.5px;*/
           text-align: center;

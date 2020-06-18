@@ -1,9 +1,5 @@
-<!--
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
--->
+
 <t:wrapper>
   <jsp:attribute name="header">
     <title>About Us</title>
@@ -66,28 +62,28 @@
         <h2>Our Team</h2>
         <div class="profiles">
           <div class="card">
-            <img src="../assets/img/download.jpg" alt="Ranjit">
+            <img src="${pageContext.request.contextPath}/assets/img/download.jpg" alt="Ranjit">
             <h2>Ranjit Jana</h2>
             <h3>Full Stack Developer</h3>
             <p>Undergraduate Student at Jadavpur University </p>
             <p><a href="mailto:ranjitjana027@gmail.com">Contact</a> </p>
           </div>
           <div class="card">
-            <img src="../assets/img/images.jpg" alt="Ranjit">
+            <img src="${pageContext.request.contextPath}/assets/img/images.jpg" alt="Ranjit">
             <h2>Manoj K Sarkar</h2>
             <h3>Full Stack Developer</h3>
             <p>Undergraduate Student at Jadavpur University </p>
             <p><a href="mailto:wakeupmanoj123@gmail.com">Contact</a> </p>
           </div>
           <div class="card">
-            <img src="../assets/img/download (1).jpg" alt="Ranjit">
+            <img src="${pageContext.request.contextPath}/assets/img/download (1).jpg" alt="Ranjit">
             <h2>Saikat Biswas</h2>
             <h3>Full Stack Developer</h3>
             <p>Undergraduate Student at Jadavpur University </p>
             <p><a href="mailto:jusaikat2021@gmail.com">Contact</a> </p>
           </div>
           <div class="card">
-            <img src="../assets/img/images (1).jpg" alt="Ranjit">
+            <img src="${pageContext.request.contextPath}/assets/img/images (1).jpg" alt="Ranjit">
             <h2>Indranil Mandal</h2>
             <h3>Full Stack Developer</h3>
             <p>Undergraduate Student at Jadavpur University  </p>
