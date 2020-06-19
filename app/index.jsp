@@ -26,17 +26,22 @@ if((String)session.getAttribute("userid")!=null)
     </div>
   </div>
 	<div class="bgimagediv-1">
-		<div class="signin-option">
-			<a href="${pageContext.request.contextPath}/login">Sign In</a>
+		<div class="top-nav">
+			<div class="signup-option">
+				<a href="${pageContext.request.contextPath}/signup">Signup</a>
+			</div>
+			<div class="signin-option">
+				<a href="${pageContext.request.contextPath}/login">Login</a>
+			</div>
 		</div>
  		<div class="caption">
  			<div class="logo">
  				<img src="${pageContext.request.contextPath}/assets/img/agrivio-2.png" alt="agrivio">
  			</div>
 			<div class="quote">It's The Smart Farming You Can See</div>
-			<div class="signup-option">
-				<a href="${pageContext.request.contextPath}/signup">
-					Create an account
+			<div class="get-started">
+				<a href="${pageContext.request.contextPath}/latest/article">
+					Get Started
 				</a>
 			</div>
  		</div>

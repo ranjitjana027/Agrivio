@@ -341,22 +341,31 @@ body .bgimagediv-1::before, html .bgimagediv-1::before {
   background-image: url("https://agrivio-assets.s3.amazonaws.com/index/bgimage1.jpg");
   background-position: center;
   background-size: cover;
-  opacity: 0.65;
+  opacity: 0.9;
   background-attachment: fixed;
 }
-body .bgimagediv-1 .signin-option a, html .bgimagediv-1 .signin-option a {
+body .bgimagediv-1 .top-nav, html .bgimagediv-1 .top-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: max(15px, 2vw) max(20px, 5vw);
+}
+body .bgimagediv-1 .top-nav a, html .bgimagediv-1 .top-nav a {
   color: snow;
   text-decoration: none;
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  font-size: 1.25rem;
+  position: relative;
+  padding: 3px max(7px, 1vw);
+  font-size: 1.05rem;
   transition: 0.3s;
+  text-transform: uppercase;
 }
-body .bgimagediv-1 .signin-option a:hover, html .bgimagediv-1 .signin-option a:hover {
+body .bgimagediv-1 .top-nav a:hover, html .bgimagediv-1 .top-nav a:hover {
   color: snow;
   top: 4.5%;
   text-decoration: underline;
+}
+body .bgimagediv-1 .top-nav .signup-option a, html .bgimagediv-1 .top-nav .signup-option a {
+  background-color: black;
 }
 body .bgimagediv-1 .caption, html .bgimagediv-1 .caption {
   text-align: center;
@@ -364,26 +373,32 @@ body .bgimagediv-1 .caption, html .bgimagediv-1 .caption {
   top: 30%;
   width: 100%;
 }
+body .bgimagediv-1 .caption .logo img, html .bgimagediv-1 .caption .logo img {
+  height: 6rem;
+}
 body .bgimagediv-1 .caption .quote, html .bgimagediv-1 .caption .quote {
-  font: 1.75rem cursive, sans-serif;
+  font-size: 1.5rem;
+  font-family: Lucida Handwriting, MV Boli, cursive, sans-serif;
   padding: 0.5rem 0;
 }
-body .bgimagediv-1 .caption .signup-option a, html .bgimagediv-1 .caption .signup-option a {
+body .bgimagediv-1 .caption .get-started a, html .bgimagediv-1 .caption .get-started a {
   text-decoration: none;
   color: #f9f9f9;
-  background: #0d8282;
+  background: #00a25f;
   width: fit-content;
   padding: 0.35rem 2rem;
   margin: auto;
   margin-top: 0.5rem;
   border-radius: 3rem;
   display: block;
-  font-size: 2rem;
-  font-family: "Raleway", sans-serif;
+  font-size: 1.75rem;
   letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  transition: 0.25s;
 }
-body .bgimagediv-1 .caption .signup-option a:hover, html .bgimagediv-1 .caption .signup-option a:hover {
-  color: #02f3a5;
+body .bgimagediv-1 .caption .get-started a:hover, html .bgimagediv-1 .caption .get-started a:hover {
+  background: #f9f9f9;
+  color: #00a25f;
 }
 body .intro, html .intro {
   padding: 2rem;
@@ -521,7 +536,7 @@ body .footer .copyright hr, html .footer .copyright hr {
   border: none;
   width: 100%;
 }
-body .footer .copyright .website-name, html .footer .copyright .website-name {
+body .website-name, html .website-name {
   font-family: disolve, sans-serif;
   font-size: 150%;
 }

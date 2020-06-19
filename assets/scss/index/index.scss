@@ -26,22 +26,32 @@ body, html{
       background-image: url('https://agrivio-assets.s3.amazonaws.com/index/bgimage1.jpg');
       background-position: center;
       background-size: cover;
-      opacity: 0.65;
+      opacity: 0.9;
       background-attachment: fixed;
     }
-    .signin-option a{
-      color:snow;
-      text-decoration:none;
-      position:absolute;
-      top:5%;
-      right:5%;
-      font-size:1.25rem;
-      transition: 0.3s;
+    .top-nav{
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: max(15px,2vw) max(20px,5vw);
 
-      &:hover{
-        color: snow;
-        top: 4.5%;
-        text-decoration: underline;
+      a{
+        color:snow;
+        text-decoration:none;
+        position:relative;
+        padding:3px max(7px,1vw);
+        font-size:1.05rem;
+        transition: 0.3s;
+        text-transform: uppercase;
+
+        &:hover{
+          color: snow;
+          top: 4.5%;
+          text-decoration: underline;
+        }
+      }
+      .signup-option a{
+        background-color: black;
       }
     }
 
@@ -50,30 +60,36 @@ body, html{
       position:absolute;
       top:30%;
       width:100%;
+      .logo img{
+        height: 6rem
+      }
 
       .quote{
-        font:1.75rem cursive, sans-serif;
+        font-size: 1.5rem;
+        font-family: Lucida Handwriting, MV Boli, cursive, sans-serif;
         padding:0.5rem 0;
       }
 
-      .signup-option{
+      .get-started{
 
         a{
           text-decoration: none;
   		    color: #f9f9f9;
-  				background: #0d8282;
+  				background: #00a25f;
   				width: fit-content;
   		    padding: 0.35rem 2rem;
   				margin: auto;
   				margin-top: 0.5rem;
   				border-radius: 3rem;
   		    display: block;
-  		    font-size: 2rem;
-  		    font-family: 'Raleway', sans-serif;
+  		    font-size: 1.75rem;
   		    letter-spacing: 0.05rem;
+          text-transform: uppercase;
+          transition: 0.25s;
 
           &:hover{
-            color: #02f3a5;
+            background: #f9f9f9;
+    				color: #00a25f;
 
           }
         }
