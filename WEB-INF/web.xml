@@ -435,6 +435,18 @@
     <filter-name>LoginFilter</filter-name>
     <url-pattern>/search</url-pattern>
   </filter-mapping>-->
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/latest/ask-expert</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/latest/events</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/latest/profile</url-pattern>
+  </filter-mapping>
 
   <filter-mapping>
     <filter-name>LoginFilter</filter-name>
