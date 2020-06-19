@@ -473,7 +473,7 @@ body {
   height: 450px;
   margin-left: 5px;
   margin-top: 255px;
-  z-index: 2;
+  z-index: 3;
   border-radius: 5px;
   box-shadow: -1px 2px 10px;
 }
@@ -530,7 +530,7 @@ body {
   position: absolute;
   margin: auto;
   max-width: 1020px;
-  z-index: 2;
+  z-index: 3;
   top: 45px;
   right: 2px;
 }
@@ -645,6 +645,7 @@ body {
 }
 .page-header .header-bottom .user-nav li {
   display: inline-block;
+  flex: auto;
 }
 .page-header .header-bottom .user-nav li a {
   /*min-width: 109.5px;*/

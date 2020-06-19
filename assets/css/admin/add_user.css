@@ -8,3 +8,7 @@
 form{
   max-width: 690px;
 }
+
+.select, .option{
+  width: 300px !important;
+}
