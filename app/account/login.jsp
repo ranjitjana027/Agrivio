@@ -103,8 +103,8 @@
             </c:if>
             <div>
                 <span>By continuing, you are agree to our
-                    <a href="${pageContext.request.contextPath}/app/auth/terms&condition.html">Conditions of Use</a>
-                    and <a href="${pageContext.request.contextPath}/app/auth/terms&condition.html">Privacy Notice</a>.</span>
+                    <a href="#">Conditions of Use</a>
+                    and <a href="#">Privacy Notice</a>.</span>
 
             </div>
             <div class="signup-redirect">

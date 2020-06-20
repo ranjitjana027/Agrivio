@@ -43,6 +43,13 @@
     height: 100%;
     overflow: auto;
 
+    .chat-header{
+      font-size: 20px;
+      padding: 10px 20px;
+      background-color: white;
+      color: black;
+    }
+
     .user-chat-room{
       display: block;
       padding: 10px ;
@@ -63,33 +70,39 @@
     flex: 1 1 400px;
     border-left:solid 1px green;
 
-    #back-arrow{
-      cursor: pointer;
-      display: inline-block;
-      padding: 0 5px;
-      font-size: 28px;
+    .chat-header{
+      font-size: 20px;
+      padding: 10px 20px;
+      background-color: white;
+      color: black;
+      display: flex;
+      align-items: center;
 
-      &:hover{
-        transform: scale3d(0.9,0.9,0.9);
+      #back-arrow{
+        cursor: pointer;
+        display: inline-block;
+        padding: 0 5px;
+        font-size: 28px;
+
+        &:hover{
+          transform: scale3d(0.9,0.9,0.9);
+        }
       }
+
+      #room-name{
+        width: 300px;
+        text-align: center;
+        display: inline-block;
+        flex: auto;
+      }
+
     }
 
-    #room-name{
-      width: 300px;
-      text-align: center;
-      display: inline-block;
-    }
 
     .room-select-alert{
       padding: 10px;
       text-align: center;
     }
-  }
-  .chat-header{
-    font-size: 20px;
-    padding: 10px 20px;
-    background-color: white;
-    color: black;
   }
 
   .chat{
