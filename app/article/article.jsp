@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 
 <c:set var="article_url_path" value="${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf('/')+1)}"/>
@@ -38,7 +39,8 @@
                 </c:if>
               </h1>
               <div class="article-metadata">
-                Published on : <span> ${result.rows[0].published_on}</span>, Written by <span>${result.rows[0].author}</span>
+                Published on : <span> <fmt:formatDate value="${result.rows[0].published_on}"
+                  pattern="dd MMM ''yy, hh:mm a z" /></span>, Written by <span>${result.rows[0].author}</span>
               </div>
               <div  class='article-image'>
                 <img src="${result.rows[0].thumbnail}" alter="thumbnail">

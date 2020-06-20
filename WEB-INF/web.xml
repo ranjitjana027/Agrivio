@@ -203,7 +203,7 @@
   <!-- in use in new version-->
   <servlet>
     <servlet-name>FetchEvents</servlet-name>
-    <jsp-file>/app/event/fetchEvents.jsp</jsp-file>
+    <jsp-file>/app/events/fetchEvents.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>FetchEvents</servlet-name>

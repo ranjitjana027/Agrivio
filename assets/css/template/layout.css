@@ -504,10 +504,18 @@ body {
 }
 .page-header .header-top .top-subheader .notification-list .notifications .notification {
   padding: 5px 10px;
+  border-bottom: solid 1px #cacaca;
 }
 .page-header .header-top .top-subheader .notification-list .notifications .notification:hover {
   background-color: rgba(0, 255, 0, 0.03);
   cursor: default;
+}
+.page-header .header-top .top-subheader .notification-list .notifications .notification:last-child {
+  border-bottom: none;
+}
+.page-header .header-top .top-subheader .notification-list .notifications .notification small {
+  display: block;
+  text-align: right;
 }
 .page-header .header-top .top-subheader .notification-list .notifications .read {
   opacity: 0.7;

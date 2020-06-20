@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@tag description="Layout Wrapper Tag" pageEncoding="UTF-8"%>
 <%@ attribute name="header" fragment="true" %>
 <!DOCTYPE html>
@@ -79,25 +80,17 @@
                 </svg>
               </div>
               <!-- notification list -->
-              <%@ tag import="java.sql.*" %>
-              <%
-                Connection con = null;
-                Statement st = null;
-                ResultSet rs = null;
-                  try {
+              <c:catch var="exception">
+                <c:set var="dbUri"  value="<%=new java.net.URI(System.getenv(\"DATABASE_URL\")) %>"/>
 
-                    // Initialize the database
-                    new org.postgresql.Driver();
-                    java.net.URI dbUri = new java.net.URI(System.getenv("DATABASE_URL"));
+                <sql:setDataSource
+                  var="connection" driver="org.postgresql.Driver" url="jdbc:postgresql://${dbUri.getHost()}:${dbUri.getPort()}${dbUri.getPath()}?sslmode=require" user="${dbUri.getUserInfo().split(\":\")[0]}" password="${dbUri.getUserInfo().split(\":\")[1]}" />
+                <sql:query dataSource="${connection}" var="result">
+                  select * from notifications where user_id=? and n_time<= (now() at time zone 'utc') order by n_time desc
+                  <sql:param value="${Integer.parseInt(sessionScope.userid)}"/>
+                </sql:query>
+              </c:catch>
 
-                    String username = dbUri.getUserInfo().split(":")[0];
-                    String password = dbUri.getUserInfo().split(":")[1];
-                    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
-
-                    con=DriverManager.getConnection(dbUrl, username, password);
-                    st=con.createStatement();
-                    rs=st.executeQuery("select * from notifications where user_id="+(String)session.getAttribute("userid")+" order by n_time desc");
-              %>
               <div class="notification-list hidden">
                 <div class="notification-header" >
                   <header>
@@ -105,49 +98,31 @@
                   </header>
                 </div>
                 <div class="notifications">
+                  <c:if test="${ empty exception}">
+                    <c:forEach var="i" items="${result.rows}" >
+                      <div class='notification ${ i.read?"read": ""}' n_id='${i.id}'>
+                        <div>${i.content}</div><small><fmt:formatDate value="${i.n_time}"
+                          timeZone="IST" pattern="dd MMM ''yy" /></small>
+                      </div>
+                    </c:forEach>
+                  </c:if>
                   <c:if test="${ empty sessionScope.userid}">
                     <div class="notification">
-                      <a href="${pageContext.request.contextPath}/login">Login</a> to get access to event management and direct interaction with experts. Don't have an account, <a href="${pageContext.request.contextPath}/signup">create one</a>.
+                      <a href="${pageContext.request.contextPath}/login">Login</a> to get access to event management and direct interaction with experts. Don''t have an account, <a href="${pageContext.request.contextPath}/signup">create one</a>.
                     </div>
                   </c:if>
-                <%  while(rs.next()){ %>
-                  <div class='notification <%= rs.getBoolean("read")?"read": ""%>' n_id='<%= rs.getString("id") %>'>
-                    <%= rs.getString("content") %>
-                  </div>
-                  <% }
-                  }
-                  catch (Exception e) {
-                      /*errorMessage="Something went wrong";*/
-                      e.printStackTrace();
-                  }
-                  finally {
-
-                    if (rs != null) {
-                      try { rs.close(); } catch (SQLException e) { ; }
-                      rs = null;
-                    }
-                    if (st != null) {
-                      try { st.close(); } catch (SQLException e) { ; }
-                      st = null;
-                    }
-                    if (con != null) {
-                      try { con.close(); } catch (SQLException e) { ; }
-                      con = null;
-                    }
-                  }
-                  %>
-                  <script>
-                    var c=0;
-                    document.querySelectorAll(".notification").forEach(item=>{
-                      if(!item.classList.contains("read"))
-                      c++;
-                    });
-                    document.querySelector("#notification-count").innerHTML=c;
-                    if(c<1){
-                      document.querySelector("#notification-count").classList.add("hidden")
-                    }
-                  </script>
                 </div>
+                <script>
+                  var c=0;
+                  document.querySelectorAll(".notification").forEach(item=>{
+                    if(!item.classList.contains("read"))
+                    c++;
+                  });
+                  document.querySelector("#notification-count").innerHTML=c;
+                  if(c<1){
+                    document.querySelector("#notification-count").classList.add("hidden")
+                  }
+                </script>
 
               </div>
 

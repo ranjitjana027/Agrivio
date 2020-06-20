@@ -215,10 +215,19 @@ body{
 
           .notification{
             padding:5px 10px;
+						border-bottom: solid 1px #cacaca;
+						
             &:hover{
               background-color: rgba(0,255,0, 0.03);
               cursor: default;
             }
+						&:last-child{
+							border-bottom: none;
+						}
+						small{
+							display: block;
+							text-align: right;
+						}
           }
 					.read{
 						opacity: 0.7;

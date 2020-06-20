@@ -73,6 +73,15 @@ values( TO_DATE('2020-03-07', 'YYYY-MM-DD'),
     'Seeding',
     '',
     1 );
+alter table events
+add column remainder boolean default false;
+
+with unique_events as ( 
+select distinct on (day,crop,eventtype) * from events )
+delete from events where id not in ( select id from unique_events);
+
+alter table events
+add constraint unique_event unique(day,crop,eventtype);
 
 create table chats
 ( id serial primary key,
@@ -103,6 +112,7 @@ insert into notifications(content,user_id)
   values('Hello! A warm welcome from our side. For any issues kindly contact us.',1);
 insert into notifications(content,user_id)
   values('Thanks for choosing us.',1);
+
 /* article renamed to crop_details  */
 create table articles(
     id serial primary key,

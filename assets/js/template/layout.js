@@ -35,12 +35,16 @@ document.addEventListener("DOMContentLoaded",()=>{
             request.open("POST", location.protocol+"//"+location.host+"/notification/read");
             request.onload = function (){
               if(request.status==200){
-                document.querySelector("#notification-count").innerHTML="0";
-                document.querySelector("#notification-count").classList.add("hidden");
+                var data=JSON.parse(request.responseText)
+                if(data.success){
+                  document.querySelector("#notification-count").innerHTML="0";
+                  document.querySelector("#notification-count").classList.add("hidden");
 
-                document.querySelectorAll(".notification").forEach(item=>{
-                  item.classList.add("read");
-                });
+                  document.querySelectorAll(".notification").forEach(item=>{
+                    item.classList.add("read");
+                  });
+                }
+
               }
             }
             var fData=new FormData();
