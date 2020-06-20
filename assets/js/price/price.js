@@ -3,6 +3,13 @@
   request.open("GET","https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001850c76ce49e246686075684ef0e11614&format=json&offset=0&limit=9999");
   request.onload=()=>{
       pdata=JSON.parse(request.responseText);
+      var options = {
+        year: '2-digit', month: 'short', day: '2-digit',
+        hour: 'numeric', minute: 'numeric',
+        hour12: true,
+        timeZone: 'UTC'
+      };
+      document.querySelector('#arrival-date').innerHTML=Intl.DateTimeFormat('en',options).format( new Date(pdata.updated_date));
       sts=(pdata["records"].map(m=>m.state))
       sts=(new Set(sts))
       console.log(sts)
