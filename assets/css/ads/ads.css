@@ -1,0 +1,14 @@
+.ad-section{
+  padding:10px 0;
+}
+.ad-section > p{
+  text-align:center;
+}
+.ads{
+  display:flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.ads > *{
+  margin: 10px;
+}

@@ -119,7 +119,7 @@
       </div>
       <div class="col-6 mobile-hidden tablet-hidden">
         <div class="image">
-            <img class="farmer" src="${pageContext.request.contextPath}/assets/img/auth/farmer.png" alt="farmer">
+            <img class="farmer" src="${pageContext.request.contextPath}/assets/img/account/farmer.png" alt="farmer">
         </div>
       </div>
     </div>

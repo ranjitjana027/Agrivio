@@ -96,6 +96,16 @@
     <servlet-name>AddUser</servlet-name>
     <url-pattern>/admin/add-user</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Ads</servlet-name>
+    <jsp-file>/app/admin/ads.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Ads</servlet-name>
+    <url-pattern>/admin/ads</url-pattern>
+  </servlet-mapping>
+
   <servlet>
     <servlet-name>AddSoil</servlet-name>
     <jsp-file>/app/admin/add_soil.jsp</jsp-file>
@@ -203,6 +213,14 @@
   <servlet-mapping>
     <servlet-name>CurrentWeather</servlet-name>
     <url-pattern>/api/weather/current-weather</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CropSuggestion</servlet-name>
+    <jsp-file>/app/suggestion/crop_suggestion.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CropSuggestion</servlet-name>
+    <url-pattern>/suggestion/crop</url-pattern>
   </servlet-mapping>
 
 
@@ -318,6 +336,15 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>BalanceSheet</servlet-name>
+    <jsp-file>/app/user/balance_sheet.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BalanceSheet</servlet-name>
+    <url-pattern>/latest/balance-sheet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>NotificationRead</servlet-name>
     <jsp-file>/app/template/notification_read.jsp</jsp-file>
   </servlet>
@@ -349,6 +376,7 @@
     <filter-name>LoginFilter</filter-name>
     <url-pattern>/latest/ask-expert</url-pattern>
     <url-pattern>/latest/events</url-pattern>
+    <url-pattern>/latest/balance-sheet</url-pattern>
     <url-pattern>/latest/profile</url-pattern>
   </filter-mapping>
 

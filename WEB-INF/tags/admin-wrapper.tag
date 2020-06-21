@@ -59,6 +59,9 @@
             <li class="nav-item">
               <a href="${pageContext.request.contextPath}/admin/add-crop-info"><i>&#xf039;</i> Add Crop Info</a>
             </li >
+            <li class="nav-item">
+              <a href="${pageContext.request.contextPath}/admin/ads"><i>&#xf039;</i> Advertisements</a>
+            </li >
           </ul>
         </div>
       </div>

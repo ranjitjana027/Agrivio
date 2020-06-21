@@ -216,7 +216,7 @@ body{
           .notification{
             padding:5px 10px;
 						border-bottom: solid 1px #cacaca;
-						
+
             &:hover{
               background-color: rgba(0,255,0, 0.03);
               cursor: default;
@@ -411,6 +411,7 @@ body{
 }
 .page-content{
   margin: auto;
+	width: 98%;
   max-width: $page-max-width;
 }
 

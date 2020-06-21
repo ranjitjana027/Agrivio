@@ -674,6 +674,7 @@ body {
 
 .page-content {
   margin: auto;
+  width: 98%;
   max-width: 1020px;
 }
 

@@ -1,9 +1,12 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 
 <t:wrapper>
   <jsp:attribute name="header">
     <title>Crop Suggestion</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/suggestion/suggestion.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ads/ads.css">
   </jsp:attribute>
   <jsp:body>
 
@@ -154,6 +157,29 @@
             </tbody>
 
           </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-xs-12 col-sm-12">
+          <div class="ad-section">
+            <p>Ads</p>
+            <div class="ads">
+              <c:catch var="exception">
+                  <c:set var="dbUri"  value="<%=new java.net.URI( System.getenv(\"DATABASE_URL\") ) %>"/>
+                  <sql:setDataSource
+                    var="connection" driver="org.postgresql.Driver" url="jdbc:postgresql://${dbUri.getHost()}:${dbUri.getPort()}${dbUri.getPath()}?sslmode=require" user="${dbUri.getUserInfo().split(\":\")[0]}" password="${dbUri.getUserInfo().split(\":\")[1]}" />
+
+                  <sql:query dataSource="${connection}" var="result">
+                    select * from ads where lower(target) like '%cropprice%' order by id limit 7;
+                  </sql:query>
+              </c:catch>
+              <c:if test="${result.rowCount>0}">
+                <c:forEach items="${result.rows}" var="i">
+                  ${i.code}
+                </c:forEach>
+              </c:if>
+            </div>
+          </div>
         </div>
       </div>
     </div>
