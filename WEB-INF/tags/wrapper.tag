@@ -142,7 +142,7 @@
               <div class="account-nav hidden" >
                 <ul>
                   <c:if test="${not empty sessionScope.userid}">
-                    <li><a href="${pageContext.request.contextPath}/latest/profile">Account</a> </li>
+                    <li><a href="${pageContext.request.contextPath}/latest/profile">My Account</a> </li>
                   </c:if>
                   <c:if test="${empty sessionScope.userid}">
                     <li><a href="${pageContext.request.contextPath}/login">Login</a> </li>
@@ -151,7 +151,7 @@
                   <c:if test="${sessionScope.role=='ADMIN'}">
                     <li><a href="${pageContext.request.contextPath}/admin/dashboard">Admin Console</a> </li>
                   </c:if>
-                  <li><a href="#">Subscription</a> </li>
+                  <li><a href="${pageContext.request.contextPath}/latest/balance-sheet">Balance Sheet</a> </li>
                   <c:if test="${not empty sessionScope.userid}">
                     <li><a href="${pageContext.request.contextPath}/logout">Logout</a> </li>
                   </c:if>

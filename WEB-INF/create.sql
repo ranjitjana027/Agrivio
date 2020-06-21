@@ -76,7 +76,7 @@ values( TO_DATE('2020-03-07', 'YYYY-MM-DD'),
 alter table events
 add column remainder boolean default false;
 
-with unique_events as ( 
+with unique_events as (
 select distinct on (day,crop,eventtype) * from events )
 delete from events where id not in ( select id from unique_events);
 
@@ -253,3 +253,27 @@ create table messages(
 )
 alter table messages
 add column m_time TIMESTAMPTZ default (now() at time zone 'utc');
+
+
+/* ads */
+ create table ads (
+   id serial primary key,
+   title varchar(200) not null unique,
+   category varchar(100) not null,
+   code text not null
+ );
+ /* values for target: 'cropprice'  */
+ alter table ads
+ rename column category to target;
+
+/* Balance Sheet */
+
+create table balance_sheet(
+  id serial primary key,
+  t_date date default CURRENT_DATE,
+  type varchar(20) check ( type in ('debit', 'credit')),
+  amount numeric not null,
+  comment text ,
+  subject varchar(100),
+  user_id integer references users(id) on delete cascade
+)

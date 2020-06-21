@@ -17,6 +17,7 @@
         <li><a href="${pageContext.request.contextPath}/admin/add-crop-info">Add Crop Info</a> </li>
         <li><a href="${pageContext.request.contextPath}/admin/chat">View Chats</a> </li>
         <li><a href="${pageContext.request.contextPath}/admin/view-messages">View Messages</a> </li>
+        <li><a href="${pageContext.request.contextPath}/admin/ads">Advertisements</a></li>
       </ul>
     </div>
   </body>
