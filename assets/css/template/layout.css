@@ -721,7 +721,7 @@ body {
   display: inline-block;
   transition: 0.3s;
 }
-.page-footer .footer-top .social-media li:not(:first-child) {
+.page-footer .footer-top .connect li:not(:first-child) {
   display: inline-block;
   padding: 5px 10px;
 }
