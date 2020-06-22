@@ -267,7 +267,7 @@
           </ul>
         </div>
         <div class="col-3 col-xs-12">
-          <ul class="social-media">
+          <ul class="connect">
             <li class="footer-title">Join Our Community</li>
             <li>
               <a href="#"><img src="${pageContext.request.contextPath}/assets/icons/social-media/facebook.png"></a>
