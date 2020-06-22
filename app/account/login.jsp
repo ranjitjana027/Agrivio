@@ -103,8 +103,8 @@
             </c:if>
             <div>
                 <span>By continuing, you are agree to our
-                    <a href="${pageContext.request.contextPath}/app/auth/terms&condition.html">Conditions of Use</a>
-                    and <a href="${pageContext.request.contextPath}/app/auth/terms&condition.html">Privacy Notice</a>.</span>
+                    <a href="#">Conditions of Use</a>
+                    and <a href="#">Privacy Notice</a>.</span>
 
             </div>
             <div class="signup-redirect">
@@ -119,7 +119,7 @@
       </div>
       <div class="col-6 mobile-hidden tablet-hidden">
         <div class="image">
-            <img class="farmer" src="${pageContext.request.contextPath}/assets/img/auth/farmer.png" alt="farmer">
+            <img class="farmer" src="${pageContext.request.contextPath}/assets/img/account/farmer.png" alt="farmer">
         </div>
       </div>
     </div>

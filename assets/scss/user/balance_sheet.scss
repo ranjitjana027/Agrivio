@@ -1,0 +1,155 @@
+.balance-sheet{
+  display: flex;
+  flex-wrap: wrap;
+
+  & > *{
+    flex:1 1 700px;
+    display: inline-block;
+  }
+
+  .crop-sheet{
+    background-color: aliceblue;
+    padding: max(10px,2vw);
+
+    h2{
+      text-transform:capitalize;
+      display:inline;
+      margin:20px;
+    }
+
+    .add-item{
+      float: right;
+      cursor: pointer;
+      font-size: 1.75rem;
+    }
+
+    table{
+      width: 100%;
+      border-collapse: collapse;
+
+      tr.debit{
+        background-color:#f3f3f3;
+      }
+
+      tr.credit {
+        background: #d8f3ed;
+      }
+
+      tr:last-child td{
+        border:none;
+      }
+
+      td,th{
+        border: solid 1px;
+        padding: 5px 10px;
+      }
+
+      td{
+
+        &:nth-child(2), &:nth-child(4){
+          text-transform: capitalize;
+        }
+
+        &:nth-child(3){
+          text-align:right;
+        }
+      }
+
+
+    }
+
+  }
+}
+
+.modal-container{
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.4);
+  animation: floatIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+
+  .modal-content{
+    margin:auto;
+    width: 95%;
+    max-width: 540px;
+    background-color: #045049;
+    color:snow;
+    padding:  1rem 1rem;
+    border-radius:5px;
+
+    .close{
+      font-size: 38px;
+      padding: 0 10px;
+      cursor: pointer;
+      float: right;
+    }
+  }
+}
+
+@keyframes floatIn {
+  from{
+    top:-200px;
+    background-color: rgba(0,0,0,0);
+    /*transform: rotate(0);*/
+  }
+  to{
+    top:0;
+    background-color: rgba(0,0,0,0);
+    /*transform: rotate(360deg);*/
+  }
+}
+
+.form-input {
+  display: flex;
+  flex-wrap:wrap;
+  align-items: center;
+  position: relative;
+  margin: 10px;
+  height: auto;
+  justify-content: flex-start;
+
+  label{
+    min-width: 100px;
+    padding: 5px;
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+  }
+
+  input[type='date'], input[type='text'], input[type='number'], select {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.75rem;
+    border: solid 1px;
+    border-radius: 5px;
+    outline: none;
+    transition: padding 0.1s;
+    letter-spacing: 0.05rem;
+    flex:auto;
+  }
+
+  input[type='submit']{
+    width: 100px;
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+  }
+
+  textarea{
+    flex:1 1 auto;
+    font-family:inherit;
+    font-size:1rem;
+  }
+}
+
+@media(max-width:767px){
+   .balance-sheet {
+     th:nth-child(2),td:nth-child(2){
+      display:none;
+    }
+   }
+
+}

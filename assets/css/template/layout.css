@@ -326,9 +326,12 @@ body {
   background-color: #fafafa;
 }
 
-.website-name {
+.website-logo {
   font-family: disolve, sans-serif;
-  font-size: 150%;
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 1rem auto;
+  width: fit-content;
 }
 
 .page-header {
@@ -504,10 +507,18 @@ body {
 }
 .page-header .header-top .top-subheader .notification-list .notifications .notification {
   padding: 5px 10px;
+  border-bottom: solid 1px #cacaca;
 }
 .page-header .header-top .top-subheader .notification-list .notifications .notification:hover {
   background-color: rgba(0, 255, 0, 0.03);
   cursor: default;
+}
+.page-header .header-top .top-subheader .notification-list .notifications .notification:last-child {
+  border-bottom: none;
+}
+.page-header .header-top .top-subheader .notification-list .notifications .notification small {
+  display: block;
+  text-align: right;
 }
 .page-header .header-top .top-subheader .notification-list .notifications .read {
   opacity: 0.7;
@@ -653,7 +664,7 @@ body {
   text-decoration: none;
   display: block;
   padding: 10px 22px;
-  color: snow;
+  color: white;
   font-size: 17px;
   transition: color 0.5s, background-color 0.5s;
   font-weight: 500;
@@ -666,13 +677,22 @@ body {
 
 .page-content {
   margin: auto;
+  width: 98%;
   max-width: 1020px;
 }
 
 .page-footer {
-  background: linear-gradient(to right, #00d28c, #13cab1);
+  background: linear-gradient(45deg, #099e7c, #06a057);
   padding-top: 20px;
-  color: aliceblue;
+  color: snow;
+}
+.page-footer img {
+  filter: invert(1);
+}
+.page-footer hr {
+  background: linear-gradient(to right, #00000000, snow, white, snow, #00000000);
+  border: none;
+  height: 1px;
 }
 .page-footer .footer-top {
   max-width: 1020px;
@@ -684,6 +704,8 @@ body {
 }
 .page-footer .footer-top ul .footer-title {
   font-weight: 700;
+  display: block;
+  font-size: 1.15rem;
 }
 .page-footer .footer-top ul li {
   padding: 5px 0;
@@ -693,11 +715,21 @@ body {
   color: inherit;
   font-weight: 500;
 }
+.page-footer .footer-top ul li a:hover {
+  color: black;
+  transform: scale(1.05);
+  display: inline-block;
+  transition: 0.3s;
+}
+.page-footer .footer-top .social-media li:not(:first-child) {
+  display: inline-block;
+  padding: 5px 10px;
+}
 .page-footer .footer-bottom {
   text-align: center;
-  height: 40px;
-  background-color: #0a7b55;
-  color: aliceblue;
+  /*height: 40px;*/
+  /*background-color: #0a7b55;*/
+  color: snow;
   padding: 10px;
 }
 
@@ -800,7 +832,6 @@ body {
   }
   .page-footer .footer-top ul .footer-title {
     text-align: center;
-    display: block;
   }
   .page-footer .footer-top ul li {
     display: inline-block;

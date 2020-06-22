@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     lat = position.coords.latitude;
     lon = position.coords.longitude;
     var request=new XMLHttpRequest();
-    request.open("GET",location.protocol+"//"+location.host+"/app/API/user/set_location.jsp?lat="+lat+"&lon="+lon);
+    request.open("GET",location.protocol+"//"+location.host+"/api/set-location?lat="+lat+"&lon="+lon);
     request.onload=()=>{
       if(request.status==200)
       {
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     /*document.querySelector('#loading-1').style.display="block";*/
     document.querySelector('.current-weather').style.display="none";
     var request = new XMLHttpRequest();
-    request.open("GET", location.protocol+"//"+location.host+"/app/weather/weatherJSON.jsp?lat="+lat+"&lon="+lon);
+    request.open("GET", location.protocol+"//"+location.host+"/api/weather/current-weather?lat="+lat+"&lon="+lon);
     request.onload = () => {
       if(request.status==200){
         var data = JSON.parse(request.responseText);
@@ -103,8 +103,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     if(document.querySelector('#current-longitude').innerHTML!='' && document.querySelector('#current-latitude').innerHTML!='')
     {
       var request=new XMLHttpRequest();
-      request.open("GET",location.protocol+"//"+location.host+"/app/API/user/set_location.jsp?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="
-                          +document.querySelector('#current-longitude').innerHTML);
+      request.open("GET",location.protocol+"//"+location.host+"/api/set-location?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="+document.querySelector('#current-longitude').innerHTML);
       request.onload=()=>{
         if(request.status==200)
         {
@@ -125,7 +124,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     document.querySelector('#current-latitude').innerHTML=22.57;
     document.querySelector('#current-longitude').innerHTML=88.36;
     var request=new XMLHttpRequest();
-    request.open("GET",location.protocol+"//"+location.host+"/app/API/user/set_location.jsp?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="
+    request.open("GET",location.protocol+"//"+location.host+"/api/set-location?lat="+document.querySelector('#current-latitude').innerHTML+"&lon="
                         +document.querySelector('#current-longitude').innerHTML);
     request.onload=()=>{
       if(request.status==200)

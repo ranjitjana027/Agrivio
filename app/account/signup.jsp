@@ -47,6 +47,15 @@
 		              <sql:param value="<%=new java.sql.Timestamp(new java.util.Date().getTime())%>" />
 		              <sql:param value="${result.rows[0].id}" />
 		            </sql:update>
+                <sql:update dataSource="${connection}">
+                  insert into notifications(content,user_id) values ( ?,?), ( ?,?);
+                  <sql:param value="<b>Hello!</b> A warm welcome from our side. For any issues kindly contact us." />
+                  <sql:param value="${Integer.parseInt(sessionScope.userid)}" />
+
+                  <sql:param value="Thanks for choosing us." />
+                  <sql:param value="${Integer.parseInt(sessionScope.userid)}" />
+
+                </sql:update>
 								<c:redirect url="/latest/article" />
 		          </c:when>
 		          <c:otherwise>
@@ -161,7 +170,7 @@
     </div>
     <div class="col-6 mobile-hidden tablet-hidden">
       <div class="image">
-          <img class="farmer" src="${pageContext.request.contextPath}/assets/img/auth/farmer.png" alt="farmer">
+          <img class="farmer" src="${pageContext.request.contextPath}/assets/img/account/farmer.png" alt="farmer">
       </div>
     </div>
   </div>

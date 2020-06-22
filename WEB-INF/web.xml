@@ -24,7 +24,7 @@
 
   <display-name>Agrivio</display-name>
   <description>
-     agricultural Project
+     Agricultural Project
   </description>
   <servlet>
     <servlet-name>FileUpload</servlet-name>
@@ -38,7 +38,7 @@
 
   <servlet>
     <servlet-name>Index</servlet-name>
-    <jsp-file>/app/index.jsp</jsp-file>
+    <jsp-file>/index.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Index</servlet-name>
@@ -64,22 +64,6 @@
   </servlet-mapping>
   <!-- Index -->
   <servlet>
-    <servlet-name>UserDashboard</servlet-name>
-    <jsp-file>/app/user/dashboard.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UserDashboard</servlet-name>
-    <url-pattern>/dashboard</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>UserProfile</servlet-name>
-    <jsp-file>/app/user/profile.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UserProfile</servlet-name>
-    <url-pattern>/profile</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>UserSearch</servlet-name>
     <jsp-file>/app/user/search.jsp</jsp-file>
   </servlet>
@@ -87,6 +71,7 @@
     <servlet-name>UserSearch</servlet-name>
     <url-pattern>/search</url-pattern>
   </servlet-mapping>
+
   <servlet>
     <servlet-name>AdminDashboard</servlet-name>
     <jsp-file>/app/admin/dashboard.jsp</jsp-file>
@@ -111,6 +96,16 @@
     <servlet-name>AddUser</servlet-name>
     <url-pattern>/admin/add-user</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Ads</servlet-name>
+    <jsp-file>/app/admin/ads.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Ads</servlet-name>
+    <url-pattern>/admin/ads</url-pattern>
+  </servlet-mapping>
+
   <servlet>
     <servlet-name>AddSoil</servlet-name>
     <jsp-file>/app/admin/add_soil.jsp</jsp-file>
@@ -191,49 +186,33 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
- <!-- app older version-->
-  <servlet>
-    <servlet-name>Calendar</servlet-name>
-    <jsp-file>/app/calendar/calendar.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Calendar</servlet-name>
-    <url-pattern>/calendar</url-pattern>
-  </servlet-mapping>
-  <!-- in use in new version-->
+
   <servlet>
     <servlet-name>FetchEvents</servlet-name>
-    <jsp-file>/app/event/fetchEvents.jsp</jsp-file>
+    <jsp-file>/app/events/fetchEvents.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>FetchEvents</servlet-name>
     <url-pattern>/calendar/events</url-pattern>
   </servlet-mapping>
-  <!-- -->
-  <servlet>
-    <servlet-name>Price</servlet-name>
-    <jsp-file>/app/price/crop_price.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Price</servlet-name>
-    <url-pattern>/crop-price</url-pattern>
-  </servlet-mapping>
 
+
+  <!-- APIs -->
   <servlet>
-    <servlet-name>Chat</servlet-name>
-    <jsp-file>/app/chat/chat.jsp</jsp-file>
+    <servlet-name>SetLcation</servlet-name>
+    <jsp-file>/app/API/user/set_location.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Chat</servlet-name>
-    <url-pattern>/ask-expert</url-pattern>
+    <servlet-name>SetLcation</servlet-name>
+    <url-pattern>/api/set-location</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>Weather</servlet-name>
-    <jsp-file>/app/weather/weather_forecast.jsp</jsp-file>
+    <servlet-name>CurrentWeather</servlet-name>
+    <jsp-file>/app/weather/weatherJSON.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Weather</servlet-name>
-    <url-pattern>/weather</url-pattern>
+    <servlet-name>CurrentWeather</servlet-name>
+    <url-pattern>/api/weather/current-weather</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>CropSuggestion</servlet-name>
@@ -244,37 +223,10 @@
     <url-pattern>/suggestion/crop</url-pattern>
   </servlet-mapping>
 
-  <!-- APIs -->
-  <servlet>
-    <servlet-name>GeoLcation</servlet-name>
-    <jsp-file>/app/API/weather/geolocation.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>GeoLcation</servlet-name>
-    <url-pattern>/api/weather/location</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>CurrentWeather</servlet-name>
-    <jsp-file>/app/API/weather/current_weather.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CurrentWeather</servlet-name>
-    <url-pattern>/api/weather/current-weather</url-pattern>
-  </servlet-mapping>
+
 
   <!-- Article -->
-  <!--
-  <servlet>
-    <servlet-name>Article</servlet-name>
-    <jsp-file>/app/article/article.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Article</servlet-name>
-    <url-pattern>/article</url-pattern>
-  </servlet-mapping>
-  -->
 
-  <!-- new version -->
   <servlet>
     <servlet-name>ArticleDashboard</servlet-name>
     <jsp-file>/app/article/article_frontpage.jsp</jsp-file>
@@ -384,6 +336,15 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>BalanceSheet</servlet-name>
+    <jsp-file>/app/user/balance_sheet.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BalanceSheet</servlet-name>
+    <url-pattern>/latest/balance-sheet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>NotificationRead</servlet-name>
     <jsp-file>/app/template/notification_read.jsp</jsp-file>
   </servlet>
@@ -392,39 +353,15 @@
     <url-pattern>/notification/read</url-pattern>
   </servlet-mapping>
 
-
-
+  <!-- Error Pages -->
   <servlet>
-      <description></description>
-      <servlet-name>UploadFile</servlet-name>
-      <jsp-file>/uploadFileWithServlet3API.jsp</jsp-file>
-      <multipart-config>
-          <max-file-size>20848820</max-file-size>
-          <max-request-size>418018841</max-request-size>
-          <file-size-threshold>1048576</file-size-threshold>
-      </multipart-config>
+    <servlet-name>AccessDeny</servlet-name>
+    <jsp-file>/app/error/access_denied.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-      <servlet-name>UploadFile</servlet-name>
-      <url-pattern>/uploadFileWithServlet3API.jsp</url-pattern>
+    <servlet-name>AccessDeny</servlet-name>
+    <url-pattern>/error/access-denied</url-pattern>
   </servlet-mapping>
-
-  <servlet>
-      <description></description>
-      <servlet-name>AddArticleAPI</servlet-name>
-      <jsp-file>/add_article.jsp</jsp-file>
-      <multipart-config>
-          <max-file-size>20848820</max-file-size>
-          <max-request-size>418018841</max-request-size>
-          <file-size-threshold>1048576</file-size-threshold>
-      </multipart-config>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>AddArticleAPI</servlet-name>
-      <url-pattern>/add_article.jsp</url-pattern>
-  </servlet-mapping>
-
-
 
   <!-- Filters oder of execution as order of mapping -->
   <!--<filter-mapping>
@@ -438,13 +375,8 @@
   <filter-mapping>
     <filter-name>LoginFilter</filter-name>
     <url-pattern>/latest/ask-expert</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>LoginFilter</filter-name>
     <url-pattern>/latest/events</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/latest/balance-sheet</url-pattern>
     <url-pattern>/latest/profile</url-pattern>
   </filter-mapping>
 
@@ -456,5 +388,23 @@
   <filter-mapping>
     <filter-name>AdminFilter</filter-name>
     <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>AccessDenyFilter</filter-name>
+    <url-pattern>/app/account/*</url-pattern>
+    <url-pattern>/app/admin/*</url-pattern>
+    <url-pattern>/app/API/*</url-pattern>
+    <url-pattern>/app/chat/*</url-pattern>
+    <url-pattern>/app/error/*</url-pattern>
+    <url-pattern>/app/events/*</url-pattern>
+    <url-pattern>/app/price/*</url-pattern>
+    <url-pattern>/app/profile/*</url-pattern>
+    <url-pattern>/app/suggestion/*</url-pattern>
+    <url-pattern>/app/template/*</url-pattern>
+    <url-pattern>/app/user/*</url-pattern>
+    <url-pattern>/app/weather/*</url-pattern>
+    <url-pattern>/app/about_us.jsp</url-pattern>
+    <url-pattern>/app/contact_us.jsp</url-pattern>
   </filter-mapping>
 </web-app>

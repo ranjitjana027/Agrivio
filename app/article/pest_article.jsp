@@ -21,6 +21,7 @@
   <jsp:attribute name="header">
     <title>${not empty result.rows[0].title? result.rows[0].title :'404 - Not Found'} - Agrivio</title>
     <link rel="stylesheet" href='${pageContext.request.contextPath}/assets/css/article2.0/article.css'>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ads/ads.css">
   </jsp:attribute>
   <jsp:body>
     <div style="margin:2% 0;">
@@ -85,6 +86,21 @@
             </c:forEach>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="ad-section">
+      <p>Ads</p>
+      <div class="ads">
+        <c:catch var="exception">
+          <sql:query dataSource="${connection}" var="result">
+            select * from ads where lower(target) like '%cropprice%' order by id limit 6;
+          </sql:query>
+        </c:catch>
+        <c:if test="${result.rowCount>0}">
+          <c:forEach items="${result.rows}" var="i">
+            ${i.code}
+          </c:forEach>
+        </c:if>
       </div>
     </div>
     </div>

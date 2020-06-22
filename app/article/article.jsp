@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 
 <c:set var="article_url_path" value="${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf('/')+1)}"/>
@@ -21,6 +22,7 @@
   <jsp:attribute name="header">
     <title>${not empty result.rows[0].title? result.rows[0].title :'404 - Not Found'} - Agrivio</title>
     <link rel="stylesheet" href='${pageContext.request.contextPath}/assets/css/article2.0/article.css'>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ads/ads.css">
   </jsp:attribute>
   <jsp:body>
     <div style="margin:2% 0;">
@@ -38,7 +40,8 @@
                 </c:if>
               </h1>
               <div class="article-metadata">
-                Published on : <span> ${result.rows[0].published_on}</span>, Written by <span>${result.rows[0].author}</span>
+                Published on : <span> <fmt:formatDate value="${result.rows[0].published_on}"
+                  pattern="dd MMM ''yy, hh:mm a z" /></span>, Written by <span>${result.rows[0].author}</span>
               </div>
               <div  class='article-image'>
                 <img src="${result.rows[0].thumbnail}" alter="thumbnail">
@@ -81,6 +84,21 @@
                 </div>
               </div>
             </c:forEach>
+          </div>
+        </div>
+        <div class="ad-section">
+          <p>Ads</p>
+          <div class="ads">
+            <c:catch var="exception">
+              <sql:query dataSource="${connection}" var="result">
+                select * from ads where lower(target) like '%cropprice%' order by id limit 4;
+              </sql:query>
+            </c:catch>
+            <c:if test="${result.rowCount>0}">
+              <c:forEach items="${result.rows}" var="i">
+                ${i.code}
+              </c:forEach>
+            </c:if>
           </div>
         </div>
       </div>

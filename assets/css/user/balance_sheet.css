@@ -1,0 +1,130 @@
+.balance-sheet {
+  display: flex;
+  flex-wrap: wrap;
+}
+.balance-sheet > * {
+  flex: 1 1 700px;
+  display: inline-block;
+}
+.balance-sheet .crop-sheet {
+  background-color: aliceblue;
+  padding: max(10px, 2vw);
+}
+.balance-sheet .crop-sheet h2 {
+  text-transform: capitalize;
+  display: inline;
+  margin: 20px;
+}
+.balance-sheet .crop-sheet .add-item {
+  float: right;
+  cursor: pointer;
+  font-size: 1.75rem;
+}
+.balance-sheet .crop-sheet table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.balance-sheet .crop-sheet table tr.debit {
+  background-color: #f3f3f3;
+}
+.balance-sheet .crop-sheet table tr.credit {
+  background: #d8f3ed;
+}
+.balance-sheet .crop-sheet table tr:last-child td {
+  border: none;
+}
+.balance-sheet .crop-sheet table td, .balance-sheet .crop-sheet table th {
+  border: solid 1px;
+  padding: 5px 10px;
+}
+.balance-sheet .crop-sheet table td:nth-child(2), .balance-sheet .crop-sheet table td:nth-child(4) {
+  text-transform: capitalize;
+}
+.balance-sheet .crop-sheet table td:nth-child(3) {
+  text-align: right;
+}
+
+.modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+  animation: floatIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+.modal-container .modal-content {
+  margin: auto;
+  width: 95%;
+  max-width: 540px;
+  background-color: #045049;
+  color: snow;
+  padding: 1rem 1rem;
+  border-radius: 5px;
+}
+.modal-container .modal-content .close {
+  font-size: 38px;
+  padding: 0 10px;
+  cursor: pointer;
+  float: right;
+}
+
+@keyframes floatIn {
+  from {
+    top: -200px;
+    background-color: rgba(0, 0, 0, 0);
+    /*transform: rotate(0);*/
+  }
+  to {
+    top: 0;
+    background-color: rgba(0, 0, 0, 0);
+    /*transform: rotate(360deg);*/
+  }
+}
+.form-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+  margin: 10px;
+  height: auto;
+  justify-content: flex-start;
+}
+.form-input label {
+  min-width: 100px;
+  padding: 5px;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+}
+.form-input input[type=date], .form-input input[type=text], .form-input input[type=number], .form-input select {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: solid 1px;
+  border-radius: 5px;
+  outline: none;
+  transition: padding 0.1s;
+  letter-spacing: 0.05rem;
+  flex: auto;
+}
+.form-input input[type=submit] {
+  width: 100px;
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+}
+.form-input textarea {
+  flex: 1 1 auto;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+  .balance-sheet th:nth-child(2), .balance-sheet td:nth-child(2) {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=balance_sheet.css.map */

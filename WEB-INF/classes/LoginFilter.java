@@ -31,7 +31,7 @@ public class LoginFilter implements Filter {
       url=(request.getQueryString()==null)?url:(url+"?"+request.getQueryString());
       response.sendRedirect(url);
     }
-    System.out.println("Login Filtered");
+    /*System.out.println("Login Filtered");*/
 
   }
 

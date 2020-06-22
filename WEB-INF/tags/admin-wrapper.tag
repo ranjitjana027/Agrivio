@@ -30,7 +30,7 @@
           <span  class="desktop-hidden tablet-hidden close" style="font-size:40px; float:right; cursor:pointer; color:red; margin:-20px -10px 0  0;" >
             &times;
           </span>
-          <img src="../../assets/img/agrivio-1.png" alt="logo" height="40">
+          <a href="${pageContext.request.contextPath}/index"><img src="../../assets/img/agrivio-1.png" alt="logo" height="40"></a>
         </div>
         <div class="">
           <!--header class="page-header">Admin Panel</header-->
@@ -58,6 +58,9 @@
             </li>
             <li class="nav-item">
               <a href="${pageContext.request.contextPath}/admin/add-crop-info"><i>&#xf039;</i> Add Crop Info</a>
+            </li >
+            <li class="nav-item">
+              <a href="${pageContext.request.contextPath}/admin/ads"><i>&#xf039;</i> Advertisements</a>
             </li >
           </ul>
         </div>
