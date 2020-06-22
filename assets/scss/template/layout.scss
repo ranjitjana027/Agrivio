@@ -1,5 +1,5 @@
 $header-bottom-bgcolor: #02b377;
-$user-nav-link-color: snow;
+$user-nav-link-color: white;
 $user-nav-link-font-size:17px;
 $user-nav-link-padding:10px;
 $user-nav-link-hover-color:#0d6d63;
@@ -11,6 +11,7 @@ $breakpoint-desktop: 1024px;
 
 @use '../base';
 
+
 body{
 	margin: 0;
 	font-family: 'Raleway', sans-serif;
@@ -18,10 +19,15 @@ body{
 	letter-spacing: 0.01rem;
 	background-color: #fafafa;
  }
- .website-name{
+ .website-logo{
 	 font-family: disolve,sans-serif;
-	 font-size: 150%;
+	 font-size: 2.5rem;
+	 text-align: center;
+	 margin: 1rem auto;
+	 width: fit-content;
+
  }
+
 .page-header{
   width: 100%;
 
@@ -416,33 +422,61 @@ body{
 }
 
 .page-footer{
-  background: linear-gradient(to right,#00d28c,#13cab1);
+  background: linear-gradient(45deg, #099e7c, #06a057);
   padding-top: 20px;
-  color:aliceblue;
+  color: snow;
+
+	img {
+		filter: invert(1);
+	}
+
+	hr{
+		background: linear-gradient(to right, #00000000,snow, white,snow,#00000000);
+    border: none;
+    height: 1px;
+	}
   .footer-top{
     max-width: $page-max-width;
     margin: auto;
+
+
     ul{
       padding:0 0 20px;
       list-style-type:none;
+
       .footer-title{
         font-weight: 700;
+				display: block;
+				font-size: 1.15rem;
       }
+
       li{
         padding: 5px 0;
         a{
           text-decoration: none;
           color: inherit;
 					font-weight: 500;
+
+					&:hover{
+						color: black;
+						transform: scale(1.05);
+    				display: inline-block;
+    				transition: 0.3s;
+					}
         }
       }
     }
+
+		.social-media li:not(:first-child){
+			display: inline-block;
+			padding: 5px 10px;
+		}
   }
   .footer-bottom{
     text-align: center;
-    height: 40px;
-    background-color: #0a7b55;
-    color: aliceblue;
+    /*height: 40px;*/
+    /*background-color: #0a7b55;*/
+    color: snow;
     padding: 10px;
   }
 
@@ -583,7 +617,6 @@ body{
 
 				.footer-title{
           text-align: center;
-          display: block;
         }
 
 				li{
