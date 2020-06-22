@@ -35,7 +35,7 @@
                       <input type="search" name="filterby-crop" class="search" placeholder="Filter by Crop Name, Variety and Price">
                     </div>
                     <div class="col-6 col-sm-6 col-xs-12 arrival-date">
-                      Last update: <span id="arrival-date">13/05/2020 </span>
+                      Last update: <span id="arrival-date">  </span>
                     </div>
                   </div>
                   <div class="district-wise-price">

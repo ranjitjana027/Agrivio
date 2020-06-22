@@ -94,7 +94,7 @@
 
     </div>
     <div>
-    <h3 onclick="document.querySelector('.modal-container').style.display='flex'"> <a style="color:cadetblue;" href="javascript:void(0)">Add Another Crop</a></h3>
+    <h3 onclick="document.querySelector('.modal-container').style.display='flex'" style="display:inline-block;"> <a style="color:cadetblue;" href="javascript:void(0)">Add Another Crop</a></h3>
     </div>
     <div class="modal-container">
       <div class="modal-content">

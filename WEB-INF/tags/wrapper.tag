@@ -234,7 +234,8 @@
       <div class="footer-top">
       <div class="row" >
         <div class="col-3 col-xs-12">
-          .
+        <img src="/assets/img/logo.svg" style="height:4rem; margin: 1rem auto; display: block;">
+          <div class="website-logo">agrivio</div>
         </div>
         <div class="col-3 col-xs-12">
           <ul>
@@ -245,8 +246,6 @@
             <!--li><a href="#">Weather Forecast</a> </li-->
             <li><a href="${pageContext.request.contextPath}/latest/events">Events</a> </li>
             <li><a href="${pageContext.request.contextPath}/latest/ask-expert">Ask Expert</a> </li>
-            <!--li><a href="#">Benificial Insects</a> </li>
-            <li><a href="#">Plant Diseases</a> </li-->
             <li><a href="${pageContext.request.contextPath}/latest/article/plants/all">Plants</a> </li>
             <li><a href="${pageContext.request.contextPath}/latest/article/pests/all">Pests</a> </li>
             <li><a href="#">Search</a> </li>
@@ -257,7 +256,7 @@
             <li class="footer-title">Site Navigation</li>
             <li><a href="${pageContext.request.contextPath}/index">Home</a> </li>
             <li><a href="${pageContext.request.contextPath}/latest/about-us">About</a> </li>
-            <li><a href="#">Subscription</a> </li>
+            <li><a href="${pageContext.request.contextPath}/latest/balance-sheet">Balance Sheet</a> </li>
             <li><a href="${pageContext.request.contextPath}/latest/contact">Contact</a> </li>
             <c:if test="${empty sessionScope.userid}">
               <li><a href="${pageContext.request.contextPath}/login">Login</a> </li>
@@ -268,21 +267,22 @@
           </ul>
         </div>
         <div class="col-3 col-xs-12">
-          <ul>
+          <ul class="social-media">
             <li class="footer-title">Join Our Community</li>
             <li>
-              <a href="#">Facebook</a>
+              <a href="#"><img src="${pageContext.request.contextPath}/assets/icons/social-media/facebook.png"></a>
             </li>
-            <li><a href="#">Twitter</a> </li>
-            <li><a href="#">Instagram</a> </li>
-            <li><a href="#">Youtube</a> </li>
-            <li><a href="#">Pinterest</a> </li>
+            <li><a href="#"><img src="${pageContext.request.contextPath}/assets/icons/social-media/twitter.png"></a> </li>
+            <li><a href="#"><img src="${pageContext.request.contextPath}/assets/icons/social-media/instagram.png"></a> </li>
+            <li><a href="https://www.youtube.com/channel/UC9AiSIADENC8Ui9lVlpFIFg" target="_blank"><img src="${pageContext.request.contextPath}/assets/icons/social-media/youtube.png"></a> </li>
+            <!--li><a href="#"><img src="${pageContext.request.contextPath}/assets/icons/social-media/pinterest.png"></a> </li-->
           </ul>
         </div>
       </div>
       </div>
+      <hr>
       <div class="footer-bottom">
-      &copy; 2020 <span class="website-name">agrivio</span>. All rights reserved.
+      &copy; 2020 Agrivio Limited. All rights reserved.
       </div>
     </div>
   </body>
