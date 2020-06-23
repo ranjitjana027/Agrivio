@@ -47,14 +47,15 @@
 </c:if>
 <t:wrapper>
   <jsp:attribute name="header">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/balance_sheet.css">
+    <title>Notebook</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/balance_sheet.css">
   </jsp:attribute>
   <jsp:body>
     <h2>Balance Sheet</h2>
     <div class="balance-sheet">
       <c:forEach items="${subjects.rows}" var="i">
         <div class="crop-sheet">
-          <h2 subject="crop-a">${i.subject}</h2>
+          <h2 subject="${i.subject}">${i.subject}</h2>
           <span class="add-item" title="Add a row">&CirclePlus;</span>
           <table>
             <tr>
@@ -64,7 +65,7 @@
               <th>Comment</th>
             </tr>
             <sql:query dataSource="${connection}" var="result">
-              select * from balance_sheet where user_id=? and subject=?
+              select * from balance_sheet where user_id=? and subject=?  and not removed order by t_date
               <sql:param value="${Integer.parseInt(sessionScope.userid)}"/>
               <sql:param value="${i.subject}"/>
             </sql:query>
@@ -94,7 +95,7 @@
 
     </div>
     <div>
-    <h3 onclick="document.querySelector('.modal-container').style.display='flex'" style="display:inline-block;"> <a style="color:cadetblue;" href="javascript:void(0)">Add Another Crop</a></h3>
+    <h3 onclick="document.querySelector('#t_subject').value=''; document.querySelector('.modal-container').style.display='flex';" style="display:inline-block;"> <a style="color:cadetblue;" href="javascript:void(0)">Add Another Crop</a></h3>
     </div>
     <div class="modal-container">
       <div class="modal-content">

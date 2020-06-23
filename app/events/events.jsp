@@ -8,24 +8,26 @@
 
     <sql:setDataSource
       var="connection" driver="org.postgresql.Driver" url="jdbc:postgresql://${dbUri.getHost()}:${dbUri.getPort()}${dbUri.getPath()}?sslmode=require" user="${dbUri.getUserInfo().split(\":\")[0]}" password="${dbUri.getUserInfo().split(\":\")[1]}" />
-    <sql:update dataSource="${connection}" var="count">
-      insert into events(day,crop,eventtype,remark,user_id,remainder) values( TO_DATE(?,'YYYY-MM-DD'),?,?,?,?,?);
+    <sql:query dataSource="${connection}" var="result">
+      insert into events(day,crop,eventtype,remark,user_id,remainder) values( TO_DATE(?,'YYYY-MM-DD'),?,?,?,?,?) returning id;
       <sql:param value="${ String.format(\"%4d-%02d-%02d\", Integer.parseInt( param['inp-year'] ) , Integer.parseInt ( param['inp-month'] )+1 , Integer.parseInt ( param['inp-date'] ) ) }" />
       <sql:param value="${param.crop}" />
       <sql:param value="${param.eventtype}" />
       <sql:param value="${param.remark}" />
       <sql:param value="${Integer.parseInt(sessionScope.userid)}" />
       <sql:param value="${param.remainder=='true'}"/>
-    </sql:update>
-    <c:if test="${param.remainder=='true' and count>0}" >
+    </sql:query>
+    <c:if test="${param.remainder=='true' and result.rowCount>0}" >
       <sql:update dataSource="${connection}">
-        insert into notifications(content,user_id,n_time) values ( ?,?,TO_TIMESTAMP(?,'YYYY-MM-DD') - interval '24 hours'), ( ?,?,TO_TIMESTAMP(?,'YYYY-MM-DD'));
+        insert into notifications(content,user_id,n_time, event_id) values ( ?,?,TO_TIMESTAMP(?,'YYYY-MM-DD') - interval '24 hours', ?), ( ?,?,TO_TIMESTAMP(?,'YYYY-MM-DD'),?);
         <sql:param value="<b>Remainder: </b> ${param.crop} ${param.eventtype } within 24 Hours." />
         <sql:param value="${Integer.parseInt(sessionScope.userid)}" />
         <sql:param value="${ String.format(\"%4d-%02d-%02d\", Integer.parseInt( param['inp-year'] ) , Integer.parseInt ( param['inp-month'] )+1 , Integer.parseInt ( param['inp-date'] ) ) }" />
+        <sql:param value="${Integer.parseInt(result.rows[0].id)}"/>
         <sql:param value="<b>Alert: </b> It's time for ${param.crop} ${param.eventtype }." />
         <sql:param value="${Integer.parseInt(sessionScope.userid)}" />
         <sql:param value="${ String.format(\"%4d-%02d-%02d\", Integer.parseInt( param['inp-year'] ) , Integer.parseInt ( param['inp-month'] )+1 , Integer.parseInt ( param['inp-date'] ) ) }" />
+        <sql:param value="${Integer.parseInt(result.rows[0].id)}"/>
       </sql:update>
       <c:set var="message" value="Event added successfully"/>
     </c:if>

@@ -32,6 +32,12 @@
 .front-page .recently-featured .article-link a, .front-page .recommendation .article-link a {
   text-decoration: none;
   color: #1ea883;
+  margin: 5px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .front-page .recently-featured .article-link a:hover, .front-page .recommendation .article-link a:hover {
   filter: brightness(0.5);
@@ -45,11 +51,29 @@
   font-weight: 600;
   cursor: default;
 }
-.front-page #view-all-guides {
-  text-align: center;
-  padding-top: 0.8rem;
+.front-page .subheader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.front-page #view-all-guides button {
+.front-page .subheader h2 {
+  text-transform: capitalize;
+  margin: 0;
+}
+.front-page .subheader a {
+  font-style: italic;
+  color: #045a1b;
+  text-decoration: none;
+  display: block;
+}
+.front-page .subheader a:hover {
+  text-decoration: underline;
+}
+.front-page .view-all-guides {
+  text-align: center;
+  padding-bottom: 0.8rem;
+}
+.front-page .view-all-guides button {
   outline: none;
   padding: 0.5rem 1.5rem;
   font-size: 1.1rem;
@@ -60,9 +84,14 @@
   background-size: 1px 100px;
   border-radius: 5px;
 }
-.front-page #view-all-guides button:hover {
+.front-page .view-all-guides button:hover {
   background-position: 100px;
   color: black;
+}
+.front-page hr {
+  border: dashed 0.5px;
+  border-color: green transparent transparent;
+  border-bottom-width: 1rem;
 }
 
 @media (max-width: 767px) {

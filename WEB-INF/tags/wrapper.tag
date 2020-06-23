@@ -86,7 +86,7 @@
                 <sql:setDataSource
                   var="connection" driver="org.postgresql.Driver" url="jdbc:postgresql://${dbUri.getHost()}:${dbUri.getPort()}${dbUri.getPath()}?sslmode=require" user="${dbUri.getUserInfo().split(\":\")[0]}" password="${dbUri.getUserInfo().split(\":\")[1]}" />
                 <sql:query dataSource="${connection}" var="result">
-                  select * from notifications where user_id=? and n_time<= (now() at time zone 'utc') order by n_time desc
+                  select * from notifications where user_id=? and n_time<= (now() at time zone 'utc') and not removed order by n_time desc
                   <sql:param value="${Integer.parseInt(sessionScope.userid)}"/>
                 </sql:query>
               </c:catch>
@@ -151,7 +151,7 @@
                   <c:if test="${sessionScope.role=='ADMIN'}">
                     <li><a href="${pageContext.request.contextPath}/admin/dashboard">Admin Console</a> </li>
                   </c:if>
-                  <li><a href="${pageContext.request.contextPath}/latest/balance-sheet">Balance Sheet</a> </li>
+
                   <c:if test="${not empty sessionScope.userid}">
                     <li><a href="${pageContext.request.contextPath}/logout">Logout</a> </li>
                   </c:if>
@@ -190,7 +190,7 @@
                 <a href="${pageContext.request.contextPath}/latest/suggestion/crops">Suggestion</a>
               </li>
               <li >
-                <a href="${pageContext.request.contextPath}/latest/article/guides/all"><span class="desktop-hidden">Cultivation </span> Guides</a>
+                <a href="${pageContext.request.contextPath}/latest/article"><span class="desktop-hidden">Cultivation </span> Articles</a>
               </li>
 
               <li>
@@ -205,11 +205,16 @@
               <li>
                 <a href="${pageContext.request.contextPath}/latest/ask-expert">Ask Expert</a>
               </li>
-              <li>
+
+              <!--<li>
                 <a href="${pageContext.request.contextPath}/latest/article/plants/all">Plants</a>
               </li>
               <li>
                 <a href="${pageContext.request.contextPath}/latest/article/pests/all">Pests</a>
+              </li>-->
+
+              <li>
+                <a href="${pageContext.request.contextPath}/latest/balance-sheet">Notebook</a>
               </li>
               <li>
                 <a href="${pageContext.request.contextPath}/latest/about-us">About <span class="desktop-hidden"> Us</span></a>
@@ -246,6 +251,7 @@
             <!--li><a href="#">Weather Forecast</a> </li-->
             <li><a href="${pageContext.request.contextPath}/latest/events">Events</a> </li>
             <li><a href="${pageContext.request.contextPath}/latest/ask-expert">Ask Expert</a> </li>
+            <li><a href="${pageContext.request.contextPath}/latest/balance-sheet">Notebook</a> </li>
             <li><a href="${pageContext.request.contextPath}/latest/article/plants/all">Plants</a> </li>
             <li><a href="${pageContext.request.contextPath}/latest/article/pests/all">Pests</a> </li>
             <li><a href="#">Search</a> </li>
@@ -256,7 +262,7 @@
             <li class="footer-title">Site Navigation</li>
             <li><a href="${pageContext.request.contextPath}/index">Home</a> </li>
             <li><a href="${pageContext.request.contextPath}/latest/about-us">About</a> </li>
-            <li><a href="${pageContext.request.contextPath}/latest/balance-sheet">Balance Sheet</a> </li>
+
             <li><a href="${pageContext.request.contextPath}/latest/contact">Contact</a> </li>
             <c:if test="${empty sessionScope.userid}">
               <li><a href="${pageContext.request.contextPath}/login">Login</a> </li>
