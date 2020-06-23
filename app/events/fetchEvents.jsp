@@ -18,8 +18,8 @@ try {
 			con=DriverManager.getConnection(dbUrl, username, password);
 
 			//Statement stmt = con.createStatement();
-			st = con.prepareStatement("SELECT * FROM events where user_id="+(String)session.getAttribute("userid"));
-			//st.setString(1, request.getParameter("mobile"));
+			st = con.prepareStatement("SELECT * FROM events where user_id=? and not removed");
+			st.setInt(1, Integer.parseInt((String)session.getAttribute("userid")));
 			//st.setString(2, request.getParameter("password"));
 			rs=st.executeQuery();
 %>
