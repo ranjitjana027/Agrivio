@@ -7,7 +7,7 @@
   display: inline-block;
 }
 .balance-sheet .crop-sheet {
-  background-color: aliceblue;
+  /*background-color: aliceblue;*/
   padding: max(10px, 2vw);
 }
 .balance-sheet .crop-sheet h2 {
@@ -23,25 +23,45 @@
 .balance-sheet .crop-sheet table {
   width: 100%;
   border-collapse: collapse;
+  /*tr.debit{
+    background-color:#f3f3f3;
+  }
+
+  tr.credit {
+    background: #d8f3ed;
+  }*/
 }
-.balance-sheet .crop-sheet table tr.debit {
-  background-color: #f3f3f3;
+.balance-sheet .crop-sheet table tr {
+  border-top: solid 1px #cecece;
+  text-align: justify;
+  cursor: pointer;
 }
-.balance-sheet .crop-sheet table tr.credit {
-  background: #d8f3ed;
+.balance-sheet .crop-sheet table tr:first-child {
+  background: whitesmoke;
+}
+.balance-sheet .crop-sheet table tr:not(:first-child) {
+  font-family: "Lucida Console", monaco, monospace;
+}
+.balance-sheet .crop-sheet table tr:not(:last-child) {
+  border-bottom: solid 1px #cecece;
+}
+.balance-sheet .crop-sheet table tr:not(:first-child):not(:last-child):hover {
+  background: #05ab9b;
+  color: snow;
+  transition: 0.25s;
 }
 .balance-sheet .crop-sheet table tr:last-child td {
   border: none;
 }
 .balance-sheet .crop-sheet table td, .balance-sheet .crop-sheet table th {
-  border: solid 1px;
+  /*border: solid 1px;*/
   padding: 5px 10px;
 }
-.balance-sheet .crop-sheet table td:nth-child(2), .balance-sheet .crop-sheet table td:nth-child(4) {
+.balance-sheet .crop-sheet table td:nth-child(2) {
   text-transform: capitalize;
 }
 .balance-sheet .crop-sheet table td:nth-child(3) {
-  text-align: right;
+  /*text-align:right;*/
 }
 
 .modal-container {
@@ -57,19 +77,36 @@
   animation: floatIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 .modal-container .modal-content {
-  margin: auto;
+  margin: 50px auto;
   width: 95%;
-  max-width: 540px;
-  background-color: #045049;
-  color: snow;
-  padding: 1rem 1rem;
+  max-width: 450px;
+  background-color: white;
+  color: #045049;
   border-radius: 5px;
+  box-shadow: 0 0 5px 1px black;
 }
-.modal-container .modal-content .close {
-  font-size: 38px;
+.modal-container .modal-content header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 1rem;
+  /*background: #2196F3;
+  color: snow;*/
+}
+.modal-container .modal-content header .close {
+  font-size: 2.5rem;
   padding: 0 10px;
   cursor: pointer;
-  float: right;
+}
+.modal-container .modal-content header h2 {
+  margin: 0.83rem;
+  font-size: larger;
+  font-weight: 600;
+}
+.modal-container .modal-content hr {
+  margin: 0;
+}
+.modal-container .modal-content section, .modal-container .modal-content footer {
+  padding: 0.3rem 1rem;
 }
 
 @keyframes floatIn {
@@ -86,12 +123,12 @@
 }
 .form-input {
   display: flex;
-  flex-wrap: wrap;
+  /*flex-wrap:wrap;*/
   align-items: center;
   position: relative;
   margin: 10px;
   height: auto;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 .form-input label {
   min-width: 100px;
@@ -102,18 +139,38 @@
 .form-input input[type=date], .form-input input[type=text], .form-input input[type=number], .form-input select {
   font-family: inherit;
   font-size: 1rem;
-  padding: 0.75rem;
-  border: solid 1px;
+  padding: 0.65rem 0.75rem;
+  border: solid 1px #4c4c4c7d;
   border-radius: 5px;
   outline: none;
   transition: padding 0.1s;
   letter-spacing: 0.05rem;
   flex: auto;
 }
-.form-input input[type=submit] {
+.form-input input[type=date]:focus, .form-input input[type=text]:focus, .form-input input[type=number]:focus, .form-input select:focus {
+  box-shadow: 0 0 3px #009688;
+}
+.form-input input[type=submit], .form-input input[type=button] {
   width: 100px;
   display: inline-block;
-  padding: 0.5rem 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 5px;
+  background: #2196F3;
+  color: snow;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  box-shadow: 0 0 3px 0px #2196F3;
+  cursor: pointer;
+  transition: 0.25s;
+}
+.form-input input[type=submit]:hover, .form-input input[type=button]:hover {
+  box-shadow: 0 0 5px 0px #2196F3;
+}
+.form-input input[type=submit]:disabled, .form-input input[type=button]:disabled {
+  box-shadow: none;
+  background-color: #9e9e9ec2;
+  cursor: not-allowed;
 }
 .form-input textarea {
   flex: 1 1 auto;

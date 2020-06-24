@@ -35,7 +35,7 @@
           <div class="main-article">
             <div>
               <a href='${pageContext.request.contextPath}/latest/article/guides/${result1.rows[0].url_path}'>
-                <img src='${result1.rows[0].thumbnail}' alt="Thumbnail">
+                <img src="${result1.rows[0].thumbnail}" alt="Thumbnail">
               </a>
             </div>
             <div class="article-header">
@@ -59,7 +59,7 @@
             <div class="other-article">
               <div class="article-image">
               <a href='${pageContext.request.contextPath}/latest/article/guides/${i.url_path}'>
-                <img src='${i.thumbnail}' alt="Thumbnail">
+                <img src="${fn:replace(i.thumbnail,'https://agrivio-assets.s3.amazonaws.com/','https://o8zks6ll3b.execute-api.us-east-1.amazonaws.com/production/')}?width=250&height=150" alt="Thumbnail">
               </a>
               </div>
               <div class="article-link">
@@ -89,7 +89,7 @@
                 <div class="other-article">
                   <div class="article-image">
                   <a href='${pageContext.request.contextPath}/latest/article/${fn:toLowerCase(topic.type)}s/${i.url_path}'>
-                    <img src='${i.thumbnail}' alt="Thumbnail">
+                    <img src="${fn:replace(i.thumbnail,'https://agrivio-assets.s3.amazonaws.com/','https://o8zks6ll3b.execute-api.us-east-1.amazonaws.com/production/')}?width=250&height=150" alt="Thumbnail">
                   </a>
                   </div>
                   <div class="article-link">
