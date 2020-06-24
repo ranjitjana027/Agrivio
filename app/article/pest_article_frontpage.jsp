@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 
 <c:catch var="exception">
@@ -44,7 +45,7 @@
               <div class="pest-article-card">
                 <div class="article-image">
                   <a href='${pageContext.request.contextPath}/latest/article/pests/${i.url_path}'>
-                    <img src='${i.thumbnail}' alt="Thumbnail">
+                    <img src="${fn:replace(i.thumbnail,'https://agrivio-assets.s3.amazonaws.com/','https://o8zks6ll3b.execute-api.us-east-1.amazonaws.com/production/')}?width=250&height=200" alt="Thumbnail">
                   </a>
                 </div>
                 <div class="pest-name">

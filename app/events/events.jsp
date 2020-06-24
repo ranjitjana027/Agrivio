@@ -36,6 +36,7 @@
   <c:if test="${not empty exception}">
     <c:set var="errormessage" value="Something went wrong. Don\'t add duplicate event"/>
   </c:if>
+  <c:redirect url="${pageContext.request.requestURI}" />
 </c:if>
 
 <t:wrapper>

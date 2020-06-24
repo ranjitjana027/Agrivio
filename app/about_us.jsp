@@ -3,7 +3,6 @@
 <t:wrapper>
   <jsp:attribute name="header">
     <title>About Us</title>
-    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
     <style media="screen">
 
       .about-us .intro{
@@ -40,7 +39,7 @@
         font-weight: normal;
       }
       .card h2{
-        font-family: 'Marck Script', cursive;
+        font-family: 'arizonia', cursive;
       }
       .card p{
         padding:0 10px;

@@ -8,24 +8,13 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/assets/img/favicon.svg">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/spinner.css">
-    <script src="${pageContext.request.contextPath}/assets/js/lib/spinner.js"></script>
+    
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/template/layout.css">
     <script src="${pageContext.request.contextPath}/assets/js/template/layout.js" charset="utf-8"></script>
     <jsp:invoke fragment="header" />
   </head>
   <body>
-    <div class="spinner" style="">
-      <div class="spinner-container" style="">
-        <svg height="300">
-          <ellipse id="circle1" cx="150" cy="150" r="0" stroke="snow" fill="none" />
-          <ellipse id="circle2" cx="150" cy="150" r="0" stroke="snow" fill="none" />
-          <ellipse id="circle3" cx="150" cy="150" r="0" stroke="snow" fill="none" />
-          <ellipse id="circle4" cx="150" cy="150" r="0" stroke="snow" fill="none" />
-        </svg>
-      </div>
 
-    </div>
     <!-- page header -->
     <div class="page-header">
       <div class="header-top">
