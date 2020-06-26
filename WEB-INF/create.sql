@@ -81,7 +81,7 @@ select distinct on (day,crop,eventtype) * from events )
 delete from events where id not in ( select id from unique_events);
 
 alter table events
-add constraint unique_event unique(day,crop,eventtype);
+add constraint unique_event unique(day,crop,eventtype,user_id);
 
 alter table events
 add column removed boolean default false;

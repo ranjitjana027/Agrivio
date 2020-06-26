@@ -22,8 +22,10 @@
 
 <t:wrapper>
   <jsp:attribute name="header">
-    <title>Articles - Agrivio</title>
+    <title>Articles - All aspects of cultivation in easy words</title>
     <link rel="stylesheet" href='${pageContext.request.contextPath}/assets/css/article2.0/article_frontpage.css'>
+    <link rel="stylesheet" href='${pageContext.request.contextPath}/assets/css/lib/lazy-loading.css'>
+    <script src="${pageContext.request.contextPath}/assets/js/lib/lazy-loading.js"></script>
   </jsp:attribute>
   <jsp:body>
   <div class="front-page">
@@ -35,7 +37,7 @@
           <div class="main-article">
             <div>
               <a href='${pageContext.request.contextPath}/latest/article/guides/${result1.rows[0].url_path}'>
-                <img src="${result1.rows[0].thumbnail}" alt="Thumbnail">
+                <img src="${result1.rows[0].thumbnail}"  alt="Thumbnail">
               </a>
             </div>
             <div class="article-header">
@@ -59,7 +61,7 @@
             <div class="other-article">
               <div class="article-image">
               <a href='${pageContext.request.contextPath}/latest/article/guides/${i.url_path}'>
-                <img src="${fn:replace(i.thumbnail,'https://agrivio-assets.s3.amazonaws.com/','https://o8zks6ll3b.execute-api.us-east-1.amazonaws.com/production/')}?width=250&height=150" alt="Thumbnail">
+                <img data-src="${fn:replace(i.thumbnail,'https://agrivio-assets.s3.amazonaws.com/','https://o8zks6ll3b.execute-api.us-east-1.amazonaws.com/production/')}?width=250&height=150" class="lazy" alt="Thumbnail">
               </a>
               </div>
               <div class="article-link">
@@ -89,7 +91,7 @@
                 <div class="other-article">
                   <div class="article-image">
                   <a href='${pageContext.request.contextPath}/latest/article/${fn:toLowerCase(topic.type)}s/${i.url_path}'>
-                    <img src="${fn:replace(i.thumbnail,'https://agrivio-assets.s3.amazonaws.com/','https://o8zks6ll3b.execute-api.us-east-1.amazonaws.com/production/')}?width=250&height=150" alt="Thumbnail">
+                    <img data-src="${fn:replace(i.thumbnail,'https://agrivio-assets.s3.amazonaws.com/','https://o8zks6ll3b.execute-api.us-east-1.amazonaws.com/production/')}?width=250&height=150" alt="Thumbnail" class="lazy">
                   </a>
                   </div>
                   <div class="article-link">

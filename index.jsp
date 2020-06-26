@@ -8,10 +8,11 @@ if((String)session.getAttribute("userid")!=null)
 		<title>Agrivio | The Smart Farming App </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/assets/img/favicon.svg">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/index.css">
-		<script src="${pageContext.request.contextPath}/assets/js/index/index.js" charset="utf-8"></script>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/spinner.css">
 		<script src="${pageContext.request.contextPath}/assets/js/lib/spinner.js" ></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/index.css">
+		<script src="${pageContext.request.contextPath}/assets/js/index/index.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lib/text-underline-transition.css">
 	</head>
 
 <body>
@@ -28,10 +29,10 @@ if((String)session.getAttribute("userid")!=null)
 	<div class="bgimagediv-1">
 		<div class="top-nav">
 			<div class="signup-option">
-				<a href="${pageContext.request.contextPath}/signup">Signup</a>
+				<a href="${pageContext.request.contextPath}/signup"><span class="underline-transition">Signup</span> </a>
 			</div>
 			<div class="signin-option">
-				<a href="${pageContext.request.contextPath}/login">Login</a>
+				<a href="${pageContext.request.contextPath}/login"><span class="underline-transition">Login</span> </a>
 			</div>
 		</div>
  		<div class="caption">
