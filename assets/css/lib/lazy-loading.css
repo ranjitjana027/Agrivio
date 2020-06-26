@@ -1,0 +1,26 @@
+@keyframes lazyLoading {
+  0% {
+    background-color: #e8e8e8;
+  }
+  50% {
+    background-color: #dadada;
+  }
+  100% {
+    background-color: #e8e8e8;
+  }
+}
+img.lazy {
+  animation: lazyLoading 1.5s infinite;
+}
+
+img.lazy::after {
+  animation: lazyLoading 1.5s infinite;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/*# sourceMappingURL=lazy-loading.css.map */

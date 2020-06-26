@@ -20,6 +20,8 @@
   <jsp:attribute name="header">
     <title>Article | Pests - Agrivio</title>
     <link rel="stylesheet" href='${pageContext.request.contextPath}/assets/css/article2.0/pest_article_frontpage.css'>
+    <link rel="stylesheet" href='${pageContext.request.contextPath}/assets/css/lib/lazy-loading.css'>
+    <script src="${pageContext.request.contextPath}/assets/js/lib/lazy-loading.js"></script>
   </jsp:attribute>
   <jsp:body>
     <div class="pest-frontpage">
@@ -45,7 +47,7 @@
               <div class="pest-article-card">
                 <div class="article-image">
                   <a href='${pageContext.request.contextPath}/latest/article/pests/${i.url_path}'>
-                    <img src="${fn:replace(i.thumbnail,'https://agrivio-assets.s3.amazonaws.com/','https://o8zks6ll3b.execute-api.us-east-1.amazonaws.com/production/')}?width=250&height=200" alt="Thumbnail">
+                    <img class="lazy" data-src="${fn:replace(i.thumbnail,'https://agrivio-assets.s3.amazonaws.com/','https://o8zks6ll3b.execute-api.us-east-1.amazonaws.com/production/')}?width=250&height=200" alt="Thumbnail">
                   </a>
                 </div>
                 <div class="pest-name">

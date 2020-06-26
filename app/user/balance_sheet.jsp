@@ -60,7 +60,7 @@
 </c:if>
 <t:wrapper>
   <jsp:attribute name="header">
-    <title>Notebook</title>
+    <title>Notebook - The book of account</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/balance_sheet.css">
   </jsp:attribute>
   <jsp:body>

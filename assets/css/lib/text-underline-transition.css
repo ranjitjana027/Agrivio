@@ -1,0 +1,23 @@
+.underline-transition {
+  position: relative;
+  text-decoration: none;
+}
+.underline-transition::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-bottom: solid;
+  margin: auto;
+  width: 0;
+  transition: 0.3s;
+  border-width: 0;
+}
+.underline-transition:hover::after {
+  width: 100%;
+  border-width: 2px;
+}
+
+/*# sourceMappingURL=text-underline-transition.css.map */

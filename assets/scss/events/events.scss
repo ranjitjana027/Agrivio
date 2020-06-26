@@ -212,21 +212,53 @@ body{
     text-align: center;
     display: flex;
     flex-direction: column;
-    background-color: aliceblue;
+    background-color: #fff;
     width: 0;
     max-height: 0;
     /*width: 400px;*/
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    box-shadow: 0 0 5px 1px black;
     margin: 5vh auto;
-    padding: 10px;
+    /*padding: 10px;*/
     border-radius: 6px;
     /*max-height: 90vh;*/
     overflow: auto;
     opacity: 0;
     animation: myanimation 1s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards 1s;
+
+    header,section, footer{
+      padding: 0.3rem 1rem;
+    }
+
+    header{
+      display: flex;
+      justify-content: space-between;
+      padding: 0.3rem 1rem;
+      /*background: #2196F3;
+      color: snow;*/
+
+      .close{
+        font-size: 2.5rem;
+        padding: 0 10px;
+        cursor: pointer;
+      }
+
+      h2{
+        margin: 0.83rem;
+        font-size: larger;
+        font-weight: 600;
+      }
+    }
+
+    section{
+      overflow: auto;
+    }
+    
+    hr{
+      margin: 0;
+      background-color: #9e9e9eb0;
+      height: 1px;
+      border: none;
+    }
 
     .add-event-icon-container{
       display: inline-block;
@@ -246,12 +278,12 @@ body{
       }
     }
 
-    .close {
+    /*.close {
       float: right;
       font-size: 28px;
       font-weight: bold;
       cursor: pointer;
-    }
+    }*/
 
     .event-title{
       color: #096945;
@@ -334,6 +366,11 @@ body{
         width: 300px;
         margin-bottom: 2px;
 
+        &:hover{
+          background-color: #03a9f417 !important;
+          cursor: pointer;
+        }
+
         tr{
 
           th{
@@ -346,6 +383,10 @@ body{
           td{
             padding: 5px;
             border-bottom: 1px solid #0e5c25;
+          }
+
+          &:first-child{
+            display: none;
           }
 
           &:last-child{
@@ -365,6 +406,74 @@ body{
   }
 }
 
+.form-input {
+  display: flex;
+  /*flex-wrap:wrap;*/
+  align-items: center;
+  position: relative;
+  margin: 10px;
+  height: auto;
+  justify-content: space-between;
+  text-align: justify;
+
+  label{
+    min-width: 100px;
+    padding: 5px;
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+  }
+
+  input[type='date'], input[type='text'], input[type='number'], select {
+    font-family: inherit;
+    font-size: 1rem;
+    padding:0.65rem 0.75rem;
+    border: solid 1px #4c4c4c7d;
+    border-radius: 5px;
+    outline: none;
+    transition: padding 0.1s;
+    letter-spacing: 0.05rem;
+    flex: auto;
+
+    &:focus{
+      box-shadow: 0 0 3px #009688;
+    }
+  }
+
+  input[type='submit'], input[type='button']{
+    width: 100px;
+    display: inline-block;
+    padding: 0.65rem 0.75rem;
+    border-radius: 5px;
+    background: #2196F3;
+    color: snow;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    box-shadow: 0 0 3px 0px #2196F3;
+    cursor: pointer;
+    transition: 0.25s;
+
+    &:hover{
+      box-shadow: 0 0 5px 0px #2196F3;
+    }
+
+    &:disabled{
+      box-shadow: none;
+      background-color: #9e9e9ec2;
+      cursor: not-allowed;
+    }
+  }
+
+  textarea{
+    flex:1 1 auto;
+    font-family:inherit;
+    font-size:1rem;
+  }
+
+  input#edit:checked + div {
+    display: none;
+}
+}
 
 @media (max-width:767px) {
   .select {

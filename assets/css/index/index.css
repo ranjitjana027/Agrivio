@@ -362,7 +362,7 @@ body .bgimagediv-1 .top-nav a, html .bgimagediv-1 .top-nav a {
 body .bgimagediv-1 .top-nav a:hover, html .bgimagediv-1 .top-nav a:hover {
   color: snow;
   top: 4.5%;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 body .bgimagediv-1 .top-nav .signup-option a, html .bgimagediv-1 .top-nav .signup-option a {
   background-color: black;

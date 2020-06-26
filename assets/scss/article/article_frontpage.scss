@@ -118,6 +118,21 @@
   }
 }
 
+.article-image{
+  position:relative;
+  width:100%;
+  padding-top:56%;
+
+  img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+  }
+}
+
 @media (max-width:767px) {
   .front-page{
     width: 95%;
@@ -128,22 +143,5 @@
 @media (min-width:1024px) {
   .front-page{
     padding: 0 8px;
-  }
-}
-
-@media (min-width:768px){
-  .article-image{
-    position:relative;
-    width:100%;
-    padding-top:56%;
-
-    img{
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      height: 100%;
-    }
   }
 }
