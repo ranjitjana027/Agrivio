@@ -222,6 +222,11 @@
   font-weight: lighter;
 }
 @font-face {
+  font-family: SF Compact;
+  src: url(../../fonts/SF-Compact-Text-Regular.otf);
+  font-weight: lighter;
+}
+@font-face {
   font-family: Raleway;
   src: url(../../fonts/Raleway/Raleway-Thin.ttf);
   font-weight: 100;
@@ -316,6 +321,615 @@
   font-family: Raleway;
   src: url(../../fonts/Raleway/Raleway-BlackItalic.ttf);
   font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Thin.ttf");
+  font-weight: 100;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-ThinItalic.ttf");
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-ExtraLight.ttf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-ExtraLightItalic.ttf");
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Light.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-LightItalic.ttf");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Regular.ttf");
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-MediumItalic.ttf");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-SemiBold.ttf");
+  font-weight: 600;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-SemiBoldItalic.ttf");
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-ExtraBold.ttf");
+  font-weight: 800;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-ExtraBoldItalic.ttf");
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Black.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-BlackItalic.ttf");
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-Thin.ttf");
+  font-weight: 100;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-ThinItalic.ttf");
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-Light.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-LightItalic.ttf");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-Bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-Black.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-BlackItalic.ttf");
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Thin.ttf);
+  font-weight: 100;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-ThinItalic.ttf);
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-ExtraLight.ttf);
+  font-weight: 200;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-ExtraLightItalic.ttf);
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-LightItalic.ttf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Italic.ttf);
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-MediumItalic.ttf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-SemiBold.ttf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-SemiBoldItalic.ttf);
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-BoldItalic.ttf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-ExtraBold.ttf);
+  font-weight: 800;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-ExtraBoldItalic.ttf);
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Black.ttf);
+  font-weight: 900;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-BlackItalic.ttf);
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Thin.ttf);
+  font-weight: 100;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-ThinItalic.ttf);
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-LightItalic.ttf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Italic.ttf);
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-MediumItalic.ttf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-BoldItalic.ttf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Black.ttf);
+  font-weight: 900;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-BlackItalic.ttf);
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Pontano Sans;
+  src: url("../../fonts/Pontano Sans/PontanoSans-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Thin.ttf);
+  font-weight: 100;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-ThinItalic.ttf);
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-ExtraLight.ttf);
+  font-weight: 200;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-ExtraLightItalic.ttf);
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-LightItalic.ttf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Regular.ttf);
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Italic.ttf);
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-MediumItalic.ttf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-SemiBold.ttf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-SemiBoldItalic.ttf);
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-BoldItalic.ttf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-ExtraBold.ttf);
+  font-weight: 800;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-ExtraBoldItalic.ttf);
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Black.ttf);
+  font-weight: 900;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-BlackItalic.ttf);
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Sulphur Point;
+  src: url("../../fonts/Sulphur Point/SulphurPoint-Light.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: Sulphur Point;
+  src: url("../../fonts/Sulphur Point/SulphurPoint-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: Sulphur Point;
+  src: url("../../fonts/Sulphur Point/Sulphur Point-Bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-Thin.ttf);
+  font-weight: 100;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-ThinItalic.ttf);
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-LightItalic.ttf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-Regular.ttf);
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-Italic.ttf);
+  font-style: italic;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-BoldItalic.ttf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-Black.ttf);
+  font-weight: 900;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-BlackItalic.ttf);
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-ExtraLight.ttf);
+  font-weight: 200;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-ExtraLightItalic.ttf);
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-LightItalic.ttf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-Regular.ttf);
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-Italic.ttf);
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-MediumItalic.ttf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-SemiBold.ttf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-SemiBoldItalic.ttf);
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-BoldItalic.ttf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-ExtraBold.ttf);
+  font-weight: 800;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-ExtraBoldItalic.ttf);
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-Black.ttf);
+  font-weight: 900;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-BlackItalic.ttf);
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-Regular.ttf);
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-Italic.ttf);
+  font-style: italic;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-MediumItalic.ttf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-SemiBold.ttf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-SemiBoldItalic.ttf);
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-BoldItalic.ttf);
+  font-weight: 700;
   font-style: italic;
 }
 body {
