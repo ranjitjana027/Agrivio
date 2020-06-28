@@ -1,0 +1,17 @@
+@font-face {
+  font-family: Sulphur Point;
+  src: url("../../fonts/Sulphur Point/SulphurPoint-Light.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: Sulphur Point;
+  src: url("../../fonts/Sulphur Point/SulphurPoint-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: Sulphur Point;
+  src: url("../../fonts/Sulphur Point/Sulphur Point-Bold.ttf");
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=sulphur_point.css.map */
