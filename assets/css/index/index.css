@@ -1115,6 +1115,7 @@ body .services h3, html .services h3 {
 body .services .service, html .services .service {
   max-width: 350px;
   margin: auto;
+  padding: 5px;
 }
 body .services img, html .services img {
   display: block;

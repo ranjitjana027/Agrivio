@@ -70,7 +70,7 @@
 </head>
 <body>
     <div class="row">
-      <div class="col-6 ">
+      <div class="col-6 col-sm-12 col-xs-12">
         <div class="wrap">
           <div class="header">
             <!--img class="logo" src="${pageContext.request.contextPath}/assets/img/logo-sm.png" alt="agrivio Logo"-->
