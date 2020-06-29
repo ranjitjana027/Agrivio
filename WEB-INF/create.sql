@@ -48,6 +48,9 @@ values ( 'Test',
         'password'
 );
 
+alter table users
+add column dp varchar(200);
+
 create table location_info (
   id serial primary key,
   loc_time TIMESTAMPTZ default (now() at time zone 'utc'),
