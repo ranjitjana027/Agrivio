@@ -40,7 +40,7 @@
   background: whitesmoke;
 }
 .balance-sheet .crop-sheet table tr:not(:first-child) {
-  font-family: "Lucida Console", monaco, monospace;
+  font-family: "Nunito", sans-serif;
 }
 .balance-sheet .crop-sheet table tr:not(:last-child) {
   border-bottom: solid 1px #cecece;

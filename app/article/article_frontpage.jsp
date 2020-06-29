@@ -32,7 +32,7 @@
     <div class="recently-featured">
       <h2>Recently Featured </h2>
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 col-sm-12 col-xs-12">
 
           <div class="main-article">
             <div>
@@ -83,7 +83,7 @@
           <hr class="mobile-hidden">
           <div class="subheader">
             <h2>${fn:toLowerCase(topic.type)} articles</h2>
-            <div><a href="${pageContext.request.contextPath}/latest/article/${fn:toLowerCase(topic.type)}s/all">More &gt;&gt;</a></div>
+            <div class="mobile-hidden"><a href="${pageContext.request.contextPath}/latest/article/${fn:toLowerCase(topic.type)}s/all">More &gt;&gt;</a></div>
           </div>
           <div class="row">
             <c:forEach var="i" items="${result.rows}" >
