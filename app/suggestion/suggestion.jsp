@@ -4,7 +4,7 @@
 
 <t:wrapper>
   <jsp:attribute name="header">
-    <title>Crop Suggestion</title>
+    <title>Crop Suggestion - Based on soil of you location</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/suggestion/suggestion.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ads/ads.css">
   </jsp:attribute>

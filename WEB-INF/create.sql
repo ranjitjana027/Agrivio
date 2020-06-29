@@ -81,7 +81,10 @@ select distinct on (day,crop,eventtype) * from events )
 delete from events where id not in ( select id from unique_events);
 
 alter table events
-add constraint unique_event unique(day,crop,eventtype);
+add constraint unique_event unique(day,crop,eventtype,user_id);
+
+alter table events
+add column removed boolean default false;
 
 create table chats
 ( id serial primary key,
@@ -108,6 +111,12 @@ create table notifications(
 );
 alter table notifications
 add column read bool default false;
+
+alter table notifications
+add column removed bool default false;
+alter table notifications
+add column event_id integer references events(id) on delete cascade;
+
 insert into notifications(content,user_id)
   values('Hello! A warm welcome from our side. For any issues kindly contact us.',1);
 insert into notifications(content,user_id)
@@ -277,3 +286,5 @@ create table balance_sheet(
   subject varchar(100),
   user_id integer references users(id) on delete cascade
 )
+
+alter table balance_sheet add column removed boolean default false;

@@ -4,7 +4,7 @@
 
 <t:wrapper>
   <jsp:attribute name="header">
-    <title>Crop Price</title>
+    <title>Crop Price - Real time price at different mandis</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/price/price.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ads/ads.css">
   </jsp:attribute>

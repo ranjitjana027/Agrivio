@@ -242,6 +242,7 @@ function fetchEventUtil(data)
   }
   function addEvent(evt){
       document.querySelector('#add-event-modal').style.display="block";
+      document.querySelector(".modal-content form").reset();
       console.log(evt.target.offsetParent)
       if(evt.target.className!='date-day'){
           document.querySelector('#inp-date').value = evt.target.querySelector('.date-day').innerText;
@@ -274,36 +275,36 @@ function fetchEventUtil(data)
           }
           console.log(table)
           tr = []
-          for (i = 0; i < 3*count; i++)
+          for (i = 0; i < 4*count; i++)
               tr.push(document.createElement('tr'))
 
           th = []
-          for (i = 0; i < 3*count; i++)
+          for (i = 0; i < 4*count; i++)
               th.push(document.createElement('th'));
           for(i=0;i<count;i++){
-              th[0 + i * 3].innerText = 'Crop';
-              th[1 + i * 3].innerText = 'Event Type';
-              th[2 + i * 3].innerText = 'Remark';
+              th[1 + i * 4].innerText = 'Crop';
+              th[2 + i * 4].innerText = 'Event Type';
+              th[3 + i * 4].innerText = 'Remark';
           }
 
 
           td = []
-          for (i = 0; i < 3 * count; i++)
+          for (i = 0; i < 4 * count; i++)
               td.push(document.createElement('td'));
 
 
           for(i=0;i<count;i++)
           {
-
-              td[i*3].innerText = evt.target.querySelectorAll('.crop')[i].innerText;
-              td[1+i*3].innerText = evt.target.querySelectorAll('.event-type')[i].innerText;
-              td[2+i*3].innerText = evt.target.querySelectorAll('.remark')[i].innerText;
+              td[ i * 4].innerText = evt.target.querySelectorAll('.event-id')[i].innerText;
+              td[1+i*4].innerText = evt.target.querySelectorAll('.crop')[i].innerText;
+              td[2+i*4].innerText = evt.target.querySelectorAll('.event-type')[i].innerText;
+              td[3+i*4].innerText = evt.target.querySelectorAll('.remark')[i].innerText;
           }
           for(k=0;k<count;k++){
-              for (i = 0; i < 3; i++) {
-                  tr[i + k * 3].append(th[i + k * 3]);
-                  tr[i + k * 3].append(td[i + k * 3]);
-                  table[k].append(tr[i + k * 3])
+              for (i = 0; i < 4; i++) {
+                  tr[i + k * 4].append(th[i + k * 4]);
+                  tr[i + k * 4].append(td[i + k * 4]);
+                  table[k].append(tr[i + k * 4])
               }
           }
           document.querySelector('#show-event-modal').querySelector('.event-list').innerHTML=""
@@ -333,35 +334,36 @@ function fetchEventUtil(data)
           }
           console.log(table)
           tr = []
-          for (i = 0; i < 3 * count; i++)
+          for (i = 0; i < 4 * count; i++)
               tr.push(document.createElement('tr'))
 
           th = []
-          for (i = 0; i < 3 * count; i++)
+          for (i = 0; i < 4 * count; i++)
               th.push(document.createElement('th'));
           for (i = 0; i < count; i++) {
-              th[0 + i * 3].innerText = 'Crop';
-              th[1 + i * 3].innerText = 'Event Type';
-              th[2 + i * 3].innerText = 'Remark';
+
+              th[1 + i * 4].innerText = 'Crop';
+              th[2 + i * 4].innerText = 'Event Type';
+              th[3 + i * 4].innerText = 'Remark';
           }
 
 
           td = []
-          for (i = 0; i < 3 * count; i++)
+          for (i = 0; i < 4 * count; i++)
               td.push(document.createElement('td'));
 
 
           for (i = 0; i < count; i++) {
-
-              td[0 + i * 3].innerText = evt.target.parentNode.children[5+i*4].innerText;
-              td[1 + i * 3].innerText = evt.target.parentNode.children[6+i*4].innerText;
-              td[2 + i * 3].innerText = evt.target.parentNode.children[7+i*4].innerText;
+              td[i * 4].innerText = evt.target.parentNode.children[4+i*4].innerText;
+              td[1 + i * 4].innerText = evt.target.parentNode.children[5+i*4].innerText;
+              td[2 + i * 4].innerText = evt.target.parentNode.children[6+i*4].innerText;
+              td[3 + i * 4].innerText = evt.target.parentNode.children[7+i*4].innerText;
           }
           for (k = 0; k < count; k++) {
-              for (i = 0; i < 3; i++) {
-                  tr[i + k * 3].append(th[i + k * 3]);
-                  tr[i + k * 3].append(td[i + k * 3]);
-                  table[k].append(tr[i + k * 3])
+              for (i = 0; i < 4; i++) {
+                  tr[i + k * 4].append(th[i + k * 4]);
+                  tr[i + k * 4].append(td[i + k * 4]);
+                  table[k].append(tr[i + k * 4])
               }
           }
           document.querySelector('#show-event-modal').querySelector('.event-list').innerHTML = ""
@@ -374,4 +376,52 @@ function fetchEventUtil(data)
               + (Number(evt.target.offsetParent.children[1].innerText) + 1) + '/'
               + evt.target.offsetParent.children[2].innerText;
       }
+
+      document.querySelectorAll('#show-event-modal .modal-content table').forEach((item, i) => {
+        item.addEventListener("click",evt=>{
+          var values=item.querySelectorAll('td');
+          document.querySelector(".modal-content form").reset();
+          document.querySelector('#event_id').value=values[0].innerText;
+          document.querySelector('#crop_name').value=values[1].innerText;
+          document.querySelector('#event_type').value=values[2].innerText;
+          document.querySelector('#event_remark').value=values[3].innerText;
+
+          document.querySelector("#edit").checked=true;
+          document.querySelector('#show-event-modal').style.display='none';
+          document.querySelector('#add-event-modal').style.display='block';
+        });
+      });
+
+  }
+
+  document.querySelector(".modal-content form").oninput=()=>{
+    document.querySelector('#submit-btn').disabled=false;
+  }
+
+  function addRec(button) {
+    var form=document.querySelector('.modal-content form');
+    if(form.reportValidity()){
+
+      form.action=location.protocol+"//"+location.host+"/latest/events";
+      form.method="post";
+      button.disabled=true;
+      form.submit();
+    }
+    else{
+      return false;
+    }
+  }
+
+  function remRec(button){
+    if(window.confirm("Are you sure to remove this record?")){
+      var form=document.querySelector(".modal-content form");
+      form.action=location.protocol+"//"+location.host+"/events/remove";
+      form.method="get";
+      button.disabled=true;
+      form.submit();
+    }
+    else{
+      return false;
+    }
+
   }

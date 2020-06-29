@@ -8,37 +8,56 @@
 
     <sql:setDataSource
       var="connection" driver="org.postgresql.Driver" url="jdbc:postgresql://${dbUri.getHost()}:${dbUri.getPort()}${dbUri.getPath()}?sslmode=require" user="${dbUri.getUserInfo().split(\":\")[0]}" password="${dbUri.getUserInfo().split(\":\")[1]}" />
-    <sql:update dataSource="${connection}" var="count">
-      insert into events(day,crop,eventtype,remark,user_id,remainder) values( TO_DATE(?,'YYYY-MM-DD'),?,?,?,?,?);
-      <sql:param value="${ String.format(\"%4d-%02d-%02d\", Integer.parseInt( param['inp-year'] ) , Integer.parseInt ( param['inp-month'] )+1 , Integer.parseInt ( param['inp-date'] ) ) }" />
-      <sql:param value="${param.crop}" />
-      <sql:param value="${param.eventtype}" />
-      <sql:param value="${param.remark}" />
-      <sql:param value="${Integer.parseInt(sessionScope.userid)}" />
-      <sql:param value="${param.remainder=='true'}"/>
-    </sql:update>
-    <c:if test="${param.remainder=='true' and count>0}" >
-      <sql:update dataSource="${connection}">
-        insert into notifications(content,user_id,n_time) values ( ?,?,TO_TIMESTAMP(?,'YYYY-MM-DD') - interval '24 hours'), ( ?,?,TO_TIMESTAMP(?,'YYYY-MM-DD'));
-        <sql:param value="<b>Remainder: </b> ${param.crop} ${param.eventtype } within 24 Hours." />
-        <sql:param value="${Integer.parseInt(sessionScope.userid)}" />
-        <sql:param value="${ String.format(\"%4d-%02d-%02d\", Integer.parseInt( param['inp-year'] ) , Integer.parseInt ( param['inp-month'] )+1 , Integer.parseInt ( param['inp-date'] ) ) }" />
-        <sql:param value="<b>Alert: </b> It's time for ${param.crop} ${param.eventtype }." />
-        <sql:param value="${Integer.parseInt(sessionScope.userid)}" />
-        <sql:param value="${ String.format(\"%4d-%02d-%02d\", Integer.parseInt( param['inp-year'] ) , Integer.parseInt ( param['inp-month'] )+1 , Integer.parseInt ( param['inp-date'] ) ) }" />
-      </sql:update>
-      <c:set var="message" value="Event added successfully"/>
-    </c:if>
+
+    <c:choose>
+      <c:when test="${not empty param.id}">
+        <sql:update dataSource="${connection}">
+          update events set crop=?, eventtype=?,remark=? where id=? and user_id=?
+          <sql:param value="${param.crop}" />
+          <sql:param value="${param.eventtype}" />
+          <sql:param value="${param.remark}" />
+          <sql:param value="${Integer.parseInt(param.id)}" />
+          <sql:param value="${Integer.parseInt(sessionScope.userid)}" />
+        </sql:update>
+      </c:when>
+      <c:otherwise>
+        <sql:query dataSource="${connection}" var="result">
+          insert into events(day,crop,eventtype,remark,user_id,remainder) values( TO_DATE(?,'YYYY-MM-DD'),?,?,?,?,?) returning id;
+          <sql:param value="${ String.format(\"%4d-%02d-%02d\", Integer.parseInt( param['inp-year'] ) , Integer.parseInt ( param['inp-month'] )+1 , Integer.parseInt ( param['inp-date'] ) ) }" />
+          <sql:param value="${param.crop}" />
+          <sql:param value="${param.eventtype}" />
+          <sql:param value="${param.remark}" />
+          <sql:param value="${Integer.parseInt(sessionScope.userid)}" />
+          <sql:param value="${param.remainder=='true'}"/>
+        </sql:query>
+        <c:if test="${param.remainder=='true' and result.rowCount>0}" >
+          <sql:update dataSource="${connection}">
+            insert into notifications(content,user_id,n_time, event_id) values ( ?,?,TO_TIMESTAMP(?,'YYYY-MM-DD') - interval '24 hours', ?), ( ?,?,TO_TIMESTAMP(?,'YYYY-MM-DD'),?);
+            <sql:param value="<b>Remainder: </b> ${param.crop} ${param.eventtype } within 24 Hours." />
+            <sql:param value="${Integer.parseInt(sessionScope.userid)}" />
+            <sql:param value="${ String.format(\"%4d-%02d-%02d\", Integer.parseInt( param['inp-year'] ) , Integer.parseInt ( param['inp-month'] )+1 , Integer.parseInt ( param['inp-date'] ) ) }" />
+            <sql:param value="${Integer.parseInt(result.rows[0].id)}"/>
+            <sql:param value="<b>Alert: </b> It's time for ${param.crop} ${param.eventtype }." />
+            <sql:param value="${Integer.parseInt(sessionScope.userid)}" />
+            <sql:param value="${ String.format(\"%4d-%02d-%02d\", Integer.parseInt( param['inp-year'] ) , Integer.parseInt ( param['inp-month'] )+1 , Integer.parseInt ( param['inp-date'] ) ) }" />
+            <sql:param value="${Integer.parseInt(result.rows[0].id)}"/>
+          </sql:update>
+          <c:set var="message" value="Event added successfully"/>
+        </c:if>
+      </c:otherwise>
+    </c:choose>
+
 
   </c:catch>
   <c:if test="${not empty exception}">
     <c:set var="errormessage" value="Something went wrong. Don\'t add duplicate event"/>
   </c:if>
+  <c:redirect url="${pageContext.request.requestURI}" />
 </c:if>
 
 <t:wrapper>
   <jsp:attribute name="header">
-    <title>All Events</title>
+    <title>My Events - Manage all events in one place</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/events/events.css">
   </jsp:attribute>
   <jsp:body>
@@ -277,73 +296,161 @@
 
     <div class="modal" id="add-event-modal">
         <div class="modal-content">
+            <form method="POST">
+                <header>
+                  <h2>Edit Event</h2>
+                  <span class="close">&times;</span>
+                </header>
+                <hr>
+                <section>
+                  <input name="id" id="event_id" readonly hidden >
+                  <div>
+                      <input type="number" name="inp-date" id="inp-date" hidden>
+                      <input type="number" name="inp-month" id="inp-month" hidden>
+                      <input type="number" name="inp-year" id="inp-year" hidden>
+                  </div>
 
-            <form method="POST" style="margin-bottom: 10px;">
-                <span class="close">&times;</span>
-                <h2 class="event-title">Add New Event</h2>
-
-                <div>
-                    <input type="number" name="inp-date" id="inp-date" hidden>
-                    <input type="number" name="inp-month" id="inp-month" hidden>
-                    <input type="number" name="inp-year" id="inp-year" hidden>
-                </div>
-
-                <div class="event-selection">
+                  <div>
+                      <div class="form-input">
+                          <label for="crop_name">Crop</label>
+                          <input type="text" name="crop" id="crop_name" placeholder="Crop" list="crop_name_list" required>
+                          <datalist id="crop_name_list">
+                              <option>Amaranth</option>
+                              <option>Apple Gourd</option>
+                              <option>Ash Gourd</option>
+                              <option>Bajra</option>
+                              <option>Barley</option>
+                              <option>Beetroot</option>
+                              <option>Bitter Gourd</option>
+                              <option>Black-eyed pea</option>
+                              <option>Bottle Gourd</option>
+                              <option>Brinjal</option>
+                              <option>Broad Beans</option>
+                              <option>Brussels Sprout</option>
+                              <option>Cabbage</option>
+                              <option>Capsicum</option>
+                              <option>Carrot</option>
+                              <option>Cauliflower</option>
+                              <option>Celery</option>
+                              <option>Ceylon Spinach</option>
+                              <option>Chickpea</option>
+                              <option>Cilantro</option>
+                              <option>Cotton</option>
+                              <option>Cucumber</option>
+                              <option>Drumstick</option>
+                              <option>Elephant Foot Yam</option>
+                              <option>French Beans</option>
+                              <option>Garbanzo</option>
+                              <option>Gooseberry</option>
+                              <option>Gourd</option>
+                              <option>Groundnuts</option>
+                              <option>Indian Pea</option>
+                              <option>Ivy Gourd</option>
+                              <option>Jackfruit</option>
+                              <option>Jowar</option>
+                              <option>Jute</option>
+                              <option>Kidney Bean</option>
+                              <option>Lentil</option>
+                              <option>Lettuce</option>
+                              <option>Lotus Root</option>
+                              <option>Malabar Spinach</option>
+                              <option>Mint</option>
+                              <option>Moth Bean</option>
+                              <option>Mushroom</option>
+                              <option>Mustard</option>
+                              <option>Okra</option>
+                              <option>Onion</option>
+                              <option>Pea</option>
+                              <option>Pigeon Pea</option>
+                              <option>Pointed Gourd</option>
+                              <option>Potato</option>
+                              <option>Pumkin</option>
+                              <option>Radish</option>
+                              <option>Red Amaranth</option>
+                              <option>Red Lentil</option>
+                              <option>Rice</option>
+                              <option>Ridge Gourd</option>
+                              <option>Snake Gourd</option>
+                              <option>Spinach</option>
+                              <option>Spring Onion</option>
+                              <option>String Beans</option>
+                              <option>Sugarcane</option>
+                              <option>Sweet Corn/Maize</option>
+                              <option>Sweet Potato</option>
+                              <option>Taro</option>
+                              <option>Teasle Gourd</option>
+                              <option>Tomato</option>
+                              <option>Turnip</option>
+                              <option>Turnip Greens</option>
+                              <option>Water Spinach</option>
+                              <option>Winter Melon</option>
+                              <option>Wheat</option>
+                          </datalist>
+                      </div>
+                      <div class="form-input">
+                          <label for="event_type">Event</label>
+                          <input type="text" name="eventtype" id="event_type" placeholder="Event Type" list="event_type_list" required>
+                          <datalist id="event_type_list">
+                              <option value="Sowing">Sowing</option>
+                              <option value="Harvesting">Harvesting</option>
+                              <option value="Fertilizing">Fertilizing</option>
+                          </datalist>
+                      </div>
+                      <div class="form-input">
+                          <label for="event_remark">Remark</label>
+                          <input type="text" name="remark" id="event_remark" placeholder="Remark">
+                      </div>
+                  </div>
+                  <div class="form-input">
+                    <input type="checkbox" id="edit" style="display: none;">
                     <div>
-                        <label for="">Crop</label>
-                        <select name="crop" class="form-select">
-                            <option value="Paddy">Paddy</option>
-                            <option value="Wheat">Wheat</option>
-                            <option value="Dal">Dal</option>
-                            <option value="Vegetable1">Vegetable1</option>
-                            <option value="Vegetable2">Vegetable2</option>
-                            <option value="Vegetable3">Vegetable3</option>
-                            <option value="Vegetable4">Vegetable4</option>
-                        </select>
+                      <input type="checkbox" name="remainder" id="remainder" value="true" style="width:auto;">
+                      <label for="remainder">Add as Remainder</label>
                     </div>
-                    <div>
-                        <label for="">Event</label>
-                        <select name="eventtype" class="form-select">
-                            <option value="Sowing">Sowing</option>
-                            <option value="Harvesting">Harvesting</option>
-                            <option value="Fertilizing">Fertilizing</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="">Remark</label>
-                        <input type="text" name="remark" placeholder="Remark">
-                    </div>
-                </div>
-                <div>
-                  <input type="checkbox" name="remainder" id="remainder" value="true" style="width:auto;">
-                    <label for="remainder">Add as Remainder</label>
-                </div>
-                <div class="add-submit">
-                    <input type="submit" value="Add Event">
-                </div>
+                  </div>
+                </section>
+                <hr>
+                <footer>
+                  <div class="form-input">
+                      <input type="button" value="Remove" onclick="remRec(this);">
+                      <input type="submit" value="Save" id="submit-btn" onclick="addRec(this);" disabled>
+                  </div>
+                </footer>
             </form>
         </div>
     </div>
 
     <div class="modal" id="show-event-modal">
         <div class="modal-content">
-            <div>
+            <header>
+              <h2>Event Details</h2>
               <span class="close">&times;</span>
-              <h2 class="event-title" style="display: inline;">Event Details</h2>
+            </header>
+            <hr>
+            <section>
               <h4><b>Date :</b> <span class="event-date"></span> </h4>
-            </div>
-            <div style="overflow:auto;">
-              <ul class="event-list"></ul>
-            </div>
-            <div class="add-event-icon-container">
-                <svg onclick="document.querySelector('#show-event-modal').style.display='none'; document.querySelector('#add-event-modal').style.display='block';">
-                    <path d="M10,30 L30,30 " stroke="blue" stroke-width="5" />
-                    <path d="M30,30 L50,30" stroke="#ffc107" stroke-width="5" />
-                    <path d="M30,30 L30,50" stroke="red" stroke-width="5" />
-                    <path d="M30,30 L30,10" stroke="green" stroke-width="5" />
-                    <circle cx="30" cy="30" r="30" fill="gray" opacity="0.1" />
-                </svg>
-            </div>
+              <div style="overflow:auto;">
+                <ul class="event-list"></ul>
+              </div>
+            </section>
+            <footer>
+              <div class="add-event-icon-container">
+                  <svg onclick=" document.querySelector('.modal-content form').reset();
+                  var date_parts=document.querySelector('span.event-date').innerText.split('/');
+                  document.querySelector('#inp-date').value=date_parts[0];
+                  document.querySelector('#inp-month').value=Number(date_parts[1])-1;
+                  document.querySelector('#inp-year').value=date_parts[2];
+                  document.querySelector('#show-event-modal').style.display='none';
+                  document.querySelector('#add-event-modal').style.display='block';
+                  ">
+                      <path d="M10,30 L30,30 " stroke="blue" stroke-width="5" />
+                      <path d="M30,30 L50,30" stroke="#ffc107" stroke-width="5" />
+                      <path d="M30,30 L30,50" stroke="red" stroke-width="5" />
+                      <path d="M30,30 L30,10" stroke="green" stroke-width="5" />
+                      <circle cx="30" cy="30" r="30" fill="gray" opacity="0.1" />
+                  </svg>
+              </div>
+            </footer>
 
         </div>
     </div>

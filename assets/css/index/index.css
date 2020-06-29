@@ -221,6 +221,11 @@
   font-weight: lighter;
 }
 @font-face {
+  font-family: SF Compact;
+  src: url(../../fonts/SF-Compact-Text-Regular.otf);
+  font-weight: lighter;
+}
+@font-face {
   font-family: Raleway;
   src: url(../../fonts/Raleway/Raleway-Thin.ttf);
   font-weight: 100;
@@ -317,6 +322,615 @@
   font-weight: 900;
   font-style: italic;
 }
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Thin.ttf");
+  font-weight: 100;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-ThinItalic.ttf");
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-ExtraLight.ttf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-ExtraLightItalic.ttf");
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Light.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-LightItalic.ttf");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Regular.ttf");
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-MediumItalic.ttf");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-SemiBold.ttf");
+  font-weight: 600;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-SemiBoldItalic.ttf");
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-ExtraBold.ttf");
+  font-weight: 800;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-ExtraBoldItalic.ttf");
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-Black.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: Fira Sans;
+  src: url("../../fonts/Fira Sans/FiraSans-BlackItalic.ttf");
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-Thin.ttf");
+  font-weight: 100;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-ThinItalic.ttf");
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-Light.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-LightItalic.ttf");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-Bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-Black.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("../../fonts/Open Sans/OpenSans-BlackItalic.ttf");
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Thin.ttf);
+  font-weight: 100;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-ThinItalic.ttf);
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-ExtraLight.ttf);
+  font-weight: 200;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-ExtraLightItalic.ttf);
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-LightItalic.ttf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Italic.ttf);
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-MediumItalic.ttf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-SemiBold.ttf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-SemiBoldItalic.ttf);
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-BoldItalic.ttf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-ExtraBold.ttf);
+  font-weight: 800;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-ExtraBoldItalic.ttf);
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-Black.ttf);
+  font-weight: 900;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../fonts/Poppins/Poppins-BlackItalic.ttf);
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Thin.ttf);
+  font-weight: 100;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-ThinItalic.ttf);
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-LightItalic.ttf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Italic.ttf);
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-MediumItalic.ttf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-BoldItalic.ttf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-Black.ttf);
+  font-weight: 900;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../../fonts/Roboto/Roboto-BlackItalic.ttf);
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Pontano Sans;
+  src: url("../../fonts/Pontano Sans/PontanoSans-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Thin.ttf);
+  font-weight: 100;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-ThinItalic.ttf);
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-ExtraLight.ttf);
+  font-weight: 200;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-ExtraLightItalic.ttf);
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-LightItalic.ttf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Regular.ttf);
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Italic.ttf);
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-MediumItalic.ttf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-SemiBold.ttf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-SemiBoldItalic.ttf);
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-BoldItalic.ttf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-ExtraBold.ttf);
+  font-weight: 800;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-ExtraBoldItalic.ttf);
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-Black.ttf);
+  font-weight: 900;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat/Montserrat-BlackItalic.ttf);
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Sulphur Point;
+  src: url("../../fonts/Sulphur Point/SulphurPoint-Light.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: Sulphur Point;
+  src: url("../../fonts/Sulphur Point/SulphurPoint-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: Sulphur Point;
+  src: url("../../fonts/Sulphur Point/Sulphur Point-Bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-Thin.ttf);
+  font-weight: 100;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-ThinItalic.ttf);
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-LightItalic.ttf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-Regular.ttf);
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-Italic.ttf);
+  font-style: italic;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-BoldItalic.ttf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-Black.ttf);
+  font-weight: 900;
+}
+@font-face {
+  font-family: Lato;
+  src: url(../../fonts/Lato/Lato-BlackItalic.ttf);
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-ExtraLight.ttf);
+  font-weight: 200;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-ExtraLightItalic.ttf);
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-LightItalic.ttf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-Regular.ttf);
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-Italic.ttf);
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-MediumItalic.ttf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-SemiBold.ttf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-SemiBoldItalic.ttf);
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-BoldItalic.ttf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-ExtraBold.ttf);
+  font-weight: 800;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-ExtraBoldItalic.ttf);
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-Black.ttf);
+  font-weight: 900;
+}
+@font-face {
+  font-family: Nunito;
+  src: url(../../fonts/Nunito/Nunito-BlackItalic.ttf);
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-Regular.ttf);
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-Italic.ttf);
+  font-style: italic;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-MediumItalic.ttf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-SemiBold.ttf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-SemiBoldItalic.ttf);
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Cabin;
+  src: url(../../fonts/Cabin/Cabin-BoldItalic.ttf);
+  font-weight: 700;
+  font-style: italic;
+}
 body, html {
   height: 100%;
   margin: 0;
@@ -358,11 +972,12 @@ body .bgimagediv-1 .top-nav a, html .bgimagediv-1 .top-nav a {
   font-size: 1.05rem;
   transition: 0.3s;
   text-transform: uppercase;
+  font-weight: 500;
 }
 body .bgimagediv-1 .top-nav a:hover, html .bgimagediv-1 .top-nav a:hover {
   color: snow;
   top: 4.5%;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 body .bgimagediv-1 .top-nav .signup-option a, html .bgimagediv-1 .top-nav .signup-option a {
   background-color: black;
@@ -378,8 +993,9 @@ body .bgimagediv-1 .caption .logo img, html .bgimagediv-1 .caption .logo img {
 }
 body .bgimagediv-1 .caption .quote, html .bgimagediv-1 .caption .quote {
   font-size: 1.5rem;
-  font-family: Lucida Handwriting, MV Boli, cursive, sans-serif;
+  font-family: Lucida Handwriting, MV Boli, arizonia, cursive, sans-serif;
   padding: 0.5rem 0;
+  text-shadow: 0px 1px 1px black;
 }
 body .bgimagediv-1 .caption .get-started a, html .bgimagediv-1 .caption .get-started a {
   text-decoration: none;
@@ -402,11 +1018,10 @@ body .bgimagediv-1 .caption .get-started a:hover, html .bgimagediv-1 .caption .g
 }
 body .intro, html .intro {
   padding: 2rem;
-  font-family: verdana, sans-serif;
   text-align: center;
 }
 body .intro h2, html .intro h2 {
-  font-weight: normal;
+  font-weight: 600;
   font-size: 2rem;
   color: #138213;
   text-transform: capitalize;
@@ -490,14 +1105,17 @@ body .services, html .services {
   text-align: center;
 }
 body .services h2, html .services h2 {
-  font-weight: normal;
-  font-family: "Raleway", sans-serif;
+  font-weight: 600;
   font-size: 2rem;
   color: #138213;
+}
+body .services h3, html .services h3 {
+  font-weight: 600;
 }
 body .services .service, html .services .service {
   max-width: 350px;
   margin: auto;
+  padding: 5px;
 }
 body .services img, html .services img {
   display: block;
@@ -519,7 +1137,7 @@ body .footer .logo img, html .footer .logo img {
 body .footer .contact-details, html .footer .contact-details {
   display: flex;
   flex-wrap: wrap;
-  max-width: min(95%, 500px);
+  max-width: min(95%, 550px);
   margin: auto;
 }
 body .footer .contact-details div, html .footer .contact-details div {
