@@ -42,6 +42,7 @@
 		            <c:set var="user" value="${result.rows[0].firstname} ${result.rows[0].lastname}" scope="session" />
 		            <c:set var="mobile" value="${result.rows[0].mobile}" scope="session" />
 		            <c:set var="role" value="${result.rows[0].role}" scope="session" />
+                <c:set var="dp" value="${result.rows[0].dp}" scope="session" />
 		            <sql:update dataSource="${connection}" >
 		              update users set last_login=? where id=?;
 		              <sql:param value="<%=new java.sql.Timestamp(new java.util.Date().getTime())%>" />

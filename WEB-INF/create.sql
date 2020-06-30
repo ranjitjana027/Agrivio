@@ -50,6 +50,9 @@ values ( 'Test',
 
 alter table users
 add column dp varchar(200);
+alter table users 
+  alter column dp 
+  set default 'https://agrivio-assets.s3.amazonaws.com/profile/default/user.png'
 
 create table location_info (
   id serial primary key,
