@@ -130,7 +130,10 @@
         border: dashed 1px;
         height: 100%;
       }
-      .modal-container{
+      /*****************/
+      
+
+      .modal-container {
         display: none;
         position: fixed;
         top: 0;
@@ -139,34 +142,133 @@
         left: 0;
         margin: auto;
         z-index: 1;
-        background-color: rgba(0,0,0,0.15);
+        background-color: rgba(0, 0, 0, 0.4);
         animation: floatIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
       }
-      .modal-content{
-        margin: 15% auto;
-        width: 80%;
-        max-width: 540px;
-        background-color: aliceblue;
-        padding: 0 1rem 1rem;
-
+      .modal-container .modal-content {
+        margin: 50px auto;
+        width: 95%;
+        max-width: 450px;
+        background-color: white;
+        color: #045049;
+        border-radius: 5px;
+        box-shadow: 0 0 5px 1px black;
       }
-      .close{
-        font-size: 38px;
+      .modal-container .modal-content header {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.3rem 1rem;
+        /*background: #2196F3;
+        color: snow;*/
+      }
+      .modal-container .modal-content header .close {
+        font-size: 2.5rem;
         padding: 0 10px;
         cursor: pointer;
       }
+      .modal-container .modal-content header h2 {
+        margin: 0.83rem;
+        font-size: larger;
+        font-weight: 600;
+      }
+      .modal-container .modal-content hr {
+        margin: 0;
+      }
+      .modal-container .modal-content section, .modal-container .modal-content footer {
+        padding: 0.3rem 1rem;
+      }
+      .modal-container .modal-content section .file-upload-area {
+        border: double 1px;
+        height: 200px;
+        margin: auto;
+        position: relative;
+      }
+      .modal-container .modal-content section .file-upload-area #dnd-file-upload, .modal-container .modal-content section .file-upload-area #uploading-div {
+        text-align: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        height: fit-content;
+        line-height: 1.5rem;
+      }
+      .modal-container .modal-content section .file-upload-area #dnd-file-upload label, .modal-container .modal-content section .file-upload-area #uploading-div label {
+        background-color: green;
+        color: snow;
+        padding: 0.3rem 1rem;
+        display: inline-block;
+        cursor: pointer;
+      }
+      .modal-container .modal-content section .file-upload-area #dnd-file-upload #upload-user-file, .modal-container .modal-content section .file-upload-area #uploading-div #upload-user-file {
+        display: none;
+      }
+      .modal-container .modal-content section .file-upload-area #uploading-div {
+        display: none;
+      }
+      .modal-container .modal-content section .file-upload-area .file-preview-div {
+        display: none;
+        padding: 5px;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      .modal-container .modal-content section .file-upload-area .file-preview-div img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .modal-container .modal-content section .file-upload-area:hover, .modal-container .modal-content section .dragover {
+        background-color: #fafafa;
+      }
+      .modal-container .modal-content footer .form-input {
+        display: flex;
+        /*flex-wrap:wrap;*/
+        align-items: center;
+        position: relative;
+        margin: 10px;
+        height: auto;
+        justify-content: space-between;
+      }
+      .modal-container .modal-content footer .form-input input[type=submit], .modal-container .modal-content footer .form-input input[type=button] {
+        width: 100px;
+        display: inline-block;
+        padding: 0.65rem 0.75rem;
+        border-radius: 5px;
+        background: #2196F3;
+        color: snow;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        box-shadow: 0 0 3px 0px #2196F3;
+        cursor: pointer;
+        transition: 0.25s;
+      }
+      .modal-container .modal-content footer .form-input input[type=submit]:hover, .modal-container .modal-content footer .form-input input[type=button]:hover {
+        box-shadow: 0 0 5px 0px #2196F3;
+      }
+      .modal-container .modal-content footer .form-input input[type=submit]:disabled, .modal-container .modal-content footer .form-input input[type=button]:disabled {
+        box-shadow: none;
+        background-color: #9e9e9ec2;
+        cursor: not-allowed;
+      }
+
       @keyframes floatIn {
-        from{
-          top:-200px;
-          background-color: rgba(0,0,0,0);
+        from {
+          top: -200px;
+          background-color: rgba(0, 0, 0, 0);
           /*transform: rotate(0);*/
         }
-        to{
-          top:0;
-          background-color: rgba(0,0,0,0);
+        to {
+          top: 0;
+          background-color: rgba(0, 0, 0, 0);
           /*transform: rotate(360deg);*/
         }
       }
+
+
+      /*************/
       @media (min-width:768px) {
         .input-area{
           margin: auto;
@@ -218,7 +320,11 @@
           newInput.id=input.id;
           newInput.accept=input.accept;
           newInput.onchange=input.onchange;
-          input.parentNode.replaceChild(newInput,input)
+          input.parentNode.replaceChild(newInput,input);
+          document.querySelector("#dnd-file-upload").style.display='block';
+          document.querySelector(".file-preview-div").style.display='none';
+          document.querySelector("#uploading-div").style.display='none';
+          document.querySelector('#submit-btn').disabled=true;
         }
         function showImg(input){
           if(input.files && input.files[0]){
@@ -253,7 +359,7 @@
             }
           };
           var f=new FormData();
-          f.append("file",document.querySelector('#imgfile').files[0]);
+          f.append("file",document.querySelector('#upload-user-file').files[0]);
           f.append("folder","articles");
           request.send(f);
         }
@@ -289,29 +395,102 @@
           <div class="command">
             <div class="modal-container">
               <div class="modal-content">
-                <div class="" style="text-align:right;">
-                  <span class="close">&times;</span>
-                </div>
                 <form  id="imageUpload" method="post" action="/webProject/UploadFileController" enctype="multipart/form-data">
-                  <input type="file" name="file" id="imgfile" required>
-                  <div class="drop-box">
-                    <div class="inner-box">
-
+                  <header>
+                    <h2>Upload an image</h2>
+                    <span class="close">&times;</span>
+                  </header>
+                  <hr>
+                  <section>
+                    <div class="file-upload-area">
+                      <div id="dnd-file-upload">
+                        <div>
+                          Drag and drop a file here <br> Or
+                        </div>
+                        <div>
+                          <label for="upload-user-file">Browse files</label>
+                          <input type="file" id="upload-user-file" name="file">
+                        </div>
+                      </div>
+                      <div id="uploading-div">
+                        Uploading ...
+                      </div>
+                      <div class="file-preview-div">
+                        <img src="" id="file-preview">
+                      </div>
                     </div>
-                  </div>
-                  <input type="submit" value="Submit" onclick="uploadImage(); return false;">
+                  </section>
+                  <hr>
+                  <footer>
+                    <div class="form-input">
+                      <input type="button" name="" value="Reset" id="reset-file-upload-btn">
+                      <input type="submit" id="submit-btn" value="Submit" onclick="uploadImage(); return false;" disabled="true">
+                      </div>
+                  </footer>
                 </form>
 
               </div>
             </div>
             <script type="text/javascript">
               document.querySelector('.modal-container').onclick=evt=>{
-                console.log(evt.target==document.querySelector('.modal-container') )
-                console.log(evt.target==document.querySelector('.close') )
-                if(evt.target==document.querySelector('.modal-container') || evt.target==document.querySelector('.close')){
-                  document.querySelector('.modal-container').style.display="none";
-                }
+              console.log(evt.target==document.querySelector('.modal-container') )
+              console.log(evt.target==document.querySelector('.modal-container').querySelector('.close') )
+              if(evt.target==document.querySelector('.modal-container') || evt.target==document.querySelector('.modal-container').querySelector('.close')){
+              document.querySelector('#submit-btn').disabled=true;
+              clearFileInput(document.getElementById('upload-user-file'));
+                document.querySelector('.modal-container').style.display="none";
               }
+            }
+
+
+        let show_file_preview=function () {
+          document.querySelector("#dnd-file-upload").style.display='none';
+          document.querySelector("#uploading-div").style.display='none';
+          document.querySelector(".file-preview-div").style.display='block';
+        }
+        let file_uploading=function () {
+          document.querySelector("#dnd-file-upload").style.display='none';
+          document.querySelector("#uploading-div").style.display='block';
+          document.querySelector(".file-preview-div").style.display='none';
+        }
+        document.querySelector('#reset-file-upload-btn').onclick= clearFileInput;
+        let file_upload_area =document.querySelector(".file-upload-area");
+        file_upload_area.ondragenter = file_upload_area.ondragover=evt=>{
+          evt.preventDefault();
+          event.target.classList.add('dragover')
+        }
+        file_upload_area.ondragleave = file_upload_area.ondragend=evt=>{
+          event.target.classList.remove('dragover')
+        }
+        file_upload_area.ondrop=evt=>{
+          evt.preventDefault();
+          document.querySelector('#upload-user-file').files=evt.dataTransfer.files;
+          event.target.classList.remove('dragover');
+          readFile();
+
+        }
+
+        document.querySelector('#upload-user-file').onchange=readFile;
+
+        function readFile(){
+            file_uploading();
+            let reader=new FileReader();
+            reader.onload=event=>{
+              let img=new Image();
+                img.src=event.target.result;
+                img.onload=()=>{
+                  document.getElementById('file-preview').src=event.target.result;
+                  show_file_preview();
+                  document.querySelector('#submit-btn').disabled=false;
+                }
+                img.onerror=()=>{
+                  alert("Something went wrong")
+                }
+            }
+            reader.readAsDataURL(document.querySelector('#upload-user-file').files[0]);
+          
+        
+        }
 
             </script>
             <select onchange="apply('formatBlock',this[this.selectedIndex].value); this.selectedIndex=0;">

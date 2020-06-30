@@ -187,11 +187,15 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background-color: #efefef;
 }
 .modal-container .modal-content section .file-upload-area .file-preview-div img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: auto;
+  display: block;
 }
 .modal-container .modal-content section .file-upload-area:hover, .modal-container .modal-content section .dragover {
   background-color: #fafafa;

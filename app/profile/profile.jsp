@@ -114,40 +114,40 @@
       </div>
       <div class="modal-container">
         <div class="modal-content">
-          <header>
-            <h2>Edit Profile Pic</h2>
-            <span class="close">&times;</span>
-          </header>
-          <hr>
-          <section>
-            <div class="file-upload-area">
-              <div id="dnd-file-upload">
-                <div>
-                  Drag and drop a file here <br> Or
+          <form method="post" action="${pageContext.request.contextPath}/profile/upload-dp" enctype="multipart/form-data" >
+            <header>
+              <h2>Edit Profile Pic</h2>
+              <span class="close">&times;</span>
+            </header>
+            <hr>
+            <section>
+              <div class="file-upload-area">
+                <div id="dnd-file-upload">
+                  <div>
+                    Drag and drop a file here <br> Or
+                  </div>
+                  <div>
+                    <label for="upload-user-file">Browse files</label>
+                    <input type="file" id="upload-user-file" name="file" accept="image/*">
+                  </div>
                 </div>
-                <div>
-                  <label for="upload-user-file">Browse files</label>
-                  <input type="file" id="upload-user-file">
+                <div id="uploading-div">
+                  Uploading ...
+                </div>
+                <div class="file-preview-div">
+                  <img src="" id="file-preview">
                 </div>
               </div>
-              <div id="uploading-div">
-                Uploading ...
-              </div>
-              <div class="file-preview-div">
-                <img src="" id="file-preview">
-              </div>
-            </div>
-          </section>
-          <hr>
-          <footer>
-            <form method="post" action="${pageContext.request.contextPath}/profile/add-dp" onsubmit="this.dp.value=document.querySelector('#file-preview').src;">
+            </section>
+            <hr>
+            <footer>
               <div class="form-input">
-                <input type="text" name="dp" hidden="true">
+                <input name="folder" value="profile/${sessionScope.userid}" hidden="true">
                 <input type="button" name="" value="Reset" id="reset-file-upload-btn">
                 <input type="submit" id="submit-btn" value="Save"  disabled>
               </div>
-            </form>
-          </footer>
+            </footer>
+          </form>
         </div>
       </div>
       <script>
@@ -164,6 +164,7 @@
           document.querySelector("#dnd-file-upload").style.display='block';
           document.querySelector(".file-preview-div").style.display='none';
           document.querySelector("#uploading-div").style.display='none';
+          document.querySelector('#submit-btn').disabled=true;
         }
         document.querySelector('.profile-pic').onclick=()=>{
           document.querySelector('.modal-container').style.display="block";
@@ -203,44 +204,34 @@
           evt.preventDefault();
           document.querySelector('#upload-user-file').files=evt.dataTransfer.files;
           event.target.classList.remove('dragover');
-          uploadFile();
+          readFile();
 
         }
 
-        document.querySelector('#upload-user-file').onchange=uploadFile;
+        document.querySelector('#upload-user-file').onchange=readFile;
 
-        function uploadFile(){
-          file_uploading();
-          let request=new XMLHttpRequest();
-          request.open("POST",location.protocol+"//"+location.host+"/webProject/UploadFileController");
-          request.onload=()=>{
-            if(request.status==200){
-              var data=JSON.parse(request.responseText);
-              console.log(data);
-              if(data.success){
-                let img=new Image();
-                img.src="https://agrivio-assets.s3.amazonaws.com/"+data.filename;
+        function readFile(){
+            file_uploading();
+            let reader=new FileReader();
+            reader.onload=event=>{
+              let img=new Image();
+                img.src=event.target.result;
                 img.onload=()=>{
-                  document.getElementById('file-preview').src="https://agrivio-assets.s3.amazonaws.com/"+data.filename;
+                  document.getElementById('file-preview').src=event.target.result;
                   show_file_preview();
                   document.querySelector('#submit-btn').disabled=false;
                 }
                 img.onerror=()=>{
-                  alert("Something went wrong")
+                  alert("Something went wrong");
+                  clearFileInput();
                 }
-              }
-              else{
-                clearFileInput();
-                alert("Upload failed");
-              }
-
             }
-          };
-          let f=new FormData();
-          f.append("file",document.querySelector('#upload-user-file').files[0]);
-          f.append("folder","profile/${sessionScope.userid}");
-          request.send(f);
+            reader.readAsDataURL(document.querySelector('#upload-user-file').files[0]);
+          
+        
         }
+
+        
       </script>
 
     </c:if>

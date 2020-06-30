@@ -66,7 +66,10 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   /* show account action list */
   window.addEventListener("click",evt=>{
-    if(evt.target.parentNode!=null && evt.target.parentNode.classList!=undefined && evt.target.parentNode.classList.contains("user-icon")){
+    if((evt.target.parentNode!=null && evt.target.parentNode.classList!=undefined 
+        && evt.target.parentNode.classList.contains("user-icon") ) || 
+      (evt.target.classList!="undefined" && evt.target.classList.contains("user-icon"))
+      ){
       var target=document.querySelector(".account-nav");
       if(target.classList.contains("hidden")){
         target.classList.remove("hidden");
