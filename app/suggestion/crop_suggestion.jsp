@@ -14,7 +14,7 @@ if(lat!=null && lon!=null){
   <% Object obj=JSONValue.parse((String)pageContext.getAttribute("data"));
     JSONObject obj1=(JSONObject)obj;
     String st="";
-    if(obj1.get("properties")!=null){
+    if(obj1.get("wrb_class_name")!=null){
       st=(String)obj1.get("wrb_class_name");
     }
   %>
@@ -24,6 +24,7 @@ if(lat!=null && lon!=null){
 
    JSONObject obj3=new JSONObject();
    obj3.put("success",true);
+   obj3.put("soil",(String)obj1.get("wrb_class_name"));
    obj3.put("cropids",cs.getSuggestion());
    %>
    <%= obj3  %>

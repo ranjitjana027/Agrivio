@@ -50,8 +50,8 @@ values ( 'Test',
 
 alter table users
 add column dp varchar(200);
-alter table users 
-  alter column dp 
+alter table users
+  alter column dp
   set default 'https://agrivio-assets.s3.amazonaws.com/profile/default/user.png'
 
 create table location_info (
@@ -173,6 +173,9 @@ alter table crop_info add column rabi boolean default false;
 alter table crop_info add column kharif boolean default false;
 alter table crop_info add column summer boolean default false;
 
+alter table crop_info alter rabi set default true;
+alter table crop_info alter kharif set default true;
+alter table crop_info alter kharif set default true;
 /* soil data */
 
 create table india_soil_info(
@@ -184,6 +187,14 @@ create table india_soil_info(
   insert into india_soil_info(name) values('red');
   insert into india_soil_info(name) values('laterite');
   insert into india_soil_info(name) values('desert');
+
+create table wrb_soil_info(
+  id serial primary key,
+  name varchar(128) not null,
+  indian_name integer references india_soil_info(id) on delete cascade
+);
+select * from crop_info where id in ( select crop_id from soil_crop_mapping where soil_id in (
+  select id from usda_soil_info where lower(name) = 'fluvisols') );
 
 create table usda_soil_info(
   id serial primary key,
