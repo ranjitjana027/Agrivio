@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@tag description="Layout Wrapper Tag" pageEncoding="UTF-8"%>
 <%@ attribute name="header" fragment="true" %>
 <!DOCTYPE html>
@@ -128,15 +129,24 @@
 
               <!-- user icon -->
               <div class="user-icon-container">
-                <svg class="user-icon" viewBox=" 0 0 40 40">
-                  <defs>
-                    <pattern id="user-icon-pattern" x="0" y="0" height="200" width="200" patternUnits="userSpaceOnUse" >
-                      <circle cx="20" cy="14" r="9" stroke="black" fill="none" stroke-width="2px" />
-                      <path d="M0,40 S20,0 40,40" stroke="black" fill="none" stroke-width="2px" />
-                    </pattern>
-                  </defs>
-                  <circle cx="20" cy="20" r="20" stroke="black"  fill="url(#user-icon-pattern)" stroke-width="2px" />
-                </svg>
+                <c:choose>
+                  <c:when test="${not empty sessionScope.dp}">
+                    <img src="${fn:replace(sessionScope.dp,'https://agrivio-assets.s3.amazonaws.com/','https://o8zks6ll3b.execute-api.us-east-1.amazonaws.com/production/')}?width=60" class="user-icon" style="width:40px; object-fit: cover;">
+
+                  </c:when>
+                  <c:otherwise>
+                    <svg class="user-icon" viewBox=" 0 0 40 40">
+                      <defs>
+                        <pattern id="user-icon-pattern" x="0" y="0" height="200" width="200" patternUnits="userSpaceOnUse" >
+                          <circle cx="20" cy="14" r="9" stroke="black" fill="none" stroke-width="2px" />
+                          <path d="M0,40 S20,0 40,40" stroke="black" fill="none" stroke-width="2px" />
+                        </pattern>
+                      </defs>
+                      <circle cx="20" cy="20" r="20" stroke="black"  fill="url(#user-icon-pattern)" stroke-width="2px" />
+                    </svg>
+                  </c:otherwise>
+                </c:choose>
+                
               </div>
               <!-- account navigation -->
               <div class="account-nav hidden" >
