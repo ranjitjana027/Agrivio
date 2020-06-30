@@ -35,7 +35,7 @@ public class UploadDPServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		System.out.println(request.getPart("file").getSubmittedFileName());
 		String folder=request.getParameter("folder");
-		if( session.getAttribute("userid")==null && request.getPart("file").getSubmittedFileName()==null){
+		if( session.getAttribute("userid")==null || request.getPart("file").getSubmittedFileName()==null){
 			out.println("{ \"success\": false}");
 		}
 		else{

@@ -1,13 +1,10 @@
 // compile with : javac -cp ../../../../lib/servlet-api.jar;../lib/*; UploadFileController.java
 import java.io.*;
 import java.nio.file.*;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
@@ -30,10 +27,11 @@ public class UploadFileController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("application/json");
+		HttpSession session=request.getSession();
 		PrintWriter out = response.getWriter();
 		System.out.println(request.getPart("file").getSubmittedFileName());
 		String folder=request.getParameter("folder");
-		if(request.getPart("file").getSubmittedFileName()==null){
+		if(session.getAttribute("userid")==null || request.getPart("file").getSubmittedFileName()==null){
 			out.println("{ \"success\": false}");
 		}
 		else{

@@ -6,7 +6,7 @@
 <%
 String lon=request.getParameter("lon");
 String lat=request.getParameter("lat");
-String url="https://rest.soilgrids.org/query?lon="+lon+"&lat="+lat;
+String url="https://rest.isric.org/soilgrids/v2.0/classification/query?lon="+lon+"&lat="+lat;
 if(lat!=null && lon!=null){
   try{
 %>
@@ -14,8 +14,8 @@ if(lat!=null && lon!=null){
   <% Object obj=JSONValue.parse((String)pageContext.getAttribute("data"));
     JSONObject obj1=(JSONObject)obj;
     String st="";
-    if(((JSONObject)obj1.get("properties")).get("soilmask").equals("soil")){
-      st=(String)(((JSONObject)obj1.get("properties")).get("TAXGOUSDAMajor"));
+    if(obj1.get("properties")!=null){
+      st=(String)obj1.get("wrb_class_name");
     }
   %>
    <jsp:useBean id="cs" class="bean.CropSuggestion" scope="page" />
