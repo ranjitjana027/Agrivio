@@ -194,7 +194,7 @@ if(request.getMethod().equals("POST"))
     </div>
     <div class="form-input">
       <label for="indian_name">Indian Taxonomy</label>
-      <input type="text" id="indian_name" multiple name="indian_name" placeholder="eg. laterite" list="ind_soil_list" required>
+      <input type="text" id="indian_name" multiple name="indian_name" placeholder="eg. laterite" list="ind_soil_list" >
       <datalist id="ind_soil_list">
         <c:forEach items="${soilSet.rows}" var="i">
           <option>${i.name}</option>
